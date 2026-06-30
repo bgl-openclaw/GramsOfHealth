@@ -1,0 +1,7 @@
+unit,volume,note
+tsp,5 mL,Australian teaspoon
+tbsp,20 mL,Australian tablespoon (NOT 15 mL)
+cup,250 mL,Australian metric cup
+ml,1 mL,grams = mL x density
+g,1 g,direct
+kg,1000 g,direct

@@ -1,0 +1,23 @@
+# dependencies / build
+node_modules/
+dist/
+
+# secrets / env
+.env
+.env.local
+
+# OS / logs
+*.log
+.DS_Store
+supabase/.branches/
+supabase/.temp/
+
+# large data + binaries (kept in Supabase / Dropbox, not git)
+*.zip
+recipes/
+full_library/media/
+goh_full_library_ALL/
+media_export/
+AFCD/
+design_v2/
+design_handoff/

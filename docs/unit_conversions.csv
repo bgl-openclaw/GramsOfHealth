@@ -1,0 +1,21 @@
+food_id,unit,grams,basis
+garlic,clove,3.0,default
+onion_brown,small,70.0,default
+onion_brown,medium,110.0,default
+spring_onion,each,15.0,default
+egg,each,50.0,default
+wholemeal_bread,slice,30.0,default
+sweet_potato,medium,150.0,default
+dill,cup,40.0,default
+mixed_leaf_salad,cup,25.0,default
+tzatziki,cup,260.0,default
+cottage_cheese_lf,cup,225.0,default
+parsley,handful,10.0,default
+lemon,wedge,15.0,default
+mixed_herbs_dried,tsp,1.0,default
+paprika,tsp,2.3,default
+salt,tsp,6.0,default
+pepper,tsp,2.3,default
+broccolini,stalk,20.0,default
+brown_rice_pouch,pouch,250.0,default
+tuna_springwater,x95g,95.0,can weight

@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Lentil Tuna Salad",
+    "servings": 4,
+    "time_minutes": 5,
+    "printed_macros_per_serve": {"energy_kcal": 405, "carb": 38, "protein": 29, "fat": 13},
+    "ingredients": [
+      {"food_id": "sweet_potato", "quantity": 1, "unit": "medium", "size_text": "medium", "prep": "diced"},
+      {"food_id": "olive_oil", "quantity": 2, "unit": "tsp", "size_text": "teaspoons", "prep": ""},
+      {"food_id": "mixed_herbs_dried", "quantity": 2, "unit": "tsp", "size_text": "teaspoons", "prep": ""},
+      {"food_id": "paprika", "quantity": 1, "unit": "tsp", "size_text": "teaspoon", "prep": ""},
+      {"food_id": "salt", "quantity": 1, "unit": "tsp", "size_text": "teaspoon", "prep": ""},
+      {"food_id": "pepper", "quantity": 1, "unit": "tsp", "size_text": "teaspoon", "prep": ""},
+      {"food_id": "sherry_vinegar", "quantity": 2, "unit": "tbsp", "size_text": "tablespoons", "prep": ""},
+      {"food_id": "dijon_mustard", "quantity": 1, "unit": "tsp", "size_text": "teaspoon", "prep": ""},
+      {"food_id": "garlic", "quantity": 2, "unit": "clove", "size_text": "cloves", "prep": "minced"},
+      {"food_id": "olive_oil", "quantity": 2, "unit": "tbsp", "size_text": "tablespoons", "prep": ""},
+      {"food_id": "tuna_springwater", "quantity": 4, "unit": "x95g", "size_text": "x 95g", "prep": "drained"},
+      {"food_id": "lentil_brown", "quantity": 420, "unit": "g", "size_text": "g", "prep": "drained"},
+      {"food_id": "cherry_tomato", "quantity": 250, "unit": "g", "size_text": "g", "prep": "halved"},
+      {"food_id": "parsley", "quantity": 1, "unit": "handful", "size_text": "handful", "prep": ""}
+    ]
+  },
+  {
+    "title": "Salmon Fish Cakes",
+    "servings": 4,
+    "time_minutes": 5,
+    "printed_macros_per_serve": {"energy_kcal": 332, "carb": 11, "protein": 29, "fat": 18},
+    "data_issue": "Salmon appears in the method but is missing from the printed ingredient list. Computed-from-listed therefore understates protein and energy. Dietitian must add the salmon line and confirm quantity.",
+    "ingredients": [
+      {"food_id": "wholemeal_bread", "quantity": 2, "unit": "slice", "size_text": "slices", "prep": "toasted"},
+      {"food_id": "onion_brown", "quantity": 1, "unit": "small", "size_text": "small", "prep": "finely diced"},
+      {"food_id": "garlic", "quantity": 1, "unit": "clove", "size_text": "clove", "prep": "minced"},
+      {"food_id": "spring_onion", "quantity": 2, "unit": "each", "size_text": "", "prep": "thinly sliced"},
+      {"food_id": "dill", "quantity": 1, "unit": "cup", "size_text": "cup (1/3 in source, scale as needed)", "prep": "chopped"},
+      {"food_id": "egg", "quantity": 2, "unit": "each", "size_text": "", "prep": ""},
+      {"food_id": "cottage_cheese_lf", "quantity": 0.5, "unit": "cup", "size_text": "cup", "prep": "low fat"},
+      {"food_id": "salt", "quantity": 0.5, "unit": "tsp", "size_text": "teaspoon", "prep": ""},
+      {"food_id": "pepper", "quantity": 0.5, "unit": "tsp", "size_text": "teaspoon", "prep": ""},
+      {"food_id": "olive_oil", "quantity": 2, "unit": "tbsp", "size_text": "tablespoons", "prep": ""},
+      {"food_id": "mixed_leaf_salad", "quantity": 4, "unit": "cup", "size_text": "cups", "prep": "", "section": "To serve"},
+      {"food_id": "tzatziki", "quantity": 0.25, "unit": "cup", "size_text": "cup", "prep": "", "section": "To serve"},
+      {"food_id": "lemon", "quantity": 2, "unit": "wedge", "size_text": "wedges", "prep": "", "section": "To serve"}
+    ]
+  }
+]

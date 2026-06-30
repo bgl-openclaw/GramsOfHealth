@@ -1,0 +1,62 @@
+food_id,display_name,afcd_key,source,energy_kcal_100g,protein_100g,fat_100g,carb_avail_100g,fibre_100g,density_g_ml,verified,match_note
+olive_oil,Extra virgin olive oil,F006177,afcd,883,0.0,99.9,0.0,0.0,0.92,FALSE,"AFCD Oil, olive"
+canola_oil,Canola oil,F006159,afcd,884,0.0,100.0,0.0,0.0,0.92,FALSE,verify key
+sesame_oil,Sesame oil,,custom,884,0.0,100.0,0.0,0.0,0.92,FALSE,custom: oil generic
+tuna_springwater,"Tuna, springwater, drained",F009300,afcd,129,26.1,2.6,0.0,0.0,,FALSE,"AFCD canned in water, drained"
+lentil_brown,"Brown lentils, canned drained",F005177,afcd,92,7.3,0.5,11.9,4.1,,FALSE,AFCD boiled drained (canned proxy)
+lentil_green,"Green lentils, cooked",F005177,afcd,92,7.3,0.5,11.9,4.1,,FALSE,AFCD boiled drained proxy
+cherry_tomato,Cherry tomatoes,F009190,afcd,22,0.9,0.0,3.5,1.7,,FALSE,AFCD
+sweet_potato,"Sweet potato, orange",F009035,afcd,65,1.4,0.2,13.2,2.6,,FALSE,AFCD raw
+garlic,Garlic,F004193,afcd,125,6.1,2.8,10.2,16.9,,FALSE,AFCD raw
+dijon_mustard,Dijon mustard,F005973,afcd,83,5.8,3.1,6.2,4.1,1.05,FALSE,AFCD cream style
+sherry_vinegar,Sherry vinegar,F009498,afcd,16,0.0,0.0,0.0,0.0,1.01,FALSE,AFCD vinegar generic
+parsley,Parsley,F006321,afcd,36,3.9,0.7,1.1,5.0,,FALSE,AFCD continental
+paprika,"Paprika, ground",,custom,282,14.1,12.9,19.0,34.9,,FALSE,custom spice
+mixed_herbs_dried,"Mixed herbs, dried",,custom,259,9.0,6.0,10.0,42.0,,FALSE,custom spice
+salt,Salt,,custom,0,0.0,0.0,0.0,0.0,,FALSE,custom
+pepper,"Pepper, black, ground",,custom,251,10.4,3.3,39.0,26.5,,FALSE,custom spice
+wholemeal_bread,Wholemeal bread,,custom,240,10.0,2.6,37.0,6.5,,FALSE,custom verify AFCD
+onion_brown,Brown onion,F006225,afcd,33,1.3,0.0,5.8,2.3,,FALSE,AFCD raw
+spring_onion,Spring onion,F006250,afcd,30,1.7,0.2,4.6,1.9,,FALSE,AFCD raw
+dill,"Dill, fresh",,custom,43,3.5,1.1,4.0,2.1,,FALSE,custom
+egg,"Egg, whole",F003729,afcd,127,12.6,8.5,0.3,0.0,,FALSE,AFCD raw
+cottage_cheese_lf,"Cottage cheese, low fat",F002435,afcd,133,17.0,5.7,1.8,0.0,,FALSE,AFCD generic; confirm low-fat
+salmon,"Salmon, Atlantic",F007827,afcd,231,20.5,16.7,0.0,0.0,,FALSE,AFCD raw fillet
+tzatziki,Tzatziki,,custom,120,4.0,9.0,4.5,0.3,,FALSE,BRANDED custom
+mixed_leaf_salad,Mixed leaf salad,,custom,18,1.6,0.3,1.5,1.8,,FALSE,custom
+lemon,Lemon,,custom,24,1.0,0.3,1.6,2.8,,FALSE,custom
+turkey_mince,Turkey mince,F009307,afcd,117,21.6,3.3,0.0,0.0,,FALSE,AFCD breast lean raw proxy
+feta,Feta cheese,F002452,afcd,256,16.6,20.6,0.4,0.0,,FALSE,AFCD
+quinoa_cooked,"Quinoa, cooked",,custom,120,4.4,1.9,18.5,2.8,,FALSE,custom verify AFCD
+cucumber,Cucumber,,custom,12,0.7,0.1,1.9,0.7,,FALSE,custom verify AFCD
+mint,"Mint, fresh",,custom,44,3.3,0.7,6.0,8.0,,FALSE,custom
+spinach,"Spinach, baby",,custom,23,2.9,0.4,1.4,2.2,,FALSE,custom verify AFCD
+chia_seeds,Chia seeds,,custom,486,16.5,30.7,7.7,34.4,,FALSE,custom verify AFCD
+skim_milk,"Milk, skim",,custom,35,3.5,0.1,5.0,0.0,1.03,FALSE,custom verify AFCD
+greek_yoghurt_light,"Greek yoghurt, light",,custom,63,9.0,0.2,5.0,0.0,1.03,FALSE,BRANDED custom
+maple_syrup_sf,Sugar-free maple syrup,,custom,30,0.0,0.0,8.0,0.0,1.3,FALSE,BRANDED custom near-zero
+maple_syrup,"Maple syrup, pure",,custom,260,0.0,0.1,67.0,0.0,1.32,FALSE,custom
+blueberries,Blueberries,,custom,57,0.7,0.3,12.0,2.4,,FALSE,custom verify AFCD
+tofu_firm,"Tofu, firm",,custom,120,12.5,7.0,2.0,1.0,,FALSE,custom verify AFCD
+cauliflower,Cauliflower,,custom,25,1.9,0.3,2.3,2.0,,FALSE,custom verify AFCD
+chickpeas_canned,"Chickpeas, canned drained",,custom,120,7.0,2.5,16.0,5.0,,FALSE,custom verify AFCD
+coconut_milk_light,"Coconut milk, light",,custom,73,0.7,6.0,2.0,0.5,1.0,FALSE,BRANDED custom
+tomato_paste,Tomato paste,,custom,82,4.3,0.5,13.0,4.5,1.1,FALSE,custom verify AFCD
+veg_stock_ls,"Vegetable stock, low sodium",,custom,8,0.4,0.1,1.0,0.0,1.0,FALSE,custom
+kale,Kale,,custom,49,4.3,0.9,3.0,3.6,,FALSE,custom verify AFCD
+capsicum_red,Red capsicum,F002247,afcd,27,1.1,0.4,4.4,1.1,,FALSE,AFCD raw
+corn_canned,"Corn, canned drained",,custom,86,3.0,1.2,15.0,2.5,,FALSE,custom verify AFCD
+mozzarella_light,"Mozzarella, light shredded",,custom,254,24.0,16.0,2.0,0.0,,FALSE,BRANDED custom
+wholemeal_wrap,Mini wholemeal wrap,,custom,290,9.0,6.0,48.0,5.0,,FALSE,BRANDED custom
+beef_rump,Beef rump steak,,custom,135,22.0,5.0,0.0,0.0,,FALSE,custom verify AFCD
+broccolini,Broccolini,,custom,34,3.0,0.4,2.0,3.0,,FALSE,custom verify AFCD
+brown_rice_pouch,Microwave brown rice,,custom,150,3.0,1.5,30.0,2.0,,FALSE,BRANDED custom (per 100g cooked)
+soy_sauce,Soy sauce,,custom,60,6.0,0.0,8.0,0.8,1.15,FALSE,custom verify AFCD
+cornflour,Corn starch,,custom,353,0.4,0.7,85.0,1.0,,FALSE,custom
+sugar_white,"Sugar, white",,custom,400,0.0,0.0,100.0,0.0,,FALSE,custom
+ginger_fresh,"Ginger, fresh",,custom,67,1.8,0.8,12.0,2.0,,FALSE,custom verify AFCD
+dates_dried,"Dates, pitted",,custom,280,2.5,0.2,63.0,8.0,,FALSE,custom verify AFCD
+wholemeal_flour,Wholemeal flour,,custom,340,13.0,2.5,58.0,11.0,,FALSE,custom verify AFCD
+turmeric,"Turmeric, ground",,custom,312,9.7,3.3,44.0,21.0,,FALSE,custom spice
+ground_cumin,"Cumin, ground",,custom,375,18.0,22.0,28.0,11.0,,FALSE,custom spice
+ground_coriander,"Coriander, ground",,custom,298,12.0,18.0,25.0,42.0,,FALSE,custom spice
