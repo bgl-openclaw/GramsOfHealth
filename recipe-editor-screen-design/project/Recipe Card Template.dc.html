@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #e7e4dd; }
+  @media print {
+    html, body { background: #fff; }
+    .screen-pad { padding: 0 !important; }
+    .gh-card { box-shadow: none !important; border-radius: 0 !important; }
+  }
+</style>
+</helmet>
+
+<div class="screen-pad" style="min-height: 100vh; background: #e7e4dd; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1c2019; padding: 40px 24px; display: flex; justify-content: center;">
+
+  <!-- ====== A4 RECIPE CARD TEMPLATE (data-driven) ====== -->
+  <div class="gh-card" style="width: 794px; height: 1123px; flex-shrink: 0; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; display: flex; flex-direction: column;">
+
+    <!-- header: logo left / title right -->
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 36px 44px 20px;">
+      <img src="{{ logo }}" alt="Grams of Health" style="height: 44px; width: auto; margin-top: 6px;">
+      <div style="text-align: right; min-width: 0;">
+        <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 37px; line-height: 0.98; letter-spacing: 0.005em; text-transform: uppercase; color: #003018;">{{ title }} <span style="color: #2f7a4d; font-weight: 600;">{{ subtitle }}</span></h2>
+        <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin-top: 10px;">
+          <span style="display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: #4a5046;"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#2f7a4d" stroke-width="1.4"></circle><path d="M9 5.5V9l2.5 1.6" stroke="#2f7a4d" stroke-width="1.4" stroke-linecap="round"></path></svg><b style="font-weight: 600; color: #1c2019;">Serves {{ serves }}</b></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background: #ef835c;"></span>
+          <span style="font-size: 13.5px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">{{ timeLabel }}</b></span>
+        </div>
+      </div>
+    </div>
+    <div style="height: 1px; background: #ebe9e2; margin: 0 44px;"></div>
+
+    <!-- body -->
+    <div style="flex: 1; min-height: 0; display: grid; grid-template-columns: 280px 1fr; gap: 36px; padding: 24px 44px 30px;">
+      <!-- left: photo + ingredients -->
+      <div style="min-width: 0;">
+        <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ true }}">
+          <div style="height: 188px; border-radius: 12px; background-image: {{ photoCss }}; background-size: cover; background-position: center; margin-bottom: 20px;"></div>
+        </sc-if>
+        <sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ false }}">
+          <div style="height: 188px; border-radius: 12px; background-image: repeating-linear-gradient(45deg, #efeee8, #efeee8 9px, #e7e5dd 9px, #e7e5dd 18px); border: 1px solid #e6e4de; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #9aa093;">recipe photo</span></div>
+        </sc-if>
+        <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Ingredients</div>
+        <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="16">
+            <div style="display: flex; gap: 8px; font-size: 12.5px; line-height: 1.4; color: #3a4137;">
+              <span style="color: #2f7a4d; font-size: 9px; line-height: 1.9; flex-shrink: 0;">●</span>
+              <span><b style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #003018;">{{ ing.q }}</b> {{ ing.name }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <!-- right: directions -->
+      <div style="min-width: 0;">
+        <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+        <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 16px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+            <div style="display: flex; gap: 12px;">
+              <span style="flex-shrink: 0; width: 25px; height: 25px; border-radius: 50%; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+              <span style="font-size: 14px; line-height: 1.55; color: #3a4137; padding-top: 2px;">{{ st.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- macro footer (respects show-on-export) -->
+    <sc-if value="{{ showMacros }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="height: 4px; background: #ef835c;"></div>
+        <div style="display: flex; background: #003018; padding: 19px 44px;">
+          <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+            <div style="flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.13);">
+              <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 23px; font-weight: 600; color: #fff; margin-top: 3px;">{{ m.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 880, &quot;height&quot;: 1200}, &quot;title&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Spinach &amp; Feta Turkey Meatballs&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Recipe&quot;}, &quot;subtitle&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;with Herbed Quinoa&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Recipe&quot;}, &quot;serves&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 4, &quot;min&quot;: 1, &quot;max&quot;: 12, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Recipe&quot;}, &quot;timeMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 0, &quot;max&quot;: 240, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Recipe&quot;}, &quot;photo&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/photo-dish.png&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Recipe&quot;}, &quot;showMacros&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Recipe&quot;, &quot;label&quot;: &quot;Show macros on export&quot;}, &quot;ingredients&quot;: {&quot;editor&quot;: null, &quot;tsType&quot;: &quot;{ q: string; name: string }[]&quot;, &quot;section&quot;: &quot;Data&quot;}, &quot;steps&quot;: {&quot;editor&quot;: null, &quot;tsType&quot;: &quot;string[]&quot;, &quot;section&quot;: &quot;Data&quot;}, &quot;macros&quot;: {&quot;editor&quot;: null, &quot;tsType&quot;: &quot;{ label: string; value: string }[]&quot;, &quot;section&quot;: &quot;Data&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props || {};
+
+    const title = p.title ?? 'Spinach & Feta Turkey Meatballs';
+    const subtitle = p.subtitle ?? 'with Herbed Quinoa';
+    const serves = p.serves ?? 4;
+    const timeMinutes = p.timeMinutes ?? 5;
+    const photo = p.photo ?? 'assets/photo-dish.png';
+    const showMacros = p.showMacros ?? true;
+
+    const ingredients = p.ingredients ?? [
+      { q: '1 cup', name: 'frozen spinach (thawed, chopped)' },
+      { q: '500 g', name: 'turkey mince' },
+      { q: '¼ cup', name: 'feta cheese (crumbled)' },
+      { q: '½ tsp', name: 'garlic powder' },
+      { q: '½ tsp', name: 'dried oregano' },
+      { q: '½ tsp', name: 'salt' },
+      { q: '½ tsp', name: 'pepper' },
+      { q: '', name: 'Cooking spray' },
+      { q: '2 cups', name: 'quinoa (cooked)' },
+      { q: '2 tbsp', name: 'lemon juice' },
+      { q: '1 tbsp', name: 'extra virgin olive oil' },
+      { q: '½ cup', name: 'parsley (chopped)' },
+      { q: '¼ cup', name: 'mint (chopped)' },
+      { q: '¼ cup', name: 'tzatziki' },
+      { q: '1 medium', name: 'cucumber (sliced)' },
+      { q: '250 g', name: 'cherry tomatoes' }
+    ];
+
+    const rawSteps = p.steps ?? [
+      'Squeeze excess moisture from the spinach.',
+      'In a large bowl, combine spinach, turkey, feta, garlic powder, oregano, salt and pepper. Mix well. Divide into 12 portions and roll into meatballs.',
+      'Heat a large pan over medium heat and lightly spray with cooking spray.',
+      'In batches, add the meatballs and cook for 10–12 minutes, until browned on all sides.',
+      'Combine the quinoa, lemon juice, oil, parsley and mint in a medium bowl.',
+      'Divide the quinoa into bowls and top with 3 meatballs, tzatziki, cucumber and tomatoes.'
+    ];
+    const steps = rawSteps.map((t, i) => ({ n: String(i + 1), text: t }));
+
+    const macros = p.macros ?? [
+      { label: 'Calories', value: '420' },
+      { label: 'Carbs', value: '22 g' },
+      { label: 'Protein', value: '30 g' },
+      { label: 'Fat', value: '21 g' },
+      { label: 'Fibre', value: '11 g' }
+    ];
+
+    const hasPhoto = !!photo;
+    return {
+      logo: 'assets/grams-logo.webp',
+      title, subtitle, serves,
+      timeLabel: timeMinutes + (timeMinutes === 1 ? ' minute' : ' minutes'),
+      photo, photoCss: "url('" + photo + "')",
+      hasPhoto, noPhoto: !hasPhoto,
+      showMacros, ingredients, steps, macros
+    };
+  }
+}
+</script>
+</body>
+</html>

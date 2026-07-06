@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #e7e4dd; }
+  @media print {
+    html, body { background: #fff; }
+    .screen-pad { padding: 0 !important; }
+    .gh-card { box-shadow: none !important; border-radius: 0 !important; }
+  }
+</style>
+</helmet>
+
+<div class="screen-pad" style="min-height: 100vh; background: #e7e4dd; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1c2019; padding: 40px 24px; display: flex; justify-content: center;">
+
+  <!-- ====== A4 WEEKLY MEAL PLAN ====== -->
+  <div class="gh-card" style="width: 794px; height: 1123px; flex-shrink: 0; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; display: flex; flex-direction: column;">
+
+    <!-- header -->
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 36px 44px 18px;">
+      <div>
+        <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 42px; width: auto; display: block;">
+        <div style="display: flex; gap: 16px; margin-top: 16px; font-size: 12.5px; color: #4a5046;">
+          <span><b style="font-weight: 600; color: #1c2019;">Prepared for</b> &nbsp;{{ client }}</span>
+          <span style="width: 1px; background: #e0ded7;"></span>
+          <span><b style="font-weight: 600; color: #1c2019;">Serves</b> &nbsp;{{ serves }}</span>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 38px; line-height: 0.98; letter-spacing: 0.01em; text-transform: uppercase; color: #003018;">Weekly<br><span style="color: #2f7a4d; font-weight: 600;">Meal Plan</span></h2>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #4a5046; margin-top: 8px;">{{ weekRange }}</div>
+      </div>
+    </div>
+    <div style="height: 4px; background: #ef835c; margin: 0 44px;"></div>
+
+    <!-- column headings -->
+    <div style="display: grid; grid-template-columns: 74px 1fr 1fr 1fr 1fr 66px; gap: 10px; align-items: end; padding: 16px 44px 9px;">
+      <span></span>
+      <sc-for list="{{ columns }}" as="c" hint-placeholder-count="4">
+        <span style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.07em; text-transform: uppercase; color: #003018;">{{ c }}</span>
+      </sc-for>
+      <span style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: #8b918a; text-align: right;">kcal</span>
+    </div>
+
+    <!-- day rows -->
+    <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 44px;">
+      <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+        <div style="flex: 1; display: grid; grid-template-columns: 74px 1fr 1fr 1fr 1fr 66px; gap: 10px; align-items: center; border-top: 1px solid #ececE4; padding: 3px 0;">
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 12px; background: {{ d.badgeBg }};">
+            <span style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: {{ d.badgeFg }};">{{ d.abbr }}</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600; color: {{ d.badgeFg }}; line-height: 1;">{{ d.date }}</span>
+          </div>
+          <sc-for list="{{ d.meals }}" as="m" hint-placeholder-count="4">
+            <div style="padding-right: 6px;">
+              <div style="font-size: 12.5px; font-weight: 600; line-height: 1.25; color: #1c2019;">{{ m.name }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #9aa093; margin-top: 3px;">{{ m.kcal }}</div>
+            </div>
+          </sc-for>
+          <div style="text-align: right;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600; color: #003018;">{{ d.total }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- footer: daily average macros -->
+    <div style="padding: 14px 44px 9px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8b918a;">Daily average across the week</div>
+    </div>
+    <div style="height: 4px; background: #ef835c;"></div>
+    <div style="display: flex; background: #003018; padding: 18px 44px;">
+      <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+        <div style="flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.13);">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 23px; font-weight: 600; color: #fff; margin-top: 3px;">{{ m.value }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 880, &quot;height&quot;: 1200}}">
+class Component extends DCLogic {
+  renderVals() {
+    const columns = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
+
+    const raw = [
+      { abbr: 'Mon', date: '07', meals: [
+        ['Almond baked oats', 340], ['Lentil tuna salad', 369], ['Spinach & feta turkey meatballs', 420], ['Greek yoghurt & blueberries', 180] ] },
+      { abbr: 'Tue', date: '08', meals: [
+        ['Chia bircher pots', 310], ['Greek lamb & quinoa bowl', 540], ['Air fryer tomato soup', 260], ['Apple & almond butter', 200] ] },
+      { abbr: 'Wed', date: '09', meals: [
+        ['Spinach mushroom omelette', 290], ['Beef & broccoli stir-fry', 480], ['Turmeric chicken curry', 430], ['Carrot sticks & hummus', 150] ] },
+      { abbr: 'Thu', date: '10', meals: [
+        ['Berry protein smoothie', 300], ['Chickpea & feta salad', 410], ['Salmon & greens tray bake', 470], ['Boiled egg & veg', 160] ] },
+      { abbr: 'Fri', date: '11', meals: [
+        ['Wholemeal avocado toast', 330], ['Turkey & salad wrap', 390], ['Beef rump & roast veg', 520], ['Mixed nuts', 180] ] },
+      { abbr: 'Sat', date: '12', meals: [
+        ['Banana oat pancakes', 360], ['Mediterranean tuna bowl', 400], ['Grilled chicken & quinoa', 460], ['Greek yoghurt & honey', 170] ] },
+      { abbr: 'Sun', date: '13', meals: [
+        ['Veggie frittata', 320], ['Pumpkin & lentil soup', 350], ['Garlic prawn stir-fry', 440], ['Dark choc & berries', 160] ] }
+    ];
+
+    const days = raw.map((d, i) => {
+      const total = d.meals.reduce((s, m) => s + m[1], 0);
+      const dark = i % 2 === 1;
+      return {
+        abbr: d.abbr, date: d.date,
+        badgeBg: dark ? '#003018' : '#eef3ef',
+        badgeFg: dark ? '#ffffff' : '#003018',
+        meals: d.meals.map(m => ({ name: m[0], kcal: m[1] + ' kcal' })),
+        total: String(total)
+      };
+    });
+
+    const macros = [
+      { label: 'Calories', value: '1,340' },
+      { label: 'Carbs', value: '122 g' },
+      { label: 'Protein', value: '96 g' },
+      { label: 'Fat', value: '47 g' },
+      { label: 'Fibre', value: '34 g' }
+    ];
+
+    return {
+      client: 'Jordan M.',
+      serves: '4 per recipe',
+      weekRange: 'Mon 7 – Sun 13 Jul 2026',
+      columns, days, macros
+    };
+  }
+}
+</script>
+</body>
+</html>

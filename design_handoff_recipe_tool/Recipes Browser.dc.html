@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #f4f3ef; }
+  input, select, textarea, button { font-family: inherit; }
+  input:focus { outline: none; }
+  ::placeholder { color: #aeb2ab; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #d8d6ce; border-radius: 6px; border: 2px solid #fff; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; background: #f4f3ef; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #20251f; -webkit-font-smoothing: antialiased;">
+
+  <!-- Sidebar -->
+  <aside style="width: 228px; flex-shrink: 0; background: #ffffff; border-right: 1px solid #e6e4de; display: flex; flex-direction: column; padding: 18px 14px;">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 4px 8px 18px;">
+      <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 26px; width: auto;">
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 2px;">
+      <div style="display: flex; align-items: center; gap: 11px; padding: 9px 11px; border-radius: 9px; background: #eef3ef; color: #003018; font-size: 13.5px; font-weight: 600;">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M2.5 4.2A1.5 1.5 0 0 1 4 2.7h4v12.6H4a1.5 1.5 0 0 1-1.5-1.5V4.2zM15.5 4.2A1.5 1.5 0 0 0 14 2.7h-4v12.6h4a1.5 1.5 0 0 0 1.5-1.5V4.2z" stroke="#003018" stroke-width="1.3"></path></svg>
+        Recipes
+      </div>
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <div style="display: flex; align-items: center; gap: 11px; padding: 9px 11px; border-radius: 9px; color: #5c625b; font-size: 13.5px; cursor: pointer;" style-hover="background: #f6f5f1; color: #20251f;">
+          <span style="width: 17px; height: 17px; display: inline-flex; align-items: center; justify-content: center; color: #9aa093;">{{ n.dot }}</span>
+          {{ n.label }}
+        </div>
+      </sc-for>
+    </nav>
+    <div style="flex: 1;"></div>
+    <div style="display: flex; flex-direction: column; gap: 3px; font-size: 12.5px; color: #8b918a; padding: 0 8px;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 7px 0; cursor: pointer;">⟨⟩ Collapse</div>
+      <div style="padding: 7px 0;">info@gramsofhealth.com</div>
+      <div style="display: flex; align-items: center; gap: 9px; padding: 7px 0; cursor: pointer;">⇥ Sign out</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden;">
+
+    <!-- Header -->
+    <div style="padding: 24px 30px 0; display: flex; align-items: flex-start; gap: 16px;">
+      <div style="flex: 1;">
+        <h1 style="margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.02em;">Recipes</h1>
+        <div style="font-size: 13px; color: #9aa093; margin-top: 4px;">Showing <span style="color: #003018; font-weight: 600; font-family: 'IBM Plex Mono', monospace;">{{ resultCount }}</span> of 326 recipes</div>
+      </div>
+      <div style="display: flex; background: #fff; border: 1px solid #e0ded7; border-radius: 10px; padding: 3px;">
+        <span style="display: flex; align-items: center; gap: 7px; padding: 7px 13px; border-radius: 7px; background: #003018; color: #fff; font-size: 13px; font-weight: 600;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.2" stroke="#fff" stroke-width="1.2"></rect><path d="M2 6.5h12M6 6.5v6.5" stroke="#fff" stroke-width="1.1"></path></svg>Table</span>
+        <span style="display: flex; align-items: center; gap: 7px; padding: 7px 13px; border-radius: 7px; color: #6b716c; font-size: 13px; font-weight: 500; cursor: pointer;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="#6b716c" stroke-width="1.2"></rect><rect x="9" y="2" width="5" height="5" rx="1" stroke="#6b716c" stroke-width="1.2"></rect><rect x="2" y="9" width="5" height="5" rx="1" stroke="#6b716c" stroke-width="1.2"></rect><rect x="9" y="9" width="5" height="5" rx="1" stroke="#6b716c" stroke-width="1.2"></rect></svg>Grid</span>
+      </div>
+      <button style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 17px; border-radius: 10px; border: none; background: #003018; color: #fff; font-size: 13.5px; font-weight: 600; cursor: pointer;" style-hover="background: #0c4a2c;">
+        <span style="font-size: 16px; line-height: 1;">+</span> New recipe
+      </button>
+    </div>
+
+    <!-- Toolbar: compact filter bar -->
+    <div style="padding: 18px 30px 0;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="flex: 1; display: flex; align-items: center; gap: 9px; background: #fff; border: 1px solid #e0ded7; border-radius: 11px; padding: 10px 14px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#9aa093" stroke-width="1.3"></circle><path d="M10.5 10.5L14 14" stroke="#9aa093" stroke-width="1.3" stroke-linecap="round"></path></svg>
+          <input placeholder="Search recipes by title or ingredient…" style="flex: 1; border: none; background: transparent; font-size: 14px; color: #20251f;">
+        </div>
+        <!-- quick filters -->
+        <sc-for list="{{ quicks }}" as="q" hint-placeholder-count="3">
+          <button onClick="{{ q.toggle }}" style="display: flex; align-items: center; gap: 7px; height: 42px; padding: 0 14px; border-radius: 11px; border: 1px solid {{ q.border }}; background: {{ q.bg }}; color: {{ q.color }}; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ q.dot }};"></span>{{ q.label }}
+          </button>
+        </sc-for>
+        <button onClick="{{ openFilters }}" style="display: flex; align-items: center; gap: 9px; height: 42px; padding: 0 16px; border-radius: 11px; border: 1px solid #003018; background: #eef3ef; color: #003018; font-size: 13.5px; font-weight: 600; cursor: pointer; white-space: nowrap;" style-hover="background: #e3efe7;">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4.5 8h7M6.5 12h3" stroke="#003018" stroke-width="1.4" stroke-linecap="round"></path></svg>
+          Filters
+          <sc-if value="{{ hasActive }}" hint-placeholder-val="{{ true }}"><span style="min-width: 19px; height: 19px; padding: 0 5px; border-radius: 10px; background: #003018; color: #fff; font-size: 11px; font-weight: 700; font-family: 'IBM Plex Mono', monospace; display: inline-flex; align-items: center; justify-content: center;">{{ activeCount }}</span></sc-if>
+        </button>
+      </div>
+
+      <!-- saved views -->
+      <div style="display: flex; align-items: center; gap: 8px; margin-top: 13px; flex-wrap: wrap;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #a7aca0; margin-right: 2px;">Saved views</span>
+        <sc-for list="{{ savedViews }}" as="v" hint-placeholder-count="3">
+          <button onClick="{{ v.select }}" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; border: 1px solid {{ v.border }}; background: {{ v.bg }}; color: {{ v.color }}; font-size: 12.5px; font-weight: 500; cursor: pointer;">
+            <sc-if value="{{ v.star }}" hint-placeholder-val="{{ true }}"><span style="color: #ef835c;">★</span></sc-if>
+            {{ v.label }}
+          </button>
+        </sc-for>
+        <button style="display: flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 20px; border: 1px dashed #d3d1c8; background: transparent; color: #6b716c; font-size: 12.5px; font-weight: 500; cursor: pointer;" style-hover="border-color: #003018; color: #003018;">
+          <span style="font-size: 14px; line-height: 1;">+</span> Save current
+        </button>
+      </div>
+
+      <!-- active filter chips -->
+      <sc-if value="{{ hasActive }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 13px; flex-wrap: wrap; padding-top: 13px; border-top: 1px solid #ebe9e2;">
+          <span style="font-size: 12.5px; color: #6b716c; font-weight: 500;">Active:</span>
+          <sc-for list="{{ activeFilters }}" as="f" hint-placeholder-count="3">
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 8px 5px 12px; border-radius: 8px; background: #eef3ef; border: 1px solid #cddbd2; color: #20422f; font-size: 12.5px; font-weight: 500;">
+              {{ f.label }}
+              <button onClick="{{ f.remove }}" style="width: 17px; height: 17px; border-radius: 5px; border: none; background: #dde7df; color: #34553f; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; padding: 0;" style-hover="background: #003018; color: #fff;">✕</button>
+            </span>
+          </sc-for>
+          <button onClick="{{ clearAll }}" style="border: none; background: transparent; color: #b5675a; font-size: 12.5px; font-weight: 600; cursor: pointer; padding: 5px 6px;">Clear all</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- Results table -->
+    <div style="flex: 1; overflow-y: auto; padding: 16px 30px 40px;">
+      <div style="background: #fff; border: 1px solid #e6e4de; border-radius: 14px; overflow: hidden;">
+        <!-- table head -->
+        <div style="display: grid; grid-template-columns: minmax(150px,1fr) 58px 68px 86px 124px 70px 56px; gap: 12px; align-items: center; padding: 13px 22px; border-bottom: 1px solid #efeee8; font-size: 10.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #a7aca0;">
+          <span>Title</span>
+          <span style="text-align: center;">Serves</span>
+          <span style="text-align: center;">Time</span>
+          <span style="text-align: right;">Kcal/serve</span>
+          <span>Status</span>
+          <span>Updated</span>
+          <span></span>
+        </div>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+          <div style="display: grid; grid-template-columns: minmax(150px,1fr) 58px 68px 86px 124px 70px 56px; gap: 12px; align-items: center; padding: 15px 22px; border-bottom: 1px solid #f4f3ee;" style-hover="background: #fbfbf8;">
+            <!-- title + tags -->
+            <div style="min-width: 0;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 14px; font-weight: 600; color: #1c2019; letter-spacing: -0.005em;">{{ r.title }}</span>
+                <sc-if value="{{ r.hasPhoto }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#bcc0b6" stroke-width="1.2"></rect><circle cx="5.5" cy="6.5" r="1" fill="#bcc0b6"></circle><path d="M3 11l3-2.5 2 1.5 2.5-2L13 11" stroke="#bcc0b6" stroke-width="1.2" fill="none"></path></svg></sc-if>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                <!-- course tag -->
+                <span style="padding: 3px 9px; border-radius: 6px; background: #f0efe9; color: #5c625b; font-size: 11.5px; font-weight: 600;">{{ r.course }}</span>
+                <!-- confirmed diet tags -->
+                <sc-for list="{{ r.confirmed }}" as="c" hint-placeholder-count="1">
+                  <span style="display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px 3px 7px; border-radius: 6px; background: #fff; border: 1px solid #bcd4c4; color: #20422f; font-size: 11.5px; font-weight: 500;">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.3L4.8 8.6 9.5 3.4" stroke="#2f7a4d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>{{ c.label }}
+                  </span>
+                </sc-for>
+                <!-- suggested diet tags (actionable) -->
+                <sc-for list="{{ r.suggested }}" as="s" hint-placeholder-count="1">
+                  <span style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px 2px 9px; border-radius: 6px; background: #faf9f6; border: 1px dashed #cfcdc3; color: #8b918a; font-size: 11.5px; font-style: italic;">
+                    {{ s.label }}
+                    <button onClick="{{ s.accept }}" title="Confirm tag" style="width: 17px; height: 17px; border-radius: 5px; border: none; background: #e4efe6; color: #2f7a4d; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0;" style-hover="background: #2f7a4d; color: #fff;"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.3L4.8 8.6 9.5 3.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+                    <button onClick="{{ s.dismiss }}" title="Dismiss suggestion" style="width: 17px; height: 17px; border-radius: 5px; border: none; background: #f0efe9; color: #9aa093; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; font-size: 10px; line-height: 1;" style-hover="background: #ebe2e0; color: #b5675a;">✕</button>
+                  </span>
+                </sc-for>
+              </div>
+            </div>
+            <span style="text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; color: #4a5046;">{{ r.serves }}</span>
+            <span style="text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6b716c;">{{ r.time }}</span>
+            <span style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; font-weight: 600; color: {{ r.kcalColor }};">{{ r.kcal }}</span>
+            <!-- single status pill -->
+            <div>
+              <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 7px; background: {{ r.statusBg }}; border: 1px solid {{ r.statusBorder }}; color: {{ r.statusColor }}; font-size: 11.5px; font-weight: 600;">
+                <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ r.statusDot }};"></span>{{ r.statusLabel }}
+              </span>
+            </div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #9aa093;">{{ r.updated }}</span>
+            <div style="display: flex; gap: 4px; justify-content: flex-end;">
+              <button title="Duplicate" style="width: 28px; height: 28px; border-radius: 7px; border: none; background: transparent; color: #b6bbaf; cursor: pointer; display: flex; align-items: center; justify-content: center;" style-hover="background: #f0efe9; color: #5c625b;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="3.5" y="3.5" width="9" height="9" rx="1.4" stroke="currentColor" stroke-width="1.3"></rect><path d="M6 3.5V2.2A1.2 1.2 0 0 1 7.2 1h5.6A1.2 1.2 0 0 1 14 2.2v5.6A1.2 1.2 0 0 1 12.8 9h-1.3" stroke="currentColor" stroke-width="1.3"></path></svg></button>
+              <button title="Open" style="width: 28px; height: 28px; border-radius: 7px; border: none; background: transparent; color: #b6bbaf; cursor: pointer; display: flex; align-items: center; justify-content: center;" style-hover="background: #f0efe9; color: #5c625b;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 2.5h5l3 3V13a.5.5 0 0 1-.5.5h-7A.5.5 0 0 1 4 13V2.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"></path><path d="M9 2.5v3.5h3" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"></path></svg></button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </main>
+
+  <!-- Filters drawer -->
+  <sc-if value="{{ filtersOpen }}" hint-placeholder-val="{{ true }}">
+    <div onClick="{{ closeFilters }}" style="position: fixed; inset: 0; background: rgba(28,32,25,0.28); z-index: 50;"></div>
+    <div style="position: fixed; top: 0; right: 0; bottom: 0; width: 432px; z-index: 51; background: #fff; box-shadow: -16px 0 44px -22px rgba(28,32,25,0.5); display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 20px 22px; border-bottom: 1px solid #efeee8;">
+        <div style="flex: 1;">
+          <h2 style="margin: 0; font-size: 17px; font-weight: 600;">Filters</h2>
+          <div style="width: 26px; height: 3px; border-radius: 2px; background: #ef835c; margin: 6px 0 0;"></div>
+        </div>
+        <button onClick="{{ closeFilters }}" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #e6e4de; background: #fff; color: #6b716c; cursor: pointer; font-size: 15px;" style-hover="background: #f6f5f1;">✕</button>
+      </div>
+
+      <div style="flex: 1; overflow-y: auto; padding: 6px 22px 16px;">
+        <!-- Nutrition: range sliders -->
+        <div style="padding: 16px 0 6px;">
+          <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6b716c; margin-bottom: 14px;">Nutrition <span style="color: #b6bbaf; font-weight: 500; text-transform: none; letter-spacing: 0;">/ per serve</span></div>
+          <sc-for list="{{ sliders }}" as="sl" hint-placeholder-count="5">
+            <div style="margin-bottom: 17px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
+                <span style="font-size: 13px; font-weight: 500; color: #2c322b;">{{ sl.label }}</span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; font-weight: 600; color: #003018;">{{ sl.range }}</span>
+              </div>
+              <div style="position: relative; height: 6px; border-radius: 4px; background: #eceae3;">
+                <div style="position: absolute; top: 0; bottom: 0; left: {{ sl.from }}; right: {{ sl.to }}; background: #003018; border-radius: 4px;"></div>
+                <div style="position: absolute; top: 50%; left: {{ sl.from }}; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 2px solid #003018; transform: translate(-50%,-50%); cursor: grab; box-shadow: 0 1px 4px rgba(0,0,0,0.15);"></div>
+                <div style="position: absolute; top: 50%; right: {{ sl.to }}; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 2px solid #003018; transform: translate(50%,-50%); cursor: grab; box-shadow: 0 1px 4px rgba(0,0,0,0.15);"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- Goals -->
+        <div style="padding: 16px 0 6px; border-top: 1px solid #f2f1ec;">
+          <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6b716c; margin-bottom: 4px;">Goals</div>
+          <div style="font-size: 11.5px; color: #a7aca0; margin-bottom: 12px;">Clinical shortcuts — combine with the ranges above</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ goals }}" as="g" hint-placeholder-count="6">
+              <button onClick="{{ g.toggle }}" style="padding: 8px 13px; border-radius: 9px; border: 1px solid {{ g.border }}; background: {{ g.bg }}; color: {{ g.color }}; font-size: 12.5px; font-weight: 500; cursor: pointer;">{{ g.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- Time & servings -->
+        <div style="padding: 16px 0 6px; border-top: 1px solid #f2f1ec;">
+          <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6b716c; margin-bottom: 12px;">Time &amp; servings</div>
+          <div style="font-size: 11.5px; color: #8b918a; margin-bottom: 7px;">Total time</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 13px;">
+            <sc-for list="{{ timeChips }}" as="t" hint-placeholder-count="4">
+              <button onClick="{{ t.toggle }}" style="padding: 8px 13px; border-radius: 9px; border: 1px solid {{ t.border }}; background: {{ t.bg }}; color: {{ t.color }}; font-size: 12.5px; font-weight: 500; cursor: pointer;">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <div style="font-size: 11.5px; color: #8b918a; margin-bottom: 7px;">Servings</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ servingChips }}" as="t" hint-placeholder-count="3">
+              <button onClick="{{ t.toggle }}" style="padding: 8px 13px; border-radius: 9px; border: 1px solid {{ t.border }}; background: {{ t.bg }}; color: {{ t.color }}; font-size: 12.5px; font-weight: 500; cursor: pointer;">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div style="padding: 16px 0 6px; border-top: 1px solid #f2f1ec;">
+          <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6b716c; margin-bottom: 12px;">Status</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ statusChips }}" as="t" hint-placeholder-count="3">
+              <button onClick="{{ t.toggle }}" style="padding: 8px 13px; border-radius: 9px; border: 1px solid {{ t.border }}; background: {{ t.bg }}; color: {{ t.color }}; font-size: 12.5px; font-weight: 500; cursor: pointer;">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- Classification -->
+        <div style="padding: 16px 0 6px; border-top: 1px solid #f2f1ec;">
+          <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6b716c; margin-bottom: 12px;">Classification</div>
+          <sc-for list="{{ classGroups }}" as="cg" hint-placeholder-count="4">
+            <div style="margin-bottom: 14px;">
+              <div style="font-size: 11.5px; color: #8b918a; margin-bottom: 7px;">{{ cg.label }}</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+                <sc-for list="{{ cg.items }}" as="it" hint-placeholder-count="5">
+                  <button onClick="{{ it.toggle }}" style="padding: 6px 11px; border-radius: 8px; border: 1px solid {{ it.border }}; background: {{ it.bg }}; color: {{ it.color }}; font-size: 12px; font-weight: 500; cursor: pointer;">{{ it.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- drawer footer -->
+      <div style="display: flex; align-items: center; gap: 12px; padding: 16px 22px; border-top: 1px solid #efeee8;">
+        <button onClick="{{ clearAll }}" style="border: none; background: transparent; color: #b5675a; font-size: 13px; font-weight: 600; cursor: pointer;">Clear all</button>
+        <div style="flex: 1;"></div>
+        <button onClick="{{ closeFilters }}" style="height: 40px; padding: 0 20px; border-radius: 10px; border: none; background: #003018; color: #fff; font-size: 13.5px; font-weight: 600; cursor: pointer;" style-hover="background: #0c4a2c;">Show {{ resultCount }} recipes</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 940}}">
+class Component extends DCLogic {
+  state = {
+    filtersOpen: false,
+    active: [
+      { id: 'pesc', label: 'Pescatarian' },
+      { id: 't30', label: '\u2264 30 min' },
+      { id: 'hp', label: 'High protein \u226525 g' }
+    ],
+    quick: { needs: true, verified: false, photo: false },
+    recipes: [
+      { title: 'Air Fried Salmon Poke Bowl', course: 'Bowl', photo: true, serves: 4, time: '30 min', kcal: 618, status: 'review', updated: '2d', confirmed: [], suggested: [{ id: 'a1', label: 'Pescatarian', state: 'pending' }] },
+      { title: 'Air Fried Salmon Sushi Bowl', course: 'Bowl', photo: true, serves: 4, time: '30 min', kcal: null, status: 'review', updated: '2d', confirmed: [], suggested: [{ id: 'b1', label: 'Pescatarian', state: 'pending' }, { id: 'b2', label: 'Gluten-free', state: 'pending' }] },
+      { title: 'Air Fryer Tomato Soup', course: 'Soup', photo: true, serves: 4, time: '30 min', kcal: 260, status: 'review', updated: '3d', confirmed: [], suggested: [{ id: 'c1', label: 'Vegan', state: 'pending' }, { id: 'c2', label: 'Vegetarian', state: 'pending' }] },
+      { title: 'Almond Baked Oats', course: 'Breakfast', photo: true, serves: 4, time: '30 min', kcal: 340, status: 'review', updated: '5d', confirmed: ['Vegetarian'], suggested: [{ id: 'd1', label: 'Gluten-free', state: 'pending' }] },
+      { title: 'Beef & Broccoli Stir-fry', course: 'Stir-fry', photo: true, serves: 4, time: '25 min', kcal: 480, status: 'verified', updated: '1w', confirmed: ['Dairy-free', 'Gluten-free'], suggested: [] },
+      { title: 'Greek Lamb & Quinoa Bowl', course: 'Bowl', photo: true, serves: 2, time: '35 min', kcal: 540, status: 'verified', updated: '1w', confirmed: ['Gluten-free'], suggested: [] },
+      { title: 'Lentil Tuna Salad', course: 'Salad', photo: true, serves: 4, time: '5 min', kcal: 369, status: 'verified', updated: '4h', confirmed: ['Pescatarian', 'Gluten-free'], suggested: [] },
+      { title: 'Turmeric Chicken Curry', course: 'Curry', photo: false, serves: 4, time: '40 min', kcal: 430, status: 'review', updated: '6d', confirmed: ['Dairy-free'], suggested: [{ id: 'h1', label: 'High protein', state: 'pending' }] }
+    ],
+    goalsOn: { hp: true, hf: false, lc: false, hh: false, bal: false, db: false },
+    timeOn: { t30: true },
+    servOn: {},
+    statusOn: { review: true },
+    classOn: {}
+  };
+
+  toggleKey(group, key) {
+    this.setState(st => ({ [group]: { ...st[group], [key]: !st[group][key] } }));
+  }
+
+  renderVals() {
+    const S = this.state;
+    const set = (p) => this.setState(p);
+
+    const nav = [
+      { label: 'Foods', dot: '\u25C8' }, { label: 'Media', dot: '\u25A6' },
+      { label: 'Plans', dot: '\u25A4' }, { label: 'Clients', dot: '\u25CB' },
+      { label: 'Quality', dot: '\u2713' }, { label: 'Users', dot: '\u25CC' }
+    ];
+
+    const qdef = [
+      { key: 'needs', label: 'Needs review', dotOn: '#ef835c' },
+      { key: 'verified', label: 'Verified', dotOn: '#2f7a4d' },
+      { key: 'photo', label: 'Has photo', dotOn: '#7a8a99' }
+    ];
+    const quicks = qdef.map(q => {
+      const on = S.quick[q.key];
+      return {
+        label: q.label, toggle: () => this.toggleKey('quick', q.key),
+        bg: on ? '#eef3ef' : '#fff', border: on ? '#cddbd2' : '#e0ded7',
+        color: on ? '#20422f' : '#5c625b', dot: on ? q.dotOn : '#cfcdc3'
+      };
+    });
+
+    const savedViews = [
+      { label: 'High-protein dinners', star: true, sel: false },
+      { label: 'Quick lunches \u2264 30', star: false, sel: false },
+      { label: 'Needs review \u00b7 42', star: false, sel: true }
+    ].map((v, i) => ({
+      ...v, select: () => {},
+      bg: v.sel ? '#eef3ef' : '#fff', border: v.sel ? '#cddbd2' : '#e6e4de',
+      color: v.sel ? '#20422f' : '#5c625b'
+    }));
+
+    const activeFilters = S.active.map(a => ({
+      label: a.label, remove: () => set({ active: S.active.filter(x => x.id !== a.id) })
+    }));
+
+    // recipe rows
+    const rows = S.recipes.map((r, ri) => {
+      const st = {
+        verified: { label: 'Verified', bg: '#eef3ef', border: '#cddbd2', color: '#20422f', dot: '#2f7a4d' },
+        review: { label: 'Needs review', bg: '#fdf3ee', border: '#f2d9cc', color: '#9c5440', dot: '#ef835c' }
+      }[r.status];
+      return {
+        title: r.title, course: r.course, hasPhoto: r.photo, serves: r.serves, time: r.time,
+        kcal: r.kcal == null ? '\u2014' : String(r.kcal),
+        kcalColor: r.kcal == null ? '#c2c1b6' : '#2f7a4d',
+        updated: r.updated,
+        statusLabel: st.label, statusBg: st.bg, statusBorder: st.border, statusColor: st.color, statusDot: st.dot,
+        confirmed: r.confirmed.map(c => ({ label: c })),
+        suggested: r.suggested.filter(s => s.state === 'pending').map(s => ({
+          label: s.label,
+          accept: () => this.setState(state => {
+            const rs = state.recipes.map((x, i) => i !== ri ? x : ({
+              ...x, confirmed: [...x.confirmed, s.label],
+              suggested: x.suggested.filter(y => y.id !== s.id)
+            }));
+            return { recipes: rs };
+          }),
+          dismiss: () => this.setState(state => {
+            const rs = state.recipes.map((x, i) => i !== ri ? x : ({
+              ...x, suggested: x.suggested.filter(y => y.id !== s.id)
+            }));
+            return { recipes: rs };
+          })
+        }))
+      };
+    });
+
+    // drawer chip helper
+    const chip = (group, key, label) => {
+      const on = !!S[group][key];
+      return {
+        label, toggle: () => this.toggleKey(group, key),
+        bg: on ? '#003018' : '#fff', border: on ? '#003018' : '#e0ded7',
+        color: on ? '#fff' : '#3a4137'
+      };
+    };
+
+    const sliders = [
+      { label: 'Calories', range: '300 \u2013 600 kcal', from: '24%', to: '30%' },
+      { label: 'Protein', range: '\u2265 25 g', from: '46%', to: '4%' },
+      { label: 'Carbs', range: '0 \u2013 45 g', from: '2%', to: '40%' },
+      { label: 'Fat', range: '0 \u2013 30 g', from: '2%', to: '34%' },
+      { label: 'Fibre', range: '\u2265 8 g', from: '38%', to: '4%' }
+    ];
+
+    const goals = [
+      ['hp', 'High protein'], ['hf', 'High fibre'], ['lc', 'Low-carb'],
+      ['hh', 'Heart-healthy'], ['bal', 'Balanced'], ['db', 'Diabetes-friendly']
+    ].map(([k, l]) => chip('goalsOn', k, l));
+
+    const timeChips = [['t15', '\u2264 15 min'], ['t30', '\u2264 30 min'], ['t45', '\u2264 45 min'], ['t46', '45+ min']].map(([k, l]) => chip('timeOn', k, l));
+    const servingChips = [['s12', '1\u20132'], ['s34', '3\u20134'], ['s5', '5+']].map(([k, l]) => chip('servOn', k, l));
+    const statusChips = [['verified', 'Verified'], ['review', 'Needs review'], ['photo', 'Has photo']].map(([k, l]) => chip('statusOn', k, l));
+
+    const classGroups = [
+      { label: 'Course', items: ['Bowl', 'Curry', 'Salad', 'Smoothie', 'Soup', 'Stir-fry'] },
+      { label: 'Cuisine', items: ['Asian', 'Greek', 'Indian', 'Italian', 'Japanese', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Modern Australian', 'Thai'] },
+      { label: 'Diet', items: ['Dairy-free', 'Egg-free', 'Gluten-free', 'Low-FODMAP', 'Nut-free', 'Pescatarian', 'Vegan', 'Vegetarian'] },
+      { label: 'Meal', items: ['Breakfast', 'Lunch', 'Dinner', 'Snack'] }
+    ].map(cg => ({
+      label: cg.label,
+      items: cg.items.map(it => chip('classOn', cg.label + ':' + it, it))
+    }));
+
+    const activeCount = S.active.length;
+    return {
+      nav, quicks, savedViews, activeFilters,
+      hasActive: activeCount > 0, activeCount: String(activeCount),
+      resultCount: '42',
+      rows,
+      filtersOpen: S.filtersOpen,
+      openFilters: () => set({ filtersOpen: true }),
+      closeFilters: () => set({ filtersOpen: false }),
+      clearAll: () => set({ active: [] }),
+      sliders, goals, timeChips, servingChips, statusChips, classGroups
+    };
+  }
+}
+</script>
+</body>
+</html>

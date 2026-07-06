@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #e7e4dd; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #e7e4dd; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1c2019; padding: 40px 24px 80px;">
+
+  <!-- intro -->
+  <div style="max-width: 794px; margin: 0 auto 8px;">
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8b918a;">Grams of Health · Phase 3</div>
+    <h1 style="margin: 6px 0 8px; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -0.01em; color: #1c2019;">A4 recipe card — three directions</h1>
+    <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5c625b; max-width: 660px;">Round 2, built on <a href="#1a" style="color: #003018; font-weight: 600;">1a</a>: logo to the left, title top-right, a single photo, no green side panel, and a body that flexes for longer ingredient or method lists. Three new takes — <a href="#2a" style="color: #003018; font-weight: 600;">2a</a> / <a href="#2b" style="color: #003018; font-weight: 600;">2b</a> / <a href="#2c" style="color: #003018; font-weight: 600;">2c</a>. The first round (1a–1c) is kept below for reference.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 58px; margin-top: 36px;">
+
+    <!-- ============ OPTION 2A — BANNER, LOGO-LEFT / TITLE-RIGHT ============ -->
+    <div id="2a" style="width: 794px;">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 7px; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">2A</span>
+        <span style="font-size: 14px; font-weight: 600; color: #1c2019;">Banner</span>
+        <span style="font-size: 13px; color: #8b918a;">— one wide photo on top, logo-left / title-right header beneath it, two columns, green footer.</span>
+      </div>
+
+      <div style="width: 794px; height: 1123px; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; display: flex; flex-direction: column;">
+        <div style="height: 286px; width: 100%; background-image: url('assets/photo-dish.png'); background-size: cover; background-position: center;"></div>
+        <div style="height: 5px; background: #ef835c;"></div>
+        <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 32px 44px 0;">
+          <!-- header: logo left / title right -->
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+            <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 46px; width: auto; margin-top: 6px;">
+            <div style="text-align: right;">
+              <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 40px; line-height: 0.98; letter-spacing: 0.005em; text-transform: uppercase; color: #003018;">Spinach &amp; Feta<br>Turkey Meatballs<br><span style="color: #2f7a4d; font-weight: 600;">with Herbed Quinoa</span></h2>
+              <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin-top: 11px;">
+                <span style="display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: #4a5046;"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#2f7a4d" stroke-width="1.4"></circle><path d="M9 5.5V9l2.5 1.6" stroke="#2f7a4d" stroke-width="1.4" stroke-linecap="round"></path></svg><b style="font-weight: 600; color: #1c2019;">Serves 4</b></span>
+                <span style="width: 4px; height: 4px; border-radius: 50%; background: #ef835c;"></span>
+                <span style="display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">5 minutes</b></span>
+              </div>
+            </div>
+          </div>
+          <div style="height: 1px; background: #ebe9e2; margin: 22px 0 24px;"></div>
+          <!-- columns -->
+          <div style="display: grid; grid-template-columns: 264px 1fr; gap: 38px; flex: 1; min-height: 0;">
+            <div>
+              <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Ingredients</div>
+              <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+              <div style="display: flex; flex-direction: column; gap: 9px;">
+                <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="16">
+                  <div style="display: flex; gap: 8px; font-size: 13px; line-height: 1.4; color: #3a4137;">
+                    <span style="color: #2f7a4d; font-size: 9px; line-height: 1.9; flex-shrink: 0;">●</span>
+                    <span><b style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #003018;">{{ ing.q }}</b> {{ ing.name }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+              <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+              <div style="display: flex; flex-direction: column; gap: 13px;">
+                <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+                  <div style="display: flex; gap: 12px;">
+                    <span style="flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: #eef3ef; color: #003018; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+                    <span style="font-size: 13.5px; line-height: 1.5; color: #3a4137; padding-top: 1px;">{{ st.text }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- macro footer -->
+        <div style="height: 4px; background: #ef835c;"></div>
+        <div style="display: flex; background: #003018; padding: 19px 44px;">
+          <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+            <div style="flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.13);">
+              <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 23px; font-weight: 600; color: #fff; margin-top: 3px;">{{ m.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ OPTION 2B — HEADER FIRST, SLIM PHOTO, MAX BODY ============ -->
+    <div id="2b" style="width: 794px;">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 7px; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">2B</span>
+        <span style="font-size: 14px; font-weight: 600; color: #1c2019;">Header-first</span>
+        <span style="font-size: 13px; color: #8b918a;">— masthead on top, a slim photo strip, then the most body room of the three for long lists.</span>
+      </div>
+
+      <div style="width: 794px; height: 1123px; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; display: flex; flex-direction: column;">
+        <!-- header -->
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 36px 44px 22px;">
+          <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 44px; width: auto; margin-top: 6px;">
+          <div style="text-align: right;">
+            <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 38px; line-height: 0.98; letter-spacing: 0.005em; text-transform: uppercase; color: #003018;">Spinach &amp; Feta Turkey Meatballs <span style="color: #2f7a4d; font-weight: 600;">with Herbed Quinoa</span></h2>
+            <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin-top: 10px;">
+              <span style="font-size: 13.5px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">Serves 4</b></span>
+              <span style="width: 4px; height: 4px; border-radius: 50%; background: #ef835c;"></span>
+              <span style="font-size: 13.5px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">5 minutes</b></span>
+            </div>
+          </div>
+        </div>
+        <!-- slim photo -->
+        <div style="height: 188px; margin: 0 44px; border-radius: 12px; background-image: url('assets/photo-dish.png'); background-size: cover; background-position: center;"></div>
+        <!-- body -->
+        <div style="flex: 1; min-height: 0; display: grid; grid-template-columns: 264px 1fr; gap: 38px; padding: 26px 44px 30px;">
+          <div>
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Ingredients</div>
+            <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 9px;">
+              <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="16">
+                <div style="display: flex; gap: 8px; font-size: 13px; line-height: 1.4; color: #3a4137;">
+                  <span style="color: #2f7a4d; font-size: 9px; line-height: 1.9; flex-shrink: 0;">●</span>
+                  <span><b style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #003018;">{{ ing.q }}</b> {{ ing.name }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+            <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 13px;">
+              <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+                <div style="display: flex; gap: 12px;">
+                  <span style="flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: #eef3ef; color: #003018; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+                  <span style="font-size: 13.5px; line-height: 1.5; color: #3a4137; padding-top: 1px;">{{ st.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <!-- macro footer -->
+        <div style="height: 4px; background: #ef835c;"></div>
+        <div style="display: flex; background: #003018; padding: 19px 44px;">
+          <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+            <div style="flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.13);">
+              <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 23px; font-weight: 600; color: #fff; margin-top: 3px;">{{ m.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ OPTION 2C — PHOTO IN COLUMN, METHOD FULL-HEIGHT ============ -->
+    <div id="2c" style="width: 794px;">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 7px; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">2C</span>
+        <span style="font-size: 14px; font-weight: 600; color: #1c2019;">Photo in column</span>
+        <span style="font-size: 13px; color: #8b918a;">— photo sits above the ingredients; the method runs full-height beside it for the longest recipes.</span>
+      </div>
+
+      <div style="width: 794px; height: 1123px; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; display: flex; flex-direction: column;">
+        <!-- header -->
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 36px 44px 20px;">
+          <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 44px; width: auto; margin-top: 6px;">
+          <div style="text-align: right;">
+            <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 37px; line-height: 0.98; letter-spacing: 0.005em; text-transform: uppercase; color: #003018;">Spinach &amp; Feta Turkey Meatballs <span style="color: #2f7a4d; font-weight: 600;">with Herbed Quinoa</span></h2>
+            <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin-top: 10px;">
+              <span style="font-size: 13.5px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">Serves 4</b></span>
+              <span style="width: 4px; height: 4px; border-radius: 50%; background: #ef835c;"></span>
+              <span style="font-size: 13.5px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">5 minutes</b></span>
+            </div>
+          </div>
+        </div>
+        <div style="height: 1px; background: #ebe9e2; margin: 0 44px;"></div>
+        <!-- body -->
+        <div style="flex: 1; min-height: 0; display: grid; grid-template-columns: 280px 1fr; gap: 36px; padding: 24px 44px 30px;">
+          <div>
+            <div style="height: 188px; border-radius: 12px; background-image: url('assets/photo-dish.png'); background-size: cover; background-position: center; margin-bottom: 20px;"></div>
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Ingredients</div>
+            <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="16">
+                <div style="display: flex; gap: 8px; font-size: 12.5px; line-height: 1.4; color: #3a4137;">
+                  <span style="color: #2f7a4d; font-size: 9px; line-height: 1.9; flex-shrink: 0;">●</span>
+                  <span><b style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #003018;">{{ ing.q }}</b> {{ ing.name }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+            <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 16px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+                <div style="display: flex; gap: 12px;">
+                  <span style="flex-shrink: 0; width: 25px; height: 25px; border-radius: 50%; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+                  <span style="font-size: 14px; line-height: 1.55; color: #3a4137; padding-top: 2px;">{{ st.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <!-- macro footer -->
+        <div style="height: 4px; background: #ef835c;"></div>
+        <div style="display: flex; background: #003018; padding: 19px 44px;">
+          <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+            <div style="flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.13);">
+              <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 23px; font-weight: 600; color: #fff; margin-top: 3px;">{{ m.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ OPTION 1A — CLASSIC BANNER ============ -->
+    <div id="1a" style="width: 794px;">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 7px; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">1A</span>
+        <span style="font-size: 14px; font-weight: 600; color: #1c2019;">Classic banner</span>
+        <span style="font-size: 13px; color: #8b918a;">— closest to your current card: full hero, two columns, green macro footer.</span>
+      </div>
+
+      <div style="width: 794px; height: 1123px; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; position: relative;">
+        <!-- hero -->
+        <div style="display: flex; height: 244px; width: 100%;">
+          <div style="flex: 1; background-image: url('assets/photo-dish.png'); background-size: cover; background-position: center;"></div>
+          <div style="width: 3px; background: #fff;"></div>
+          <div style="flex: 1; background-image: url('assets/photo-meatballs.png'); background-size: cover; background-position: center;"></div>
+        </div>
+        <div style="height: 5px; background: #ef835c;"></div>
+
+        <!-- body -->
+        <div style="padding: 34px 44px 0;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;">
+            <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 43px; line-height: 0.98; letter-spacing: 0.005em; color: #003018; text-transform: uppercase;">Spinach &amp; Feta<br>Turkey Meatballs<br><span style="color: #2f7a4d; font-weight: 600;">with Herbed Quinoa</span></h2>
+            <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 40px; width: auto; flex-shrink: 0; margin-top: 4px;">
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 14px; margin-top: 18px; padding-bottom: 22px; border-bottom: 1px solid #ebe9e2;">
+            <span style="display: flex; align-items: center; gap: 7px; font-size: 14px; color: #4a5046;"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#2f7a4d" stroke-width="1.4"></circle><path d="M9 5.5V9l2.5 1.6" stroke="#2f7a4d" stroke-width="1.4" stroke-linecap="round"></path></svg><b style="font-weight: 600; color: #1c2019;">Serves 4</b></span>
+            <span style="width: 4px; height: 4px; border-radius: 50%; background: #ef835c;"></span>
+            <span style="display: flex; align-items: center; gap: 7px; font-size: 14px; color: #4a5046;"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M9 2.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13z" stroke="#2f7a4d" stroke-width="1.4"></path><path d="M9 6v3l2 1" stroke="#2f7a4d" stroke-width="1.4" stroke-linecap="round"></path></svg><b style="font-weight: 600; color: #1c2019;">5 minutes</b></span>
+          </div>
+
+          <!-- columns -->
+          <div style="display: grid; grid-template-columns: 264px 1fr; gap: 38px; margin-top: 24px;">
+            <div>
+              <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Ingredients</div>
+              <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+              <div style="display: flex; flex-direction: column; gap: 9px;">
+                <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="16">
+                  <div style="display: flex; gap: 8px; font-size: 13px; line-height: 1.4; color: #3a4137;">
+                    <span style="color: #2f7a4d; font-size: 9px; line-height: 1.9; flex-shrink: 0;">●</span>
+                    <span><b style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #003018;">{{ ing.q }}</b> {{ ing.name }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+              <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 14px;"></div>
+              <div style="display: flex; flex-direction: column; gap: 13px;">
+                <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+                  <div style="display: flex; gap: 12px;">
+                    <span style="flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: #eef3ef; color: #003018; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+                    <span style="font-size: 13.5px; line-height: 1.5; color: #3a4137; padding-top: 1px;">{{ st.text }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- macro footer -->
+        <div style="position: absolute; left: 0; right: 0; bottom: 0;">
+          <div style="height: 4px; background: #ef835c;"></div>
+          <div style="display: flex; background: #003018; padding: 19px 44px;">
+            <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+              <div style="flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.13);">
+                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 23px; font-weight: 600; color: #fff; margin-top: 3px;">{{ m.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ OPTION 1B — SIDE RAIL ============ -->
+    <div id="1b" style="width: 794px;">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 7px; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">1B</span>
+        <span style="font-size: 14px; font-weight: 600; color: #1c2019;">Side rail</span>
+        <span style="font-size: 13px; color: #8b918a;">— magazine feel: green rail holds title, ingredients &amp; macros; photos and method on the right.</span>
+      </div>
+
+      <div style="width: 794px; height: 1123px; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; display: flex;">
+        <!-- rail -->
+        <div style="width: 300px; flex-shrink: 0; background: #003018; color: #fff; padding: 38px 32px; display: flex; flex-direction: column;">
+          <div style="background: #fff; border-radius: 10px; padding: 11px 13px; align-self: flex-start;">
+            <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 30px; width: auto; display: block;">
+          </div>
+          <h2 style="margin: 26px 0 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 34px; line-height: 1.0; text-transform: uppercase; color: #fff;">Spinach &amp; Feta Turkey Meatballs</h2>
+          <div style="font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 17px; text-transform: uppercase; letter-spacing: 0.04em; color: #ef835c; margin-top: 8px;">with Herbed Quinoa</div>
+
+          <div style="display: flex; gap: 18px; margin: 20px 0 4px; font-size: 13px; color: #cfe0d5;">
+            <span><b style="color: #fff; font-weight: 600;">Serves</b> 4</span>
+            <span><b style="color: #fff; font-weight: 600;">Time</b> 5 min</span>
+          </div>
+          <div style="height: 1px; background: rgba(255,255,255,0.16); margin: 18px 0;"></div>
+
+          <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #ef835c;">Ingredients</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 12px;">
+            <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="16">
+              <div style="font-size: 12px; line-height: 1.35; color: #dfeae2;"><b style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #fff;">{{ ing.q }}</b> {{ ing.name }}</div>
+            </sc-for>
+          </div>
+
+          <div style="flex: 1;"></div>
+          <div style="height: 1px; background: rgba(255,255,255,0.16); margin: 20px 0 16px;"></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px 10px;">
+            <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+              <div style="min-width: 56px;">
+                <div style="font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 600; color: #fff;">{{ m.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- main -->
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column;">
+          <div style="display: flex; height: 300px;">
+            <div style="flex: 1; background-image: url('assets/photo-meatballs.png'); background-size: cover; background-position: center;"></div>
+          </div>
+          <div style="height: 4px; background: #ef835c;"></div>
+          <div style="padding: 30px 34px;">
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+            <div style="width: 30px; height: 3px; border-radius: 2px; background: #ef835c; margin: 7px 0 16px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+              <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+                <div style="display: flex; gap: 13px;">
+                  <span style="flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+                  <span style="font-size: 14px; line-height: 1.55; color: #3a4137; padding-top: 2px;">{{ st.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ OPTION 1C — EDITORIAL / DATA-FORWARD ============ -->
+    <div id="1c" style="width: 794px;">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 7px; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">1C</span>
+        <span style="font-size: 14px; font-weight: 600; color: #1c2019;">Editorial · data-forward</span>
+        <span style="font-size: 13px; color: #8b918a;">— airy layout with the five macros as tiles, echoing the editor screen.</span>
+      </div>
+
+      <div style="width: 794px; height: 1123px; background: #fff; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; padding: 46px 48px; display: flex; flex-direction: column;">
+        <!-- header -->
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 30px; width: auto;">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #4a5046;">
+            <span><b style="font-weight: 600; color: #003018;">Serves</b> 4</span>
+            <span style="width: 4px; height: 4px; border-radius: 50%; background: #ef835c;"></span>
+            <span><b style="font-weight: 600; color: #003018;">5 minutes</b></span>
+          </div>
+        </div>
+        <div style="height: 2px; background: #ebe9e2; margin: 16px 0 20px; position: relative;"><div style="position: absolute; left: 0; top: 0; width: 64px; height: 2px; background: #ef835c;"></div></div>
+
+        <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.0; letter-spacing: 0.01em; text-transform: uppercase; color: #003018;">Spinach &amp; Feta Turkey Meatballs <span style="color: #2f7a4d; font-weight: 500;">with Herbed Quinoa</span></h2>
+
+        <!-- hero -->
+        <div style="display: flex; gap: 6px; height: 196px; margin-top: 20px; border-radius: 14px; overflow: hidden;">
+          <div style="flex: 1; background-image: url('assets/photo-dish.png'); background-size: cover; background-position: center;"></div>
+          <div style="flex: 1; background-image: url('assets/photo-meatballs.png'); background-size: cover; background-position: center;"></div>
+        </div>
+
+        <!-- macro tiles -->
+        <div style="display: flex; gap: 9px; margin-top: 18px;">
+          <sc-for list="{{ macros }}" as="m" hint-placeholder-count="5">
+            <div style="flex: 1; border: 1px solid #e7e5df; border-radius: 11px; padding: 11px 12px; text-align: center;">
+              <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #8b918a;">{{ m.label }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 600; color: #003018; margin-top: 3px;">{{ m.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- columns -->
+        <div style="display: grid; grid-template-columns: 248px 1fr; gap: 36px; margin-top: 26px; flex: 1; min-height: 0;">
+          <div>
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Ingredients</div>
+            <div style="width: 28px; height: 3px; border-radius: 2px; background: #ef835c; margin: 6px 0 13px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="16">
+                <div style="font-size: 12.5px; line-height: 1.4; color: #3a4137;"><b style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #003018;">{{ ing.q }}</b> {{ ing.name }}</div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+            <div style="width: 28px; height: 3px; border-radius: 2px; background: #ef835c; margin: 6px 0 13px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 11px;">
+              <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+                <div style="display: flex; gap: 11px;">
+                  <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #eef3ef; color: #003018; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+                  <span style="font-size: 13px; line-height: 1.5; color: #3a4137; padding-top: 1px;">{{ st.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 850, &quot;height&quot;: 1280}}">
+class Component extends DCLogic {
+  renderVals() {
+    const ingredients = [
+      { q: '1 cup', name: 'frozen spinach (thawed, chopped)' },
+      { q: '500 g', name: 'turkey mince' },
+      { q: '¼ cup', name: 'feta cheese (crumbled)' },
+      { q: '½ tsp', name: 'garlic powder' },
+      { q: '½ tsp', name: 'dried oregano' },
+      { q: '½ tsp', name: 'salt' },
+      { q: '½ tsp', name: 'pepper' },
+      { q: '', name: 'Cooking spray' },
+      { q: '2 cups', name: 'quinoa (cooked)' },
+      { q: '2 tbsp', name: 'lemon juice' },
+      { q: '1 tbsp', name: 'extra virgin olive oil' },
+      { q: '½ cup', name: 'parsley (chopped)' },
+      { q: '¼ cup', name: 'mint (chopped)' },
+      { q: '¼ cup', name: 'tzatziki' },
+      { q: '1 medium', name: 'cucumber (sliced)' },
+      { q: '250 g', name: 'cherry tomatoes' }
+    ];
+    const steps = [
+      'Squeeze excess moisture from the spinach.',
+      'In a large bowl, combine spinach, turkey, feta, garlic powder, oregano, salt and pepper. Mix well. Divide into 12 portions and roll into meatballs.',
+      'Heat a large pan over medium heat and lightly spray with cooking spray.',
+      'In batches, add the meatballs and cook for 10–12 minutes, until browned on all sides.',
+      'Combine the quinoa, lemon juice, oil, parsley and mint in a medium bowl.',
+      'Divide the quinoa into bowls and top with 3 meatballs, tzatziki, cucumber and tomatoes.'
+    ].map((t, i) => ({ n: String(i + 1), text: t }));
+    const macros = [
+      { label: 'Calories', value: '420' },
+      { label: 'Carbs', value: '22 g' },
+      { label: 'Protein', value: '30 g' },
+      { label: 'Fat', value: '21 g' },
+      { label: 'Fibre', value: '11 g' }
+    ];
+    return { ingredients, steps, macros };
+  }
+}
+</script>
+</body>
+</html>

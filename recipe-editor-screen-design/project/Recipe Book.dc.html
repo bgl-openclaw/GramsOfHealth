@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #e7e4dd; }
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { background: #fff; }
+    .screen-pad { padding: 0 !important; gap: 0 !important; }
+    .pg { box-shadow: none !important; border-radius: 0 !important; break-after: page; break-inside: avoid; }
+  }
+</style>
+</helmet>
+
+<div class="screen-pad" style="min-height: 100vh; background: #e7e4dd; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1c2019; padding: 36px 24px; display: flex; flex-direction: column; align-items: center; gap: 26px;">
+
+  <sc-for list="{{ pages }}" as="pg" hint-placeholder-count="8">
+    <div class="pg" style="width: 794px; height: 1123px; flex-shrink: 0; background: {{ pg.bg }}; border-radius: 4px; box-shadow: 0 18px 50px -24px rgba(28,32,25,0.45); overflow: hidden; position: relative; display: flex; flex-direction: column;">
+
+      <!-- ===== COVER ===== -->
+      <sc-if value="{{ pg.isCover }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; display: flex; flex-direction: column; padding: 64px 60px; color: #fff;">
+          <div style="background: #fff; border-radius: 12px; padding: 13px 16px; align-self: flex-start;"><img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 36px; display: block;"></div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #a8c6b4; margin-top: 56px;">{{ pg.kicker }}</div>
+          <h1 style="margin: 14px 0 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 96px; line-height: 0.9; letter-spacing: 0.005em; text-transform: uppercase; color: #fff;">{{ pg.t1 }}<br>{{ pg.t2 }}</h1>
+          <div style="width: 90px; height: 6px; background: #ef835c; margin: 26px 0 18px; border-radius: 3px;"></div>
+          <div style="font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 34px; text-transform: uppercase; letter-spacing: 0.04em; color: #ef835c;">{{ pg.t3 }}</div>
+          <div style="flex: 1;"></div>
+          <div style="font-size: 16px; color: #cfe0d5; letter-spacing: 0.01em;">{{ pg.tagline }}</div>
+        </div>
+      </sc-if>
+
+      <!-- ===== INTRO / TARGETS ===== -->
+      <sc-if value="{{ pg.isIntro }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; display: flex; flex-direction: column; padding: 54px 56px;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8b918a;">Your plan</div>
+            <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 28px;">
+          </div>
+          <h2 style="margin: 12px 0 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 46px; line-height: 1.0; text-transform: uppercase; color: #003018;">Targets &amp; structure</h2>
+          <div style="width: 64px; height: 4px; background: #ef835c; border-radius: 2px; margin: 14px 0 30px;"></div>
+
+          <div style="display: flex; gap: 22px; align-items: stretch;">
+            <div style="background: #003018; border-radius: 16px; padding: 26px 30px; color: #fff; display: flex; flex-direction: column; justify-content: center; min-width: 250px;">
+              <div style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 60px; line-height: 1; color: #fff;">{{ pg.split }}</div>
+              <div style="font-size: 13px; color: #a8c6b4; margin-top: 8px; letter-spacing: 0.02em;">{{ pg.splitNote }} split</div>
+              <div style="height: 1px; background: rgba(255,255,255,0.16); margin: 18px 0;"></div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 600; color: #fff;">{{ pg.calories }}</div>
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+              <sc-for list="{{ pg.perDay }}" as="d" hint-placeholder-count="3">
+                <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid #ebe9e2; padding-bottom: 11px;">
+                  <span style="font-size: 15px; color: #3a4137;">{{ d.k }}</span>
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 600; color: #003018;">{{ d.v }}</span>
+                </div>
+              </sc-for>
+              <div style="font-size: 11.5px; color: #a7aca0;">Per day, across the second half of the challenge.</div>
+            </div>
+          </div>
+
+          <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018; margin: 34px 0 14px;">Daily structure</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <sc-for list="{{ pg.structure }}" as="s" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 14px; background: #f6f8f5; border: 1px solid #e2ebe2; border-radius: 12px; padding: 14px 18px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: #ef835c; flex-shrink: 0;"></span>
+                <span style="font-size: 14.5px; font-weight: 600; color: #1c2019; min-width: 170px;">{{ s.k }}</span>
+                <span style="font-size: 13.5px; color: #4a5046;">{{ s.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="flex: 1;"></div>
+          <div style="display: flex; flex-direction: column; gap: 7px; border-top: 1px solid #ebe9e2; padding-top: 18px;">
+            <sc-for list="{{ pg.notes }}" as="n" hint-placeholder-count="3">
+              <div style="display: flex; gap: 9px; font-size: 12.5px; color: #5c625b; line-height: 1.4;"><span style="color: #2f7a4d;">●</span>{{ n.t }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===== WELCOME ===== -->
+      <sc-if value="{{ pg.isWelcome }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; display: flex; flex-direction: column; padding: 64px 60px;">
+          <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 32px; align-self: flex-start;">
+          <div style="flex: 1;"></div>
+          <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 54px; line-height: 0.98; text-transform: uppercase; color: #003018;">{{ pg.w1 }}<br><span style="color: #2f7a4d; font-weight: 600;">{{ pg.w2 }}</span></h2>
+          <div style="width: 70px; height: 5px; background: #ef835c; border-radius: 3px; margin: 26px 0 30px;"></div>
+          <div style="display: flex; flex-direction: column; gap: 18px; max-width: 560px;">
+            <sc-for list="{{ pg.paras }}" as="p" hint-placeholder-count="3">
+              <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #3a4137;">{{ p.t }}</p>
+            </sc-for>
+          </div>
+          <div style="flex: 1.4;"></div>
+        </div>
+      </sc-if>
+
+      <!-- ===== SECTION DIVIDER ===== -->
+      <sc-if value="{{ pg.isDivider }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 60px; color: #fff;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; letter-spacing: 0.12em; color: #a8c6b4;">{{ pg.count }}</div>
+          <h2 style="margin: 16px 0 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 86px; line-height: 0.92; text-transform: uppercase; color: #fff;">{{ pg.name }}</h2>
+          <div style="width: 90px; height: 6px; background: #ef835c; border-radius: 3px; margin: 26px 0 20px;"></div>
+          <div style="font-size: 18px; color: #cfe0d5;">{{ pg.sub }}</div>
+        </div>
+        <div style="position: absolute; right: 50px; bottom: 44px; background: #fff; border-radius: 11px; padding: 11px 14px;"><img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 28px; display: block;"></div>
+      </sc-if>
+
+      <!-- ===== RECIPE ===== -->
+      <sc-if value="{{ pg.isRecipe }}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 34px 44px 16px;">
+          <div style="flex-shrink: 0;">
+            <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 38px; display: block;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #b6bbaf; margin-top: 12px;">{{ pg.section }}</div>
+          </div>
+          <div style="text-align: right; min-width: 0;">
+            <h2 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 32px; line-height: 0.98; letter-spacing: 0.01em; text-transform: uppercase; color: #003018;">{{ pg.title }}</h2>
+            <div style="display: flex; gap: 11px; justify-content: flex-end; align-items: center; margin-top: 9px;">
+              <sc-if value="{{ pg.serves }}" hint-placeholder-val="4 servings"><span style="font-size: 13px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">{{ pg.serves }}</b></span></sc-if>
+              <span style="width: 4px; height: 4px; border-radius: 50%; background: #ef835c;"></span>
+              <span style="font-size: 13px; color: #4a5046;"><b style="font-weight: 600; color: #1c2019;">{{ pg.time }}</b></span>
+            </div>
+          </div>
+        </div>
+        <div style="height: 1px; background: #ebe9e2; margin: 0 44px;"></div>
+
+        <div style="flex: 1; min-height: 0; display: grid; grid-template-columns: 270px 1fr; gap: 34px; padding: 22px 44px 26px;">
+          <div style="min-width: 0;">
+            <div style="height: 150px; border-radius: 11px; background-image: repeating-linear-gradient(45deg, #efeee8, #efeee8 9px, #e7e5dd 9px, #e7e5dd 18px); border: 1px solid #e6e4de; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #9aa093;">photo</span></div>
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Ingredients</div>
+            <div style="width: 28px; height: 3px; border-radius: 2px; background: #ef835c; margin: 6px 0 12px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <sc-for list="{{ pg.ingredients }}" as="ing" hint-placeholder-count="12">
+                <sc-if value="{{ ing.isHeader }}" hint-placeholder-val="{{ false }}"><div style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #2f7a4d; margin-top: 5px;">{{ ing.text }}</div></sc-if>
+                <sc-if value="{{ ing.isItem }}" hint-placeholder-val="{{ true }}"><div style="display: flex; gap: 7px; font-size: 12px; line-height: 1.35; color: #3a4137;"><span style="color: #2f7a4d; font-size: 8px; line-height: 1.9; flex-shrink: 0;">●</span><span>{{ ing.text }}</span></div></sc-if>
+              </sc-for>
+            </div>
+          </div>
+          <div style="min-width: 0;">
+            <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #003018;">Directions</div>
+            <div style="width: 28px; height: 3px; border-radius: 2px; background: #ef835c; margin: 6px 0 14px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 11px;">
+              <sc-for list="{{ pg.directions }}" as="st" hint-placeholder-count="6">
+                <div style="display: flex; gap: 11px;">
+                  <span style="flex-shrink: 0; width: 23px; height: 23px; border-radius: 50%; background: #003018; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ st.n }}</span>
+                  <span style="font-size: 13px; line-height: 1.5; color: #3a4137; padding-top: 2px;">{{ st.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <sc-if value="{{ pg.hasMacros }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="height: 4px; background: #ef835c;"></div>
+            <div style="display: flex; background: #003018; padding: 17px 44px;">
+              <sc-for list="{{ pg.macros }}" as="m" hint-placeholder-count="4">
+                <div style="flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.13);">
+                  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8c6b4;">{{ m.label }}</div>
+                  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 600; color: #fff; margin-top: 3px;">{{ m.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <!-- ===== BOOSTER GLOSSARY ===== -->
+      <sc-if value="{{ pg.isBooster }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; display: flex; flex-direction: column; padding: 48px 56px;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8b918a;">Boosters</div>
+            <img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 26px;">
+          </div>
+          <h2 style="margin: 12px 0 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 42px; line-height: 1.0; text-transform: uppercase; color: #003018;">{{ pg.category }}</h2>
+          <div style="width: 58px; height: 4px; background: #ef835c; border-radius: 2px; margin: 12px 0 6px;"></div>
+          <div style="font-size: 14px; color: #8b918a; margin-bottom: 22px;">{{ pg.sub }}</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <sc-for list="{{ pg.items }}" as="it" hint-placeholder-count="10">
+              <div style="border: 1px solid #e7e5df; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="font-size: 14px; font-weight: 600; color: #1c2019; line-height: 1.25;">{{ it.name }}</div>
+                <div style="display: flex; gap: 7px; flex-wrap: wrap;">
+                  <sc-for list="{{ it.macros }}" as="m" hint-placeholder-count="3">
+                    <span style="display: inline-flex; align-items: baseline; gap: 4px; background: #f3f6f2; border-radius: 6px; padding: 4px 9px;"><span style="font-size: 10px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #2f7a4d;">{{ m.l }}</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; font-weight: 600; color: #003018;">{{ m.v }}</span></span>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="flex: 1;"></div>
+          <div style="font-size: 11px; color: #b6bbaf;">Values are approximate per the quantity shown — confirm against the foods library before use.</div>
+        </div>
+      </sc-if>
+
+      <!-- ===== BACK COVER / CONTACT ===== -->
+      <sc-if value="{{ pg.isContact }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 70px; color: #fff;">
+          <div style="background: #fff; border-radius: 14px; padding: 16px 20px;"><img src="assets/grams-logo.webp" alt="Grams of Health" style="height: 40px; display: block;"></div>
+          <h2 style="margin: 46px 0 0; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 44px; line-height: 1.02; text-transform: uppercase; color: #fff;">{{ pg.title }}</h2>
+          <div style="width: 70px; height: 5px; background: #ef835c; border-radius: 3px; margin: 22px 0 24px;"></div>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #cfe0d5; max-width: 460px;">{{ pg.body }}</p>
+          <div style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ef835c; margin-top: 40px;">To book</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 600; color: #fff; margin-top: 10px;">{{ pg.phone }}</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #cfe0d5; margin-top: 6px;">{{ pg.email }}</div>
+        </div>
+      </sc-if>
+
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 880, &quot;height&quot;: 1200}}">
+class Component extends DCLogic {
+  state = { book: null };
+
+  async componentDidMount() {
+    try {
+      const url = new URL('./book/book-data.js', document.baseURI).href;
+      const m = await import(url);
+      this.setState({ book: m.BOOK });
+    } catch (e) {
+      console.error('Failed to load book data', e);
+    }
+  }
+
+  renderVals() {
+    const B = this.state.book;
+    if (!B) return { pages: [] };
+
+    const GREEN = '#003018';
+    const WHITE = '#ffffff';
+    const pages = [];
+
+    // cover
+    pages.push({ bg: GREEN, isCover: true, kicker: B.cover.kicker, t1: B.cover.title[0], t2: B.cover.title[1], t3: B.cover.title2, tagline: B.cover.tagline });
+
+    // intro
+    pages.push({
+      bg: WHITE, isIntro: true,
+      split: B.intro.split, splitNote: B.intro.splitNote, calories: B.intro.calories,
+      perDay: B.intro.perDay, structure: B.intro.structure,
+      notes: B.intro.notes.map(t => ({ t }))
+    });
+
+    // welcome
+    pages.push({ bg: WHITE, isWelcome: true, w1: B.welcome.title[0], w2: B.welcome.title[1], paras: B.welcome.paras.map(t => ({ t })) });
+
+    // sections + recipes
+    B.sections.forEach(sec => {
+      const n = sec.recipes.length;
+      pages.push({ bg: GREEN, isDivider: true, name: sec.name, sub: sec.sub, count: n + (n === 1 ? ' recipe' : ' recipes') });
+      sec.recipes.forEach(r => {
+        const ingredients = r.ingredients.map(line => {
+          const isHeader = /:$/.test(line.trim());
+          return { text: line, isHeader, isItem: !isHeader };
+        });
+        const directions = r.directions.map((t, i) => ({ n: String(i + 1), text: t }));
+        pages.push({
+          bg: WHITE, isRecipe: true, section: sec.name,
+          title: r.title, serves: r.serves, time: r.time || '\u2014',
+          ingredients, directions,
+          hasMacros: r.macros.length > 0, macros: r.macros
+        });
+      });
+    });
+
+    // boosters
+    B.boosters.forEach(b => {
+      const items = b.items.map(it => {
+        const macros = [];
+        if (it.cal) macros.push({ l: 'Cal', v: it.cal });
+        if (it.p) macros.push({ l: 'P', v: it.p });
+        if (it.c) macros.push({ l: 'C', v: it.c });
+        if (it.f) macros.push({ l: 'F', v: it.f });
+        return { name: it.name, macros };
+      });
+      pages.push({ bg: WHITE, isBooster: true, category: b.category, sub: b.sub, items });
+    });
+
+    // back cover
+    pages.push({ bg: GREEN, isContact: true, title: B.contact.title, body: B.contact.body, phone: B.contact.phone, email: B.contact.email });
+
+    return { pages };
+  }
+}
+</script>
+</body>
+</html>
