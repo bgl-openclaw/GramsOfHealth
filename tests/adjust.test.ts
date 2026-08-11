@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { FoodMap } from "@goh/engine";
-import { proposeAdjustment, parseTargetRequest, SECTION_RE, type Role } from "../packages/adjust/src";
+import { proposeAdjustment, parseTargetRequest, achievableRange, SECTION_RE, type Role } from "../packages/adjust/src";
 
 const F: FoodMap = {
   chicken: { name: "Chicken breast", energy_kcal: 120, protein: 31, fat: 2.6, carb_avail: 0, fibre: 0, density: null },
@@ -138,5 +138,13 @@ describe("typed-request parser", () => {
   it("section regex matches the agreed vocabulary", () => {
     for (const s of ["Orange Mustard Dressing", "Caramel sauce", "Cream layer", "dough"]) expect(SECTION_RE.test(s)).toBe(true);
     expect(SECTION_RE.test("To serve")).toBe(false);
+  });
+});
+
+describe("fixture 5 — achievableRange parity", () => {
+  it("reproduces the exact protein envelope 29.32 / 53.86 on the base fixture", () => {
+    const r = achievableRange(base, F, R, "protein");
+    expect(r.min).toBe(29.32);
+    expect(r.max).toBe(53.86);
   });
 });

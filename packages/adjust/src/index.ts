@@ -359,3 +359,29 @@ export function parseTargetRequest(text: string): Target | null {
   }
   return null;
 }
+
+/**
+ * The exact achievable per-serve window for a macro: every adjustable,
+ * priceable line pushed to its ±30% bound (no kitchen rounding — this is the
+ * theoretical envelope the preload and the UI sliders are bounded by).
+ */
+export function achievableRange(
+  recipe: { lines: AdjustLine[]; servings: number },
+  foods: FoodMap,
+  roles: Record<string, Role | null | undefined>,
+  macro: Macro,
+): { min: number; max: number; current: number } {
+  const servings = Math.max(1, recipe.servings);
+  const infos = classify(recipe.lines, foods, roles);
+  const priceableLines = recipe.lines.filter((_, idx) => infos[idx].grams0 != null);
+  const current = compute(priceableLines, servings, foods).perServe[macro];
+  let spread = 0;
+  for (const i of infos) {
+    if (!i.adjustable) continue;
+    const dens = (foods[i.line.food_id]?.[macro] ?? 0) / 100;
+    spread += i.bound * dens;
+  }
+  spread /= servings;
+  const r2 = (n: number) => Math.round(n * 100) / 100;
+  return { min: r2(current - spread), max: r2(current + spread), current: r2(current) };
+}

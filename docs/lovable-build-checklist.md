@@ -146,3 +146,22 @@ Add /quality, a data-quality dashboard. Sections, each linking to the relevant /
 - count of unverified foods, and recipes with unconfirmed (source='auto') tags.
 Add a global ⌘K command palette to jump to any recipe, food, or plan by name.
 ```
+
+## P3 — review queue + drafts + swaps (UI contract, prompt to follow)
+**Origin-flip-on-edit contract (binding for the profiles UI):** `recipe_profiles.origin`
+is `'machine'` for preloaded drafts. The moment a dietitian EDITS a machine draft
+(any delta change, rename, reorder — anything except viewing or verifying), the UI
+MUST set `origin='dietitian'` on that profile. The preload runner only refreshes
+rows where `origin='machine' AND verified=false AND base_fingerprint` differs —
+flipping origin is what protects a dietitian's tweaks from machine refresh.
+Verifying sets `verified=true` (+ `verified_fingerprint`) and needs no origin flip;
+verified rows are never touched by the machine regardless.
+Machine drafts render as distinct tabs (e.g. dashed/"draft" badge) filtered by
+`origin='machine' AND verified=false`. The four preload names are fixed:
+"High protein", "Low fat", "Higher fibre", "Lighter".
+Fingerprint spec (must match the backend): fnv1a-32 hex over base lines sorted by
+position, rows joined by "\n", each row `food_id|quantity|unit|section` with
+quantity as Number() and null section as "".
+Swap suggestions: swap_suggestions is the ONLY source of assisted swaps; rows with
+suggestion_food_id null are suggest-to-add — accepting one creates a custom food
+via the normal flow (blank macros, verified=false), never invented nutrition.
