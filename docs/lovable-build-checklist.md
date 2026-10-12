@@ -165,3 +165,93 @@ quantity as Number() and null section as "".
 Swap suggestions: swap_suggestions is the ONLY source of assisted swaps; rows with
 suggestion_food_id null are suggest-to-add — accepting one creates a custom food
 via the normal flow (blank macros, verified=false), never invented nutrition.
+
+## P4 — three-state recipe badge (backend: migration 0023, live 2026-10-13)
+
+```text
+Grams Editor — three-state recipe badge: Needs review / AI Verified / Dietitian Verified
+
+The backend is DONE and live (migration 0023). Do NOT create tables, migrations, policies or edge
+functions. Do NOT touch src/lib/engine.ts or src/lib/adjust.ts.
+
+BACKEND CONTRACT
+1. View `recipe_verification` (signed-in supabase client; one row per recipe), computed live:
+   recipe_id uuid, title text,
+   status: 'needs_review' | 'ai_verified' | 'dietitian_verified',
+   ai_verified boolean,
+   reasons text[]          — failed checks in plain words, already formatted. Show VERBATIM, in order.
+   signoff_on_hold boolean — the recipe has a dietitian sign-off but currently fails a check,
+   signed_by_name text|null, signed_at timestamptz|null,
+   has_title, has_image boolean; line_count, step_count, unverified_food_count,
+   uncalculable_line_count int; unverified_food_names text[];
+   uncalculable_ingredients text[] (e.g. "Banana (each)"); data_issue text|null (full note).
+   Never compute status client-side and never cache it — re-fetch after any change.
+2. RPC sign_off_recipe(p_recipe_id uuid) → jsonb { ok: boolean, message: string, reasons: string[] }
+3. RPC revoke_recipe_signoff(p_recipe_id uuid, p_note text|null) → jsonb { ok: boolean, message: string }
+   Both are role-checked on the server (admin/dietitian). The table recipe_signoffs is read-only to
+   the app — never insert/update it directly.
+
+BUILD
+A. New src/data/verification.ts: listRecipeVerification() (use the fetchAllPaged pattern from
+   src/data/index.ts — 374 rows today and growing), getRecipeVerification(id), signOffRecipe(id),
+   revokeRecipeSignoff(id, note?). Types matching the contract exactly.
+
+B. src/components/browse/StatusPill.tsx: replace kind "verified" | "review" with the three statuses:
+   - needs_review       → "Needs review" (keep the current coral style)
+   - ai_verified        → "AI Verified" (keep the current green-tint style). Tooltip:
+                          "Complete and computable: every ingredient is verified and calculable. Not a dietitian approval."
+   - dietitian_verified → "Dietitian Verified": solid brand green #003018, white text, check icon.
+                          Tooltip: "Signed off by {signed_by_name} on {date}".
+   AI Verified must never look like Dietitian Verified.
+
+C. Recipe library (src/routes/_app.recipes.index.tsx):
+   - Load listRecipeVerification() with the other loads; key by recipe_id.
+   - Table AND grid: the pill comes from the view's status for EVERY recipe, including zero-line
+     recipes (they show Needs review with "no ingredients" — remove the "—" placeholder).
+   - Needs review pill: hover/click popover listing the reasons as bullets, verbatim. If
+     signoff_on_hold, first line: "Dietitian sign-off on hold until these are fixed".
+   - Quick filters and the drawer's Status section: replace "Needs review"/"Verified" with three
+     chips "Needs review", "AI Verified", "Dietitian Verified" (ids review | ai | dietitian). Keep
+     "Has photo". In validateSearch map the legacy id "verified" → ["ai","dietitian"] so existing
+     saved views and links keep working.
+   - Remove the verifiedPct-based status logic entirely (verifiedReadyPct no longer drives any
+     status or filter). Change nothing else on the page.
+
+D. Recipe editor (src/routes/_app.recipes.$id.tsx), next to the title:
+   - Show the badge from getRecipeVerification(id). Refresh it after every saveRecipe, image change,
+     sign-off and revoke.
+   - If needs_review: an expandable "What needs fixing" list (reasons verbatim). If
+     signoff_on_hold, show "Dietitian sign-off on hold until these are fixed" above the list.
+   - Button "Sign off as dietitian": only for role admin or dietitian (useCurrentUser() from
+     src/lib/current-user.tsx); only when status != 'dietitian_verified' and !signoff_on_hold.
+     On click call signOffRecipe(id):
+       ok:false → a simple dialog: the message, then the reasons as bullets, one "OK" button.
+                  Change nothing.
+       ok:true  → toast "Recipe signed off", refresh the badge.
+   - If dietitian_verified: show "Signed off by {name} · {date}" and a small "Remove sign-off" link
+     (admin/dietitian only) → confirm dialog with an optional note → revokeRecipeSignoff → refresh.
+
+E. Data issues (needed so the "data issue flagged" check can ever be cleared — no UI does this today):
+   in the recipe editor, if the recipe has a data_issue, show the FULL note in a muted callout with a
+   button "Mark data issue resolved" (admin/dietitian only) → confirm dialog quoting the note →
+   supabase.from("recipes").update({ data_issue: null }).eq("id", id) → refresh the badge.
+   saveRecipe must keep NOT sending data_issue.
+
+ACCEPTANCE (live data 2026-10-13 — counts drift as the team works)
+1. Library: 19 AI Verified, 355 Needs review, 0 Dietitian Verified (374 total).
+2. "BERRY & VANILLA MARSCARPONE CUPS" → AI Verified.
+3. "BANANA BREAD GRANOLA" → Needs review, one reason:
+   "2 ingredients can't be calculated: Banana (each); Coconut oil (tbsp)"
+4. "TERIYAKI SAUCE TERIYAKI CHICKEN SUSHI" → 3 reasons, the first being
+   "6 unverified foods: Soy sauce; Water; Rice wine vinegar; Sugar, white; Salt +1 more"
+5. Sign off BANANA BREAD GRANOLA → refused dialog showing reason 3; badge unchanged.
+6. Sign off BERRY & VANILLA → Dietitian Verified with your name; Remove sign-off → back to AI Verified.
+7. Old saved view with ?quick=verified → shows the AI Verified + Dietitian Verified chips active.
+
+REPORT BACK
+- Files changed (list) and a one-line summary per file.
+- Confirm: no code still computes status from verifiedPct (name the grep you ran).
+- Confirm: no direct insert/update to recipe_signoffs anywhere.
+- Confirm: src/lib/engine.ts and src/lib/adjust.ts untouched.
+- Results for acceptance items 1–7.
+```
