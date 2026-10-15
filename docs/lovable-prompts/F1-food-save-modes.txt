@@ -1,0 +1,17 @@
+Grams Editor — F1: food page "Save draft" vs "Save & verify" (small; change nothing else)
+
+Owner decision: anyone signed in may verify a food, but saving must no longer verify automatically. Do NOT create migrations; do NOT edit src/lib/engine.ts, adjust.ts or energy.ts.
+
+Today src/routes/_app.foods.$id.tsx onSave always sends verified: true ("Save == verification"). Replace the single Save with two buttons:
+
+1. "Save draft" — saves every field EXCEPT verified (do not send the verified key at all). An unverified food stays unverified. If a verified food's kcal/protein/fat/carbs/fibre/density changed, the database un-verifies it automatically — when the returned row comes back unverified for a food that was verified, show the warning toast: "This food is now unverified — check it, then press Save & verify." Stay on the page.
+2. "Save & verify" — TWO steps, in order: (a) save the fields exactly like Save draft; (b) then a second update setting only { verified: true }. Use the row returned by step (b). (Sending both in one update would be undone by the database's un-verify rule when numbers change — the two steps are required.) Then show "Saved & verified" and keep today's return-to-list behaviour.
+3. Show the food's status next to the buttons: "Verified" (green) or "Draft — not verified" (amber).
+
+ACCEPTANCE (throwaway "ZZ Test food", delete it after)
+a. New unverified food → Save draft → still "Draft — not verified".
+b. Save & verify → "Verified"; Changes inbox shows "verified no → yes".
+c. Change its protein → Save draft → toast, status "Draft — not verified"; Changes shows "… — verification removed (values changed)".
+d. Change protein again → Save & verify → "Verified" (Changes shows the value change, then "verified no → yes").
+
+REPORT BACK: files changed; confirm no other behaviour changed.

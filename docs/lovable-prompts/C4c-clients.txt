@@ -1,0 +1,41 @@
+Grams Editor — Clients C4c: Clinical records, Check-ins, Plans (completes the client editor)
+
+The backend is DONE and live. Do NOT create migrations, tables, policies, buckets or functions. Do NOT edit src/lib/engine.ts, adjust.ts or energy.ts. Keep the C4a/C4b patterns (src/lib/clients.ts helpers, ClientEditor sections, localToday()). No hard-coded practice names, colours or emails in new code.
+
+ACCESS (the database enforces it; the UI mirrors it)
+- Clinical: admin/dietitian only — hide the section completely for interns.
+- Check-ins: clinicians always; an intern only if their "Can see check-ins" tick is on for this client. Ask the database: supabase.rpc("can_view_checkins", { p_client_id }) → boolean. Without access show "You don't have access to this client's check-ins." Deleting a check-in is clinician-only.
+- Plans: anyone who can open the client.
+
+1. DATA LAYER (src/lib/clients.ts, typed)
+- Clinical (table client_clinical_records): list (recorded_on desc), add, update, delete. Columns: kind 'dexa'|'bloods'|'other', recorded_on (date), summary, measurements (jsonb — store as an array of { name, value, unit }), file_path.
+- Files: private storage bucket "clinical-records". Upload to `${client_id}/${crypto.randomUUID()}-${safeFileName}`; only PDF, JPEG, PNG, HEIC up to 20 MB (check before uploading; the bucket also enforces it). View with createSignedUrl(path, 300) opened in a new tab — never a public URL. Deleting a record also removes its file; replacing a file removes the old one.
+- Check-ins (client_checkins): list (checkin_on desc), add, update, delete. Fields: checkin_on, feeling, hunger, energy, sleep (1–5), bowels_bristol (1–7), bowels_notes, training, likes, dislikes, changes_wanted, notes. Leave answers ({}) and source ('dietitian') at their defaults.
+- Weight with a check-in: after inserting the check-in, if a weight was entered insert client_weights { client_id, weight_kg, recorded_on = checkin_on, checkin_id = new check-in id }. Show that weight on the check-in (join client_weights by checkin_id).
+- Plans: list meal_plans where client_id = this client (newest first); "New plan" uses the existing createPlan with client_id, then opens the plan.
+
+2. CLINICAL section (replaces its "Coming next" placeholder)
+- Records newest first: kind chip (DEXA / Bloods / Other), date, summary, key values as "Body fat 24.1 %" chips, file link ("View file" → signed URL).
+- Add / edit form: kind, date (default localToday()), summary, key values (rows of name · value · unit, add/remove), file (upload / replace / remove).
+- Header note: "Clinical records are visible to dietitians and admins only."
+
+3. CHECK-INS section
+- Entry form: date (default localToday()); Feeling, Hunger, Energy, Sleep as 1–5 button rows with end labels (Feeling/Energy/Sleep: 1 Very poor … 5 Great; Hunger: 1 Never hungry … 5 Always hungry); Bowels: Bristol type 1–7 with short labels (1 separate hard lumps · 2 lumpy sausage · 3 sausage with cracks · 4 smooth soft sausage · 5 soft blobs · 6 mushy · 7 watery) plus notes; Training, Likes, Dislikes, Changes wanted, Notes (text); optional Weight (kg).
+- Timeline newest first: date, the four scores as compact 1–5 indicators, Bristol type, the text fields that have content, the linked weight, "entered by NAME". Edit; Delete (clinicians only, with confirm).
+- Above the timeline, a compact trend strip of the last 8 check-ins for Feeling, Energy and Sleep (simple dots/bars — no chart library needed).
+
+4. PLANS section
+- This client's plans (title, days, created date) linking to the plan editor, and a "New plan for CLIENT" button.
+
+5. Remove the "Coming next" section (everything is built).
+
+6. DELETE CLIENT (clinicians): before deleting the client row, list and remove every object under `${client_id}/` in the clinical-records bucket, then delete the client (all database rows cascade). If file removal fails, stop and show the error — don't delete the client.
+
+ACCEPTANCE — "TEST — delete me" client; delete it at the end
+1. Clinical: add a DEXA record dated today, key values "Body fat 24.1 %" and "Lean mass 52.3 kg", attach a PDF → listed with chips; "View file" opens via a signed link; replace the file; delete the record (file gone). An intern doesn't see the Clinical section.
+2. Check-in: today, Feeling 4, Hunger 3, Energy 4, Sleep 2, Bristol 4, weight 80.4 → appears in the timeline with the weight; the Weight log shows 80.4 kg on that date; the clients list "Last check-in" shows today.
+3. An intern allocated without the check-ins tick sees the no-access message; tick it → they can add a check-in but not delete one.
+4. Plans: "New plan for TEST — delete me" → plan editor opens linked to the client using its Default targets; it appears in the Plans section.
+5. Delete the TEST client → the clinical-records bucket has nothing left under its id.
+
+REPORT BACK: files changed (one line each); confirm engine.ts / adjust.ts / energy.ts untouched and no migrations; results for 1–5 you could run and which need a signed-in person.
