@@ -1,0 +1,19 @@
+Grams Editor — E1: remove the engine's size guessing (owner-approved; numbers verified unchanged)
+
+Background: in August src/lib/engine.ts gained a fallback that guesses sizes ("each" → medium → large → small, and medium/large/small → "each"). The canonical engine and the database never guess, so the app and the AI Verified badge could disagree. Default sizes are now set on the foods that needed them; a check of all 3,211 live recipe lines shows the guess is used on 0 lines today, so removing it changes no numbers. Do NOT create migrations. Do NOT edit adjust.ts or energy.ts.
+
+1. src/lib/engine.ts — restore exact-match resolution:
+   - Delete UNIT_ALIASES and the alias loop in resolveUnitSource. After the g/gram/grams, kg, x95g and tsp/tbsp/cup/ml (density, else that unit's conversion) rules, a unit resolves ONLY through a conversion with exactly that unit; otherwise { grams: 0, viaUnit: null }.
+   - Update the doc comments to say there is no fallback: an "each" line needs an "each" conversion (set via the food's Default size).
+   - sizeOptionsFor: remove the block that offers "each" because a food has size rows. Offer only the base units plus the food's own conversion units (and keep the line's current unit in the list so existing lines still display).
+   - Change nothing else in engine.ts (computeRecipe, toGrams signature, AU measures, formatting all stay identical).
+2. Recipe editor (src/routes/_app.recipes.$id.tsx): the amber "Guessed as …" note can no longer happen — remove that branch; keep the red "Can't be weighed" note.
+3. Review queue (src/components/NeedsAttention.tsx): the conversion-gap detail "Currently resolving as {size}" is no longer true. Replace it with "No "each" weight yet — set a default size." Keep the "Set default size = {size}" button.
+
+ACCEPTANCE
+a. Search src for UNIT_ALIASES, "Guessed as" and "Currently resolving as" — none left (name the search).
+b. A recipe line "1 each" for a food with a Default size (e.g. Carrot) still shows its grams (129 g) — unchanged.
+c. A line using a unit the food has no weight for (e.g. "1 each Iceberg lettuce", which has only head/leaf sizes) shows the red note, as before.
+d. Recipe library kcal and AI Verified counts are unchanged.
+
+REPORT BACK: files changed and the exact lines removed from engine.ts; confirm adjust.ts / energy.ts untouched and no migrations.
