@@ -1,0 +1,18 @@
+Grams Editor — C4a.1 fixes (four small bugs in the C4a commit; change nothing else)
+
+1. Clients list — "Last check-in" is always blank. src/lib/clients.ts listClientOverview guesses column names. Use the view's exact columns and remove every fallback guess:
+   client_id, full_name, status, assigned_dietitian, assigned_dietitian_name, primary_goal, primary_goal_label, latest_weight_kg, latest_weight_on, latest_checkin_on, default_kcal, plan_count.
+
+2. New client with no sex chosen fails to save (the database column is NOT NULL, default 'unspecified'; the form sends null). In the Identity form remove the blank "—" sex option, default a new client to "Unspecified", and never send sex = null.
+
+3. Dates are UTC, not local. today() in src/components/ClientEditor.tsx and src/lib/clients.ts uses new Date().toISOString().slice(0, 10), which is still yesterday in Sydney until 10–11 am. Add one shared helper localToday() (local year-month-day from getFullYear/getMonth/getDate, zero-padded) and use it for every default/"today" date: weight date, calculator "As of", date-of-birth max, endClientGoal's ended_on. Search the rest of src for toISOString().slice(0, 10) used as "today" and switch those too; list them in the report.
+
+4. Recipe library "Suitable for": while tag_blockers is still loading — or if it failed to load — the filter currently applies no blockers and shows every recipe as suitable. Instead: while loading, keep the previous results/loading state; if it failed, show a small inline error ("Couldn't load diet rules — refresh to retry") and show 0 recipes for an active Suitable-for chip rather than unscreened results.
+
+ACCEPTANCE
+a. Clients list: a client with a check-in shows its date under Last check-in (add one via SQL or wait for C4c — at minimum confirm the code reads latest_checkin_on).
+b. New client "TEST 2 — delete me" saved without touching Sex → saves as Unspecified.
+c. At 9 am Sydney time the weight date and calculator "As of" default to today's local date.
+d. Library, no other filters: Suitable for → Vegan 65 · Vegetarian 172 · Gluten-free 190 · Dairy-free 219 · Nut-free 325.
+
+REPORT BACK: files changed; the toISOString search and every place you changed; confirm engine.ts/adjust.ts/energy.ts untouched.
