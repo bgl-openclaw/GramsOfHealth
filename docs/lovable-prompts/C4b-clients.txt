@@ -1,0 +1,45 @@
+Grams Editor — Clients C4b: Preferences, Variety & structure, food protein family, recipe-fit summary
+
+The backend is DONE and live. Do NOT create migrations, tables, policies or functions. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Keep the C4a patterns (src/lib/clients.ts data helpers, ClientEditor sections, localToday() for dates). Interns stay read-only in these sections (clinicians edit), like Identity and Requirements. Don't hard-code any practice name, colour or email in new code.
+
+1. DATA LAYER (add to src/lib/clients.ts, typed)
+- Food rules (table client_food_rules; primary key client_id+food_id): listClientFoodRules(clientId); upsertClientFoodRule({client_id, food_id, rule: 'avoid'|'dislike', primary_only, note}) with onConflict "client_id,food_id"; deleteClientFoodRule(clientId, foodId). The database refuses primary_only=true with rule 'avoid'.
+- Protein preferences (client_protein_preferences; key client_id+protein_family): list; set(clientId, family, 'like'|'dislike') upsert; clear(clientId, family) delete.
+- listProteinFamilies(): table protein_families, active, ordered by position.
+- Supplements (client_supplements): list (ordered by position, then created_at); add; update; delete.
+- Structure: getClientStructure(clientId) reads client_structure (single row or none), client_meal_slots (ordered by position) and client_protein_spread. saveClientStructure(clientId, settings, slots, spread) = supabase.rpc("save_client_structure", { p_client_id, p_settings, p_slots, p_protein_spread }). It saves all three in one transaction; any invalid value rejects the whole save and leaves the previous one intact — show the database error message as-is.
+  p_settings = { cycle_length_days, repeat_min_gap_days, repeat_max_per_cycle, batch_cooking, day_type_pattern: [Mon,Tue,Wed,Thu,Fri,Sat,Sun] each 'default'|'hard'|'moderate'|'rest' }
+  p_slots = [{ name, slot_kind: 'breakfast'|'lunch'|'dinner'|'snack', time_of_day: "HH:MM" or null, free_choice }] in display order
+  p_protein_spread = [{ protein_family, count_per_cycle }] (omit families left blank)
+- Foods: updateFood already exists — use it to set foods.protein_family (text key from protein_families, or null).
+
+2. CLIENT EDITOR — PREFERENCES section (replaces its "Coming next" placeholder)
+- Food rules: a food search (search the foods list by display name) with two add buttons, "Avoid" and "Dislike". Listed rules show food name, Avoid/Dislike, and for Dislike only a tick "Only when it's a main ingredient (10%+ of the recipe's weight)". Optional note. Remove button. Helper text: "Avoid = never, in any amount. Dislike = flagged, not blocked."
+- Protein preferences: one chip per protein family with three states cycling Neutral → Like → Dislike → Neutral (clear colours for each). Writes immediately.
+- Supplements: rows of name, dose, timing, notes, started (date), ended (date). Add / edit inline / delete. Ended supplements hidden behind "Show ended".
+
+3. CLIENT EDITOR — VARIETY & STRUCTURE section (replaces its placeholder); one form, one Save button calling saveClientStructure
+- Cycle length (days, 1–28); "Don't repeat a recipe within N days" (0–28, blank = no rule); "Max times a recipe can appear per cycle" (1–28, blank = no rule); Batch cooking toggle with help "Leftovers on the next day are allowed".
+- Weekly pattern: Monday → Sunday, each a select of Default / Hard day / Moderate day / Rest day. Next to a day type that has no current target, show a small "no target set" note (from client_current_targets).
+- Meal slots: an ordered list (move up/down), each with name, kind (Breakfast / Lunch / Dinner / Snack), time (optional), "Free choice" toggle; add and remove. When the client has no slots, offer "Start with Breakfast, Lunch, Dinner, Snacks" which fills those four (kinds breakfast/lunch/dinner/snack) — those names match the meal planner.
+- Protein spread: one number per protein family, "times per cycle" (blank = no rule).
+- After a successful save, reload from the database and show "Saved". On error, show the message and keep the form as typed.
+
+4. RECIPE FIT SUMMARY (top of the Requirements section)
+- From getClientRecipeScreen(client): "Of N recipes: X blocked · Y unconfirmed · Z disliked · W ok". Refresh it after any change to requirements, food rules or protein preferences.
+- Help text for Unconfirmed: "Contains ingredients that aren't verified yet, so allergen and diet screening can't be trusted."
+
+5. FOOD PAGE (src/routes/_app.foods.$id.tsx)
+- Add "Protein family" select (None + protein_families) saved with updateFood; clinicians only. Help: "Set on protein foods — drives clients' protein variety and preferences."
+
+6. Remove "Preferences" and "Variety & structure" from the "Coming next" list (Clinical, Check-ins and Plans remain).
+
+ACCEPTANCE — on a "TEST — delete me" client (delete it afterwards)
+1. Food rules: Avoid "Garlic, fresh" → recipe fit shows at least 127 blocked; a plan for this client shows "contains avoided food: Garlic, fresh" on garlic recipes. The main-ingredient tick appears only for Dislike.
+2. Dislike "Carrot" with the main-ingredient tick → some recipes become Disliked with a reason like "disliked food is a main ingredient: Carrot (21%)"; untick → more recipes become Disliked ("contains disliked food: Carrot").
+3. Food page "Chicken, breast": set Protein family = Chicken. On the TEST client set Chicken → Dislike → recipes whose main protein is chicken show "disliked protein: Chicken"; set Like → those reasons disappear.
+4. Supplements: add, edit, set an end date (row hides until "Show ended"), delete.
+5. Structure: cycle 7, no repeat within 3, max 2 per cycle, batch cooking on, pattern Mon Hard · Tue Moderate · Wed Rest · Thu Default · Fri Hard · Sat Rest · Sun Default, "Start with Breakfast, Lunch, Dinner, Snacks", spread Chicken 3 · Fish 2 → Save → reload shows exactly that. Rename Lunch to "Dinner" (duplicate name) → Save shows a database error and the previous structure stays.
+6. An intern allocated to the TEST client sees these sections read-only.
+
+REPORT BACK: files changed (one line each); confirm engine.ts / adjust.ts / energy.ts untouched and no migrations; results for 1–6 you could run and which need a signed-in person.
