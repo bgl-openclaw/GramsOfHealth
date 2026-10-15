@@ -7,33 +7,37 @@ export type Json =
   | Json[]
 
 export type Database = {
-  graphql_public: {
-    Tables: {
-      [_ in never]: never
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      graphql: {
-        Args: {
-          extensions?: Json
-          operationName?: string
-          query?: string
-          variables?: Json
-        }
-        Returns: Json
-      }
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.17"
   }
   public: {
     Tables: {
+      activity_levels: {
+        Row: {
+          active: boolean
+          factor: number
+          key: string
+          label: string
+          position: number
+        }
+        Insert: {
+          active?: boolean
+          factor: number
+          key: string
+          label: string
+          position?: number
+        }
+        Update: {
+          active?: boolean
+          factor?: number
+          key?: string
+          label?: string
+          position?: number
+        }
+        Relationships: []
+      }
       afcd_master: {
         Row: {
           calcium_mg: number | null
@@ -100,74 +104,829 @@ export type Database = {
         }
         Relationships: []
       }
-      clients: {
+      client_checkins: {
         Row: {
-          carb_target_g: number | null
+          answers: Json
+          bowels_bristol: number | null
+          bowels_notes: string | null
+          changes_wanted: string | null
+          checkin_on: string
+          client_id: string
           created_at: string
-          email: string | null
-          fat_target_g: number | null
-          fibre_target_g: number | null
-          full_name: string
+          dislikes: string | null
+          energy: number | null
+          entered_by: string | null
+          feeling: number | null
+          hunger: number | null
           id: string
-          kcal_target: number | null
+          likes: string | null
           notes: string | null
-          phone: string | null
-          protein_target_g: number | null
-          restrictions: string[]
-        }
-        Insert: {
-          carb_target_g?: number | null
-          created_at?: string
-          email?: string | null
-          fat_target_g?: number | null
-          fibre_target_g?: number | null
-          full_name: string
-          id?: string
-          kcal_target?: number | null
-          notes?: string | null
-          phone?: string | null
-          protein_target_g?: number | null
-          restrictions?: string[]
-        }
-        Update: {
-          carb_target_g?: number | null
-          created_at?: string
-          email?: string | null
-          fat_target_g?: number | null
-          fibre_target_g?: number | null
-          full_name?: string
-          id?: string
-          kcal_target?: number | null
-          notes?: string | null
-          phone?: string | null
-          protein_target_g?: number | null
-          restrictions?: string[]
-        }
-        Relationships: []
-      }
-      food_diet_flags: {
-        Row: {
-          flag: string
-          food_id: string
+          sleep: number | null
           source: string
+          training: string | null
+          updated_at: string
         }
         Insert: {
-          flag: string
-          food_id: string
+          answers?: Json
+          bowels_bristol?: number | null
+          bowels_notes?: string | null
+          changes_wanted?: string | null
+          checkin_on: string
+          client_id: string
+          created_at?: string
+          dislikes?: string | null
+          energy?: number | null
+          entered_by?: string | null
+          feeling?: number | null
+          hunger?: number | null
+          id?: string
+          likes?: string | null
+          notes?: string | null
+          sleep?: number | null
           source?: string
+          training?: string | null
+          updated_at?: string
         }
         Update: {
-          flag?: string
-          food_id?: string
+          answers?: Json
+          bowels_bristol?: number | null
+          bowels_notes?: string | null
+          changes_wanted?: string | null
+          checkin_on?: string
+          client_id?: string
+          created_at?: string
+          dislikes?: string | null
+          energy?: number | null
+          entered_by?: string | null
+          feeling?: number | null
+          hunger?: number | null
+          id?: string
+          likes?: string | null
+          notes?: string | null
+          sleep?: number | null
           source?: string
+          training?: string | null
+          updated_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: "food_diet_flags_food_id_fkey"
+            foreignKeyName: "client_checkins_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_checkins_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_checkins_entered_by_fkey"
+            columns: ["entered_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_clinical_records: {
+        Row: {
+          client_id: string
+          created_at: string
+          file_path: string | null
+          id: string
+          kind: string
+          measurements: Json | null
+          recorded_on: string
+          summary: string | null
+          uploaded_by: string | null
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          file_path?: string | null
+          id?: string
+          kind: string
+          measurements?: Json | null
+          recorded_on: string
+          summary?: string | null
+          uploaded_by?: string | null
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          file_path?: string | null
+          id?: string
+          kind?: string
+          measurements?: Json | null
+          recorded_on?: string
+          summary?: string | null
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_clinical_records_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_clinical_records_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_clinical_records_uploaded_by_fkey"
+            columns: ["uploaded_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_food_rules: {
+        Row: {
+          added_by: string | null
+          client_id: string
+          created_at: string
+          food_id: string
+          note: string | null
+          primary_only: boolean
+          rule: string
+        }
+        Insert: {
+          added_by?: string | null
+          client_id: string
+          created_at?: string
+          food_id: string
+          note?: string | null
+          primary_only?: boolean
+          rule: string
+        }
+        Update: {
+          added_by?: string | null
+          client_id?: string
+          created_at?: string
+          food_id?: string
+          note?: string | null
+          primary_only?: boolean
+          rule?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_food_rules_added_by_fkey"
+            columns: ["added_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_food_rules_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_food_rules_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_food_rules_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "client_food_rules_food_id_fkey"
             columns: ["food_id"]
             isOneToOne: false
             referencedRelation: "foods"
             referencedColumns: ["food_id"]
+          },
+        ]
+      }
+      client_goals: {
+        Row: {
+          client_id: string
+          created_at: string
+          detail: string | null
+          ended_on: string | null
+          goal_type: string
+          id: string
+          is_primary: boolean
+          set_by: string | null
+          target_date: string | null
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          detail?: string | null
+          ended_on?: string | null
+          goal_type: string
+          id?: string
+          is_primary?: boolean
+          set_by?: string | null
+          target_date?: string | null
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          detail?: string | null
+          ended_on?: string | null
+          goal_type?: string
+          id?: string
+          is_primary?: boolean
+          set_by?: string | null
+          target_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_goals_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_goals_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_goals_goal_type_fkey"
+            columns: ["goal_type"]
+            isOneToOne: false
+            referencedRelation: "goal_types"
+            referencedColumns: ["key"]
+          },
+          {
+            foreignKeyName: "client_goals_set_by_fkey"
+            columns: ["set_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_meal_slots: {
+        Row: {
+          client_id: string
+          free_choice: boolean
+          id: string
+          name: string
+          position: number
+          slot_kind: string
+          time_of_day: string | null
+        }
+        Insert: {
+          client_id: string
+          free_choice?: boolean
+          id?: string
+          name: string
+          position: number
+          slot_kind: string
+          time_of_day?: string | null
+        }
+        Update: {
+          client_id?: string
+          free_choice?: boolean
+          id?: string
+          name?: string
+          position?: number
+          slot_kind?: string
+          time_of_day?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_meal_slots_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_meal_slots_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_protein_preferences: {
+        Row: {
+          client_id: string
+          preference: string
+          protein_family: string
+        }
+        Insert: {
+          client_id: string
+          preference: string
+          protein_family: string
+        }
+        Update: {
+          client_id?: string
+          preference?: string
+          protein_family?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_protein_preferences_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_protein_preferences_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_protein_preferences_protein_family_fkey"
+            columns: ["protein_family"]
+            isOneToOne: false
+            referencedRelation: "protein_families"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
+      client_protein_spread: {
+        Row: {
+          client_id: string
+          count_per_cycle: number
+          protein_family: string
+        }
+        Insert: {
+          client_id: string
+          count_per_cycle: number
+          protein_family: string
+        }
+        Update: {
+          client_id?: string
+          count_per_cycle?: number
+          protein_family?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_protein_spread_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_protein_spread_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_protein_spread_protein_family_fkey"
+            columns: ["protein_family"]
+            isOneToOne: false
+            referencedRelation: "protein_families"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
+      client_requirements: {
+        Row: {
+          added_by: string | null
+          client_id: string
+          created_at: string
+          note: string | null
+          tag_id: string
+        }
+        Insert: {
+          added_by?: string | null
+          client_id: string
+          created_at?: string
+          note?: string | null
+          tag_id: string
+        }
+        Update: {
+          added_by?: string | null
+          client_id?: string
+          created_at?: string
+          note?: string | null
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_requirements_added_by_fkey"
+            columns: ["added_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_requirements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_requirements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_requirements_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_staff_access: {
+        Row: {
+          can_view_checkins: boolean
+          client_id: string
+          granted_at: string
+          granted_by: string | null
+          profile_id: string
+        }
+        Insert: {
+          can_view_checkins?: boolean
+          client_id: string
+          granted_at?: string
+          granted_by?: string | null
+          profile_id: string
+        }
+        Update: {
+          can_view_checkins?: boolean
+          client_id?: string
+          granted_at?: string
+          granted_by?: string | null
+          profile_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_staff_access_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_staff_access_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_staff_access_granted_by_fkey"
+            columns: ["granted_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_staff_access_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_structure: {
+        Row: {
+          batch_cooking: boolean
+          client_id: string
+          cycle_length_days: number | null
+          day_type_pattern: string[]
+          repeat_max_per_cycle: number | null
+          repeat_min_gap_days: number | null
+          updated_at: string
+        }
+        Insert: {
+          batch_cooking?: boolean
+          client_id: string
+          cycle_length_days?: number | null
+          day_type_pattern?: string[]
+          repeat_max_per_cycle?: number | null
+          repeat_min_gap_days?: number | null
+          updated_at?: string
+        }
+        Update: {
+          batch_cooking?: boolean
+          client_id?: string
+          cycle_length_days?: number | null
+          day_type_pattern?: string[]
+          repeat_max_per_cycle?: number | null
+          repeat_min_gap_days?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_structure_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_structure_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_supplements: {
+        Row: {
+          client_id: string
+          created_at: string
+          dose: string | null
+          ended_on: string | null
+          id: string
+          name: string
+          notes: string | null
+          position: number
+          started_on: string | null
+          timing: string | null
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          dose?: string | null
+          ended_on?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          position?: number
+          started_on?: string | null
+          timing?: string | null
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          dose?: string | null
+          ended_on?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          position?: number
+          started_on?: string | null
+          timing?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_supplements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_supplements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_targets: {
+        Row: {
+          calc_inputs: Json | null
+          carb_g: number | null
+          client_id: string
+          day_type: string
+          fat_g: number | null
+          fibre_g: number | null
+          id: string
+          kcal: number | null
+          note: string | null
+          protein_g: number | null
+          set_by: string | null
+          set_on: string
+          source: string
+        }
+        Insert: {
+          calc_inputs?: Json | null
+          carb_g?: number | null
+          client_id: string
+          day_type: string
+          fat_g?: number | null
+          fibre_g?: number | null
+          id?: string
+          kcal?: number | null
+          note?: string | null
+          protein_g?: number | null
+          set_by?: string | null
+          set_on?: string
+          source: string
+        }
+        Update: {
+          calc_inputs?: Json | null
+          carb_g?: number | null
+          client_id?: string
+          day_type?: string
+          fat_g?: number | null
+          fibre_g?: number | null
+          id?: string
+          kcal?: number | null
+          note?: string | null
+          protein_g?: number | null
+          set_by?: string | null
+          set_on?: string
+          source?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_targets_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_targets_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_targets_set_by_fkey"
+            columns: ["set_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_weights: {
+        Row: {
+          checkin_id: string | null
+          client_id: string
+          created_at: string
+          entered_by: string | null
+          id: string
+          note: string | null
+          recorded_on: string
+          source: string
+          weight_kg: number
+        }
+        Insert: {
+          checkin_id?: string | null
+          client_id: string
+          created_at?: string
+          entered_by?: string | null
+          id?: string
+          note?: string | null
+          recorded_on: string
+          source?: string
+          weight_kg: number
+        }
+        Update: {
+          checkin_id?: string | null
+          client_id?: string
+          created_at?: string
+          entered_by?: string | null
+          id?: string
+          note?: string | null
+          recorded_on?: string
+          source?: string
+          weight_kg?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_weights_checkin_id_fkey"
+            columns: ["checkin_id"]
+            isOneToOne: false
+            referencedRelation: "client_checkins"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_weights_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_weights_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_weights_entered_by_fkey"
+            columns: ["entered_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clients: {
+        Row: {
+          activity_level: string | null
+          assigned_dietitian: string | null
+          carb_target_g: number | null
+          created_at: string
+          date_of_birth: string | null
+          email: string | null
+          equation_sex: string | null
+          fat_target_g: number | null
+          fibre_target_g: number | null
+          full_name: string
+          height_cm: number | null
+          id: string
+          kcal_target: number | null
+          notes: string | null
+          phone: string | null
+          protein_g_per_kg: number | null
+          protein_target_g: number | null
+          restrictions: string[]
+          sex: string
+          status: string
+        }
+        Insert: {
+          activity_level?: string | null
+          assigned_dietitian?: string | null
+          carb_target_g?: number | null
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string | null
+          equation_sex?: string | null
+          fat_target_g?: number | null
+          fibre_target_g?: number | null
+          full_name: string
+          height_cm?: number | null
+          id?: string
+          kcal_target?: number | null
+          notes?: string | null
+          phone?: string | null
+          protein_g_per_kg?: number | null
+          protein_target_g?: number | null
+          restrictions?: string[]
+          sex?: string
+          status?: string
+        }
+        Update: {
+          activity_level?: string | null
+          assigned_dietitian?: string | null
+          carb_target_g?: number | null
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string | null
+          equation_sex?: string | null
+          fat_target_g?: number | null
+          fibre_target_g?: number | null
+          full_name?: string
+          height_cm?: number | null
+          id?: string
+          kcal_target?: number | null
+          notes?: string | null
+          phone?: string | null
+          protein_g_per_kg?: number | null
+          protein_target_g?: number | null
+          restrictions?: string[]
+          sex?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clients_activity_level_fkey"
+            columns: ["activity_level"]
+            isOneToOne: false
+            referencedRelation: "activity_levels"
+            referencedColumns: ["key"]
+          },
+          {
+            foreignKeyName: "clients_assigned_dietitian_fkey"
+            columns: ["assigned_dietitian"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -185,6 +944,13 @@ export type Database = {
           tag_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "food_tags_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
           {
             foreignKeyName: "food_tags_food_id_fkey"
             columns: ["food_id"]
@@ -219,6 +985,13 @@ export type Database = {
             foreignKeyName: "food_unit_exclusions_food_id_fkey"
             columns: ["food_id"]
             isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "food_unit_exclusions_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
             referencedRelation: "foods"
             referencedColumns: ["food_id"]
           },
@@ -230,6 +1003,7 @@ export type Database = {
           aisle: string | null
           calcium_100g: number | null
           carb_avail_100g: number | null
+          default_size: string | null
           density_g_ml: number | null
           display_name: string
           energy_kcal_100g: number | null
@@ -242,6 +1016,8 @@ export type Database = {
           match_note: string | null
           potassium_100g: number | null
           protein_100g: number | null
+          protein_family: string | null
+          role: string | null
           satfat_100g: number | null
           sodium_100g: number | null
           source: Database["public"]["Enums"]["food_source"]
@@ -255,6 +1031,7 @@ export type Database = {
           aisle?: string | null
           calcium_100g?: number | null
           carb_avail_100g?: number | null
+          default_size?: string | null
           density_g_ml?: number | null
           display_name: string
           energy_kcal_100g?: number | null
@@ -267,6 +1044,8 @@ export type Database = {
           match_note?: string | null
           potassium_100g?: number | null
           protein_100g?: number | null
+          protein_family?: string | null
+          role?: string | null
           satfat_100g?: number | null
           sodium_100g?: number | null
           source: Database["public"]["Enums"]["food_source"]
@@ -280,6 +1059,7 @@ export type Database = {
           aisle?: string | null
           calcium_100g?: number | null
           carb_avail_100g?: number | null
+          default_size?: string | null
           density_g_ml?: number | null
           display_name?: string
           energy_kcal_100g?: number | null
@@ -292,6 +1072,8 @@ export type Database = {
           match_note?: string | null
           potassium_100g?: number | null
           protein_100g?: number | null
+          protein_family?: string | null
+          role?: string | null
           satfat_100g?: number | null
           sodium_100g?: number | null
           source?: Database["public"]["Enums"]["food_source"]
@@ -299,6 +1081,38 @@ export type Database = {
           verified?: boolean
           vitamin_b12_100g?: number | null
           zinc_100g?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "foods_protein_family_fkey"
+            columns: ["protein_family"]
+            isOneToOne: false
+            referencedRelation: "protein_families"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
+      goal_types: {
+        Row: {
+          active: boolean
+          category: string
+          key: string
+          label: string
+          position: number
+        }
+        Insert: {
+          active?: boolean
+          category: string
+          key: string
+          label: string
+          position?: number
+        }
+        Update: {
+          active?: boolean
+          category?: string
+          key?: string
+          label?: string
+          position?: number
         }
         Relationships: []
       }
@@ -338,8 +1152,29 @@ export type Database = {
             foreignKeyName: "ingredient_lines_food_id_fkey"
             columns: ["food_id"]
             isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
             referencedRelation: "foods"
             referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
           },
           {
             foreignKeyName: "ingredient_lines_recipe_id_fkey"
@@ -390,6 +1225,7 @@ export type Database = {
           meal_plan_id: string
           meal_slot: string | null
           position: number
+          profile_id: string | null
           recipe_id: string
           servings_override: number | null
         }
@@ -399,6 +1235,7 @@ export type Database = {
           meal_plan_id: string
           meal_slot?: string | null
           position: number
+          profile_id?: string | null
           recipe_id: string
           servings_override?: number | null
         }
@@ -408,6 +1245,7 @@ export type Database = {
           meal_plan_id?: string
           meal_slot?: string | null
           position?: number
+          profile_id?: string | null
           recipe_id?: string
           servings_override?: number | null
         }
@@ -418,6 +1256,27 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "meal_plans"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
           },
           {
             foreignKeyName: "meal_plan_items_recipe_id_fkey"
@@ -458,6 +1317,13 @@ export type Database = {
             foreignKeyName: "meal_plans_client_id_fkey"
             columns: ["client_id"]
             isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "meal_plans_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
             referencedRelation: "clients"
             referencedColumns: ["id"]
           },
@@ -483,6 +1349,20 @@ export type Database = {
           text?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "method_steps_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "method_steps_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
           {
             foreignKeyName: "method_steps_recipe_id_fkey"
             columns: ["recipe_id"]
@@ -525,6 +1405,207 @@ export type Database = {
         }
         Relationships: []
       }
+      protein_families: {
+        Row: {
+          active: boolean
+          key: string
+          label: string
+          position: number
+        }
+        Insert: {
+          active?: boolean
+          key: string
+          label: string
+          position?: number
+        }
+        Update: {
+          active?: boolean
+          key?: string
+          label?: string
+          position?: number
+        }
+        Relationships: []
+      }
+      recipe_profile_deltas: {
+        Row: {
+          base_food_id: string | null
+          base_quantity: number | null
+          base_section: string | null
+          base_unit: string | null
+          id: string
+          kind: string
+          line_ref: string | null
+          new_food_id: string | null
+          new_quantity: number | null
+          new_unit: string | null
+          position: number
+          profile_id: string
+        }
+        Insert: {
+          base_food_id?: string | null
+          base_quantity?: number | null
+          base_section?: string | null
+          base_unit?: string | null
+          id?: string
+          kind: string
+          line_ref?: string | null
+          new_food_id?: string | null
+          new_quantity?: number | null
+          new_unit?: string | null
+          position?: number
+          profile_id: string
+        }
+        Update: {
+          base_food_id?: string | null
+          base_quantity?: number | null
+          base_section?: string | null
+          base_unit?: string | null
+          id?: string
+          kind?: string
+          line_ref?: string | null
+          new_food_id?: string | null
+          new_quantity?: number | null
+          new_unit?: string | null
+          position?: number
+          profile_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recipe_profile_deltas_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      recipe_profiles: {
+        Row: {
+          base_fingerprint: string | null
+          created_at: string
+          id: string
+          name: string
+          origin: string
+          position: number
+          recipe_id: string
+          verified: boolean
+          verified_fingerprint: string | null
+        }
+        Insert: {
+          base_fingerprint?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          origin?: string
+          position?: number
+          recipe_id: string
+          verified?: boolean
+          verified_fingerprint?: string | null
+        }
+        Update: {
+          base_fingerprint?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          origin?: string
+          position?: number
+          recipe_id?: string
+          verified?: boolean
+          verified_fingerprint?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recipe_profiles_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipe_profiles_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipe_profiles_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      recipe_signoffs: {
+        Row: {
+          id: string
+          recipe_id: string
+          revoke_note: string | null
+          revoked_at: string | null
+          revoked_by: string | null
+          signed_at: string
+          signed_by: string | null
+          signed_by_name: string
+        }
+        Insert: {
+          id?: string
+          recipe_id: string
+          revoke_note?: string | null
+          revoked_at?: string | null
+          revoked_by?: string | null
+          signed_at?: string
+          signed_by?: string | null
+          signed_by_name: string
+        }
+        Update: {
+          id?: string
+          recipe_id?: string
+          revoke_note?: string | null
+          revoked_at?: string | null
+          revoked_by?: string | null
+          signed_at?: string
+          signed_by?: string | null
+          signed_by_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recipe_signoffs_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipe_signoffs_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipe_signoffs_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "recipe_signoffs_revoked_by_fkey"
+            columns: ["revoked_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "recipe_signoffs_signed_by_fkey"
+            columns: ["signed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       recipe_tag_overrides: {
         Row: {
           action: Database["public"]["Enums"]["override_action"]
@@ -542,6 +1623,20 @@ export type Database = {
           tag_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "recipe_tag_overrides_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipe_tag_overrides_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
           {
             foreignKeyName: "recipe_tag_overrides_recipe_id_fkey"
             columns: ["recipe_id"]
@@ -575,6 +1670,20 @@ export type Database = {
           tag_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "recipe_tags_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipe_tags_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
           {
             foreignKeyName: "recipe_tags_recipe_id_fkey"
             columns: ["recipe_id"]
@@ -630,6 +1739,20 @@ export type Database = {
             foreignKeyName: "recipes_variant_of_fkey"
             columns: ["variant_of"]
             isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipes_variant_of_fkey"
+            columns: ["variant_of"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "recipes_variant_of_fkey"
+            columns: ["variant_of"]
+            isOneToOne: false
             referencedRelation: "recipes"
             referencedColumns: ["id"]
           },
@@ -661,6 +1784,112 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      swap_suggestions: {
+        Row: {
+          applies_for_tag_id: string
+          id: string
+          notes: string | null
+          position: number
+          suggestion_food_id: string | null
+          suggestion_name: string
+          trigger_food_id: string | null
+          trigger_tag_id: string | null
+        }
+        Insert: {
+          applies_for_tag_id: string
+          id?: string
+          notes?: string | null
+          position?: number
+          suggestion_food_id?: string | null
+          suggestion_name: string
+          trigger_food_id?: string | null
+          trigger_tag_id?: string | null
+        }
+        Update: {
+          applies_for_tag_id?: string
+          id?: string
+          notes?: string | null
+          position?: number
+          suggestion_food_id?: string | null
+          suggestion_name?: string
+          trigger_food_id?: string | null
+          trigger_tag_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "swap_suggestions_applies_for_tag_id_fkey"
+            columns: ["applies_for_tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "swap_suggestions_suggestion_food_id_fkey"
+            columns: ["suggestion_food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "swap_suggestions_suggestion_food_id_fkey"
+            columns: ["suggestion_food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "swap_suggestions_trigger_food_id_fkey"
+            columns: ["trigger_food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "swap_suggestions_trigger_food_id_fkey"
+            columns: ["trigger_food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "swap_suggestions_trigger_tag_id_fkey"
+            columns: ["trigger_tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tag_blockers: {
+        Row: {
+          blocks_tag_id: string
+          tag_id: string
+        }
+        Insert: {
+          blocks_tag_id: string
+          tag_id: string
+        }
+        Update: {
+          blocks_tag_id?: string
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tag_blockers_blocks_tag_id_fkey"
+            columns: ["blocks_tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tag_blockers_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       tags: {
         Row: {
@@ -710,6 +1939,13 @@ export type Database = {
             foreignKeyName: "unit_conversions_food_id_fkey"
             columns: ["food_id"]
             isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "unit_conversions_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
             referencedRelation: "foods"
             referencedColumns: ["food_id"]
           },
@@ -717,6 +1953,266 @@ export type Database = {
       }
     }
     Views: {
+      client_blocked_tags: {
+        Row: {
+          because_label: string | null
+          because_tag_id: string | null
+          blocked_label: string | null
+          blocked_tag_id: string | null
+          client_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_requirements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_requirements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_requirements_tag_id_fkey"
+            columns: ["because_tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_current_targets: {
+        Row: {
+          calc_inputs: Json | null
+          carb_g: number | null
+          client_id: string | null
+          day_type: string | null
+          fat_g: number | null
+          fibre_g: number | null
+          id: string | null
+          kcal: number | null
+          note: string | null
+          protein_g: number | null
+          set_by: string | null
+          set_on: string | null
+          source: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_targets_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_targets_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_targets_set_by_fkey"
+            columns: ["set_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_overview: {
+        Row: {
+          assigned_dietitian: string | null
+          assigned_dietitian_name: string | null
+          client_id: string | null
+          default_kcal: number | null
+          full_name: string | null
+          latest_checkin_on: string | null
+          latest_weight_kg: number | null
+          latest_weight_on: string | null
+          plan_count: number | null
+          primary_goal: string | null
+          primary_goal_label: string | null
+          status: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_goals_goal_type_fkey"
+            columns: ["primary_goal"]
+            isOneToOne: false
+            referencedRelation: "goal_types"
+            referencedColumns: ["key"]
+          },
+          {
+            foreignKeyName: "clients_assigned_dietitian_fkey"
+            columns: ["assigned_dietitian"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_preferred_tags: {
+        Row: {
+          client_id: string | null
+          label: string | null
+          tag_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_requirements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_requirements_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_requirements_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      conversion_gaps: {
+        Row: {
+          affected_recipes: number | null
+          food_id: string | null
+          unit: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ingredient_lines_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
+        ]
+      }
+      food_leverage: {
+        Row: {
+          blocked_recipes: number | null
+          display_name: string | null
+          food_id: string | null
+          used_in_recipes: number | null
+          verified: boolean | null
+        }
+        Relationships: []
+      }
+      line_grams: {
+        Row: {
+          food_id: string | null
+          grams: number | null
+          id: string | null
+          quantity: number | null
+          recipe_id: string | null
+          unit: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ingredient_lines_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      line_priceability: {
+        Row: {
+          food_id: string | null
+          id: string | null
+          priced: boolean | null
+          recipe_id: string | null
+          unit: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ingredient_lines_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       recipe_effective_tags: {
         Row: {
           from_override: boolean | null
@@ -727,8 +2223,113 @@ export type Database = {
         }
         Relationships: []
       }
+      recipe_protein_families: {
+        Row: {
+          grams: number | null
+          is_main: boolean | null
+          protein_family: string | null
+          protein_family_label: string | null
+          recipe_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "foods_protein_family_fkey"
+            columns: ["protein_family"]
+            isOneToOne: false
+            referencedRelation: "protein_families"
+            referencedColumns: ["key"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_readiness"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipe_verification"
+            referencedColumns: ["recipe_id"]
+          },
+          {
+            foreignKeyName: "ingredient_lines_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      recipe_readiness: {
+        Row: {
+          has_data_issue: boolean | null
+          ready: boolean | null
+          recipe_id: string | null
+          title: string | null
+          total_lines: number | null
+          unpriced_lines: number | null
+          unverified_foods: number | null
+        }
+        Relationships: []
+      }
+      recipe_verification: {
+        Row: {
+          ai_verified: boolean | null
+          data_issue: string | null
+          has_image: boolean | null
+          has_title: boolean | null
+          line_count: number | null
+          reasons: string[] | null
+          recipe_id: string | null
+          signed_at: string | null
+          signed_by_name: string | null
+          signoff_on_hold: boolean | null
+          status: string | null
+          step_count: number | null
+          title: string | null
+          uncalculable_ingredients: string[] | null
+          uncalculable_line_count: number | null
+          unverified_food_count: number | null
+          unverified_food_names: string[] | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      can_access_client: { Args: { p_client_id: string }; Returns: boolean }
+      can_access_plan: { Args: { p_plan_id: string }; Returns: boolean }
+      can_view_checkins: { Args: { p_client_id: string }; Returns: boolean }
+      client_energy_inputs: {
+        Args: { p_as_of?: string; p_client_id: string }
+        Returns: {
+          activity_factor: number
+          activity_key: string
+          activity_label: string
+          as_of: string
+          client_id: string
+          date_of_birth: string
+          equation_sex: string
+          height_cm: number
+          protein_g_per_kg: number
+          sex: string
+          weighed_on: string
+          weight_kg: number
+        }[]
+      }
+      client_recipe_screen: {
+        Args: { p_client_id: string }
+        Returns: {
+          liked_protein: boolean
+          main_protein_families: string[]
+          preferred_tags: string[]
+          reasons: string[]
+          recipe_id: string
+          status: string
+        }[]
+      }
+      current_staff_role: { Args: never; Returns: string }
       delete_user: { Args: { target_id: string }; Returns: undefined }
       get_invitation: {
         Args: { p_token: string }
@@ -739,6 +2340,26 @@ export type Database = {
         }[]
       }
       is_admin: { Args: never; Returns: boolean }
+      is_clinician: { Args: never; Returns: boolean }
+      is_staff: { Args: never; Returns: boolean }
+      reason_list: {
+        Args: { items: string[]; max_items?: number }
+        Returns: string
+      }
+      revoke_recipe_signoff: {
+        Args: { p_note?: string; p_recipe_id: string }
+        Returns: Json
+      }
+      save_client_structure: {
+        Args: {
+          p_client_id: string
+          p_protein_spread: Json
+          p_settings: Json
+          p_slots: Json
+        }
+        Returns: undefined
+      }
+      sign_off_recipe: { Args: { p_recipe_id: string }; Returns: Json }
     }
     Enums: {
       food_source: "afcd" | "custom"
@@ -759,12 +2380,12 @@ export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -788,11 +2409,11 @@ export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -813,11 +2434,11 @@ export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -838,11 +2459,11 @@ export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -855,11 +2476,11 @@ export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never = never,
+    : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -869,9 +2490,6 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
-  graphql_public: {
-    Enums: {},
-  },
   public: {
     Enums: {
       food_source: ["afcd", "custom"],
@@ -880,4 +2498,3 @@ export const Constants = {
     },
   },
 } as const
-
