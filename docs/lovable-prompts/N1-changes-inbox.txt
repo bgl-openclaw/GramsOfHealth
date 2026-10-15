@@ -1,0 +1,30 @@
+Grams Editor — N1: "Changes to review" inbox, food change history, verified-food warning, and no-guessing line warnings
+
+The backend is DONE and live (migration 0032). Do NOT create migrations, tables, policies or functions. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. No hard-coded practice names, colours or emails in new code.
+
+BACKEND CONTRACT
+- Every new food, food edit/delete, unit-conversion change (incl. default sizes) and food tag change is logged automatically by the database in change_log. Readable by clinicians (admin, dietitian) only.
+- View changes_to_review (unreviewed only): id, entity ('food' | 'unit_conversion' | 'food_tag'), food_id, food_name, action ('insert' | 'update' | 'delete'), summary (plain words — show verbatim), auto_unverified (boolean), changed_at, changed_by, changed_by_name ('System / import' when no person), food_verified_now (null if the food was deleted), changes (jsonb detail).
+- RPC mark_changes_reviewed({ p_ids: number[] | null }) → number marked. null = mark everything currently unreviewed. Clinicians only.
+- Automatic rule: if someone changes a VERIFIED food's kcal/protein/fat/carbs/fibre per 100 g, its density, or its allergen/diet tags, the database marks it UNVERIFIED (never the other way). Its recipes drop to Needs review until a dietitian re-verifies the food.
+
+BUILD
+1. Menu (src/routes/_app.tsx): add "Changes" to the Admin group, visible to dietitian and admin only, with a count badge of unreviewed changes: supabase.from("changes_to_review").select("id", { count: "exact", head: true }). Refresh on load, every 60 s, on window focus, and right after marking items reviewed.
+2. New page src/routes/_app.changes.tsx ("/changes"), clinicians only (others are redirected home):
+   - Newest first, grouped by local date. Each item: the summary verbatim, "by NAME · TIME", a type chip (Food / Size & conversion / Tag), a red "Verification removed" badge when auto_unverified, "Open food" (to /foods/$id) when food_verified_now is not null, and "Mark reviewed" (mark_changes_reviewed with [id]).
+   - "Mark all reviewed" (mark_changes_reviewed with null) after a confirm dialog.
+   - Filters: type, and "Verification removed only". Empty state: "Nothing to review — every change has been checked."
+3. Food page (src/routes/_app.foods.$id.tsx), clinicians only: a "Change history" section — select from change_log where food_id = this food, newest first, limit 50: date/time, who (names from profiles), summary, and "reviewed" / "not reviewed yet".
+4. Food page edit: when the food is verified, show a note next to the nutrition fields: "Changing kcal, protein, fat, carbs, fibre, density or allergen/diet tags marks this food unverified until a dietitian re-checks it." After any save, use the row the database returns; if the food went from verified to unverified, show a warning toast "This food is now unverified — please re-check and verify it."
+5. Recipe editor (src/routes/_app.recipes.$id.tsx) — no silent guesses. For each ingredient line call resolveUnitSource(food, unit, conversions) from src/lib/engine.ts (import only; do not edit engine.ts):
+   - grams 0 / viaUnit null → red line note: "Can't be weighed: no "UNIT" weight for FOOD. Add a conversion or set a default size." with a link to the food page.
+   - viaUnit is set but different from the line's unit (the engine guessed) → amber line note: "Guessed as VIAUNIT (GRAMS g) — set a default size on FOOD so this isn't a guess." Replace any existing "using medium" note with this.
+
+ACCEPTANCE (signed in as a dietitian; use throwaway data and delete it after)
+1. Create food "ZZ Test food", tick verified, then change its protein → after save the food shows unverified with the warning toast; Changes shows "ZZ Test food: verified yes → no; protein/100 g … — verification removed (values changed)" with the red badge; the menu badge count matches the list.
+2. Add a conversion "each = 50 g" to ZZ Test food → a "Size & conversion" item "added "each" = 50 g". Delete ZZ Test food → one item "Deleted food: ZZ Test food" (no extra items for its conversions).
+3. "Mark reviewed" on one item removes it and the badge drops by 1; "Mark all reviewed" empties the list.
+4. An intern sees no "Changes" menu item and /changes redirects.
+5. Recipe editor: a recipe with "1 each Carrot" shows the amber "Guessed as medium (129 g)…" note; change a line's unit to one the food has no weight for → the red "Can't be weighed" note.
+
+REPORT BACK: files changed (one line each); confirm engine.ts / adjust.ts / energy.ts untouched and no migrations; results for 1–5 you could run and which need a signed-in person.
