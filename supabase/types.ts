@@ -104,6 +104,66 @@ export type Database = {
         }
         Relationships: []
       }
+      change_log: {
+        Row: {
+          action: string
+          auto_unverified: boolean
+          changed_at: string
+          changed_by: string | null
+          changes: Json
+          entity: string
+          food_id: string
+          food_name: string | null
+          id: number
+          reviewed_at: string | null
+          reviewed_by: string | null
+          summary: string
+        }
+        Insert: {
+          action: string
+          auto_unverified?: boolean
+          changed_at?: string
+          changed_by?: string | null
+          changes?: Json
+          entity: string
+          food_id: string
+          food_name?: string | null
+          id?: never
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          summary: string
+        }
+        Update: {
+          action?: string
+          auto_unverified?: boolean
+          changed_at?: string
+          changed_by?: string | null
+          changes?: Json
+          entity?: string
+          food_id?: string
+          food_name?: string | null
+          id?: never
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          summary?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "change_log_changed_by_fkey"
+            columns: ["changed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "change_log_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_checkins: {
         Row: {
           answers: Json
@@ -850,66 +910,48 @@ export type Database = {
         Row: {
           activity_level: string | null
           assigned_dietitian: string | null
-          carb_target_g: number | null
           created_at: string
           date_of_birth: string | null
           email: string | null
           equation_sex: string | null
-          fat_target_g: number | null
-          fibre_target_g: number | null
           full_name: string
           height_cm: number | null
           id: string
-          kcal_target: number | null
           notes: string | null
           phone: string | null
           protein_g_per_kg: number | null
-          protein_target_g: number | null
-          restrictions: string[]
           sex: string
           status: string
         }
         Insert: {
           activity_level?: string | null
           assigned_dietitian?: string | null
-          carb_target_g?: number | null
           created_at?: string
           date_of_birth?: string | null
           email?: string | null
           equation_sex?: string | null
-          fat_target_g?: number | null
-          fibre_target_g?: number | null
           full_name: string
           height_cm?: number | null
           id?: string
-          kcal_target?: number | null
           notes?: string | null
           phone?: string | null
           protein_g_per_kg?: number | null
-          protein_target_g?: number | null
-          restrictions?: string[]
           sex?: string
           status?: string
         }
         Update: {
           activity_level?: string | null
           assigned_dietitian?: string | null
-          carb_target_g?: number | null
           created_at?: string
           date_of_birth?: string | null
           email?: string | null
           equation_sex?: string | null
-          fat_target_g?: number | null
-          fibre_target_g?: number | null
           full_name?: string
           height_cm?: number | null
           id?: string
-          kcal_target?: number | null
           notes?: string | null
           phone?: string | null
           protein_g_per_kg?: number | null
-          protein_target_g?: number | null
-          restrictions?: string[]
           sex?: string
           status?: string
         }
@@ -1953,6 +1995,31 @@ export type Database = {
       }
     }
     Views: {
+      changes_to_review: {
+        Row: {
+          action: string | null
+          auto_unverified: boolean | null
+          changed_at: string | null
+          changed_by: string | null
+          changed_by_name: string | null
+          changes: Json | null
+          entity: string | null
+          food_id: string | null
+          food_name: string | null
+          food_verified_now: boolean | null
+          id: number | null
+          summary: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "change_log_changed_by_fkey"
+            columns: ["changed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_blocked_tags: {
         Row: {
           because_label: string | null
@@ -2301,6 +2368,7 @@ export type Database = {
       can_access_client: { Args: { p_client_id: string }; Returns: boolean }
       can_access_plan: { Args: { p_plan_id: string }; Returns: boolean }
       can_view_checkins: { Args: { p_client_id: string }; Returns: boolean }
+      change_log_fmt: { Args: { v: Json }; Returns: string }
       client_energy_inputs: {
         Args: { p_as_of?: string; p_client_id: string }
         Returns: {
@@ -2331,6 +2399,7 @@ export type Database = {
       }
       current_staff_role: { Args: never; Returns: string }
       delete_user: { Args: { target_id: string }; Returns: undefined }
+      food_field_label: { Args: { k: string }; Returns: string }
       get_invitation: {
         Args: { p_token: string }
         Returns: {
@@ -2342,6 +2411,7 @@ export type Database = {
       is_admin: { Args: never; Returns: boolean }
       is_clinician: { Args: never; Returns: boolean }
       is_staff: { Args: never; Returns: boolean }
+      mark_changes_reviewed: { Args: { p_ids?: number[] }; Returns: number }
       reason_list: {
         Args: { items: string[]; max_items?: number }
         Returns: string
