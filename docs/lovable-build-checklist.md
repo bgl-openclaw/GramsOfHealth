@@ -304,3 +304,7 @@ ACCEPTANCE
 
 REPORT BACK: files changed; confirm engine.ts/adjust.ts untouched; acceptance 1–4 results.
 ```
+
+## C4a — Clients: identity, targets + calculator, requirements, team access, planner switch
+Prompt: `docs/lovable-prompts/C4a-clients.txt` (embeds packages/energy/src/index.ts verbatim as src/lib/energy.ts).
+Contract: `docs/clients-contract.md`. Verify after: energy.ts diff vs packages/energy, no reads of old target columns / restrictions / RESTRICTION_BLOCKERS, library Suitable-for parity.

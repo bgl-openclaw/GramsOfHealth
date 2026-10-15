@@ -1,0 +1,332 @@
+Grams Editor — Clients C4a: identity, targets + calculator, requirements, team access, and switching the plan editor + library to the new client data
+
+The backend is DONE and live (migrations 0026–0031). Do NOT create migrations, tables, policies, functions or edge functions. Do NOT edit src/lib/engine.ts or src/lib/adjust.ts. Row-level security in the database decides who can see and do what; the UI mirrors it (hide what a role can't do) but never relies on hiding for safety.
+
+ROLES: profiles.role is now 'admin' | 'dietitian' | 'intern' | 'pending'. "Clinician" = admin or dietitian. Interns only see clients a clinician has ticked for them, never clinical records, and cannot set targets.
+
+1. ROLES IN THE APP
+- src/lib/users.ts: UserRole = "pending" | "intern" | "dietitian" | "admin".
+- Users page: the role select offers pending, intern, dietitian, admin; the invite dialog offers intern, dietitian, admin; RoleBadge gets a distinct intern style. Users page visibility is unchanged (admin + dietitian).
+
+2. NEW FILE src/lib/energy.ts — copy EXACTLY the file between the BEGIN/END lines. Do not reformat, rename, re-indent or "improve" it; I diff it against the backend copy. Also add src/lib/energy.test.ts exactly as given.
+
+----- BEGIN src/lib/energy.ts -----
+// @goh/energy — Mifflin-St Jeor energy estimate. A helper that PROPOSES;
+// the dietitian's saved targets are always the numbers that count.
+//
+//   BMR (kcal/day) = 10 × weight_kg + 6.25 × height_cm − 5 × age_years + s
+//   s = +5 (male), −161 (female)
+//   TDEE = BMR × activity factor
+//
+// Pure: no I/O, no clock. The caller passes the calculation date (`as_of`).
+// Lovable keeps a byte-identical copy at src/lib/energy.ts — change both together.
+
+export type SexConstant = "male" | "female";
+export type RecordedSex = "female" | "male" | "other" | "unspecified";
+
+export const SEX_CONSTANT: Record<SexConstant, number> = { male: 5, female: -161 };
+
+/** Warn when the most recent weight is older than this many days. */
+export const STALE_WEIGHT_DAYS = 90;
+
+export type ActivityLevel = { key: string; label: string; factor: number };
+
+export type EnergyInputs = {
+  /** ISO date (YYYY-MM-DD) the calculation is for. */
+  as_of: string;
+  weight_kg: number | null;
+  /** ISO date of the weight entry used. */
+  weighed_on: string | null;
+  height_cm: number | null;
+  /** ISO date of birth. */
+  date_of_birth: string | null;
+  sex: RecordedSex | null;
+  /** Constant the dietitian chose when sex is other/unspecified. Ignored for male/female. */
+  equation_sex: SexConstant | null;
+  activity: ActivityLevel | null;
+  /** Dietitian-entered g/kg. No default is ever imposed. */
+  protein_g_per_kg: number | null;
+};
+
+export type EnergyResult =
+  | {
+      ok: true;
+      bmr: number;
+      /** null until an activity level is chosen. */
+      tdee: number | null;
+      /** Nearest 10 kcal, for display only. */
+      bmr_display: number;
+      tdee_display: number | null;
+      age_years: number;
+      sex_constant: SexConstant;
+      /** true when the constant came from the dietitian's choice (sex other/unspecified). */
+      sex_constant_chosen: boolean;
+      factor: number | null;
+      protein_g: number | null;
+      /** Every input with its date, so the dietitian can see where the number came from. */
+      working: {
+        as_of: string;
+        weight_kg: number;
+        weighed_on: string | null;
+        height_cm: number;
+        date_of_birth: string;
+        age_years: number;
+        sex: RecordedSex | null;
+        sex_constant: SexConstant;
+        activity: ActivityLevel | null;
+        protein_g_per_kg: number | null;
+      };
+      warnings: string[];
+    }
+  | { ok: false; missing: string[]; message: string };
+
+const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
+
+function parseIsoDate(s: string): [number, number, number] | null {
+  const m = ISO_DATE.exec(s.slice(0, 10));
+  if (!m) return null;
+  return [Number(m[1]), Number(m[2]), Number(m[3])];
+}
+
+/**
+ * Completed years on `asOf`. A 29 Feb birthday counts as reached on 1 Mar in
+ * non-leap years (matches Postgres age()). Null if either date is invalid or
+ * the birth date is after `asOf`.
+ */
+export function ageInYears(dateOfBirth: string, asOf: string): number | null {
+  const b = parseIsoDate(dateOfBirth);
+  const a = parseIsoDate(asOf);
+  if (!b || !a) return null;
+  let age = a[0] - b[0];
+  if (a[1] < b[1] || (a[1] === b[1] && a[2] < b[2])) age -= 1;
+  return age < 0 ? null : age;
+}
+
+function daysBetween(from: string, to: string): number | null {
+  const f = parseIsoDate(from);
+  const t = parseIsoDate(to);
+  if (!f || !t) return null;
+  return Math.round((Date.UTC(t[0], t[1] - 1, t[2]) - Date.UTC(f[0], f[1] - 1, f[2])) / 86_400_000);
+}
+
+export function mifflinBmr(weightKg: number, heightCm: number, ageYears: number, sex: SexConstant): number {
+  return 10 * weightKg + 6.25 * heightCm - 5 * ageYears + SEX_CONSTANT[sex];
+}
+
+export function roundToNearest10(kcal: number): number {
+  return Math.round(kcal / 10) * 10;
+}
+
+export function proteinSuggestion(gPerKg: number, weightKg: number): number {
+  return gPerKg * weightKg;
+}
+
+const LABEL = {
+  weight: "weight",
+  height: "height",
+  dob: "date of birth",
+  sex: "equation sex (choose male or female constant)",
+} as const;
+
+export function estimateEnergy(input: EnergyInputs): EnergyResult {
+  const missing: string[] = [];
+  const weight = input.weight_kg != null && input.weight_kg > 0 ? input.weight_kg : null;
+  const height = input.height_cm != null && input.height_cm > 0 ? input.height_cm : null;
+  if (weight == null) missing.push(LABEL.weight);
+  if (height == null) missing.push(LABEL.height);
+
+  let age: number | null = null;
+  if (!input.date_of_birth) missing.push(LABEL.dob);
+  else {
+    age = ageInYears(input.date_of_birth, input.as_of);
+    if (age == null) missing.push(LABEL.dob);
+  }
+
+  let sexConstant: SexConstant | null = null;
+  let chosen = false;
+  if (input.sex === "male" || input.sex === "female") sexConstant = input.sex;
+  else if (input.equation_sex === "male" || input.equation_sex === "female") {
+    sexConstant = input.equation_sex;
+    chosen = true;
+  } else missing.push(LABEL.sex);
+
+  if (missing.length > 0 || weight == null || height == null || age == null || sexConstant == null) {
+    return { ok: false, missing, message: `Can't calculate yet — missing ${missing.join(", ")}.` };
+  }
+
+  const warnings: string[] = [];
+  if (age < 18) warnings.push("Mifflin-St Jeor is validated for adults; this client is under 18.");
+  if (input.weighed_on) {
+    const d = daysBetween(input.weighed_on, input.as_of);
+    if (d != null && d > STALE_WEIGHT_DAYS) warnings.push(`Latest weight is ${d} days old (${input.weighed_on}).`);
+  }
+  if (!input.activity) warnings.push("Choose an activity level to get TDEE.");
+
+  const bmr = mifflinBmr(weight, height, age, sexConstant);
+  const factor = input.activity ? input.activity.factor : null;
+  const tdee = factor != null ? bmr * factor : null;
+  const protein =
+    input.protein_g_per_kg != null && input.protein_g_per_kg > 0 ? proteinSuggestion(input.protein_g_per_kg, weight) : null;
+
+  return {
+    ok: true,
+    bmr,
+    tdee,
+    bmr_display: roundToNearest10(bmr),
+    tdee_display: tdee != null ? roundToNearest10(tdee) : null,
+    age_years: age,
+    sex_constant: sexConstant,
+    sex_constant_chosen: chosen,
+    factor,
+    protein_g: protein,
+    working: {
+      as_of: input.as_of,
+      weight_kg: weight,
+      weighed_on: input.weighed_on,
+      height_cm: height,
+      date_of_birth: input.date_of_birth!,
+      age_years: age,
+      sex: input.sex,
+      sex_constant: sexConstant,
+      activity: input.activity,
+      protein_g_per_kg: input.protein_g_per_kg,
+    },
+    warnings,
+  };
+}
+
+/** Row shape returned by the client_energy_inputs(client_id, as_of) RPC. */
+export type ClientEnergyInputsRow = {
+  client_id: string;
+  as_of: string;
+  weight_kg: number | string | null;
+  weighed_on: string | null;
+  height_cm: number | string | null;
+  date_of_birth: string | null;
+  sex: RecordedSex | null;
+  equation_sex: SexConstant | null;
+  activity_key: string | null;
+  activity_label: string | null;
+  activity_factor: number | string | null;
+  protein_g_per_kg: number | string | null;
+};
+
+const num = (v: number | string | null): number | null => (v == null || v === "" ? null : Number(v));
+
+/** Adapter: the RPC row → EnergyInputs (Postgres numerics may arrive as strings). */
+export function energyInputsFromRow(row: ClientEnergyInputsRow): EnergyInputs {
+  const factor = num(row.activity_factor);
+  return {
+    as_of: row.as_of,
+    weight_kg: num(row.weight_kg),
+    weighed_on: row.weighed_on,
+    height_cm: num(row.height_cm),
+    date_of_birth: row.date_of_birth,
+    sex: row.sex,
+    equation_sex: row.equation_sex,
+    activity:
+      row.activity_key && factor != null
+        ? { key: row.activity_key, label: row.activity_label ?? row.activity_key, factor }
+        : null,
+    protein_g_per_kg: num(row.protein_g_per_kg),
+  };
+}
+----- END src/lib/energy.ts -----
+
+----- BEGIN src/lib/energy.test.ts -----
+import { describe, it, expect } from "vitest";
+import { estimateEnergy, type EnergyInputs } from "./energy";
+
+const base = (o: Partial<EnergyInputs>): EnergyInputs => ({
+  as_of: "2026-10-15", weight_kg: null, weighed_on: "2026-10-15", height_cm: null,
+  date_of_birth: null, sex: null, equation_sex: null, activity: null, protein_g_per_kg: null, ...o,
+});
+const act = (factor: number) => ({ key: "k", label: "k", factor });
+
+describe("Mifflin-St Jeor acceptance fixtures", () => {
+  it("1. male 80/180/30, moderately active", () => {
+    const r = estimateEnergy(base({ sex: "male", weight_kg: 80, height_cm: 180, date_of_birth: "1996-10-15", activity: act(1.55) }));
+    expect(r.ok && r.bmr).toBe(1780);
+    expect(r.ok && r.tdee).toBe(2759);
+  });
+  it("2. female 65/165/40, sedentary", () => {
+    const r = estimateEnergy(base({ sex: "female", weight_kg: 65, height_cm: 165, date_of_birth: "1986-10-15", activity: act(1.2) }));
+    expect(r.ok && r.bmr).toBe(1320.25);
+    expect(r.ok && r.tdee).toBe(1584.3);
+  });
+  it("3. female 58/160/25, very active", () => {
+    const r = estimateEnergy(base({ sex: "female", weight_kg: 58, height_cm: 160, date_of_birth: "2001-10-15", activity: act(1.725) }));
+    expect(r.ok && r.bmr).toBe(1294);
+    expect(r.ok && r.tdee).toBe(2232.15);
+  });
+  it("4. missing inputs → no result, message names them", () => {
+    const r = estimateEnergy(base({ sex: "female" }));
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.message).toBe("Can't calculate yet — missing weight, height, date of birth.");
+  });
+  it("5. protein 1.8 g/kg at 70 kg", () => {
+    const r = estimateEnergy(base({ sex: "male", weight_kg: 70, height_cm: 175, date_of_birth: "1990-01-01", protein_g_per_kg: 1.8 }));
+    expect(r.ok && r.protein_g).toBe(126);
+  });
+});
+----- END src/lib/energy.test.ts -----
+
+3. DATA LAYER (extend src/lib/clients.ts, typed)
+- Client gains: date_of_birth (YYYY-MM-DD | null), sex ('female' | 'male' | 'other' | 'unspecified'), equation_sex ('male' | 'female' | null), height_cm, activity_level (string | null), assigned_dietitian (uuid | null), status ('active' | 'paused' | 'finished'), protein_g_per_kg.
+- saveClient must STOP sending kcal_target, protein_target_g, carb_target_g, fat_target_g, fibre_target_g and restrictions (leave those columns untouched; they are dropped later).
+- listClientOverview(): view client_overview (paged) — for the clients list.
+- listActivityLevels(), listGoalTypes(): active rows ordered by position.
+- Goals: listClientGoals(clientId); addClientGoal({goal_type, detail, target_date, is_primary}); endClientGoal(id) sets ended_on = today. At most one active primary goal per client (the database enforces it — when choosing a new primary, un-primary or end the old one first).
+- Weights: listClientWeights(clientId) newest first; addClientWeight({weight_kg, recorded_on, note}); deleteClientWeight(id).
+- Targets: listCurrentTargets(clientId) from view client_current_targets; listTargetHistory(clientId) from client_targets ordered by set_on desc; addTarget({client_id, day_type, kcal, protein_g, carb_g, fat_g, fibre_g, source, calc_inputs, note}) — ALWAYS insert a new row (history is append-only; never update a target row). day_type: 'default' | 'hard' | 'moderate' | 'rest'.
+- Calculator: getClientEnergyInputs(clientId, asOf) = supabase.rpc("client_energy_inputs", { p_client_id, p_as_of }) (one row) → energyInputsFromRow(row) → estimateEnergy(…).
+- Requirements: listClientRequirements(clientId), addClientRequirement(clientId, tagId), removeClientRequirement(clientId, tagId); listTagBlockers() from table tag_blockers (tag_id → blocks_tag_id).
+- Team access: listClientStaffAccess(clientId); setClientStaffAccess(clientId, profileId, canViewCheckins) (upsert); removeClientStaffAccess(clientId, profileId).
+- Screening: getClientRecipeScreen(clientId) = supabase.rpc("client_recipe_screen", { p_client_id }) → Map<recipe_id, {status, reasons, preferred_tags, main_protein_families, liked_protein}>. status is 'blocked' | 'unconfirmed' | 'disliked' | 'ok'; show reasons verbatim.
+
+4. CLIENT EDITOR (src/components/ClientEditor.tsx and the client routes) — one page with a section nav (left on desktop, top on mobile): Identity · Targets · Requirements · Team access, then "Coming next" placeholders for Preferences, Variety & structure, Clinical, Check-ins, Plans.
+
+Identity
+- Full name*, email, phone, date of birth (date input; not in the future), sex (Female / Male / Other / Unspecified), "Equation constant" (Male / Female) shown ONLY when sex is Other or Unspecified, height (cm), activity level (select from activity_levels, shown like "Moderately active · ×1.55"), status (Active / Paused / Finished), assigned dietitian (profiles with role admin or dietitian), protein g/kg (number; blank allowed — never a default), notes labelled "Staff notes — never shown to clients".
+- Goals: primary goal (select from goal_types) with optional detail and target date; "Add another goal"; "End goal" sets ended_on = today; ended goals listed greyed under "Past goals".
+- Weight log: add weight (kg, date defaulting to today, note); list newest first with delete.
+
+Targets
+- Four cards: Default, Hard day, Moderate day, Rest day. Each shows the current kcal / protein / carbs / fat / fibre from client_current_targets, the source ("Dietitian" or "Calculator, accepted") and "Set by NAME · DATE". A card with no row says "Not set".
+- "Edit" on a card (clinicians only) opens a form; Save INSERTS a new target row with source 'dietitian'. A "History" toggle lists every past row for that day type (date, set by, source, values).
+- Calculator panel (Mifflin–St Jeor), with an "As of" date defaulting to today. Load getClientEnergyInputs(client, asOf) → estimateEnergy:
+  • result.ok false → show result.message exactly (it names what is missing) with links to the Identity fields. Nothing else.
+  • result.ok true → show BMR (bmr_display kcal), the activity factor, TDEE (tdee_display kcal — or the "Choose an activity level" warning), the protein suggestion (rounded g, only when g/kg is set), every warning, and a "Working" list with each input and its date: weight (kg, weighed on DATE), height, date of birth → age in years as of DATE, sex and "constant: male/female (chosen by dietitian)" when it was chosen, activity level and factor.
+  • "Use for" day-type select + "Accept" (clinicians only; disabled while TDEE is null) opens that day type's target form PREFILLED with kcal = tdee_display and protein = round(protein_g) when present; carbs/fat/fibre prefilled from that day type's current target, else blank. The dietitian can change any number. Save INSERTS a target with source 'calculator_accepted' and calc_inputs = { ...result.working, bmr: result.bmr, tdee: result.tdee, factor: result.factor, protein_g: result.protein_g, suggested: { kcal: result.tdee_display, protein_g: rounded protein or null } }. Nothing is saved until Save is pressed.
+- Interns see Targets read-only (no Edit, no Accept).
+
+Requirements (replaces the old "Dietary restrictions" section and its free-text "Add custom restriction")
+- Three chip groups built from tags: "Must avoid" = tags with kind 'allergen'; "Follows a diet" = diet tags (kind 'dietary' or category 'diet') that have tag_blockers rows; "Prefer" = diet tags with no tag_blockers rows (e.g. Heart-healthy, Diabetes-friendly). Toggling a chip writes or deletes client_requirements immediately.
+- Below the chips, a read-only line: "Recipes containing Egg, Dairy, … are excluded" — the union of allergen picks and the tag_blockers of diet picks.
+
+Team access (clinicians only; hidden from interns)
+- List every profile with role 'intern' with two ticks: "Can see this client" and "Can see check-ins" (the second is enabled only when the first is ticked). Ticks write client_staff_access (insert / upsert / delete). Empty state: "No interns yet — invite one from Users."
+
+5. CLIENTS LIST (src/routes/_app.clients.index.tsx)
+- Read client_overview. Columns: Name, Status, Dietitian, Primary goal, Latest weight (kg · date), Default kcal, Last check-in, # plans.
+- Quick filters: Active / Paused / Finished, and keep "Has plan". Remove the old free-text restriction filter; old ?restrictions= links are simply ignored.
+- "New client" is clinician-only (hidden for interns).
+
+6. SWITCH THE PLAN EDITOR AND LIBRARY TO THE NEW DATA (critical — the old columns are dropped after this ships)
+- src/routes/_app.plans.$id.index.tsx: targets come from client_current_targets, using the 'default' day type for every day for now (per-weekday day types arrive in the Plans build). Conflict warnings come from client_recipe_screen(client): each plan item shows a badge — blocked = red "Blocked" with the first reason (tooltip lists all reasons verbatim); unconfirmed = amber "Unconfirmed"; disliked = grey "Disliked". Adding a blocked or unconfirmed recipe shows a warning toast with the reasons but is still allowed (the dietitian decides).
+- RecipePicker, when the plan has a client: the same badge on each recipe and a "Hide blocked" toggle, on by default.
+- Recipe library "Suitable for" filter (src/routes/_app.recipes.index.tsx): build the blockers from the tag_blockers table instead of the hard-coded RESTRICTION_BLOCKERS. Results for Vegan, Vegetarian, Gluten-free, Dairy-free and Nut-free must be identical to today.
+- Then delete RESTRICTION_BLOCKERS and restrictionConflicts from src/lib/planner.ts.
+- Anything else that reads clients.kcal_target / protein_target_g / carb_target_g / fat_target_g / fibre_target_g or clients.restrictions switches too.
+
+ACCEPTANCE — use a NEW client named "TEST — delete me" (delete it at the end; everything attached deletes with it)
+1. Code search: no remaining reads of kcal_target, protein_target_g, carb_target_g, fat_target_g, fibre_target_g, client ".restrictions", RESTRICTION_BLOCKERS or restrictionConflicts (generated types excluded). Name the search you ran.
+2. src/lib/energy.ts is identical to the provided file; energy.test.ts passes (5 fixtures).
+3. The existing client's Targets → Default card shows the same five numbers it had before; Hard / Moderate / Rest show "Not set".
+4. TEST client, no details yet: calculator shows "Can't calculate yet — missing weight, height, date of birth." Then set DOB 15 Oct 1996, sex Male, height 180, activity Moderately active, add weight 80 kg dated today → BMR 1780, TDEE 2760 (×1.55), and the Working list shows every input with its date. Accept for "Hard day" → the Hard card shows 2760 kcal, source "Calculator, accepted".
+5. Sex Other with no equation constant → the message names "equation sex"; choose Female → the result shows "constant: female (chosen by dietitian)".
+6. Requirements: tick Vegan → the line lists Meat, Fish, Shellfish, Dairy, Egg, Honey. Create a plan for the TEST client and add recipes → Blocked / Unconfirmed / Disliked badges appear; the picker hides blocked recipes by default.
+7. Library "Suitable for → Vegan" returns the same number of recipes as before the change.
+8. Users: the role select and invite dialog offer intern. With an intern user, Team access lists them and the ticks save.
+
+REPORT BACK: files changed (one line each); the exact search for item 1 and its result; confirm engine.ts and adjust.ts untouched and no migrations created; results for 1–8 you could run, and which need a signed-in person.
