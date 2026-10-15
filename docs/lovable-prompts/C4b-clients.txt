@@ -1,6 +1,6 @@
 Grams Editor — Clients C4b: Preferences, Variety & structure, food protein family, recipe-fit summary
 
-The backend is DONE and live. Do NOT create migrations, tables, policies or functions. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Keep the C4a patterns (src/lib/clients.ts data helpers, ClientEditor sections, localToday() for dates). Interns stay read-only in these sections (clinicians edit), like Identity and Requirements. Don't hard-code any practice name, colour or email in new code.
+The backend is DONE and live. Do NOT create migrations, tables, policies or functions. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Keep the C4a patterns (src/lib/clients.ts data helpers, ClientEditor sections, localToday() for dates). INTERN EDITING (owner decision): an intern can only ever open clients allocated to them, and on those clients they may EDIT Identity, Goals, Weight log, Requirements, Preferences and Variety & structure — the database already allows this. Change C4a's ClientEditor so those sections are editable for role 'intern' too (today they are read-only). Still clinician-only (admin/dietitian): Targets (Edit and calculator Accept), Team access, Delete client, and later Clinical. Don't hard-code any practice name, colour or email in new code.
 
 1. DATA LAYER (add to src/lib/clients.ts, typed)
 - Food rules (table client_food_rules; primary key client_id+food_id): listClientFoodRules(clientId); upsertClientFoodRule({client_id, food_id, rule: 'avoid'|'dislike', primary_only, note}) with onConflict "client_id,food_id"; deleteClientFoodRule(clientId, foodId). The database refuses primary_only=true with rule 'avoid'.
@@ -40,6 +40,6 @@ ACCEPTANCE — on a "TEST — delete me" client (delete it afterwards)
 3. Food page "Chicken, breast": set Protein family = Chicken. On the TEST client set Chicken → Dislike → recipes whose main protein is chicken show "disliked protein: Chicken"; set Like → those reasons disappear.
 4. Supplements: add, edit, set an end date (row hides until "Show ended"), delete.
 5. Structure: cycle 7, no repeat within 3, max 2 per cycle, batch cooking on, pattern Mon Hard · Tue Moderate · Wed Rest · Thu Default · Fri Hard · Sat Rest · Sun Default, "Start with Breakfast, Lunch, Dinner, Snacks", spread Chicken 3 · Fish 2 → Save → reload shows exactly that. Rename Lunch to "Dinner" (duplicate name) → Save shows a database error and the previous structure stays.
-6. An intern allocated to the TEST client sees these sections read-only.
+6. An intern allocated to the TEST client can edit Identity, Goals, Weights, Requirements, Preferences and Variety & structure; they see Targets read-only (no Edit/Accept) and no Team access or Delete client.
 
 REPORT BACK: files changed (one line each); confirm engine.ts / adjust.ts / energy.ts untouched and no migrations; results for 1–6 you could run and which need a signed-in person.
