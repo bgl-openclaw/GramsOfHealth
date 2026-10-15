@@ -255,3 +255,52 @@ REPORT BACK
 - Confirm: src/lib/engine.ts and src/lib/adjust.ts untouched.
 - Results for acceptance items 1–7.
 ```
+
+## P5 — food default size (backend: migration 0025, live 2026-10-15)
+
+```text
+Grams Editor — default size per food
+
+The backend is DONE and live (migration 0025). Do NOT create migrations, tables or triggers.
+Do NOT edit src/lib/engine.ts or src/lib/adjust.ts (if you need the new field on a type, extend it
+in the data layer: type FoodRow = Food & { default_size?: string | null }).
+
+BACKEND CONTRACT
+- foods.default_size text|null — the size unit that a recipe line written as "each" means for this
+  food (e.g. "medium", "large", "medium stalk", "medium head").
+- Setting it (normal supabase update on foods) makes the database write/refresh the food's "each"
+  conversion = that size's grams. The database keeps them in sync: editing the size's grams updates
+  "each"; deleting the default size row clears default_size; hand-editing "each" to a different
+  value clears default_size (each becomes a manual value). The database REFUSES a default that is
+  not one of the food's own conversion units, or "each" itself — show the error message as-is.
+- A "size unit" = any conversion unit containing small / medium / large / regular / extra large
+  (case-insensitive), e.g. "medium", "large fillet", "small head", "medium stalk".
+
+BUILD
+1. Food page (src/routes/_app.foods.$id.tsx), conversions section:
+   - When the food has at least one size unit, show "Default size" — a select listing each size unit
+     with its grams (e.g. "medium · 129 g") plus "None". Saving writes foods.default_size, then
+     reloads the conversions list.
+   - Helper text: "Recipes that say 'each' use this size."
+   - When default_size is set, show the "each" row as "each = medium (129 g) · default" and do not
+     offer inline edit on it (change the default instead). "None" stops the sync but keeps the
+     current "each" row as a normal editable conversion.
+2. Adding a conversion (same page): when the new unit is a size unit, show a checkbox
+   "Make this the default size" — ticked by default if the food has no default yet, unticked if it
+   already has one. After the conversion is saved, if ticked, update foods.default_size to it.
+3. Review queue (src/components/NeedsAttention.tsx) SizeFix: instead of writing an "each"
+   conversion directly, set foods.default_size to the chosen size (pre-select "medium" when the
+   food has it). Button label: "Set default size = {size}". Everything else unchanged.
+
+ACCEPTANCE
+1. "Egg, whole" food page: Default size shows "large · 51 g"; the each row reads
+   "each = large (51 g) · default" and has no inline edit.
+2. "Sweet potato, orange" (medium 150 g, large 220 g, no each): choose Default size = medium → an each
+   row appears = 150 g. Change to large → each = 220 g. Set None → each stays 220 g and becomes editable.
+   (Then delete that each row to leave the food as it was.)
+3. On any food without sizes, add conversion "medium" = 100 g with the checkbox ticked → default
+   becomes medium and each = 100 g. Delete the medium row → default clears; each stays (delete it too).
+4. Choosing a default the database refuses shows its message; nothing else changes.
+
+REPORT BACK: files changed; confirm engine.ts/adjust.ts untouched; acceptance 1–4 results.
+```
