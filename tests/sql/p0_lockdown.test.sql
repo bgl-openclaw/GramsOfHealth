@@ -1,4 +1,4 @@
--- tests/sql/p0_lockdown.test.sql — live test of migration 0038 (+ 0040's new tables) (always rolls back).
+-- tests/sql/p0_lockdown.test.sql — live test of migration 0038 (+ the tables added since) (always rolls back).
 --   pass → "ALL PASS (rolled back)"   fail → "FAIL: ..."
 -- Impersonates the earliest profile as each role in turn (request.jwt.claims +
 -- SET ROLE authenticated) and checks what that role can see and change.
@@ -9,7 +9,8 @@ declare
     'recipe_profile_deltas', 'recipe_profiles', 'recipe_tag_overrides', 'recipe_tags', 'recipes',
     'swap_suggestions', 'tags', 'unit_conversions', 'afcd_master', 'recipe_signoffs',
     'clients', 'meal_plans', 'meal_plan_items', 'meal_plan_versions', 'change_log',
-    'intake_questions', 'intake_sections', 'client_areas', 'client_intake', 'client_intake_log'];
+    'intake_questions', 'intake_sections', 'client_areas', 'client_intake', 'client_intake_log',
+    'credential_types', 'staff_credentials'];
   staff_sees text := ''; other_sees text := '';
   nprofiles int;
 begin
@@ -31,7 +32,8 @@ begin
       execute format('select count(*) from public.%I', t) into n;
       if r in ('admin', 'dietitian', 'intern') then
         -- staff: full library; client-scoped tables follow their own rules (intern unallocated → none)
-        if t in ('clients', 'meal_plans', 'meal_plan_items', 'meal_plan_versions', 'change_log', 'client_intake', 'client_intake_log') then
+        if t in ('clients', 'meal_plans', 'meal_plan_items', 'meal_plan_versions', 'change_log', 'client_intake', 'client_intake_log',
+                 'staff_credentials') then
           null;
         elsif n <> base then raise exception 'FAIL % sees %/% rows of %', r, n, base, t;
         end if;

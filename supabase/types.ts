@@ -1166,6 +1166,48 @@ export type Database = {
           },
         ]
       }
+      credential_types: {
+        Row: {
+          active: boolean
+          has_issuer: boolean
+          has_number: boolean
+          has_state: boolean
+          help: string | null
+          key: string
+          label: string
+          position: number
+          renew_months: number | null
+          required_for: string[]
+          roles: string[]
+        }
+        Insert: {
+          active?: boolean
+          has_issuer?: boolean
+          has_number?: boolean
+          has_state?: boolean
+          help?: string | null
+          key: string
+          label: string
+          position?: number
+          renew_months?: number | null
+          required_for?: string[]
+          roles?: string[]
+        }
+        Update: {
+          active?: boolean
+          has_issuer?: boolean
+          has_number?: boolean
+          has_state?: boolean
+          help?: string | null
+          key?: string
+          label?: string
+          position?: number
+          renew_months?: number | null
+          required_for?: string[]
+          roles?: string[]
+        }
+        Relationships: []
+      }
       food_tags: {
         Row: {
           food_id: string
@@ -1785,6 +1827,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          bio: string | null
           created_at: string
           email: string | null
           full_name: string | null
@@ -1792,9 +1835,17 @@ export type Database = {
           job_title: string | null
           organisation: string | null
           phone: string | null
+          photo_path: string | null
+          placement_end: string | null
+          placement_start: string | null
+          preferred_name: string | null
+          pronouns: string | null
           role: string
+          supervisor_id: string | null
+          university: string | null
         }
         Insert: {
+          bio?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
@@ -1802,9 +1853,17 @@ export type Database = {
           job_title?: string | null
           organisation?: string | null
           phone?: string | null
+          photo_path?: string | null
+          placement_end?: string | null
+          placement_start?: string | null
+          preferred_name?: string | null
+          pronouns?: string | null
           role?: string
+          supervisor_id?: string | null
+          university?: string | null
         }
         Update: {
+          bio?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
@@ -1812,9 +1871,24 @@ export type Database = {
           job_title?: string | null
           organisation?: string | null
           phone?: string | null
+          photo_path?: string | null
+          placement_end?: string | null
+          placement_start?: string | null
+          preferred_name?: string | null
+          pronouns?: string | null
           role?: string
+          supervisor_id?: string | null
+          university?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "profiles_supervisor_id_fkey"
+            columns: ["supervisor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       protein_families: {
         Row: {
@@ -2195,6 +2269,79 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      staff_credentials: {
+        Row: {
+          checked_at: string | null
+          checked_by: string | null
+          created_at: string
+          expires_on: string | null
+          file_path: string | null
+          id: string
+          issued_on: string | null
+          issuer: string | null
+          note: string | null
+          number: string | null
+          profile_id: string
+          state: string | null
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          checked_at?: string | null
+          checked_by?: string | null
+          created_at?: string
+          expires_on?: string | null
+          file_path?: string | null
+          id?: string
+          issued_on?: string | null
+          issuer?: string | null
+          note?: string | null
+          number?: string | null
+          profile_id: string
+          state?: string | null
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          checked_at?: string | null
+          checked_by?: string | null
+          created_at?: string
+          expires_on?: string | null
+          file_path?: string | null
+          id?: string
+          issued_on?: string | null
+          issuer?: string | null
+          note?: string | null
+          number?: string | null
+          profile_id?: string
+          state?: string | null
+          type?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "staff_credentials_checked_by_fkey"
+            columns: ["checked_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "staff_credentials_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "staff_credentials_type_fkey"
+            columns: ["type"]
+            isOneToOne: false
+            referencedRelation: "credential_types"
+            referencedColumns: ["key"]
+          },
+        ]
       }
       swap_suggestions: {
         Row: {
@@ -2811,6 +2958,7 @@ export type Database = {
       }
       client_signup_queue: { Args: never; Returns: Json }
       client_tag_kind: { Args: { p_tag_id: string }; Returns: string }
+      credential_status: { Args: { p_due: string }; Returns: string }
       current_staff_role: { Args: never; Returns: string }
       delete_user: { Args: { target_id: string }; Returns: undefined }
       food_field_label: { Args: { k: string }; Returns: string }
@@ -2851,6 +2999,10 @@ export type Database = {
         Returns: Json
       }
       mark_changes_reviewed: { Args: { p_ids?: number[] }; Returns: number }
+      mark_credential_checked: {
+        Args: { p_checked: boolean; p_id: string }
+        Returns: Json
+      }
       merge_client_into: {
         Args: { p_from: string; p_into: string }
         Returns: Json
@@ -2945,6 +3097,7 @@ export type Database = {
       sign_off_recipe: { Args: { p_recipe_id: string }; Returns: Json }
       start_new_plan_version: { Args: { p_plan_id: string }; Returns: Json }
       submit_my_intake: { Args: never; Returns: Json }
+      team_compliance: { Args: never; Returns: Json }
       unlink_client_account: { Args: { p_client_id: string }; Returns: Json }
     }
     Enums: {
