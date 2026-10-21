@@ -29,7 +29,7 @@ Rev 2 replaces the detail of the build roadmap's 2A (plan model), 2B (generator 
 | 1A.4 meal types | **First pass done**: all 374 recipes in the dietitian's review list; classifier is draft 0046 |
 | Swap groups (rev 2 suggestions) | **Drafted**: 45 groups, 382 rows, in the dietitian's review |
 | 1B.1 energy-vs-macro check | Not built. The swap-group draft found **40 foods with suspect values** (e.g. haloumi 1,050 kcal, egg white 197 kcal, high-protein pasta 505 g carbs) |
-| 2A plan model | **P1b live** (0047, applied 22 Oct, gate C): food items, top-ups, item ingredient changes, leftovers, slot states, alternatives behind Swap, release dates, generator runs, confirm with notes, edit log, slot energy shares. 0049 (22 Oct): a moved meal takes its alternatives and top-ups; `use_plan_alternative` swaps in one step; the client app gets slot states. Lovable part A built and published; fix-up P1b-a.1 next, then part B |
+| 2A plan model | **P1b live** (0047, applied 22 Oct, gate C): food items, top-ups, item ingredient changes, leftovers, slot states, alternatives behind Swap, release dates, generator runs, confirm with notes, edit log, slot energy shares. 0049 (22 Oct): a moved meal takes its alternatives and top-ups; `use_plan_alternative` swaps in one step; the client app gets slot states. Lovable screens done (22 Oct): part A + fixes (P1b-a.1), part B + fixes (P1b-b.1), all reviewed against the database. Waiting on a signed-in end-to-end test |
 | 2A.7 rollupPlan | **Built** (`packages/rollup`, 11 tests) |
 | Supabase region (decision 15) | **Confirmed Sydney** (ap-southeast-2) |
 
