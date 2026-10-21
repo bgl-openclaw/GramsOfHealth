@@ -10,4 +10,6 @@ These are written and dry-run against the live database (rolled back), but **not
 
 To apply one, run it through the Supabase MCP `apply_migration` (as the live migrations were), run its test in `tests/sql/`, then move the file into `supabase/migrations/` in the same commit.
 
+"Deploy to production" in the Supabase GitHub integration is **off** (owner, 22 Oct 2026), so merging to `main` never changes the live database. Live changes go through `apply_migration` only.
+
 Note: production records migrations under timestamp versions (e.g. `20261021114316`), while files here are numbered `0001…`. Line the two up (rename the files to production's versions, or record the old ones in production's history) before anything is deployed from Git.
