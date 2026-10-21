@@ -1,4 +1,4 @@
--- tests/sql/staff_profiles_0045.test.sql — live test of migration 0045 (always rolls back).
+-- tests/sql/staff_profiles_0045.test.sql — live test of migrations 0045 and 0048 (always rolls back).
 --   pass → "ALL PASS (rolled back)"   fail → "FAIL: ..."
 -- Throwaway staff logins (@example.com) are created through the real sign-up trigger, then given roles.
 do $$
@@ -107,14 +107,23 @@ begin
   perform set_config('request.jwt.claim.sub', d1::text, true);
   execute 'set local role authenticated';
   d := team_compliance();
-  if not (d->>'ok')::boolean or jsonb_array_length(d->'people') <> 2
+  if not (d->>'ok')::boolean or jsonb_array_length(d->'people') <> (select count(*) from profiles where role in ('admin', 'dietitian', 'intern'))
      or not exists (select 1 from jsonb_array_elements(d->'people') p where (p->>'profile_id')::uuid = i1 and p->>'placement' = 'ended'
-                    and exists (select 1 from jsonb_array_elements(p->'items') x where x->>'type' = 'wwcc' and x->>'status' = 'current' and x->'number' = 'null'::jsonb))
+                    and (p->>'is_my_intern')::boolean
+                    and exists (select 1 from jsonb_array_elements(p->'items') x where x->>'type' = 'wwcc' and x->>'status' = 'current' and x->>'number' = 'WWC0001'))
+     or not exists (select 1 from jsonb_array_elements(d->'people') p where (p->>'profile_id')::uuid = i2 and not (p->>'is_my_intern')::boolean)
      or not exists (select 1 from jsonb_array_elements(d->'people') p where (p->>'is_me')::boolean
                     and exists (select 1 from jsonb_array_elements(p->'items') x where x->>'type' = 'apd' and x->>'status' = 'due_60' and x->>'number' = 'APD123'))
      or (d->>'needs_attention')::int <> 1 then raise exception 'FAIL T4a dietitian view %', d; end if;
   update credential_types set required_for = '{intern}' where key = 'police_check';
   get diagnostics n = row_count; if n <> 0 then raise exception 'FAIL T4b dietitian edited credential types'; end if;
+  -- 0048: a dietitian reads everyone's credentials but changes none of them
+  if not exists (select 1 from staff_credentials where profile_id = i1 and number = 'WWC0001') then raise exception 'FAIL T4e dietitian can''t read'; end if;
+  update staff_credentials set number = 'X' where profile_id = i1;
+  get diagnostics n = row_count; if n <> 0 then raise exception 'FAIL T4f dietitian edited someone else''s credential'; end if;
+  delete from staff_credentials where profile_id = i1;
+  get diagnostics n = row_count; if n <> 0 then raise exception 'FAIL T4g dietitian deleted someone else''s credential'; end if;
+  if (mark_credential_checked((select id from staff_credentials where profile_id = i1), true)->>'ok')::boolean then raise exception 'FAIL T4h dietitian ticked Checked'; end if;
   execute 'reset role';
   perform set_config('request.jwt.claims', json_build_object('sub', i1, 'role', 'authenticated')::text, true);
   perform set_config('request.jwt.claim.sub', i1::text, true);
@@ -135,7 +144,7 @@ begin
                     and exists (select 1 from jsonb_array_elements(p->'items') x where x->>'type' = 'wwcc' and x->>'number' = 'WWC0001'))
     then raise exception 'FAIL T4d admin view'; end if;
   execute 'reset role';
-  log := log || ' | T4 admin sees everyone with details; dietitian sees self + own interns (status only); intern sees self; required → Missing; placement ended flagged';
+  log := log || ' | T4 admin and dietitian see everyone in full (dietitian read-only, knows their own interns); intern sees self; required → Missing; placement ended flagged';
 
   -- T5 private documents: own folder (or admin) only
   perform set_config('request.jwt.claims', json_build_object('sub', d1, 'role', 'authenticated')::text, true);
@@ -149,13 +158,24 @@ begin
   perform set_config('request.jwt.claim.sub', i1::text, true);
   execute 'set local role authenticated';
   if exists (select 1 from storage.objects where bucket_id = 'staff-documents' and name like d1::text || '/%') then raise exception 'FAIL T5b intern read a dietitian''s file'; end if;
+  insert into storage.objects (bucket_id, name) values ('staff-documents', i1::text || '/wwcc-zz.pdf');
+  execute 'reset role';
+  -- 0048: a dietitian opens an intern's certificate
+  perform set_config('request.jwt.claims', json_build_object('sub', d1, 'role', 'authenticated')::text, true);
+  perform set_config('request.jwt.claim.sub', d1::text, true);
+  execute 'set local role authenticated';
+  if not exists (select 1 from storage.objects where bucket_id = 'staff-documents' and name = i1::text || '/wwcc-zz.pdf') then raise exception 'FAIL T5d dietitian can''t open a certificate'; end if;
   execute 'reset role';
   perform set_config('request.jwt.claims', json_build_object('sub', adm, 'role', 'authenticated')::text, true);
   perform set_config('request.jwt.claim.sub', adm::text, true);
   execute 'set local role authenticated';
   if not exists (select 1 from storage.objects where bucket_id = 'staff-documents' and name = d1::text || '/apd-zz.pdf') then raise exception 'FAIL T5c admin can''t read'; end if;
+  -- admins upload and record credentials for someone else
+  insert into storage.objects (bucket_id, name) values ('staff-documents', d1::text || '/cpr-by-admin.pdf');
+  insert into staff_credentials (profile_id, type, number, expires_on, file_path) values (d1, 'cpr', 'CPR-ADM', today + 300, d1::text || '/cpr-by-admin.pdf');
+  if not exists (select 1 from staff_credentials where profile_id = d1 and type = 'cpr') then raise exception 'FAIL T5e admin couldn''t add for someone'; end if;
   execute 'reset role';
-  log := log || ' | T5 documents: own folder or admin only';
+  log := log || ' | T5 documents: own folder; admins and dietitians open any; only the person or an admin uploads (admin for anyone)';
 
   raise exception 'ALL PASS (rolled back): %', log;
 end $$;
