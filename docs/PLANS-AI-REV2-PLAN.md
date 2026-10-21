@@ -122,7 +122,15 @@ The intern publishing gap can be closed on its own straight away (a small migrat
   - 11 tests cover a free-choice day, a leftover pair, a top-up, ingredient changes, an ingredient that can't be weighed (named, never zero), the tolerance bands and repeatability.
   - The whole suite (53 tests) passes.
 
-## Decisions needed (original list; 1, 2, 3 and 6 answered above)
+## Owner decisions (22 Oct 2026)
+
+- Confirmation only once a plan has a generator report: **agreed**. Whole-recipe quantities for item ingredient changes: **agreed, to watch**.
+- **Slot energy shares 25 / 30 / 30 / 15: agreed.** Tolerances go to a dietitian (`docs/DIETITIAN-REVIEW-PACK.md`).
+- **Swap groups:** drafted for the dietitian (`seed/swap_groups/`).
+- **Grammar fix:** none was ever drafted. The wording came from the 15 Oct roadmap. The repo and app copies of `parseTargetRequest` have drifted, and both miss common phrasings, so the fix is one shared grammar (item G in the combined roadmap).
+- **AI roadmaps combined** into `docs/ROADMAP-COMBINED.md`.
+
+## Decisions needed (original list; all answered above)
 
 1. **Go** on gate A (meal-type first pass and CSV, P1 schema dry-run, P2a package).
 2. Medium- and low-confidence meal types stay out of the generator until reviewed? (recommended: yes)

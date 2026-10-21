@@ -1,0 +1,383 @@
+Group,Group note,Food,Keep in group,Move to group,kcal /100 g,Protein,Fat,Carbs,Fibre,Allergens,Value check,Status,Used in recipes,Cross-role,Dietitian note,food_id,group_key
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).","Kangaroo mince, raw",x,,101.8,22.5,1.0,0.4,0.0,Meat,,new from AUSNUT (after it is applied),0,,,kangaroo_mince_raw,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).",Turkey mince,x,,117,21.6,3.3,0,0,Meat,,in the library (not verified),8,,,turkey_mince,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).","Beef mince, extra lean",x,,129,22.9,4.1,0,0,Meat,,in the library,33,,,beef_mince_lean,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).",Chicken mince,x,,136,19.2,6,1.1,0,Meat,,in the library,14,,,chicken_mince,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).",Lamb mince,x,,144,20.4,6.9,0,0,Meat,,in the library,7,,,lamb_mince,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).","Beef mince, lean",x,,170,22.4,8.9,0,0,Meat,,in the library,0,,,extra_lean_beef_mince,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).",Beef mince,x,,183,22.5,10.4,0,0,Meat,,in the library,9,,,beef_mince,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).",Pork mince,x,,179,20.9,10.6,0,0,Meat,,in the library (not verified),8,,,pork_mince,mince
+Mince,"Any mince for any mince, same weight. Biggest fat lever (beef 10 g → extra lean 4 g per 100 g).","Meat alternative, soy/pea protein (plant mince)",x,,225.6,19.4,13.4,3.2,4.4,"Gluten,  Soy",,new from AUSNUT (after it is applied),0,,,meat_alternative_soy_pea_protein,mince
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Duck breast, lean, raw",x,,91.5,21.2,0.6,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,duck_breast_lean_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Kangaroo fillet, raw",x,,101.8,22.5,1.0,0.4,0.0,Meat,,new from AUSNUT (after it is applied),0,,,kangaroo_fillet_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Pork Scotch Fillet,x,,103,23.1,1.1,0,0,Meat,,in the library (not verified),1,,,pork_scotch_fillet,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Veal, diced or strips, lean, raw",x,,107.1,23.1,1.5,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,veal_diced_or_strips_lean_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Venison, raw",x,,109.2,23.5,1.5,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,venison_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Chicken Breast Tenderloin,x,,114,23.6,1.6,0,0,Meat,,in the library,1,,,chicken_breast_tenderloin,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Chicken, breast",x,,105,22.3,1.6,0,0,Meat,,in the library,41,,,chicken_breast,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Pork Loin Steak,x,,112,24.1,1.6,0,0,Meat,,in the library (not verified),2,,,pork_loin_steak,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Pork, chop, lean, raw",x,,110.2,23.2,1.8,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,pork_chop_lean_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Beef, sirloin steak, lean, raw",x,,114.7,24.1,1.9,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,beef_sirloin_steak_lean_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Lean Stir-Fry Beef Strip,x,,128,27.2,2,0,0,Meat,,in the library,2,,,lean_stir_fry_beef_strip,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Beef strips,x,,130,27.14,2.24,0,0,Meat,,in the library,2,,,beef_strips,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Pork,x,,120,22.8,3.1,0,0,Meat,,in the library (not verified),3,,,pork,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Turkey breast, lean, raw",x,,117.1,21.6,3.3,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,turkey_breast_lean_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Beef rump steak, trimmed",x,,122,20.15,4.56,0,0,Meat,,in the library,6,,,beef_steak,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Lamb, loin chop, lean, raw",x,,160.4,28.6,5.0,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,lamb_loin_chop_lean_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Tenderloin Cut Raw Chicken,x,,165,28,5,0,0,Meat,,in the library (not verified),1,,,tenderloin_cut_raw_chicken,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Lamb Steak,x,,131,21.29,5.02,0,0,Meat,,in the library,0,,,lamb_steak,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Lamb, cutlet, lean, raw",x,,139.8,20.9,6.2,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,lamb_cutlet_lean_raw,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Chicken, thigh",x,,145,17.52,8.37,0,0,Meat,,in the library,11,,,chicken_thigh,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Lamb Backstrap,x,,201,29.8,9.1,0,0,Meat,,in the library,1,,,lamb_backstrap,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.","Beef rump steak, untrimmed",x,,195,18.91,13.35,0,0,Meat,,in the library,4,,,beef_rump,quick_cuts
+"Steak, fillet and stir-fry strips","Quick-cook cuts: grill, pan-fry or stir-fry. Chicken, beef, lamb, pork, kangaroo and game swap here.",Lamb Leg Steak,x,,553,10.8,57.6,0,0,Meat,fat looks too high for this cut,in the library,1,,,lamb_leg_steak,quick_cuts
+Roasts and bone-in pieces,"Roasting joints, drumsticks and wings. Weigh raw, with bone where the food says so.","Chicken, whole, lean, raw",x,,105.4,20.3,2.6,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,chicken_whole_lean_raw,roast_cuts
+Roasts and bone-in pieces,"Roasting joints, drumsticks and wings. Weigh raw, with bone where the food says so.","Beef, roast, topside, lean, raw",x,,117.1,22.3,3.0,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,beef_roast_topside_lean_raw,roast_cuts
+Roasts and bone-in pieces,"Roasting joints, drumsticks and wings. Weigh raw, with bone where the food says so.","Chicken wing, raw",x,,112.3,18.7,4.1,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,chicken_wing_raw,roast_cuts
+Roasts and bone-in pieces,"Roasting joints, drumsticks and wings. Weigh raw, with bone where the food says so.","Lamb, shoulder roast, lean, raw",x,,111.9,18.2,4.3,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,lamb_shoulder_roast_lean_raw,roast_cuts
+Roasts and bone-in pieces,"Roasting joints, drumsticks and wings. Weigh raw, with bone where the food says so.","Chicken drumstick, lean, raw",x,,117.6,18.5,4.8,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,chicken_drumstick_lean_raw,roast_cuts
+Roasts and bone-in pieces,"Roasting joints, drumsticks and wings. Weigh raw, with bone where the food says so.","Pork belly, raw",x,,307.4,18.6,26.2,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,pork_belly_raw,roast_cuts
+Slow-cook cuts,Braises and slow-cooker recipes.,"Lamb shank, lean, raw",x,,114.0,23.9,1.9,0.0,0.0,Meat,,new from AUSNUT (after it is applied),0,,,lamb_shank_lean_raw,slow_cuts
+Slow-cook cuts,Braises and slow-cooker recipes.,"Beef chuck, trimmed",x,,156,22.24,7.46,0,0,Meat,,in the library,0,,,beef_chuck_trimmed,slow_cuts
+Slow-cook cuts,Braises and slow-cooker recipes.,"Beef chuck, untrimmed",x,,181,21.67,10.45,0,0,Meat,,in the library,1,,,chuck_beef,slow_cuts
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Ling, raw",x,,82.7,19.0,0.6,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,ling_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Whiting, raw",x,,86.5,19.8,0.7,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,whiting_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Flathead, raw",x,,94.4,21.1,1.0,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,flathead_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Tuna steak, raw",x,,104.0,23.4,1.0,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,tuna_steak_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Blue grenadier (hoki), raw",x,,73.4,15.2,1.2,0.2,0.0,Fish,,new from AUSNUT (after it is applied),0,,,blue_grenadier,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Snapper, raw",x,,96.6,20.3,1.6,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,snapper_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Basa, raw",x,,79.3,15.7,1.8,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,basa_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).",Barramundi,x,,125,19.2,5.3,0,0,Fish,,in the library,1,,,barramundi_fillet,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).",White Fish Fillet,x,,150,22,7,0,0,Fish,same values as 3 other foods — probably a placeholder,in the library (not verified),2,,,white_fish_fillet,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Trout, raw",x,,154.2,19.6,8.4,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,trout_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Kingfish, raw",x,,205.1,22.9,12.7,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,kingfish_raw,fish_fillet
+Fish fillets,"Fresh fish fillets and steaks (not sashimi, not tinned).","Salmon, Atlantic",x,,231,20.5,16.7,0,0,Fish,,in the library (not verified),9,,,salmon,fish_fillet
+Tinned fish,Drained tinned fish.,Plain Tuna,x,,124,24.8,2.6,0,0,Fish,,in the library,1,,,plain_tuna,tinned_fish
+Tinned fish,Drained tinned fish.,Tin Tuna In Spring Water,x,,129,26.1,2.6,0,0,Fish,,in the library (not verified),1,,,tin_tuna_in_spring_water,tinned_fish
+Tinned fish,Drained tinned fish.,"Tuna, canned in brine, drained",x,,129.1,26.1,2.6,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,tuna_canned_in_brine_drained,tinned_fish
+Tinned fish,Drained tinned fish.,"Tuna, springwater, drained",x,,129,26.1,2.6,0,0,Fish,,in the library (not verified),4,,,tuna_springwater,tinned_fish
+Tinned fish,Drained tinned fish.,Sardine In,x,,106,19.7,2.9,0,0,Fish,,in the library (not verified),1,,,sardine_in,tinned_fish
+Tinned fish,Drained tinned fish.,"Salmon, canned, drained",x,,149.6,21.9,6.9,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,salmon_canned_drained,tinned_fish
+Tinned fish,Drained tinned fish.,"Anchovies, canned",x,,182.1,25.4,8.9,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,anchovies_canned,tinned_fish
+Tinned fish,Drained tinned fish.,"Tuna, canned in oil, drained",x,,220.4,24.4,13.7,0.0,0.0,Fish,,new from AUSNUT (after it is applied),0,,,tuna_canned_in_oil_drained,tinned_fish
+Tinned fish,Drained tinned fish.,"Mackerel, canned, drained",x,,215.6,18.4,14.9,2.2,0.1,Fish,,new from AUSNUT (after it is applied),0,,,mackerel_canned_drained,tinned_fish
+Sashimi-grade fish,Raw use only.,Sashimi Grade Tuna,x,,150,22,7,0,0,Fish,same values as 3 other foods — probably a placeholder,in the library (not verified),3,,,sashimi_grade_tuna,sashimi
+Sashimi-grade fish,Raw use only.,Sashimi-Grade Salmon,x,,150,22,7,0,0,Fish,same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,sashimi_grade_salmon,sashimi
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,Prawns,x,,89,20.5,0.6,0,0,"Fish, Shellfish",,in the library,6,,,prawn,seafood
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,"Crab meat, raw",x,,88.4,20.2,0.7,0.0,0.0,Shellfish,,new from AUSNUT (after it is applied),0,,,crab_meat_raw,seafood
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,"Lobster, raw",x,,88.4,20.2,0.7,0.0,0.0,Shellfish,,new from AUSNUT (after it is applied),0,,,lobster_raw,seafood
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,"Scallops, raw",x,,83.9,15.6,0.8,3.4,0.0,Shellfish,,new from AUSNUT (after it is applied),0,,,scallops_raw,seafood
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,"Octopus, raw",x,,69.8,14.9,1.0,0.0,0.0,Shellfish,,new from AUSNUT (after it is applied),0,,,octopus_raw,seafood
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,"Squid or calamari, raw",x,,78.4,16.7,1.2,0.0,0.0,Shellfish,,new from AUSNUT (after it is applied),0,,,squid_or_calamari_raw,seafood
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,"Mussels, cooked",x,,104.7,16.0,2.3,4.7,0.0,Shellfish,,new from AUSNUT (after it is applied),0,,,mussels_cooked,seafood
+Prawns and seafood,Shellfish allergy: never offered to a client with a shellfish block (the screen decides).,"Oysters, raw",x,,63.8,10.1,2.3,0.6,0.0,Shellfish,,new from AUSNUT (after it is applied),0,,,oysters_raw,seafood
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,Pastrami,x,,97.8,16.3,2.4,2.6,0.0,Meat,,new from AUSNUT (after it is applied),0,,,pastrami,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,Leg ham,x,,112,17,2.5,2,1.8,Meat,,in the library,5,,,leg_ham,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,"Chicken, roast, deli-sliced",x,,124.5,18.7,3.8,3.7,0.0,Meat,,new from AUSNUT (after it is applied),0,,,chicken_roast_deli_sliced,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,"Bacon, shortcut",x,,137,21.3,5.5,0.4,0,Meat,,in the library,0,,,bacon,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,"Turkey, roast, deli-sliced",x,,145.3,15.5,8.7,0.7,0.0,Meat,,new from AUSNUT (after it is applied),0,,,turkey_roast_deli_sliced,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,Short Cut Bacon,x,,210,22,13,1,0,Meat,,in the library (not verified),1,,,short_cut_bacon,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,Prosciutto,x,,293,30.8,18.8,0.3,0,Meat,,in the library (not verified),1,,,prosciutto,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,Chorizo,x,,283,20.1,22.1,1.2,0.5,Meat,,in the library,2,,,chorizo,deli
+"Deli meats, bacon and ham",Small amounts for flavour; leaner swaps cut fat and salt.,Salami,x,,345.4,21.9,28.3,0.4,0.5,Meat,,new from AUSNUT (after it is applied),0,,,salami,deli
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,Tin Butter Bean,x,,25,2.3,0.2,2.3,2.3,High-FODMAP,,in the library (not verified),1,,,tin_butter_bean,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Broad beans, canned, drained",x,,59.8,7.4,0.5,2.3,7.6,,,new from AUSNUT (after it is applied),0,,,broad_beans_canned_drained,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Broad beans, raw",x,,56.2,6.9,0.5,2.2,7.1,,,new from AUSNUT (after it is applied),0,,,broad_beans_raw,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Cannellini beans, canned, drained",x,,96.6,6.2,0.6,12.2,6.4,,,new from AUSNUT (after it is applied),0,,,cannellini_beans_canned_drained,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Kidney beans, drained",x,,105,6.6,0.6,14,6.5,High-FODMAP,,in the library,1,,,can_kidney_bean,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,Red Beans,x,,105,6.6,0.6,14,6.5,,,in the library,1,,,adzuki_bean,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Brown lentils, drained",x,,142,10,0.83,20.17,5.21,,,in the library,9,,,lentil_brown,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Green lentils, cooked",x,,142,10,0.83,20.17,5.21,,,in the library,2,,,lentil_green,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Four bean mix, canned",x,,71,5.6,0.9,12,7,,,in the library,1,,,four_bean_mix,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Pinto beans, canned, drained",x,,92.5,7.0,0.9,11.3,5.5,,,new from AUSNUT (after it is applied),0,,,pinto_beans_canned_drained,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Black beans, drained",x,,73,5,1,8.2,5.8,,,in the library,6,,,black_beans,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,Lentils/Kidney Bean,x,,299,22.5,1.8,35.6,21.5,High-FODMAP,"values look like dry weight, not drained",in the library,4,,,lentils_kidney_bean,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Lentils, red, dry",x,,326.0,23.0,1.9,45.7,13.7,,"values look like dry weight, not drained",new from AUSNUT (after it is applied),0,,,lentils_red_dry,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Refried beans, canned",x,,89.4,5.0,2.0,10.9,3.7,,,new from AUSNUT (after it is applied),0,,,refried_beans_canned,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Split peas, dry",x,,341.1,23.0,2.0,50.5,10.1,,"values look like dry weight, not drained",new from AUSNUT (after it is applied),0,,,split_peas_dry,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Chickpeas, drained",x,,113,6.3,2.1,13.3,5.7,High-FODMAP,,in the library,1,,,g_can_chickpea,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,"Soy beans, canned, drained",x,,104.7,8.6,5.5,1.9,4.8,Soy,,new from AUSNUT (after it is applied),0,,,soy_beans_canned_drained,legumes
+"Beans, lentils and chickpeas",Drained weight for drained weight; dry legumes only swap with dry.,Edamame beans,x,,160,12,8,12,1.3,Soy,,in the library,11,,,edamame,legumes
+"Firm and smoked tofu, tempeh","Savoury mains. Silken tofu is for desserts and smoothies, not here.","Tofu, firm",x,,120,12,7.3,0,3.5,Soy,,in the library,18,,,tofu_firm,tofu
+"Firm and smoked tofu, tempeh","Savoury mains. Silken tofu is for desserts and smoothies, not here.","Tofu, smoked",x,,129.8,12.8,8.3,0.0,1.0,Soy,,new from AUSNUT (after it is applied),0,,,tofu_smoked,tofu
+"Firm and smoked tofu, tempeh","Savoury mains. Silken tofu is for desserts and smoothies, not here.",Tempeh,x,,448.1,23.2,33.8,12.2,2.9,Soy,,new from AUSNUT (after it is applied),0,,,tempeh,tofu
+Eggs and egg whites,Swap some whole egg for whites to cut fat.,Egg white,x,,197,11.2,0,0.4,0,Egg,energy 197 kcal doesn't match its macros (~46 kcal),in the library,2,,,egg_white,eggs
+Eggs and egg whites,Swap some whole egg for whites to cut fat.,"Egg, whole",x,,127,12.6,8.5,0.3,0,Egg,,in the library,78,,,egg,eggs
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,High Protein Yoghurt,x,,55,8.3,0.2,4.9,0,"Dairy, High-FODMAP",,in the library,1,,,high_protein_yoghurt,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,"Yoghurt, natural, low fat (<0.5%)",x,,55.0,5.9,0.3,5.9,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,yoghurt_natural_low_fat,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,"Yoghurt, natural, reduced fat (~2%)",x,,70.5,5.4,1.5,7.8,0.1,Dairy,,new from AUSNUT (after it is applied),0,,,yoghurt_natural_reduced_fat,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,Tub Chobani Greek Yoghurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,tub_chobani_greek_yoghurt,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,Unsweetened Greek Yogurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,unsweetened_greek_yogurt,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,Natural yoghurt,x,,84,5.7,4.2,4.8,0,"Dairy, High-FODMAP",,in the library,5,,,natural_yoghurt,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,Lactose Free Greek Yoghurt,x,,123,6.4,7.9,6.8,0,"Dairy, High-FODMAP",,in the library,1,,,lactose_free_greek_yoghurt,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,"Greek style yoghurt, Farmers Union",x,,513,4.5,9.4,5.2,0,Dairy,energy 513 kcal doesn't match its macros (~123 kcal),in the library,0,,,yoghurt_farmer_union_greek,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,"Greek yoghurt, natural",x,,126,4.8,9.7,5.2,0,"Dairy, High-FODMAP",,in the library,34,,,greek_yoghurt,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,Plain Greek Yogurt,x,,129,3.8,10,6.1,0.8,Dairy,,in the library,1,,,plain_greek_yogurt,yoghurt_plain
+Plain yoghurt,Plain and Greek-style; high-protein versions lift protein. Coconut yoghurt is the dairy-free swap.,"Coconut yoghurt, natural",x,,140.8,1.1,11.8,7.0,1.3,,,new from AUSNUT (after it is applied),0,,,coconut_yoghurt_natural,yoghurt_plain
+Flavoured yoghurt,Sweetened yoghurts.,Vanilla Yopro Yogurt,x,,57,9.5,0.3,3.8,0.05,"Dairy, High-FODMAP",,in the library,1,,,vanilla_yopro_yogurt,yoghurt_flavoured
+Flavoured yoghurt,Sweetened yoghurts.,Yopro Vanilla Yoghurt,x,,57,9.5,0.3,3.8,0.05,Dairy,,in the library,1,,,yopro_vanilla_yoghurt,yoghurt_flavoured
+Flavoured yoghurt,Sweetened yoghurts.,Vanilla High Protein Yoghurt,x,,98,5,1.9,14.5,0.2,"Dairy, High-FODMAP",,in the library (not verified),1,,,vanilla_high_protein_yoghurt,yoghurt_flavoured
+Flavoured yoghurt,Sweetened yoghurts.,Tub Lemon Chobani Greek Yoghurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,tub_lemon_chobani_greek_yoghurt,yoghurt_flavoured
+Flavoured yoghurt,Sweetened yoghurts.,Vanilla Greek Yogurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,vanilla_greek_yogurt,yoghurt_flavoured
+Cottage cheese and ricotta,"Fresh cheeses for spreads, bakes and dips.","Cheese, quark",x,,82.0,13.6,1.1,2.9,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_quark,soft_cheese
+Cottage cheese and ricotta,"Fresh cheeses for spreads, bakes and dips.","Cottage cheese, low fat",x,,95,12.5,2.5,4.2,0,Dairy,,in the library,11,,,cottage_cheese_lf,soft_cheese
+Cottage cheese and ricotta,"Fresh cheeses for spreads, bakes and dips.",Light Cottage Cheese,x,,108,13.7,2.8,6.8,0,Dairy,,in the library,1,,,light_cottage_cheese,soft_cheese
+Cottage cheese and ricotta,"Fresh cheeses for spreads, bakes and dips.","Cheese, ricotta, reduced fat",x,,97.8,8.5,5.5,3.3,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_ricotta_reduced_fat,soft_cheese
+Cottage cheese and ricotta,"Fresh cheeses for spreads, bakes and dips.",Ricotta,x,,159,10.4,11.8,2.7,0,Dairy,,in the library,4,,,ricotta,soft_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.","Cheese, mozzarella, reduced fat",x,,267.0,31.3,15.3,0.0,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_mozzarella_reduced_fat,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Tasty cheese,x,,247,16.6,20.2,0,0,Dairy,,in the library (not verified),17,,,tasty_cheese,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Bocconcini,x,,265,17.9,20.3,3.4,0,Dairy,,in the library,2,,,bocconcini,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Mozzarella,x,,290,22.2,22.1,0,0,Dairy,,in the library,4,,,mozzarella,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.","Cheese, cheddar, reduced fat",x,,324.1,27.9,23.4,0.0,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_cheddar_reduced_fat,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Mozzarella Ball,x,,350,22,28,2,0,Dairy,same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,mozzarella_ball,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Taste Cheese,x,,350,22,28,2,0,Dairy,same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,taste_cheese,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Tub Cherry Bocconcini,x,,350,22,28,2,0,High-FODMAP,same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,tub_cherry_bocconcini,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Parmesan cheese,x,,404,35.1,28.8,0,0,Dairy,,in the library,11,,,parmesan,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.","Cheese, swiss",x,,386.0,28.2,30.0,0.1,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_swiss,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.","Cheese, gouda",x,,384.1,26.4,30.6,0.0,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_gouda,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.",Cheddar cheese,x,,384,25.32,31.02,0.42,0,Dairy,,in the library,5,,,cheddar,melting_cheese
+"Grated, sliced and melting cheese","Cheddar, tasty, mozzarella, bocconcini, parmesan.","Parmesan Cheese, grated",x,,468,39.9,34.3,1,0,Dairy,,in the library,1,,,freshly_grated_parmesan_cheese,melting_cheese
+"Feta, haloumi and goat's cheese",Plant-based feta is the dairy-free swap.,"Cheese, feta, reduced fat",x,,225.9,20.4,15.4,0.4,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_feta_reduced_fat,salty_cheese
+"Feta, haloumi and goat's cheese",Plant-based feta is the dairy-free swap.,Haloumi,x,,1050,21.3,17.1,1.8,0,,energy 1050 kcal doesn't match its macros (~246 kcal),in the library,2,,,haloumi,salty_cheese
+"Feta, haloumi and goat's cheese",Plant-based feta is the dairy-free swap.,Goat Cheese,x,,285,21.2,21.7,0.9,0,Dairy,,in the library,1,,,goat_cheese,salty_cheese
+"Feta, haloumi and goat's cheese",Plant-based feta is the dairy-free swap.,Plant Based Feta,x,,230,2,22,5,0.5,,,in the library (not verified),2,,,plant_based_feta,salty_cheese
+"Feta, haloumi and goat's cheese",Plant-based feta is the dairy-free swap.,Feta,x,,272,16.6,22.3,0.4,0,Dairy,,in the library,1,,,danish_feta,salty_cheese
+"Feta, haloumi and goat's cheese",Plant-based feta is the dairy-free swap.,Feta cheese,x,,272,16.6,22.3,0.4,0,Dairy,,in the library,11,,,feta,salty_cheese
+"Feta, haloumi and goat's cheese",Plant-based feta is the dairy-free swap.,Firm Feta,x,,287,17.7,24.1,1,0,Dairy,,in the library,1,,,firm_feta,salty_cheese
+"Brie, camembert and blue cheese",,"Cheese, camembert",x,,328.4,18.6,27.9,0.0,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_camembert,rich_cheese
+"Brie, camembert and blue cheese",,"Cheese, brie",x,,362.6,18.6,31.8,0.0,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_brie,rich_cheese
+"Brie, camembert and blue cheese",,"Cheese, blue vein",x,,370.9,19.1,32.9,0.3,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cheese_blue_vein,rich_cheese
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,"Milk, skim",x,,35,3.6,0,5.3,0,"Dairy, High-FODMAP",,in the library,2,,,skim_milk,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,Oat milk,x,,53.5,1.3,0.8,10.2,0.3,Gluten,,new from AUSNUT (after it is applied),0,,,oat_milk,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,Dairy Farmers Protein Low Fat Milk,x,,55,6,1.3,4.7,0,Dairy,,in the library,0,,,farmer_high_protein_milk,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,"Milk, reduced fat",x,,47,3.73,1.32,5.13,0,"Dairy, High-FODMAP",,in the library,32,,,milk,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,"Almond milk, unsweetened",x,,15.5,0.5,1.4,0.0,0.5,Tree nuts,,new from AUSNUT (after it is applied),0,,,almond_milk_unsweetened,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,Buttermilk,x,,57.8,4.2,2.0,5.4,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,buttermilk,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,"Soy milk, regular",x,,58.8,3.7,2.7,4.6,0.6,Soy,,new from AUSNUT (after it is applied),0,,,soy_milk_regular,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,Lactose Free Milk,x,,60,3.1,3.2,4.7,0,Dairy,,in the library (not verified),1,,,lactose_free_milk,milk
+Milk and milk alternatives,Owner rule: milk is not a protein family. Reduced-fat and skim cut fat; plant milks are the dairy-free swap (soy has the most protein).,"Milk, full cream",x,,64.5,3.3,3.4,5.4,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,milk_full_cream,milk
+Protein powders,Collagen is an incomplete protein — check before swapping it for whey.,Collagen powder,x,,358.98662,96,0,0,0,,,in the library,4,,,collagen_powder,protein_powder
+Protein powders,Collagen is an incomplete protein — check before swapping it for whey.,"Protein powder, plant based (reference only)",x,,358.3,68.4,4.5,5.9,9.1,,,new from AUSNUT (after it is applied),0,,,protein_powder_plant_based,protein_powder
+Protein powders,Collagen is an incomplete protein — check before swapping it for whey.,Protein Electrolyte,x,,375,75,5,8,2,,,in the library (not verified),1,,,protein_electrolyte,protein_powder
+Protein powders,Collagen is an incomplete protein — check before swapping it for whey.,Protein powder,x,,375,75,5,8,2,,,in the library (not verified),13,,,protein_powder,protein_powder
+Protein powders,Collagen is an incomplete protein — check before swapping it for whey.,Whey protein powder,x,,390,80,5,6,1,Dairy,,in the library (not verified),2,,,whey_protein,protein_powder
+Dips and spreads,"Hummus, tzatziki and labneh for wraps, bowls and snacks.",Tzatziki,x,,120,4,9,4.5,0.3,Dairy,,in the library (not verified),3,,,tzatziki,dips
+Dips and spreads,"Hummus, tzatziki and labneh for wraps, bowls and snacks.",Labneh,x,,138,8.7,10.5,2.5,0,"High-FODMAP, Honey",,in the library,0,,,honey_olive_oil_labneh,dips
+Dips and spreads,"Hummus, tzatziki and labneh for wraps, bowls and snacks.",Hummus,x,,248.3,6.9,19.5,9.4,3.9,Sesame,,new from AUSNUT (after it is applied),0,,,hummus,dips
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Microwavable Rice,x,,140,4,1,28,1.5,,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,microwavable_rice,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Microwave Brown Rice & Quinoa Pouch,x,,140,4,1,28,1.5,,same values as 10 other foods — probably a placeholder,in the library (not verified),5,,,microwave_brown_rice_quinoa_pouch,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Microwaveable Basmati Rice Pouch,x,,140,4,1,28,1.5,,same values as 10 other foods — probably a placeholder,in the library (not verified),4,,,microwaveable_basmati_rice_pouch,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Packet Microwave Rice,x,,140,4,1,28,1.5,,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,packet_microwave_rice,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Pear Cou Cou,x,,120,7.5,1,16,6,High-FODMAP,,in the library (not verified),1,,,pear_cou_cou,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Pearl Cou Cou,x,,120,7.5,1,16,6,,,in the library (not verified),1,,,pearl_cou_cou,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Microwave rice pouch,x,,150,3,1.5,30,1.4,,,in the library (not verified),18,,,rice_pouch,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,"Quinoa, cooked",x,,105,3.4,1.76,17.22,2.93,,,in the library,1,,,quinoa,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,"Brown rice and quinoa, microwaveable pouch",x,,171,4.1,2,31.9,3.8,,,in the library,1,,,brown_rice_and_quinoa_microwave_packet,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,"Basmati rice, cooked",x,,158,3.2,2.5,29.6,1.2,,,in the library,4,,,basmati_rice,rice_cooked
+Cooked rice and grains (ready to eat),Cooked weight for cooked weight. Never swap with dry rice gram for gram.,Microwave Brown Rice,x,,187,4,3,34,3,,,in the library,1,,,microwave_brown_rice,rice_cooked
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Couscous, uncooked",x,,364.0,13.8,0.2,73.6,4.2,Gluten,,new from AUSNUT (after it is applied),0,,,couscous_uncooked,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Basmati rice, uncooked",x,,367,8,0.6,80,2,,,in the library,0,,,basmati,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,Aborio rice,x,,356,8.2,1,77,1,,,in the library,1,,,aborio_rice,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Rice, wild, uncooked",x,,359.7,14.7,1.1,68.7,6.2,,,new from AUSNUT (after it is applied),0,,,rice_wild_uncooked,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,Semolina,x,,310.2,10.7,1.2,61.6,3.2,Gluten,,new from AUSNUT (after it is applied),0,,,semolina,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Pasta, white, dry",x,,348.5,12.7,1.4,68.5,3.2,Gluten,,new from AUSNUT (after it is applied),0,,,pasta_white_dry,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Polenta, uncooked",x,,339.6,8.5,1.7,70.0,3.0,,,new from AUSNUT (after it is applied),0,,,polenta_uncooked,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Bulgur, uncooked",x,,342.7,10.3,2.0,66.1,7.8,Gluten,,new from AUSNUT (after it is applied),0,,,bulgur_uncooked,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Pasta, wholemeal, dry",x,,335.6,12.5,2.2,60.6,9.9,Gluten,,new from AUSNUT (after it is applied),0,,,pasta_wholemeal_dry,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,Risoni,x,,356,12.7,2.2,68.6,3.2,Gluten,,in the library,1,,,risoni,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,Buckwheat,x,,364,11.7,2.7,72,2.5,,,in the library,1,,,buckwheat,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Pearl barley, uncooked",x,,340.3,9.9,3.1,60.6,13.1,Gluten,,new from AUSNUT (after it is applied),0,,,pearl_barley_uncooked,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Rice, brown, uncooked",x,,347.0,7.6,3.1,69.1,3.5,,,new from AUSNUT (after it is applied),0,,,rice_brown_uncooked,rice_dry
+"Dry rice, grains and pasta",Dry weight for dry weight (about 1 : 3 cooked).,"Millet, uncooked",x,,354.4,10.2,3.5,67.4,3.7,,,new from AUSNUT (after it is applied),0,,,millet_uncooked,rice_dry
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,"Wholemeal pasta, cooked",x,,138,5.1,0.8,24.6,5.7,Gluten,,in the library,4,,,wholemeal_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,Pulse Pasta,x,,140,4,1,28,1.5,Gluten,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,pulse_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,Spiral Pasta,x,,140,4,1,28,1.5,Gluten,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,spiral_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,Vetta Smart Fibre Pasta,x,,140,4,1,28,1.5,Gluten,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,vetta_smart_fibre_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,Vetta Smart Protein Pasta,x,,140,4,1,28,1.5,Gluten,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,vetta_smart_protein_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,"Pasta, cooked",x,,143,5.02,1.26,26.84,1.46,"Egg, Gluten",,in the library,3,,,pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,Pasta,x,,348,12.7,1.4,68.5,3.2,"Egg, Gluten",values look like the dry/uncooked food,in the library,0,,,200g_250g_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,"Gluten-Free Pasta, cooked",x,,361,7.33,1.65,76.6,2.84,,values look like the dry/uncooked food,in the library,5,,,gf_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,High-Protein Pasta,x,,343,24.9,2.2,505,10,Gluten,a value is over 100 g per 100 g; values look like the dry/uncooked food,in the library,1,,,high_protein_pasta,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,"Pasta, fresh",x,,279.2,10.5,3.4,49.4,3.3,Gluten,values look like the dry/uncooked food,new from AUSNUT (after it is applied),0,,,pasta_fresh,pasta_cooked
+Cooked pasta,Cooked weight. Wholemeal and legume pastas add fibre or protein.,Packet Ravioli,x,,150,5,5,18,2,Gluten,same values as 7 other foods — probably a placeholder,in the library (not verified),1,,,packet_ravioli,pasta_cooked
+Noodles,Ready-to-wok or cooked weight.,Pad Thai Rice Noodle,x,,119,2.5,0,26.1,0.7,Gluten,,in the library (not verified),1,,,pad_thai_rice_noodle,noodles
+Noodles,Ready-to-wok or cooked weight.,Vermicelli Rice Noodle,x,,119,2.5,0,26.1,0.7,Gluten,,in the library (not verified),1,,,vermicelli_rice_noodle,noodles
+Noodles,Ready-to-wok or cooked weight.,Soba noodles,x,,109,3.6,0.4,21.5,1.6,,,in the library (not verified),1,,,soba_noodles,noodles
+Noodles,Ready-to-wok or cooked weight.,Vermicelli noodles,x,,109,3.6,0.4,21.5,1.6,,,in the library (not verified),11,,,vermicelli_noodles,noodles
+Noodles,Ready-to-wok or cooked weight.,Wok-Ready Noodle,x,,140,7.9,0.7,25.7,1.7,Gluten,,in the library,1,,,wok_ready_noodle,noodles
+Noodles,Ready-to-wok or cooked weight.,Pad Thai Noodle,x,,140,4,1,28,1.5,Gluten,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,pad_thai_noodle,noodles
+Noodles,Ready-to-wok or cooked weight.,Wholegrain Wok Ready Noodle,x,,140,4,1,28,1.5,Gluten,same values as 10 other foods — probably a placeholder,in the library (not verified),1,,,wholegrain_wok_ready_noodle,noodles
+Noodles,Ready-to-wok or cooked weight.,Wok-Ready Udon Noodle,x,,140,5,1,28,1.7,Gluten,,in the library,1,,,wok_ready_udon_noodle,noodles
+Noodles,Ready-to-wok or cooked weight.,"Noodles, egg, cooked",x,,165.9,7.5,1.4,29.1,2.6,"Egg,  Gluten",,new from AUSNUT (after it is applied),0,,,noodles_egg_cooked,noodles
+Noodles,Ready-to-wok or cooked weight.,Ramen Wok-Ready Noodle (Obento),x,,146,5,2.2,25.4,2,"Egg, Gluten, Soy",,in the library,1,,,ramen_wok_ready_noodle,noodles
+Noodles,Ready-to-wok or cooked weight.,Instant Noodle,x,,137,3.43,5.77,17.16,1.48,Gluten,,in the library,1,,,individual_serve_instant_noodle,noodles
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,Crumpet,x,,222.3,7.1,1.2,43.3,3.0,Gluten,,new from AUSNUT (after it is applied),0,,,crumpet,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread, sourdough",x,,229.7,8.8,1.4,42.9,3.1,Gluten,,new from AUSNUT (after it is applied),0,,,bread_sourdough,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread, white, high fibre",x,,246.7,9.7,1.7,43.6,6.4,Gluten,,new from AUSNUT (after it is applied),0,,,bread_white_high_fibre,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread, white",x,,239,9.6,1.8,43.8,2.9,Gluten,,in the library,0,,,bread,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,White Bread,x,,246,8.8,1.9,46.1,2.9,Gluten,,in the library,0,,,white_bread,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread, wholemeal",x,,232,11.2,2.3,37.7,6.2,Gluten,,in the library,0,,,bread_wholemeal,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,Wholemeal English Muffin,x,,232,11.2,2.3,37.7,6.2,Gluten,,in the library,1,,,wholemeal_english_muffin,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread, rye",x,,252.6,9.0,2.4,45.6,5.2,Gluten,,new from AUSNUT (after it is applied),0,,,bread_rye,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Burger thins, white",x,,292,9.3,2.7,43.4,5.3,Gluten,,in the library,1,,,burger_thin,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread roll, white",x,,249.5,9.3,2.9,44.6,3.0,Gluten,,new from AUSNUT (after it is applied),0,,,bread_roll_white,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,Burger bun,x,,263,9,2.9,48,2.6,"Gluten, High-FODMAP",,in the library,10,,,burger_bun,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread roll, mixed grain",x,,250.0,12.2,3.0,40.3,5.6,Gluten,,new from AUSNUT (after it is applied),0,,,bread_roll_mixed_grain,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,Wholemeal bread roll,x,,237,10.1,3,45,5.8,Gluten,,in the library,2,,,wholemeal_roll,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread, gluten free",x,,212.2,5.5,3.9,36.6,3.9,,,new from AUSNUT (after it is applied),0,,,bread_gluten_free,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,"Bread, mixed grain",x,,257.6,10.7,4.5,39.8,5.8,Gluten,,new from AUSNUT (after it is applied),0,,,bread_mixed_grain,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,Sandwich Thin,x,,150,5,5,18,2,,same values as 7 other foods — probably a placeholder,in the library (not verified),1,,,sandwich_thin,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,Low-Carb Bagel,x,,300,8,8,50,2.5,Gluten,same values as 2 other foods — probably a placeholder,in the library (not verified),1,,,low_carb_bagel,bread
+"Bread, rolls and buns",Slice for slice by weight; thins and wholemeal cut energy or add fibre.,Slider Bun,x,,300,8,8,50,2.5,Gluten,same values as 2 other foods — probably a placeholder,in the library (not verified),1,,,slider_bun,bread
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Wholemeal Pita Pocket,x,,234,9.3,1.4,42.2,6.5,Gluten,,in the library,1,,,wholemeal_pita_pocket,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Gluten-Free Pita Bread,x,,236,4.3,1.5,46.5,8.7,,,in the library,1,,,gf_pita_bread,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Pita,x,,257,8.6,2,47.2,6.4,Gluten,,in the library,0,,,pita,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Pita bread,x,,257,8.6,2,47.2,6.4,Gluten,,in the library,0,,,pita_bread,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Protein Pita Bread,x,,263,9.5,2.1,49.1,3.7,Gluten,,in the library (not verified),0,,,protein_pita_bread,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,"Tortilla, corn",x,,238.8,4.8,3.2,44.8,5.0,,,new from AUSNUT (after it is applied),0,,,tortilla_corn,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Low Gi Wrap,x,,250,9,4,42,6,"Dairy, Gluten",,in the library (not verified),1,,,low_gi_wrap,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Gluten-Free Mini Wrap,x,,231,4.4,5.8,38.3,6.9,,,in the library,1,,,gluten_free_mini_wrap,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Mini wholemeal wrap,x,,290,9,6,48,5,Gluten,,in the library (not verified),8,,,wholemeal_wrap,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Low Gi / High Protein Wrap,x,,250,18,7,30,8,Gluten,,in the library (not verified),1,,,low_gi_high_protein_wrap,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Naan Bread,x,,293,8,7.1,47.8,2.6,"Dairy, Gluten",,in the library (not verified),3,,,naan_bread,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Roti,x,,293.5,8.5,7.1,45.4,6.5,Gluten,,new from AUSNUT (after it is applied),0,,,roti,wraps
+"Wraps, pita and flatbread",Low-GI and high-protein wraps change carbs and protein.,Tortilla,x,,302,7.3,9,46.3,2,Gluten,,in the library (not verified),8,,,tortilla,wraps
+"Crackers, crispbreads and rice cakes",Snack bases.,Rye crispbread,x,,324.1,8.8,1.3,60.6,16.5,Gluten,,new from AUSNUT (after it is applied),0,,,rye_crispbread,crackers
+"Crackers, crispbreads and rice cakes",Snack bases.,"Corn cakes, plain",x,,369.7,9.8,3.0,71.5,5.9,,,new from AUSNUT (after it is applied),0,,,corn_cakes_plain,crackers
+"Crackers, crispbreads and rice cakes",Snack bases.,"Rice crackers, plain",x,,388.6,7.0,4.3,78.8,0.9,,,new from AUSNUT (after it is applied),0,,,rice_crackers_plain,crackers
+"Crackers, crispbreads and rice cakes",Snack bases.,Wheat crispbread,x,,373.6,12.3,5.6,66.1,3.3,Gluten,,new from AUSNUT (after it is applied),0,,,wheat_crispbread,crackers
+"Crackers, crispbreads and rice cakes",Snack bases.,Plain Rice Cake,x,,327,7.5,8.2,56.5,1.2,Gluten,,in the library (not verified),1,,,plain_rice_cake,crackers
+"Crackers, crispbreads and rice cakes",Snack bases.,Vitawheat 9 Seed & Grain Biscuit,x,,480,6,20,68,2.5,Gluten,,in the library (not verified),0,,,vitawheat_9_seed_grain_biscuit,crackers
+Potato and starchy vegetables,Raw weight for raw weight.,Potato,x,,65,2.3,0.1,12.8,1.1,,,in the library,14,,,potato,potato
+Potato and starchy vegetables,Raw weight for raw weight.,Cassava,x,,140.3,1.1,0.2,30.4,4.6,,,new from AUSNUT (after it is applied),0,,,cassava,potato
+Potato and starchy vegetables,Raw weight for raw weight.,"Sweet potato, orange",x,,65,1.4,0.2,13.2,2.6,,,in the library (not verified),3,,,sweet_potato,potato
+Potato and starchy vegetables,Raw weight for raw weight.,"Sweet potato, purple",x,,115.9,1.4,0.2,25.5,2.7,,,new from AUSNUT (after it is applied),0,,,sweet_potato_purple,potato
+Potato and starchy vegetables,Raw weight for raw weight.,Taro,x,,112.1,1.9,0.2,23.4,3.5,,,new from AUSNUT (after it is applied),0,,,taro,potato
+Potato and starchy vegetables,Raw weight for raw weight.,White Potato,x,,111,1.4,0.2,24.2,3.2,,,in the library (not verified),1,,,white_potato,potato
+Potato and starchy vegetables,Raw weight for raw weight.,Low Carb Potato,x,,150,5,5,18,2,,same values as 7 other foods — probably a placeholder,in the library (not verified),1,,,low_carb_potato,potato
+Oats and breakfast cereals,Dry weight.,Gluten-Free Rice Bubble,x,,385,6.2,0.5,86.5,2.1,,,in the library,1,,,gf_rice_bubble,oats_cereal
+Oats and breakfast cereals,Dry weight.,Rice Bubble,x,,382,8,0.5,83.9,2.3,Gluten,,in the library,1,,,rice_bubble,oats_cereal
+Oats and breakfast cereals,Dry weight.,Weet-Bix style wheat biscuit,x,,356.8,9.2,1.2,69.9,13.2,Gluten,,new from AUSNUT (after it is applied),0,,,weet_bix_style_wheat_biscuit,oats_cereal
+Oats and breakfast cereals,Dry weight.,Weet-Bix,x,,356,12.4,1.3,67,11,Gluten,,in the library,1,,,weet_bix,oats_cereal
+Oats and breakfast cereals,Dry weight.,Corn flakes,x,,372.4,7.3,2.9,75.6,4.6,Gluten,,new from AUSNUT (after it is applied),0,,,corn_flakes,oats_cereal
+Oats and breakfast cereals,Dry weight.,Bran cereal (pellets),x,,309.0,14.8,5.0,34.5,33.5,Gluten,,new from AUSNUT (after it is applied),0,,,bran_cereal,oats_cereal
+Oats and breakfast cereals,Dry weight.,Rolled Quinoa Flake,x,,385,14.2,6.1,64.2,7,,,in the library,1,,,rolled_quinoa_flake,oats_cereal
+Oats and breakfast cereals,Dry weight.,Wheat germ,x,,307.1,20.6,6.1,32.7,20.1,Gluten,,new from AUSNUT (after it is applied),0,,,wheat_germ,oats_cereal
+Oats and breakfast cereals,Dry weight.,Quick oats,x,,380,12.5,8.6,56.4,12.7,Gluten,,in the library,4,,,quick_oats,oats_cereal
+Oats and breakfast cereals,Dry weight.,"Oats, gluten free",x,,376.0,10.4,8.8,59.9,6.3,Gluten,,new from AUSNUT (after it is applied),0,,,oats_gluten_free,oats_cereal
+Oats and breakfast cereals,Dry weight.,Oat bran,x,,364.5,16.7,9.3,45.0,16.7,Gluten,,new from AUSNUT (after it is applied),0,,,oat_bran,oats_cereal
+Oats and breakfast cereals,Dry weight.,"Muesli, natural, untoasted",x,,373.8,12.2,9.5,54.5,9.5,Gluten,,new from AUSNUT (after it is applied),0,,,muesli_natural_untoasted,oats_cereal
+Oats and breakfast cereals,Dry weight.,Old Fashioned Rolled Oat,x,,374,12.2,9.5,54.5,9.5,,,in the library (not verified),1,,,old_fashioned_rolled_oat,oats_cereal
+Oats and breakfast cereals,Dry weight.,Rolled oats,x,,356,12.4,9.5,49.9,9.5,Gluten,,in the library,19,,,rolled_oats,oats_cereal
+Oats and breakfast cereals,Dry weight.,Granola,x,,433,9.5,12.4,66.6,7.5,,,in the library,2,,,granola,oats_cereal
+Breadcrumbs and croutons,Coatings and toppings.,Panko Bread Crumb,x,,366,13.5,2.9,68.7,3.9,Gluten,,in the library,1,,,panko_bread_crumb,crumbs
+Breadcrumbs and croutons,Coatings and toppings.,Breadcrumbs,x,,364,14.21,3.86,64.85,4.29,Gluten,,in the library,8,,,breadcrumbs,crumbs
+Breadcrumbs and croutons,Coatings and toppings.,Croutons,x,,400.8,12.8,9.7,62.3,4.3,Gluten,,new from AUSNUT (after it is applied),0,,,croutons,crumbs
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Brown sugar,x,,371,0.2,0,96.8,0,,,in the library,13,,,brown_sugar,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Caster sugar,x,,382,0,0,100,0,,,in the library,16,,,caster_sugar,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Glucose syrup,x,,303.1,0.0,0.0,87.5,0.0,,,new from AUSNUT (after it is applied),0,,,glucose_syrup,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Golden syrup,x,,287.5,0.2,0.0,74.9,0.0,,,new from AUSNUT (after it is applied),0,,,golden_syrup,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Honey,x,,315,0.2,0,82.1,0,"High-FODMAP, Honey",,in the library,41,,,honey,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Icing sugar,x,,382,0,0,100,0,,,in the library,1,,,icing_sugar,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Light Brown Sugar,x,,371,0.2,0,96.8,0,,,in the library,1,,,light_brown_sugar,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Molasses,x,,268.2,0.6,0.0,69.2,0.4,,,new from AUSNUT (after it is applied),0,,,molasses,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Powdered Sugar,x,,382,0,0,99.8,0,,,in the library (not verified),1,,,powdered_sugar,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Rice malt syrup,x,,323.9,0.3,0.0,82.6,0.0,,,new from AUSNUT (after it is applied),0,,,rice_malt_syrup,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,"Sugar, raw",x,,381.7,0.0,0.0,99.8,0.0,,,new from AUSNUT (after it is applied),0,,,sugar_raw,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,"Sugar, white",x,,400,0,0,100,0,,,in the library (not verified),21,,,sugar_white,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Sugar-free maple syrup,x,,30,0,0,8,0,,,in the library (not verified),7,,,maple_syrup_sf,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,"Maple Syrup, No Sugar",x,,28,0,0.1,6.6,0,,,in the library,26,,,maple_syrup,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,"Maple syrup, pure",x,,258.6,0.0,0.1,67.0,0.0,,,new from AUSNUT (after it is applied),0,,,maple_syrup_pure,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,"Sugar, coconut",x,,370.5,1.1,0.4,94.6,0.0,,,new from AUSNUT (after it is applied),0,,,sugar_coconut,sweeteners
+"Sugar, honey and syrups",Not gram for gram in baking — check texture before suggesting.,Date syrup,x,,271.3,2.7,0.6,62.6,8.0,,,new from AUSNUT (after it is applied),0,,,date_syrup,sweeteners
+Jam and marmalade,No-added-sugar jam cuts sugar.,Jam,x,,251,0.2,0,64.4,0.9,,,in the library,0,,,jam,jam
+Jam and marmalade,No-added-sugar jam cuts sugar.,Marmalade,x,,253.3,0.1,0.0,65.5,0.8,,,new from AUSNUT (after it is applied),0,,,marmalade,jam
+Jam and marmalade,No-added-sugar jam cuts sugar.,"Jam, no added sugar",x,,223.9,1.7,0.6,51.2,6.2,,,new from AUSNUT (after it is applied),0,,,jam_no_added_sugar,jam
+Chocolate,Dark chocolate >70% has less sugar.,Milk chocolate,x,,81,3.6,3.5,9,0.6,"Dairy, High-FODMAP, Soy",,in the library,1,,,milk_chocolate,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,"Chocolate, milk",x,,521,7.6,30.5,56,2.3,Dairy,,in the library,1,,,chocolate,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,Milk Chocolate Chip Almond Flake,x,,530,6,32,52,7,"Dairy, High-FODMAP, Soy, Tree nuts",,in the library (not verified),2,,,milk_chocolate_chip_almond_flake,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,Packet Baking Milk Chocolate Melt,x,,530,6,32,52,7,"Dairy, High-FODMAP, Soy",,in the library (not verified),1,,,packet_baking_milk_chocolate_melt,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,White Chocolate,x,,543,7.1,34.5,546,0.2,"Dairy, Soy",a value is over 100 g per 100 g,in the library,1,,,whiite_chocolate,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,White Chocolate Button,x,,543,7.1,34.5,54.6,0.2,"Dairy, Soy",,in the library (not verified),0,,,white_chocolate_button,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,"Chocolate, dark, no added sugar",x,,506.2,6.9,38.3,4.1,9.9,,,new from AUSNUT (after it is applied),0,,,chocolate_dark_no_added_sugar,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,Chocolate chips,x,,547,10.5,38.8,43.3,5.5,Dairy,,in the library,1,,,chocolate_chip_optional,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,"Chocolate, dark",x,,587,7.4,43.2,44.1,1.2,,,in the library,0,,,chocolate_dark,chocolate
+Chocolate,Dark chocolate >70% has less sugar.,"Chocolate, dark, >60% cocoa",x,,575.0,8.2,44.3,33.4,10.9,,,new from AUSNUT (after it is applied),0,,,chocolate_dark_60_cocoa,chocolate
+Biscuits,,Ladyfinger Biscuit,x,,379,8.5,3.8,76.5,1.7,"Dairy, Egg, Gluten, Honey, Peanuts, Soy, Tree nuts",,in the library,1,,,ladyfinger_biscuit,biscuits
+Biscuits,,Biscoff biscuit,x,,486,4.9,19,72.6,0,"Gluten, Soy",,in the library,1,,,biscoff_biscuit,biscuits
+Biscuits,,Digestive biscuit,x,,482,6.9,21.8,62.7,3.4,Gluten,,in the library,2,,,biscuit_digestive,biscuits
+Biscuits,,Gluten-Free Arnott Scotch Finger,x,,488,4.8,22.2,65,3.4,,,in the library,1,,,gluten_free_arnott_scotch_finger,biscuits
+Chips and popcorn,Air-popped popcorn is the lighter swap for chips.,"Popcorn, air-popped",x,,367.6,14.1,4.1,60.1,15.8,,,new from AUSNUT (after it is applied),0,,,popcorn_air_popped,chips_popcorn
+Chips and popcorn,Air-popped popcorn is the lighter swap for chips.,Tortilla Chip Serving,x,,490,7,24,60,4,Gluten,,in the library,1,,,coriander_tortilla_chip_serving,chips_popcorn
+Chips and popcorn,Air-popped popcorn is the lighter swap for chips.,Corn chips,x,,478,7.2,25.2,53,5,,,in the library,2,,,corn_chips,chips_popcorn
+Chips and popcorn,Air-popped popcorn is the lighter swap for chips.,Banana chips,x,,518.9,2.3,33.6,50.7,7.7,,,new from AUSNUT (after it is applied),0,,,banana_chips,chips_popcorn
+Cocoa powder,,Cocoa powder,x,,312,20.5,15.2,10.5,27.7,,,in the library,5,,,cocoa_powder,cocoa
+Cocoa powder,,Unsweetened Cocoa Powder,x,,319,22.1,15.2,10.5,27.7,,,in the library (not verified),1,,,unsweetened_cocoa_powder,cocoa
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.",Extra virgin olive oil,x,,883,0,99.9,0,0,,,in the library,170,,,olive_oil,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.",Canola oil,x,,884,0,100,0,0,,,in the library,4,,,canola_oil,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.",Coconut oil,x,,837,0,100,0,0,,,in the library,2,,,coconut_oil,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.",Grapeseed Oil,x,,884,0,100,0,0,,,in the library,1,,,grape_seed_oil,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.","Oil, avocado",x,,884.3,0.0,100.0,0.0,0.0,,,new from AUSNUT (after it is applied),0,,,oil_avocado,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.","Oil, flaxseed",x,,884.1,0.0,100.0,0.0,0.0,,,new from AUSNUT (after it is applied),0,,,oil_flaxseed,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.","Oil, macadamia",x,,884.3,0.0,100.0,0.0,0.0,Tree nuts,,new from AUSNUT (after it is applied),0,,,oil_macadamia,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.","Oil, rice bran",x,,884.3,0.0,100.0,0.0,0.0,,,new from AUSNUT (after it is applied),0,,,oil_rice_bran,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.","Oil, sunflower",x,,884.3,0.0,100.0,0.0,0.0,,,new from AUSNUT (after it is applied),0,,,oil_sunflower,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.",Peanut Oil,x,,884,0,100,0,0,Peanuts,,in the library,3,,,peanut_oil,oils
+Cooking oils,"All about 100% fat: swaps change the type of fat, not the amount. Sesame oil is a flavour, not included.",Vegetable oil,x,,884,0,100,0,0,,,in the library,4,,,vegetable_oil,oils
+"Butter, ghee and spreads",,"Butter, salted",x,,723,1.1,81.3,0,0,Dairy,,in the library,19,,,butter,butter
+"Butter, ghee and spreads",,"Butter, unsalted",x,,723,1.1,81.3,0,0,Dairy,,in the library,0,,,butter_unsalted,butter
+"Butter, ghee and spreads",,Ghee,x,,884.6,0.3,99.9,0.0,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,ghee,butter
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Tub Chobani Greek Yoghurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,also in Plain yoghurt,,tub_chobani_greek_yoghurt,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Unsweetened Greek Yogurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,also in Plain yoghurt,,unsweetened_greek_yogurt,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Natural yoghurt,x,,84,5.7,4.2,4.8,0,"Dairy, High-FODMAP",,in the library,5,also in Plain yoghurt,,natural_yoghurt,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Lactose Free Greek Yoghurt,x,,123,6.4,7.9,6.8,0,"Dairy, High-FODMAP",,in the library,1,also in Plain yoghurt,,lactose_free_greek_yoghurt,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,"Greek style yoghurt, Farmers Union",x,,513,4.5,9.4,5.2,0,Dairy,energy 513 kcal doesn't match its macros (~123 kcal),in the library,0,also in Plain yoghurt,,yoghurt_farmer_union_greek,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,"Greek yoghurt, natural",x,,126,4.8,9.7,5.2,0,"Dairy, High-FODMAP",,in the library,34,also in Plain yoghurt,,greek_yoghurt,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Plain Greek Yogurt,x,,129,3.8,10,6.1,0.8,Dairy,,in the library,1,also in Plain yoghurt,,plain_greek_yogurt,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Light Cream,x,,200,2,19.6,4.8,0,"Dairy, High-FODMAP",,in the library,3,,,light_cream,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,"Sour cream, light",x,,207.5,3.6,19.7,4.5,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,sour_cream_light,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Thickened Cream,x,,337,2,36.1,2.4,0,Dairy,,in the library,1,,,heavy_whipping_cream,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Sour cream,x,,338,1.9,36.3,2,0,Dairy,,in the library (not verified),3,,,sour_cream,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,Thickened cream,x,,340,2,36.5,2.4,0,Dairy,,in the library (not verified),2,,,thickened_cream,cream
+Cream and sour cream,Light versions and Greek yoghurt cut fat.,"Cream, double",x,,449.8,1.6,49.4,1.7,0.0,Dairy,,new from AUSNUT (after it is applied),0,,,cream_double,cream
+Cream cheese and mascarpone,,Light Cream Cheese,x,,258,8.5,25,0.2,0,Dairy,,in the library (not verified),1,,,light_cream_cheese,cream_cheese
+Cream cheese and mascarpone,,Cream cheese,x,,286,8.75,27.8,0.67,0,Dairy,,in the library,2,,,cream_cheese,cream_cheese
+Cream cheese and mascarpone,,Mascarpone Cheese,x,,350,22,28,2,0,Dairy,same values as 3 other foods — probably a placeholder,in the library (not verified),1,,,mascarpone_cheese,cream_cheese
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Tub Chobani Greek Yoghurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,also in Plain yoghurt,,tub_chobani_greek_yoghurt,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Unsweetened Greek Yogurt,x,,75,5,3,6,0,"Dairy, High-FODMAP",same values as 3 other foods — probably a placeholder,in the library (not verified),1,also in Plain yoghurt,,unsweetened_greek_yogurt,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Light Mayonnaise,x,,150,5,5,18,2,Egg,same values as 7 other foods — probably a placeholder,in the library (not verified),2,,,light_mayonnaise,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Low Fat Mayo,x,,133,0.7,5.3,21.5,0,"Dairy, Egg",,in the library (not verified),1,,,low_fat_mayo,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Lactose Free Greek Yoghurt,x,,123,6.4,7.9,6.8,0,"Dairy, High-FODMAP",,in the library,1,also in Plain yoghurt,,lactose_free_greek_yoghurt,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,"Greek style yoghurt, Farmers Union",x,,513,4.5,9.4,5.2,0,Dairy,energy 513 kcal doesn't match its macros (~123 kcal),in the library,0,also in Plain yoghurt,,yoghurt_farmer_union_greek,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,"Greek yoghurt, natural",x,,126,4.8,9.7,5.2,0,"Dairy, High-FODMAP",,in the library,34,also in Plain yoghurt,,greek_yoghurt,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Plain Greek Yogurt,x,,129,3.8,10,6.1,0.8,Dairy,,in the library,1,also in Plain yoghurt,,plain_greek_yogurt,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Mayonnaise,x,,570,0.82,60.29,7.88,0,Egg,,in the library,21,,,mayonnaise,mayo
+Mayonnaise,Light mayo or Greek yoghurt cut fat.,Olive Oil Kewpie Mayonnaise,x,,883,0,99.9,0,0,Egg,"same values as 2 other foods — probably a placeholder; values look like oil, not mayonnaise",in the library (not verified),1,,,olive_oil_kewpie_mayonnaise,mayo
+Coconut milk and cream,Light coconut milk halves the fat.,"Coconut milk, light",x,,69,0.6,7.1,0.9,0,,,in the library,6,,,coconut_milk_light,coconut_milk
+Coconut milk and cream,Light coconut milk halves the fat.,Coconut milk,x,,121,1.12,12.5,1.42,0,,,in the library,1,,,canned_coconut_milk,coconut_milk
+Coconut milk and cream,Light coconut milk halves the fat.,Coconut cream,x,,217,1.6,23.2,1.4,0,,,in the library,1,,,can_coconut_cream,coconut_milk
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Chia seeds,x,,426,14,30.7,7.7,34.4,,,in the library,9,,,chia_seeds,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Flaxseed (linseed),x,,450.0,21.6,32.6,2.8,32.9,,,new from AUSNUT (after it is applied),0,,,flaxseed,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Poppy seeds,x,,512.2,18.0,41.6,8.6,19.5,,,new from AUSNUT (after it is applied),0,,,poppy_seeds,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Mixed Black And White Sesame Seed,x,,560,22,45,12,15,Sesame,,in the library (not verified),1,,,mixed_black_and_white_sesame_seed,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Mixed seeds,x,,543.0,25.3,45.4,3.7,12.4,Sesame,,new from AUSNUT (after it is applied),0,,,mixed_seeds,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Natural Peanut,x,,568,24.7,47.1,8.9,8.2,Peanuts,,in the library,1,,,natural_peanut,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Peanuts,x,,568,24.7,47.1,8.9,8.2,Peanuts,,in the library,2,,,peanut,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,"Cashews, roasted, unsalted",x,,604.7,17.0,47.7,26.8,3.4,Tree nuts,,new from AUSNUT (after it is applied),0,,,cashews_roasted_unsalted,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,"Pistachios, raw",x,,545.7,17.0,48.6,7.8,7.7,Tree nuts,,new from AUSNUT (after it is applied),0,,,pistachios_raw,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Pepitas (pumpkin seeds),x,,559,30,49,11,6,,,in the library (not verified),8,,,pepita,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,"Cashews, raw",x,,607.1,17.0,49.2,22.9,5.9,Tree nuts,,new from AUSNUT (after it is applied),0,,,cashews_raw,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Almonds,x,,570,19.7,50.5,5.4,10.9,Tree nuts,,in the library,5,,,almond,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Sunflower seeds,x,,572,22.7,51,2.2,10.8,,,in the library,1,,,sunflower_seeds,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Slivered Almond,x,,600,20,52,10,8,Tree nuts,,in the library (not verified),1,,,slivered_almond,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Sesame seeds,x,,626,22.2,55.6,6.2,10.1,Sesame,,in the library,11,,,sesame_seeds,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,"Mixed nuts, unsalted",x,,611.9,16.6,55.8,8.8,8.3,"Peanuts,  Tree nuts",,new from AUSNUT (after it is applied),0,,,mixed_nuts_unsalted,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Slithered Almond,x,,610,20.5,55.8,3.9,8.8,Tree nuts,,in the library,1,,,roasted_slithered_almond,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Hazelnuts,x,,642.7,14.8,61.4,5.1,10.4,Tree nuts,,new from AUSNUT (after it is applied),0,,,hazelnuts,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Brazil nuts,x,,689.8,14.4,68.5,2.4,8.5,Tree nuts,,new from AUSNUT (after it is applied),0,,,brazil_nuts,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Walnuts,x,,694,14.4,69.2,3,6.4,Tree nuts,,in the library,11,,,walnut,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Pine nuts,x,,699,13,70,4.5,5.1,Tree nuts,,in the library,2,,,pine_nut,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,Pecans,x,,710.6,9.8,71.9,4.9,8.4,Tree nuts,,new from AUSNUT (after it is applied),0,,,pecans,nuts_seeds
+Nuts and seeds,Tree-nut and peanut allergies: seeds are the usual swap (the screen decides).,"Macadamias, raw",x,,737.6,6.5,76.7,4.6,7.9,Tree nuts,,new from AUSNUT (after it is applied),0,,,macadamias_raw,nuts_seeds
+Nut butters,,Peanut butter,x,,596,22.2,49.6,14.3,5.8,Peanuts,,in the library,19,,,peanut_butter,nut_butter
+Nut butters,,Almond butter,x,,612,19.9,55.8,4.9,8.9,Tree nuts,,in the library,1,,,almond_butter,nut_butter
