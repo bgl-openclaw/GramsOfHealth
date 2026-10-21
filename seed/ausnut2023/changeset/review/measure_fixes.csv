@@ -1,0 +1,35 @@
+food_id,unit,was_g,now_g,estimated,basis,lines
+naan_bread,each,100,89,False,"AUSNUT 2023 F001647 measure naan, regular",3
+pancake,each,100,68,False,"AUSNUT 2023 F006298 measure pancake, regular",2
+pikelet,each,100,25,False,AUSNUT 2023 F006701 measure pikelet,1
+waffle,each,100,70,False,AUSNUT 2023 F010475 measure waffle,1
+mushroom,each,100,35,False,"AUSNUT 2023 F005946 measure mushroom, medium",1
+swiss_brown_mushroom,each,100,35,False,"AUSNUT 2023 F005946 measure mushroom, medium",1
+oyster_mushroom,each,100,12,False,AUSNUT 2023 F005956 measure mushroom (oriental),1
+rice_paper_sheet,each,100,8,False,AUSNUT 2023 F007639 measure wrapper,1
+sundried_tomato,each,100,4.8,False,AUSNUT 2023 F009217 measure tomato (one sun-dried piece),1
+white_fish_fillet,each,100,150,False,"AUSNUT 2023 F003956 measure fillet, medium",1
+watermelon,each,100,1345,False,"AUSNUT 2023 F005520 measure whole melon, medium",1
+weet_bix,each,100,17,False,AUSNUT 2023 F001844 measure whole wheat biscuit,1
+wholemeal_english_muffin,each,100,76,False,"AUSNUT 2023 F010990 measure muffin (English, wholemeal)",1
+wholemeal_pita_pocket,each,100,66,False,"AUSNUT 2023 F001404 measure pita bread, regular (wholemeal)",1
+granny_smith_apple,each,100,165.6,False,"AUSNUT 2023 F000098 measure apple, medium (green skin, unpeeled)",1
+red_apple_cored,each,100,155,True,estimate: AUSNUT F000110 medium apple 165.6 g less the core,1
+gf_pita_bread,each,100,66,True,estimate: AUSNUT regular pita 66 g; gluten-free pitas vary,1
+slider_bun,each,100,34,True,estimate: AUSNUT small/dinner bread roll 34 g,1
+gluten_free_mini_wrap,each,100,35,True,estimate: 1 mini wrap,1
+individual_serve_instant_noodle,each,100,145,True,"estimate: AUSNUT F006053 single serve, boiled & drained = 145 g (larger packs 195 g); the food's numbers are boiled",1
+lemongrass,each,100,20,True,estimate: 1 stalk,1
+mozzarella_ball,each,100,125,True,estimate: 1 fresh mozzarella ball (usually 125 g),1
+star_anise,each,100,1,True,estimate: 1 whole star anise,1
+beef_steak,each,100,200,True,estimate: 1 steak,1
+pork_loin_steak,each,100,160,True,estimate: 1 loin steak,1
+low_carb_potato,each,100,150,True,estimate: same as potato 'each' (150 g),1
+protein_powder,each,100,30,True,estimate: 1 scoop (brands 25–40 g),9
+vegetable_stock_pot,each,100,28,True,estimate: 1 stock pot (Knorr Stock Pot is 28 g),5
+packet_microwave_rice,each,100,250,True,estimate: 1 microwave rice packet (usually 250 g),1
+plain_rice_cake,each,100,10,True,"estimate: 1 rice cake (AUSNUT thin 7 g, thick 12.5 g)",1
+orange_zest,each,100,6,True,estimate: zest of 1 orange,2
+tortilla,small,80,30,False,"AUSNUT 2023 F001669 measure tortilla, small (taco recipes use 6–8; 80 g was a placeholder, larger than the food's own 'each' 45 g)",7
+garlic,large,180,5,True,estimate: 1 large clove (AUSNUT clove = 3 g); 180 g was a whole-bulb placeholder,3
+garlic,small,80,2,True,estimate: 1 small clove (AUSNUT clove = 3 g),1

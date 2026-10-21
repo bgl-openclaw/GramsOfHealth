@@ -1,0 +1,518 @@
+food_id,display_name,verified_now,outcome,detail,ausnut_key,recipes_using
+200g_250g_pasta,Pasta,True,"flag: verified, AUSNUT differs",kcal 348→150.3; C 68.5→16.1; fibre 3.2→6.2,F009835,0
+aaa,aaa test,False,queue: no candidate,,,0
+aborio_rice,Aborio rice,True,"flag: verified, no key",,,1
+adzuki_bean,Red Beans,True,"flag: verified, AUSNUT differs",kcal 105→134.1; P 6.6→12.8; fibre 6.5→9.1,F000453,1
+all_purpose_flour,All purpose flour,True,"flag: verified, no key",,,1
+almond,Almonds,True,"flag: verified, AUSNUT differs",kcal 570→27.5; P 19.7→0.5; F 50.5→1.4; C 5.4→3; fibre 10.9→0.6,F009827,5
+almond_butter,Almond butter,True,"flag: verified, no key",,,1
+almond_meal,Almond meal,True,"flag: verified, AUSNUT differs",fibre 8.9→11,F006077,4
+apple,Apple,True,checked_verified,,F000107,8
+apple_cider_vinegar,Apple cider vinegar,False,ai_verified agreed_list,,F009498,9
+apple_sauce,Apple sauce,True,"flag: verified, name doesn't match key","Apple, dried",F000089,2
+artichoke,Artichoke,True,checked_verified,,F000144,1
+avocado,Avocado,True,"flag: verified, AUSNUT differs",kcal 138→156.1; C 0.2→2.2; fibre 7.5→5.9,F000162,27
+baby_cos,Cos lettuce ,True,checked_verified,,F005191,1
+bacon,"Bacon, shortcut",True,"flag: verified, AUSNUT differs",kcal 137→313.1; P 21.3→15.4; F 5.5→28.2,F000228,0
+baking_powder,Baking powder,True,checked_verified,,F000247,22
+balsamic_glaze,Balsamic glaze,False,queue: Low match,Vinegar (except balsamic vinegar),F009498,1
+balsamic_vinegar,Balsamic vinegar,True,"flag: verified, AUSNUT differs",kcal 79→15.5; C 15→0; fibre 2.1→0,F009498,2
+banana,Banana,True,checked_verified,,F000262,13
+barramundi_fillet,Barramundi,True,checked_verified,,F000386,1
+basil,"Basil, fresh",True,"flag: verified, AUSNUT differs",C 1.7→0.2,F000396,10
+basmati,"Basmati rice, uncooked",True,"flag: verified, no key",,,0
+basmati_rice,"Basmati rice, cooked",True,"flag: verified, AUSNUT differs",F 2.5→0.2; C 29.6→34.7,F007661,4
+bean_sprout,Bean sprouts,True,checked_verified,,F008806,0
+beef_chuck_trimmed,"Beef chuck, trimmed",True,"flag: verified, no key",,,0
+beef_meatball,Beef meatballs,True,"flag: verified, AUSNUT differs",kcal 245→297.1; P 25.16→20.9; F 11.78→22; C 9.23→2.7,F005484,1
+beef_mince,Beef mince,True,"flag: verified, AUSNUT differs",kcal 183→129.3; F 10.4→4.1,F000666,9
+beef_mince_lean,"Beef mince, extra lean",True,checked_verified,,F000666,33
+beef_rump,"Beef rump steak, untrimmed",True,"flag: verified, no key",,,4
+beef_steak,"Beef rump steak, trimmed",True,"flag: verified, AUSNUT differs",kcal 122→107.6; F 4.56→2.8,F000739,6
+beef_stock,Beef stock,True,"flag: verified, no key",,,7
+beef_strips,Beef strips,True,"flag: verified, name doesn't match key","Beef, diced, lean, raw",F000561,2
+beetroot,Beetroot,True,"flag: verified, AUSNUT differs",fibre 3.5→2,F001010,0
+bi_carb_soda,Bi-carb soda,True,"flag: verified, no key",,,2
+biscoff_biscuit,Biscoff biscuit,True,"flag: verified, no key",,,1
+biscuit_digestive,Digestive biscuit,True,"flag: verified, no key",,,2
+black_beans,"Black beans, drained",True,"flag: verified, AUSNUT differs",kcal 73→139.8; P 5→8.8; C 8.2→20; fibre 5.8→8.7,F010188,6
+black_olive,Black olives,True,"flag: verified, AUSNUT differs",C 1.8→0,F006198,1
+blueberries,Blueberries,True,checked_verified,,F001290,0
+bocconcini,Bocconcini,True,"flag: verified, AUSNUT differs",C 3.4→0,F002406,2
+bok_choy,Bok choy,True,checked_verified,,F001301,5
+bone_broth,Bone broth,True,"flag: verified, no key",,,1
+bread,"Bread, white",True,"flag: verified, AUSNUT differs",P 9.6→11.6; F 1.8→2.9; fibre 2.9→5.6,F001545,0
+bread_wholemeal,"Bread, wholemeal",True,checked_verified,,F001553,0
+breadcrumbs,Breadcrumbs,True,checked_verified,,F001683,8
+broccoli,Broccoli,True,checked_verified,,F001905,3
+broccolini,Broccolini,True,checked_verified,,F001909,7
+brown_rice_and_quinoa_microwave_packet,"Brown rice and quinoa, microwaveable pouch",True,"flag: verified, no key",,,1
+brown_sugar,Brown sugar,True,checked_verified,,F008969,13
+brussel_sprout,Brussel sprouts,True,"flag: verified, AUSNUT differs",C 2.1→4.2,F001914,1
+buckwheat,Buckwheat,True,"flag: verified, AUSNUT differs",kcal 364→326; C 72→58; fibre 2.5→5,F001919,1
+burger_bun,Burger bun,True,"flag: verified, no key",,,10
+burger_pickle,Burger pickle,True,"flag: verified, no key",,,2
+burger_thin,"Burger thins, white",True,"flag: verified, no key",,,1
+butter,"Butter, salted",True,checked_verified,,F001973,20
+butter_unsalted,"Butter, unsalted",True,"flag: verified, no key",,,0
+butternut_pumpkin,Butternut pumpkin,True,"flag: verified, no key",,,3
+button_mushroom,Mushrooms,True,checked_verified,,F005946,9
+cabbage,Cabbage,True,"flag: verified, AUSNUT differs",C 2.8→0.7,F001998,0
+can_coconut_cream,Coconut cream,True,checked_verified,,F002982,1
+can_corn_kernel,"Corn kernels, drained",True,checked_verified,,F003220,1
+can_kidney_bean,"Kidney beans, drained",True,checked_verified,,F000448,1
+canned_coconut_milk,Coconut milk,True,"flag: verified, AUSNUT differs",kcal 121→148.2; F 12.5→15.4,F002991,1
+canned_pineapple_piece,"Pineapple, canned, drained",True,checked_verified,,F006708,1
+canola_oil,Canola oil,True,checked_verified,,F006159,4
+capers,Capers,True,checked_verified,,F002220,2
+capsicum,Capsicum,True,"flag: verified, AUSNUT differs",kcal 28→16.5; C 4→2.5,F002239,7
+cardamon,Cardamon,True,"flag: verified, no key",,,1
+carrot,Carrot,True,checked_verified,,F002276,107
+caster_sugar,Caster sugar,True,checked_verified,,F008976,16
+cauliflower,Cauliflower,True,checked_verified,,F002378,1
+cayenne_pepper,Cayenne pepper,True,"flag: verified, no key",,,1
+celery,Celery,True,checked_verified,,F002390,4
+cheddar,Cheddar cheese,True,checked_verified,,F002414,5
+cherry,Cherry,True,"flag: verified, AUSNUT differs",kcal 60→73.6; C 10.9→15.2,F002522,0
+cherry_tomato,Cherry tomatoes,True,"flag: verified, AUSNUT differs",C 2.2→3.5,F009190,21
+chia_seeds,Chia seeds,True,"flag: verified, AUSNUT differs",P 14→23.8; C 7.7→3.1,F008209,9
+chicken_breast,"Chicken, breast",True,checked_verified,,F002594,41
+chicken_breast_tenderloin,Chicken Breast Tenderloin,True,"flag: verified, name doesn't match key","Chicken, breast, lean, raw",F002594,1
+chicken_mince,Chicken mince,True,"flag: verified, AUSNUT differs",kcal 136→96.6; F 6→1.1; C 1.1→0,F002739,14
+chicken_stock,Chicken stock,True,checked_verified,,F008936,9
+chicken_stock_cube,Chicken stock cube,True,"flag: verified, no key",,,1
+chicken_thigh,"Chicken, thigh",True,"flag: verified, AUSNUT differs",kcal 145→104.2; F 8.37→3,F002806,11
+chilli_flakes,"Chilli flakes, dried",True,"flag: verified, name doesn't match key","Chilli (chili), dried, ground",F002893,6
+chilli_oil,Chilli oil,True,"flag: verified, no key",,,1
+chilli_powder,Chilli powder,True,"flag: verified, no key",,,1
+chilli_red,Red Chilli,True,"flag: verified, AUSNUT differs",fibre 10.6→7.2,F002901,14
+chives,Chives,True,checked_verified,,F002907,4
+chocolate,"Chocolate, milk",True,checked_verified,,F002929,1
+chocolate_chip_optional,Chocolate chips,True,"flag: verified, no key",,,1
+chocolate_dark,"Chocolate, dark",True,"flag: verified, AUSNUT differs",F 43.2→35.4; fibre 1.2→3.4,F002926,0
+chorizo,Chorizo,True,"flag: verified, no key",,,2
+chuck_beef,"Beef chuck, untrimmed",True,"flag: verified, no key",,,1
+cinnamon,Cinnamon,True,checked_verified,,F002963,26
+cocoa_powder,Cocoa powder,True,checked_verified,,F002980,5
+coconut_flake,"Coconut, desiccated",True,"flag: verified, AUSNUT differs",kcal 603→663.7,F002987,0
+coconut_milk_light,"Coconut milk, light",True,"flag: verified, no key",,,6
+coconut_oil,Coconut oil,True,checked_verified,,F006163,2
+coleslaw_mix,Slaw mix,True,"flag: verified, no key",,,4
+collagen_powder,Collagen powder,True,"flag: verified, no key",,,4
+cooking_sake,Cooking sake,True,"flag: verified, no key",,,2
+coriander_fresh,Coriander,True,checked_verified,,F003192,24
+coriander_tortilla_chip_serving,Tortilla Chip Serving,True,"flag: verified, no key",,,1
+corn_chips,Corn chips,True,checked_verified,,F003198,4
+cornflour,Corn starch,True,"flag: verified, no key",,,15
+cottage_cheese_lf,"Cottage cheese, low fat",True,checked_verified,,F002438,11
+cranberry_dried,"Cranberries, dried",True,"flag: verified, AUSNUT differs",kcal 318→31.3; C 77.5→4.3; fibre 5.3→3.6,F003249,5
+cream_cheese,Cream cheese,True,"flag: verified, AUSNUT differs",kcal 286→339.4; F 27.8→34.2,F002444,2
+crushed_tomato_canned,"Crushed tomatoes, canned",True,"flag: verified, AUSNUT differs",kcal 31→18.9; C 5.5→3,F009222,5
+cucumber,Cucumber,True,checked_verified,,F003323,27
+cumin_powder,Cumin powder,True,"flag: verified, no key",,,1
+currants,"Currants, dried",True,"flag: verified, AUSNUT differs",kcal 313→45.7; P 2.5→1.4; C 70.8→7.6,F009880,3
+curry_powder,Curry powder,True,checked_verified,,F003337,7
+daikon,Daikon,True,"flag: verified, no key",,,1
+danish_feta,Feta,True,"flag: verified, no key",,,1
+dark_soy_sauce,"Soy sauce, dark",True,"flag: verified, AUSNUT differs",kcal 102→50; P 1.24→6.8; C 23.91→3.2,F008065,4
+dates_dried,"Dates, pitted",True,"flag: verified, no key",,,7
+diced_tomato_canned,"Diced tomatoes, canned",True,checked_verified,,F009222,10
+dijon_mustard,Dijon mustard,True,"flag: verified, AUSNUT differs",kcal 117→83.2; P 4.5→5.8; F 5.2→3.1; C 13→6.2,F005973,19
+dill,"Dill, fresh",True,checked_verified,,F003509,5
+dried_oregano,"Oregano, dried",False,B3 delete,,,3
+each_dried_rosemary,"Rosemary, dried",True,"flag: verified, AUSNUT differs",kcal 271→314.1; P 9.43→4.9; C 2→20.4,F007715,5
+each_minced_ginger_and_minced_garlic,"Garlic, minced",True,"flag: verified, no key",,,3
+each_onion_and_garlic_powder,Onion Powder,True,"flag: verified, no key",,,1
+each_onion_garlic_powder,Onion Powder,True,"flag: verified, no key",,,5
+each_paprika,Paprika,True,checked_verified,,F006316,1
+each_paprika_and_cumin,Paprika Powder,True,"flag: verified, no key",,,5
+each_soy_sauce_sesame_oil,Soy Sauce,True,"flag: verified, AUSNUT differs",kcal 39→50; P 5.4→6.8,F008065,1
+each_whole_wheat_flour_cornstarch,"Whole Wheat Flour, plain",True,"flag: verified, AUSNUT differs",fibre 11.2→8.8,F004014,1
+earl_grey_tea_bag,Earl Grey Tea Bag,True,"flag: verified, no key",,,1
+edamame,Edamame beans,True,"flag: verified, AUSNUT differs",kcal 160→135; F 8→6.4; C 12→5.3; fibre 1.3→5.6,F010184,11
+egg,"Egg, whole",True,checked_verified,,F003729,78
+egg_mayo,Egg Mayo,True,"flag: verified, no key",,,0
+egg_quick_pickled_veg,Egg Quick Pickled Veg,False,B3 delete,,,0
+egg_white,Egg white,True,"flag: verified, AUSNUT differs",kcal 197→46.8,F003706,2
+egg_yolk,Egg yolk,True,checked_verified,,F003737,2
+eggplant,Eggplant,True,checked_verified,,F003761,7
+elderflower_cordial,Elderflower Cordial,True,"flag: verified, no key",,,1
+extra_lean_beef_mince,"Beef mince, lean",True,"flag: verified, no key",,,0
+farmer_high_protein_milk,Dairy Farmers Protein Low Fat Milk,True,"flag: verified, no key",,,0
+feta,Feta cheese,True,checked_verified,,F002452,11
+feta_oil_spray,Olive Oil Spray,True,"flag: verified, name doesn't match key","Oil, olive",F006177,1
+fig,Fig,True,"flag: verified, AUSNUT differs",kcal 47→258.6; P 1.4→3.6; C 8.1→54.5; fibre 3.3→14.3,F003832,1
+filo_pastry,Filo pastry,True,checked_verified,,F006497,2
+fine_sea_salt,"Sea Salt, fine",True,"flag: verified, no key",,,1
+firm_feta,Firm Feta,True,"flag: verified, no key",,,1
+fish_sauce,Fish sauce,True,"flag: verified, AUSNUT differs",kcal 24→50.9; P 5.49→6.8; C 0.6→4.4,F008004,6
+five_spice,Chinese five spice,True,"flag: verified, no key",,,4
+flat_parsley,Parsley,True,"flag: verified, AUSNUT differs",kcal 24→35.9; P 2.22→3.9,F006321,1
+four_bean_mix,"Four bean mix, canned",True,"flag: verified, no key",,,1
+fresh_frozen_blueberry,Fresh Blueberry,True,checked_verified,,F001289,1
+freshly_grated_ginger,"Ginger, freshly grated",True,"flag: verified, no key",,,1
+freshly_grated_parmesan_cheese,"Parmesan Cheese, grated",True,checked_verified,,F002478,1
+freshly_squeezed_lemon_juice,"Lemon Juice, freshly squeezed",True,checked_verified,,F004726,1
+fried_shallot,Fried Shallot,True,checked_verified,,F008226,0
+frozen_blueberry,Frozen Blueberry,True,checked_verified,,F001289,0
+furikake,Furikake,True,"flag: verified, no key",,,0
+g_can_chickpea,"Chickpeas, drained",True,checked_verified,,F002880,1
+garam_masala,Garam masala,True,"flag: verified, no key",,,4
+garlic,"Garlic, fresh",True,checked_verified,,F004193,134
+garlic_infused_oil,Garlic infused olive oil,True,"flag: verified, no key",,,25
+garlic_powder,Garlic powder,True,"flag: verified, no key",,,21
+garlic_sauce,Garlic Sauce,True,"flag: verified, AUSNUT differs",kcal 182→565.2; P 1.44→0.4; F 5.91→54.6; C 30.04→20,F008006,1
+gf_pasta,"Gluten-Free Pasta, cooked",True,"flag: verified, AUSNUT differs",kcal 361→152.7; P 7.33→3.1; C 76.6→32.4; fibre 2.84→1.2,F006429,5
+gf_pita_bread,Gluten-Free Pita Bread,True,"flag: verified, AUSNUT differs",kcal 236→263.4; P 4.3→9.5; fibre 8.7→3.7,F001401,1
+gf_plain_flour,Gluten-Free Plain Flour,True,checked_verified,,F003990,1
+gf_rice_bubble,Gluten-Free Rice Bubble,True,"flag: verified, name doesn't match key","Breakfast cereal, rice, puffed or popped, added vitamins B2, B3, B6 & folate, Fe & Zn",F001803,1
+ginger_fresh,"Ginger, fresh",True,checked_verified,,F004213,50
+glace_cherry,Glace Cherry,True,"flag: verified, AUSNUT differs",kcal 313→73.6; C 76.9→15.2; fibre 9.1→1.4,F002522,1
+gluten_free_arnott_scotch_finger,Gluten-Free Arnott Scotch Finger,True,"flag: verified, no key",,,1
+gluten_free_mini_wrap,Gluten-Free Mini Wrap,True,"flag: verified, no key",,,1
+gluten_free_plain_flour,Gluten-Free Self Raising Flour,True,"flag: verified, AUSNUT differs",P 4.5→3.4; fibre 2.7→1.7,F003990,1
+gluten_free_puff_pastry,Gluten-Free Puff Pastry,True,"flag: verified, no key",,,1
+goat_cheese,Goat Cheese,True,checked_verified,,F002463,1
+gochujang_paste,Gochujang Paste,True,"flag: verified, no key",,,1
+granny_smith_apple,"Apple, Granny Smith",True,checked_verified,,F000095,1
+granola,Granola,True,"flag: verified, AUSNUT differs",P 9.5→11.2; F 12.4→17.6; C 66.6→52.3,F009807,2
+grape_seed_oil,Grapeseed Oil,True,checked_verified,,F006167,1
+gravy,Gravy,True,"flag: verified, AUSNUT differs",C 5.3→6.8,F004268,3
+greek_yoghurt,"Greek yoghurt, natural",True,"flag: verified, AUSNUT differs",kcal 126→73.1; F 9.7→3.2,F009694,34
+green_bean,Green beans,True,checked_verified,,F000431,4
+green_capsicum,Green capsicum,True,checked_verified,,F002239,4
+gyoza_wrappers_dumpling_wrapper,Gyoza Wrappers/Dumpling Wrapper,True,"flag: verified, no key",,,1
+haloumi,Haloumi,True,"flag: verified, no key",,,2
+heavy_whipping_cream,Thickened Cream,True,checked_verified,,F003270,1
+high_protein_pasta,High-Protein Pasta,True,"flag: verified, no key",,,1
+high_protein_yoghurt,High Protein Yoghurt,True,"flag: verified, AUSNUT differs",kcal 55→115.4; P 8.3→4.4; F 0.2→4.9; C 4.9→12.9,F009811,1
+hoisin,Hoisin sauce,True,"flag: verified, no key",,,1
+honey,Honey,True,"flag: verified, AUSNUT differs",kcal 315→277.7,F004380,45
+honey_mustard_dressing,Honey Mustard Dressing,False,ai_verified high_match (ESTIMATE-exempt),,F003599,0
+honey_olive_oil_labneh,Labneh,True,"flag: verified, AUSNUT differs",P 8.7→4.6; C 2.5→5.5,F009655,0
+hot_sauce,Hot sauce,True,"flag: verified, AUSNUT differs",kcal 128→112.8; F 0.71→2.6; C 30→18.9; fibre 3.14→4.4,F007997,3
+hot_vegetable_stock,Vegetable Stock,True,"flag: verified, no key",,,1
+iceberg_lettuce,Iceberg lettuce,True,"flag: verified, AUSNUT differs",C 0.4→2.1,F005192,7
+icing_sugar,Icing sugar,True,checked_verified,,F008980,1
+individual_serve_instant_noodle,Instant Noodle,True,checked_verified,,F006053,1
+italian_dried_herb_blend,Italian Dried Herb Blend,True,"flag: verified, no key",,,1
+jalapeno,Jalapeno,True,"flag: verified, no key",,,8
+jam,Jam,True,checked_verified,,F004600,0
+juice_from_1_lime,"Lime Juice, freshly squeezed",False,B3 delete,,,0
+juice_orange,Orange Juice,True,checked_verified,,F004739,0
+kalamata_olives,Kalamata olives,True,"flag: verified, AUSNUT differs",C 1.1→0,F006198,4
+kale,Kale,True,"flag: verified, AUSNUT differs",C 5.2→0.4; fibre 3.6→7.5,F004780,1
+kecap_manis,Kecap manis,True,"flag: verified, no key",,,2
+kimchi,Kimchi,True,"flag: verified, no key",,,1
+korean_red_pepper_flake,Korean Red Pepper Flake,True,"flag: verified, no key",,,1
+lactose_free_greek_yoghurt,Lactose Free Greek Yoghurt,True,"flag: verified, no key",,,1
+lactose_free_milk,Lactose Free Milk,False,ai_verified exact_key,,F005599,1
+ladyfinger_biscuit,Ladyfinger Biscuit,True,"flag: verified, no key",,,1
+lamb_backstrap,Lamb Backstrap,True,"flag: verified, no key",,,1
+lamb_leg_steak,Lamb Leg Steak,True,"flag: verified, name doesn't match key","Lamb, roast, leg, lean, raw",F005013,1
+lamb_mince,Lamb mince,True,checked_verified,,F005049,7
+lamb_steak,Lamb Steak,True,checked_verified,,F005095,0
+lasagne_sheet,Lasagne Sheet,True,"flag: verified, no key",,,1
+lean_stir_fry_beef_strip,Lean Stir-Fry Beef Strip,True,checked_verified,,F000931,2
+lebanese_cucumber,Lebanese cucumber,True,checked_verified,,F003321,19
+leek,Leek,True,"flag: verified, AUSNUT differs",kcal 313→30.6,F005164,4
+leg_ham,Leg ham,True,checked_verified,,F004299,5
+lemon,Lemon,True,checked_verified,,F005175,13
+lemongrass,Lemongrass,True,"flag: verified, no key",,,4
+lemongrass_stalk,Lemongrass Stalk,False,B3 delete,,,1
+lentil_brown,"Brown lentils, drained",True,"flag: verified, AUSNUT differs",kcal 142→92; P 10→7.3; C 20.17→11.9; fibre 5.21→4.1,F010192,9
+lentil_green,"Green lentils, cooked",True,"flag: verified, AUSNUT differs",kcal 142→92; P 10→7.3; C 20.17→11.9; fibre 5.21→4.1,F005177,2
+lentils_kidney_bean,Lentils/Kidney Bean,True,checked_verified,,F000449,4
+light_brown_sugar,Light Brown Sugar,True,checked_verified,,F008969,1
+light_cottage_cheese,Light Cottage Cheese,True,"flag: verified, AUSNUT differs",kcal 108→132.9; P 13.7→17; F 2.8→5.7; C 6.8→1.8,F002435,1
+light_cream,Light Cream,True,"flag: verified, AUSNUT differs",P 2→3.6,F003267,3
+light_cream_cheese,Light Cream Cheese,False,queue: B1 gate,kcal 258→228.7; F 25→21; C 0.2→2.5,F002446,1
+light_mayonnaise,Light Mayonnaise,False,queue: Low match,"Mayonnaise, reduced or low fat, commercial",F005437,2
+light_soy_sauce,Light soy sauce,False,ai_verified agreed_list,,F008065,20
+lime,Lime,True,checked_verified,,F005199,10
+lime_juice,Lime juice,True,checked_verified,,F004729,19
+lime_juice_to_assemble,Lime Juice To Assemble,False,B3 delete,,,0
+low_carb_bagel,Low-Carb Bagel,False,queue: Low match,"Bagel, from white flour, commercial",F000233,1
+low_carb_potato,Low Carb Potato,False,queue: Low match,"Potato, dehydrated",F010945,1
+low_fat_mayo,Low Fat Mayo,False,"queue: exact key, name mismatch","Mayonnaise, reduced or low fat, commercial",F005437,1
+low_gi_high_protein_wrap,Low Gi / High Protein Wrap,False,queue: Low match,Protein,F009856,1
+low_gi_wrap,Low Gi Wrap,False,queue: Low match,"Wrap, salad, takeaway",F010779,1
+malt_vinegar,Malt Vinegar,False,queue: Low match,"Vinegar, balsamic",F009499,1
+mango,Mango,True,checked_verified,,F005299,5
+maple_syrup,"Maple Syrup, No Sugar",True,"flag: verified, no key",,,28
+maple_syrup_sf,Sugar-free maple syrup,False,label queue (branded),,,7
+mascarpone_cheese,Mascarpone Cheese,False,ai_verified high_match (ESTIMATE-exempt),,F010045,1
+mayonnaise,Mayonnaise,True,"flag: verified, AUSNUT differs",kcal 570→633.6,F005441,21
+mcmuffin,Mcmuffin,False,queue: wrong identity (review),High match is a cake muffin,,0
+mediterranean_orzo,Mediterranean Orzo,False,queue: no candidate,,,0
+microwavable_rice,Microwavable Rice,False,queue: Medium match,"Rice, white, cooked",F007661,1
+microwave_brown_rice,Microwave Brown Rice,True,"flag: verified, AUSNUT differs",fibre 3→1.7,F007647,1
+microwave_brown_rice_quinoa_pouch,Microwave Brown Rice & Quinoa Pouch,False,ai_verified agreed_list (ESTIMATE-exempt),,F007647,5
+microwaveable_basmati_rice_pouch,Microwaveable Basmati Rice Pouch,False,queue: Low match,"Rice, white, cooked",F007661,4
+milk,"Milk, reduced fat",True,checked_verified,,F005614,34
+milk_chocolate,Milk chocolate,True,"flag: verified, AUSNUT differs",kcal 81→520.8; P 3.6→7.6; F 3.5→30.6; C 9→56; fibre 0.6→2.3,F002929,1
+milk_chocolate_chip_almond_flake,Milk Chocolate Chip Almond Flake,False,queue: Medium match,"Chocolate, milk",F002929,2
+mini_caper,Mini Caper,False,queue: Low match,"Capers, pickled, canned, drained",F002220,1
+mint,"Mint, fresh",True,checked_verified,,F005700,17
+mirin,Mirin,False,ai_verified high_match (ESTIMATE-exempt),,F005701,1
+miso_paste,Miso paste,False,ai_verified exact_key,,F005702,5
+mixed_berries,Mixed berries,False,queue: B1 gate,kcal 297→48; P 11.9→0.6; F 3.7→0.1; C 49.1→9.6; fibre 11.2→3.3,F009881,3
+mixed_black_and_white_sesame_seed,Mixed Black And White Sesame Seed,False,queue: Medium match,"Seeds, mixed",F008219,1
+mixed_colour_tomato,Mixed-Colour Tomato,False,queue: Low match,"Tomato, raw, not further defined",F009210,1
+mixed_dried_fruit,Mixed Dried Fruit,False,ai_verified exact_key,,F005712,1
+mixed_herbs_dried,"Mixed herbs, dried",False,queue: B1 gate,kcal 259→293.5; F 6→9.9; C 10→23.5,F004365,6
+mixed_italian_herb,Mixed Italian Herb,False,queue: Medium match,"Herbs, mixed, raw",F004366,1
+mixed_spice,Mixed Spice,False,queue: Low match,"Mixed fruit, dried",F005712,1
+ml_reduced_salt_vegetable_stock,Ml Reduced Salt Vegetable Stock,False,queue: Medium match,"Stock, liquid, all flavours, reduced salt, prepared",F008937,1
+moroccan_seasoning,Moroccan seasoning,False,queue: Low match,"Seasoning, all purpose, dry powder",F008202,2
+mozzarella,Mozzarella,True,checked_verified,,F002472,4
+mozzarella_ball,Mozzarella Ball,False,queue: Low match,"Snack ball, fruit &/or nut based",F009804,1
+mushroom,"Mushroom, common",True,checked_verified,,F005946,15
+mustard,Mustard,True,checked_verified,,F005973,5
+mustard_seed,Mustard Seed,False,label queue (branded),,,1
+naan_bread,Naan Bread,False,ai_verified exact_key,,F001647,3
+natural_peanut,Natural Peanut,True,"flag: verified, no key",,,1
+natural_yoghurt,Natural yoghurt,True,"flag: verified, AUSNUT differs",kcal 84→73.1,F009694,5
+nesquik,Nesquik,False,label queue (branded),,,1
+nori,Nori (seaweed),False,ai_verified exact_key,,F008204,1
+nori_sheet,Nori Sheet,False,queue: Low match,"Seaweed, nori, dried",F008204,1
+nutmeg,Nutmeg,False,ai_verified exact_key,,F006118,1
+nutritional_yeast,Nutritional Yeast,False,queue: Low match,"Yeast, dry powder",F009606,1
+old_fashioned_rolled_oat,Old Fashioned Rolled Oat,False,B3 delete,,,1
+olive_oil,Extra virgin olive oil,True,checked_verified,,F006177,182
+olive_oil_burger,Olive Oil Burger,False,B3 delete,,,1
+olive_oil_coating,Olive Oil Coating,False,B3 delete,,,0
+olive_oil_kewpie_mayonnaise,Olive Oil Kewpie Mayonnaise,False,queue: B1 gate,kcal 883→633.6; F 99.9→67.2; C 0→8.7,F005441,1
+olives,Olives,True,"flag: verified, AUSNUT differs",C 1.8→0,F006198,0
+onion_brown,Brown onion,True,checked_verified,,F006225,71
+onion_powder,Onion powder,True,"flag: verified, no key",,,5
+orange,Orange,True,checked_verified,,F006277,3
+orange_juice,Orange juice,True,checked_verified,,F004739,1
+orange_peel_piece,Orange Peel Piece,False,queue: Low match,"Orange, valencia, peeled, raw",F006279,0
+orange_zest,Orange zest,False,queue: Low match,"Orange, valencia, peeled, raw",F006279,3
+oregano,"Oregano, dried",False,ai_verified agreed_list,,F006281,34
+overly_ripe_banana,Overly Ripe Banana,False,queue: Low match,"Banana, frozen",F009884,1
+overripe_banana,Overripe Banana,False,queue: Low match,"Banana, frozen",F009884,1
+oyster_mushroom,Oyster mushroom,False,queue: B1 gate,kcal 64→27.2; P 10.1→2.2; F 2.3→0.8; fibre 0→1.4,F005956,3
+oyster_sauce,Oyster sauce,True,checked_verified,,F008026,4
+packet_baking_milk_chocolate_melt,Packet Baking Milk Chocolate Melt,False,queue: Medium match,"Chocolate, milk",F002929,1
+packet_microwave_rice,Packet Microwave Rice,False,queue: Low match,"Rice, white, cooked",F007661,1
+packet_prawn_dumpling,Packet Prawn Dumpling,False,queue: Medium match,"Dumpling, savoury, prawn, purchased frozen, cooked",F010533,1
+packet_ravioli,Packet Ravioli,False,queue: no candidate,,,1
+pad_thai_noodle,Pad Thai Noodle,False,queue: Low match,"Noodle, wheat, Asian style, cooked",F006048,1
+pad_thai_rice_noodle,Pad Thai Rice Noodle,False,ai_verified agreed_list,,F006038,1
+pancake,Pancake,False,ai_verified exact_key,,F006298,2
+panko_bread_crumb,Panko Bread Crumb,True,"flag: verified, no key",,,1
+paprika,"Paprika, ground",False,queue: High match gate,kcal 282→313.3,F006316,37
+parmesan,Parmesan cheese,True,"flag: verified, AUSNUT differs",kcal 404→465.8; P 35.1→40.6; F 28.8→33.3,F002478,11
+parsley,Parsley,True,"flag: verified, AUSNUT differs",kcal 24→35.9; P 2.4→3.9,F006321,27
+passionfruit_pulp,Passionfruit Pulp,False,queue: exact key gate,kcal 105→116.2,F006332,0
+pasta,"Pasta, cooked",True,checked_verified,,F006456,3
+pea_frozen,"Peas, frozen",True,checked_verified,,F006536,0
+peach,Peach,True,checked_verified,,F006571,1
+peanut,Peanuts,True,"flag: verified, no key",,,2
+peanut_butter,Peanut butter,True,checked_verified,,F006577,19
+peanut_oil,Peanut Oil,True,checked_verified,,F006183,3
+pear,Pear,True,"flag: verified, AUSNUT differs",kcal 66→46.4; C 12.4→8.7; fibre 3→1.7,F006593,4
+pear_cou_cou,Pear Cou Cou,False,queue: Low match,"Pear, raw, not further defined",F006609,1
+pearl_cou_cou,Pearl Cou Cou,False,queue: Low match,"Barley, pearl, cooked",F000378,1
+peas,"Peas, green",True,checked_verified,,F006536,7
+pepita,Pepitas (pumpkin seeds),False,ai_verified agreed_list (ESTIMATE-exempt),,F008212,8
+pepper,"Pepper, black, ground",False,queue: B1 gate,kcal 251→276.3,F006618,28
+pepper_as_needed,Pepper As Needed,False,queue: Low match,"Pepper, stuffed, marinated",F006624,0
+peri_peri_sauce,Peri Peri Sauce,False,queue: Medium match,"Sauce, mint",F008018,1
+pesto,Pesto,False,ai_verified exact_key,,F008029,4
+pesto_sauce,Pesto Sauce,False,B3 delete,,,1
+pickle,Pickle,False,queue: Low match,"Ginger, pickled, drained",F004216,2
+pickled_onion,Pickled Onion,True,checked_verified,,F006245,1
+pikelet,Pikelet,False,ai_verified exact_key,,F006701,1
+pinch_more_salt,Pinch More Salt,False,queue: Low match,"Salt, table, iodised",F007878,0
+pinch_nutmeg,Pinch Nutmeg,False,queue: Low match,"Nutmeg, dried, ground",F006118,0
+pinch_salt_pepper,Pinch Salt & Pepper,False,queue: Low match,"Pepper, stuffed, marinated",F006624,0
+pinch_sea_salt_flake,Pinch Sea Salt Flake,False,queue: Low match,"Salt, table, iodised",F007878,0
+pine_nut,Pine nuts,True,checked_verified,,F006112,2
+pita,Pita,True,"flag: verified, no key",,,0
+pita_bread,Pita bread,True,checked_verified,,F001404,0
+pizza,Pizza,False,ai_verified exact_key,,F006725,1
+plain_flour,Plain flour,True,checked_verified,,F004007,9
+plain_greek_yogurt,Plain Greek Yogurt,True,"flag: verified, no key",,,1
+plain_rice_cake,Plain Rice Cake,False,queue: B1 gate,kcal 327→383.1; P 7.5→8.8; F 8.2→3.5; C 56.5→76.3; fibre 1.2→3.5,F001147,1
+plain_tuna,Plain Tuna,True,"flag: verified, no key",,,1
+plant_based_feta,Plant Based Feta,False,queue: Low match,"Protein powder, plant based, >60% protein",F010636,2
+pomegranate,Pomegranate arils,False,"queue: exact key, name mismatch","Pomegranate, peeled, raw",F006842,0
+pork,Pork,False,ai_verified exact_key,,F006883,3
+pork_loin_steak,Pork Loin Steak,False,ai_verified exact_key,,F007049,2
+pork_mince,Pork mince,False,ai_verified exact_key,,F007057,8
+pork_scotch_fillet,Pork Scotch Fillet,False,queue: Medium match,"Pork, separable fat, scotch roast, raw",F007092,1
+potato,Potato,True,checked_verified,,F007399,14
+powder,Powder,False,B3 delete,,,1
+powdered_sugar,Powdered Sugar,False,ai_verified agreed_list,,F008980,1
+prawn,Prawns,True,checked_verified,,F007433,6
+pre_cooked_bbq_chicken,Pre-Cooked Bbq Chicken,False,queue: Medium match,"Chicken, heart, cooked",F010194,1
+pre_sliced_mushroom,Pre-Sliced Mushroom,False,queue: Low match,"Mushroom, pickled",F010317,1
+prosciutto,Prosciutto,False,ai_verified exact_key,,F007459,1
+protein_electrolyte,Protein Electrolyte,False,queue: Medium match,Protein,F009856,1
+protein_pita_bread,Protein Pita Bread,False,ai_verified exact_key,,F001401,0
+protein_powder,Protein powder,False,label queue (branded),,,13
+puff_pastry,Puff pastry,False,ai_verified exact_key,,F006503,1
+pulse_pasta,Pulse Pasta,False,ai_verified high_match (ESTIMATE-exempt),,F009835,1
+pumpkin,Pumpkin,True,"flag: verified, AUSNUT differs",kcal 45→34.4,F007555,2
+quick_oats,Quick oats,True,"flag: verified, no key",,,4
+quinoa,"Quinoa, cooked",True,checked_verified,,F007596,1
+radicchio,Radicchio,False,queue: no candidate,,,2
+radish,Radish,True,checked_verified,,F007606,3
+ramen_wok_ready_noodle,Ramen Wok-Ready Noodle (Obento),True,"flag: verified, no key",,,1
+raspberry,Raspberries,True,checked_verified,,F007619,2
+raspberry_tonic_water,Raspberry Tonic Water,False,B3 delete,,,1
+red_apple_cored,Red Apple,True,checked_verified,,F000107,1
+red_bean_paste,Red Bean Paste,False,label queue (branded),,,0
+red_cabbage,Red cabbage,True,checked_verified,,F002006,3
+red_capsicum,Red capsicum,True,checked_verified,,F002247,35
+red_chili_flake,Red Chili Flake,False,queue: B1 gate,kcal 46→292.5; P 1.4→12.3; F 0.7→14.3; C 4.8→12.9; fibre 7.2→34.2,F002893,1
+red_curry_paste,Red curry paste,False,queue: B1 gate,kcal 149→206.5; P 4.9→2.9; F 8.45→14.1; C 9.17→14.2; fibre 8.24→5.4,F006471,4
+red_long_chilli,Red Long Chilli,False,B3 delete,,,1
+red_onion,Red onion,True,"flag: verified, AUSNUT differs",C 4.3→5.5,F009800,28
+red_pesto,Red Pesto,False,queue: Low match,"Bean, red, fresh, raw",F000453,1
+red_wine,Red wine,True,checked_verified,,F009571,2
+red_wine_vinegar,Red wine vinegar,True,checked_verified,,F009498,7
+rice_bubble,Rice Bubble,True,"flag: verified, name doesn't match key","Breakfast cereal, rice, puffed or popped, added vitamins B2, B3, B6 & folate, Fe & Zn",F001803,1
+rice_paper_sheet,Rice Paper,True,"flag: verified, AUSNUT differs",kcal 347→153; P 1→3.2; C 81.9→33.3,F007639,1
+rice_pouch,Microwave rice pouch,False,ai_verified agreed_list,,F007678,18
+rice_vinegar,Rice wine vinegar,False,ai_verified agreed_list,,F009498,22
+ricotta,Ricotta,True,checked_verified,,F002488,4
+risoni,Risoni,True,"flag: verified, no key",,,1
+roasted_slithered_almond,Slithered Almond,True,"flag: verified, AUSNUT differs",C 3.9→5.4; fibre 8.8→11,F006082,1
+rocket,Rocket,True,checked_verified,,F007712,11
+rolled_oats,Rolled oats,True,checked_verified,,F006143,20
+rolled_quinoa_flake,Rolled Quinoa Flake,True,"flag: verified, no key",,,1
+roma_tomato,Roma tomato,True,checked_verified,,F009211,4
+rosemary,"Rosemary, fresh",False,queue: B1 gate,kcal 314→94.6; P 4.9→3.3; F 15.2→5.9; C 20.4→0.6; fibre 42.6→14.1,F007716,1
+sake_small_pinch_salt_and_pepper,Sake Small Pinch Salt And Pepper,False,queue: Low match,Sake,F010092,3
+salmon,"Salmon, Atlantic",False,ai_verified exact_key,,F007827,9
+salt,Salt,False,ai_verified agreed_list,,F007878,54
+salt_and_black_pepper,Salt And Black Pepper,False,B3 delete,,,0
+salt_and_pepper,Salt & pepper (to taste),False,ai_verified agreed_list,,F007878,13
+salt_black_pepper,Salt & Black Pepper,False,B3 delete,,,0
+salt_reduced_chicken_stock,Salt Reduced Chicken Stock,True,"flag: verified, no key",,,2
+sandwich_thin,Sandwich Thin,False,queue: Low match,"Sandwich, steak, takeaway",F010497,1
+sardine_in,Sardine In,False,ai_verified exact_key,,F007973,1
+sashimi_grade_salmon,Sashimi-Grade Salmon,False,queue: Medium match,"Salmon, sashimi style, raw",F007863,1
+sashimi_grade_tuna,Sashimi Grade Tuna,False,queue: Medium match,"Tuna, sashimi style, raw",F009296,3
+sauce,Sauce,False,queue: wrong identity (review),keyed to BBQ sauce,F007987,0
+seeded_mustard,Seeded mustard,False,ai_verified agreed_list,,F005973,3
+self_raising_flour,Self-raising flour,False,ai_verified exact_key,,F004009,7
+sesame_oil,Sesame oil,True,checked_verified,,F006187,46
+sesame_seed_tomato,Sesame Seed Tomato,False,B3 delete,,,1
+sesame_seeds,Sesame seeds,True,checked_verified,,F008214,11
+sherry_vinegar,Sherry vinegar,False,ai_verified agreed_list,,F009498,2
+short_cut_bacon,Short Cut Bacon,False,queue: Low match,"Bacon, shortcut, cooked",F000231,1
+shortcrust_pastry,Shortcrust pastry,False,ai_verified exact_key,,F006507,4
+sized_ripe_banana,Sized Ripe Banana,False,queue: Low match,"Banana, frozen",F009884,1
+skim_milk,"Milk, skim",True,checked_verified,,F005637,2
+slider_bun,Slider Bun,False,queue: Low match,"Bun, sweet, with sultanas, uniced",F001940,1
+slivered_almond,Slivered Almond,False,queue: Low match,"Almond spread, not further defined",F009996,1
+smoked_paprika,Smoked paprika,True,checked_verified,,F006316,33
+smoked_salmon,Smoked salmon,False,ai_verified high_match,,F007864,1
+snow_peas,Snow peas,False,queue: wrong identity (review),keyed to split peas,F006544,2
+soba_noodles,Soba noodles,False,ai_verified exact_key,,F006042,1
+sour_cream,Sour cream,False,ai_verified exact_key,,F003269,3
+soy,Soy,False,queue: wrong identity (review),keyed to soy lecithin; used as soy sauce,F005158,1
+soy_sauce,Soy sauce,False,queue: B1 gate,C 8→3.2,F008065,46
+spinach,"Spinach, baby",True,checked_verified,,F008749,29
+spiral_pasta,Spiral Pasta,False,queue: Low match,"Pasta, unfilled, for pasta recipes",F006442,1
+spray_oil,Spray Oil,False,queue: Medium match,"Oil, not further defined",F006173,0
+spring_onion,Spring onion,True,checked_verified,,F006250,50
+spring_onion_green,Spring Onion Green,False,B3 delete,,,1
+sriracha,Sriracha sauce,False,queue: Medium match,"Sauce, apricot",F007985,3
+stalk_celery,Stalk Celery,False,B3 delete,,,0
+star_anise,Star Anise,False,queue: Low match,"Star fruit, raw",F002254,1
+strawberry,Strawberries,True,"flag: verified, AUSNUT differs",C 3.9→5.6,F008952,1
+strawberry_nesquik,Strawberry Nesquik,False,label queue (branded),,,1
+sugar_white,"Sugar, white",False,queue: wrong identity (review),High match is icing sugar,,22
+sumac,Sumac,False,queue: no candidate,,,1
+sun_dried_tomato_strip,Sun-Dried Tomato Strip,False,queue: Low match,"Tomato, sundried or semi-sundried",F009217,1
+sundried_tomato,Sun-dried tomatoes,False,ai_verified agreed_list (ESTIMATE-exempt),,F009217,6
+sunflower_seeds,Sunflower seeds,True,"flag: verified, AUSNUT differs",fibre 10.8→13,F008215,1
+sushi_seaweed_sheet,Sushi Seaweed Sheet,False,queue: Low match,"Sushi, chicken",F008997,1
+sweet_chilli_sauce,Sweet chilli sauce,False,ai_verified high_match,,F008071,0
+sweet_potato,"Sweet potato, orange",False,ai_verified exact_key,,F009035,3
+swiss_brown_mushroom,Swiss brown mushroom,False,ai_verified agreed_list,,F005946,3
+szechuan_peppercorn,Szechuan Peppercorn,False,queue: no candidate,,,1
+taco_seasoning,Taco seasoning,False,ai_verified agreed_list (ESTIMATE-exempt),,F009072,6
+taco_seasoning_mix,Taco Seasoning Mix,False,ai_verified exact_key,,F009072,1
+tahini,Tahini,False,ai_verified exact_key,,F009076,5
+taste_cheese,Taste Cheese,False,queue: Medium match,"Cheese, edam",F002448,1
+tasty_cheese,Tasty cheese,False,queue: B1 gate,kcal 247→403; P 16.6→24.6; F 20.2→33.4,F002414,17
+tenderloin_cut_raw_chicken,Tenderloin Cut Raw Chicken,False,queue: Medium match,"Chicken, liver, raw",F002709,1
+thai_basil,Thai Basil,False,queue: Low match,"Basil, green, fresh, raw",F000396,1
+thickened_cream,Thickened cream,False,ai_verified exact_key,,F003270,2
+thyme,"Thyme, dried",False,queue: B1 gate,kcal 69→282.5; P 5.6→9.1; F 1.7→7.4; C 1.1→26.9; fibre 14→37,F009160,5
+thyme_oregano_mix,Thyme/Oregano Mix,False,queue: Low match,"Thyme, fresh, raw",F010466,1
+tikka_curry_paste,Tikka Curry Paste,False,queue: B1 gate,kcal 110→206.5; F 7.9→14.1; C 6.3→14.2; fibre 3→5.4,F006471,1
+tin_butter_bean,Tin Butter Bean,False,queue: B1 gate,kcal 25→84.8; P 2.3→6.4; C 2.3→10.2; fibre 2.3→5.3,F000440,1
+tin_diced_tomato,Tin Diced Tomato,False,queue: Low match,"Tomato, raw, not further defined",F009210,1
+tin_tuna_in_spring_water,Tin Tuna In Spring Water,False,B3 delete,,,1
+tinned_tomato,Tinned Tomato,False,queue: Low match,"Tomato, raw, not further defined",F009210,1
+tofu_firm,"Tofu, firm",True,"flag: verified, no key",,,18
+tofu_silken,"Tofu, silken",True,checked_verified,,F009183,5
+tomato,"Tomato, common",False,ai_verified agreed_list,,F009193,34
+tomato_based_pizza_sauce,Tomato-Based Pizza Sauce,False,queue: B1 gate,kcal 35→54; F 0→1.5; C 6.3→7.5,F008050,1
+tomato_passata,Tomato passata,False,ai_verified agreed_list (ESTIMATE-exempt),,F009209,14
+tomato_paste,Tomato paste,False,queue: B1 gate,kcal 82→66.2; P 4.3→3.1; C 13→10.4,F009208,27
+tomato_sauce,Tomato sauce (ketchup),False,ai_verified exact_key,,F008083,13
+tonic_water,Tonic Water,False,ai_verified exact_key,,F008460,1
+tortilla,Tortilla,False,ai_verified exact_key,,F001669,8
+tub_cherry_bocconcini,Tub Cherry Bocconcini,False,queue: Low match,"Cherry, dried",F002520,1
+tub_chobani_greek_yoghurt,Tub Chobani Greek Yoghurt,False,queue: Low match,"Yoghurt, natural, greek style (~10% fat)",F009655,1
+tub_lemon_chobani_greek_yoghurt,Tub Lemon Chobani Greek Yoghurt,False,queue: Low match,"Yoghurt, natural, greek style (~10% fat)",F009655,1
+tuna_springwater,"Tuna, springwater, drained",False,ai_verified exact_key,,F009300,4
+turkey_mince,Turkey mince,False,queue: B1 gate,kcal 117→147.7; F 3.3→7.7,F010386,8
+turmeric,"Turmeric, ground",False,ai_verified high_match,,F009335,5
+turmeric_powder,Turmeric Powder,False,queue: Low match,"Turmeric, dried, ground",F009335,1
+tzatziki,Tzatziki,False,queue: no candidate,,,3
+unripe_banana,Unripe Banana,False,queue: Low match,"Banana, frozen",F009884,1
+unsweetened_cocoa_powder,Unsweetened Cocoa Powder,False,B3 delete,,,1
+unsweetened_greek_yogurt,Unsweetened Greek Yogurt,False,queue: Medium match,"Yoghurt, natural, greek style (~10% fat)",F009655,1
+vanilla_extract,Vanilla extract,True,"flag: verified, no key",,,35
+vanilla_greek_yogurt,Vanilla Greek Yogurt,False,queue: Medium match,"Yoghurt, natural, greek style (~10% fat)",F009655,1
+vanilla_high_protein_yoghurt,Vanilla High Protein Yoghurt,False,queue: Medium match,"Yoghurt, flavoured/added fruit, regular fat (4%), high protein",F009922,1
+vanilla_yopro_yogurt,Vanilla Yopro Yogurt,True,"flag: verified, no key",,,1
+vegetable_oil,Vegetable oil,True,checked_verified,,F006191,4
+vegetable_stock,Vegetable stock,True,"flag: verified, no key",,,3
+vegetable_stock_pot,Vegetable Stock Pot,False,queue: wrong identity (review),concentrate matched to prepared stock,,5
+vermicelli_noodles,Vermicelli noodles,False,queue: B1 gate,P 3.6→2.5; C 21.5→26.1,F006038,11
+vermicelli_rice_noodle,Vermicelli Rice Noodle,False,ai_verified agreed_list,,F006038,1
+vetta_smart_fibre_pasta,Vetta Smart Fibre Pasta,False,queue: Low match,Fibre,F003822,1
+vetta_smart_protein_pasta,Vetta Smart Protein Pasta,False,queue: Low match,Protein,F009856,1
+vine_tomato,Vine Tomato,False,queue: Low match,"Tomato, raw, not further defined",F009210,1
+vitawheat_9_seed_grain_biscuit,Vitawheat 9 Seed & Grain Biscuit,False,queue: Medium match,"Biscuit, savoury, from nuts & seeds (without grains/flour)",F009832,0
+waffle,Waffle,False,ai_verified high_match (ESTIMATE-exempt),,F010475,1
+walnut,Walnuts,True,checked_verified,,F006116,11
+water,Water,False,ai_verified agreed_list,,F009527,41
+watermelon,Watermelon,True,checked_verified,,F005520,1
+weet_bix,Weet-Bix,True,"flag: verified, no key",,,1
+whey_protein,Whey protein powder,False,label queue (branded),,,2
+whiite_chocolate,White Chocolate,True,"flag: verified, AUSNUT differs",C 546→54.6,F002946,1
+white_and_pink_marshmallow,White And Pink Marshmallow,False,queue: Low match,"Marshmallow, plain or flavoured",F005428,1
+white_bread,White Bread,True,checked_verified,,F001463,0
+white_chocolate_button,White Chocolate Button,False,"queue: exact key, name mismatch","Chocolate, white",F002946,0
+white_fish_fillet,White Fish Fillet,False,queue: Medium match,"Fish, white flesh, raw, not further defined",F003956,2
+white_potato,White Potato,False,queue: wrong identity (review),keyed to white sweet potato,F009039,1
+white_vinegar,White vinegar,False,ai_verified agreed_list,,F009498,8
+white_wine,White wine,True,checked_verified,,F009588,6
+wholegrain_wok_ready_noodle,Wholegrain Wok Ready Noodle,False,queue: Low match,"Noodle, wheat, Asian style, cooked",F006048,1
+wholemeal_english_muffin,Wholemeal English Muffin,True,"flag: verified, AUSNUT differs",fibre 6.2→4.7,F010990,1
+wholemeal_flour,Wholemeal flour,True,"flag: verified, AUSNUT differs",fibre 11.2→17.3,F004000,9
+wholemeal_pasta,"Wholemeal pasta, cooked",True,"flag: verified, AUSNUT differs",kcal 138→335.6; P 5.1→12.5; F 0.8→2.2; C 24.6→60.6; fibre 5.7→9.9,F006465,4
+wholemeal_pita_pocket,Wholemeal Pita Pocket,True,"flag: verified, no key",,,1
+wholemeal_roll,Wholemeal bread roll,True,"flag: verified, AUSNUT differs",kcal 237→261.7,F001360,2
+wholemeal_self_raising_flour,Wholemeal Self-Raising Flour,True,"flag: verified, AUSNUT differs",fibre 8.9→11.3,F004015,1
+wholemeal_wrap,Mini wholemeal wrap,False,queue: Low match,"Wrap, salad, takeaway",F010779,8
+wok_ready_noodle,Wok-Ready Noodle,True,"flag: verified, no key",,,1
+wok_ready_udon_noodle,Wok-Ready Udon Noodle,True,"flag: verified, no key",,,1
+wombok,Wombok (Chinese cabbage),True,checked_verified,,F001996,1
+worcestershire,Worcestershire sauce,True,checked_verified,,F008094,23
+yoghurt_farmer_union_greek,"Greek style yoghurt, Farmers Union",True,"flag: verified, no key",,,0
+yopro_vanilla_yoghurt,Yopro Vanilla Yoghurt,True,"flag: verified, no key",,,1
+zest_lemon_juice,Lemon juice,True,checked_verified,,F004726,0
+zucchini,Zucchini,True,"flag: verified, AUSNUT differs",P 0.9→2.6,F009764,65

@@ -1,0 +1,123 @@
+food_id,name,field,old,new
+beef_stock,Beef stock,aisle,Meat & seafood,Pantry
+chicken_stock,Chicken stock,aisle,Meat & seafood,Pantry
+chicken_stock_cube,Chicken stock cube,aisle,Meat & seafood,Pantry
+salt_reduced_chicken_stock,Salt Reduced Chicken Stock,aisle,Meat & seafood,Pantry
+oyster_mushroom,Oyster mushroom,aisle,Meat & seafood,Produce
+wholemeal_english_muffin,Wholemeal English Muffin,aisle,Pantry,Bakery
+goat_cheese,Goat Cheese,aisle,Pantry,Dairy & eggs
+haloumi,Haloumi,aisle,Pantry,Dairy & eggs
+plant_based_feta,Plant Based Feta,aisle,Pantry,Dairy & eggs
+green_bean,Green beans,aisle,Pantry,Produce
+mixed_berries,Mixed berries,aisle,Pantry,Frozen
+radicchio,Radicchio,aisle,Pantry,Produce
+rosemary,"Rosemary, fresh",aisle,Pantry,Produce
+tub_cherry_bocconcini,Tub Cherry Bocconcini,aisle,Produce,Dairy & eggs
+each_onion_and_garlic_powder,Onion Powder,aisle,Produce,Pantry
+each_onion_garlic_powder,Onion Powder,aisle,Produce,Pantry
+feta_oil_spray,Olive Oil Spray,aisle,Produce,Pantry
+fish_sauce,Fish sauce,aisle,Produce,Pantry
+garlic_infused_oil,Garlic infused olive oil,aisle,Produce,Pantry
+garlic_powder,Garlic powder,aisle,Produce,Pantry
+garlic_sauce,Garlic Sauce,aisle,Produce,Pantry
+grape_seed_oil,Grapeseed Oil,aisle,Produce,Pantry
+italian_dried_herb_blend,Italian Dried Herb Blend,aisle,Produce,Pantry
+pear_cou_cou,Pear Cou Cou,aisle,Produce,Pantry
+pepita,Pepitas (pumpkin seeds),aisle,Produce,Pantry
+sweet_chilli_sauce,Sweet chilli sauce,aisle,Produce,Pantry
+tomato_based_pizza_sauce,Tomato-Based Pizza Sauce,aisle,Produce,Pantry
+tomato_passata,Tomato passata,aisle,Produce,Pantry
+tomato_paste,Tomato paste,aisle,Produce,Pantry
+tomato_sauce,Tomato sauce (ketchup),aisle,Produce,Pantry
+tin_butter_bean,Tin Butter Bean,aisle,Dairy & eggs,Pantry
+packet_baking_milk_chocolate_melt,Packet Baking Milk Chocolate Melt,aisle,Dairy & eggs,Pantry
+milk_chocolate,Milk chocolate,aisle,Dairy & eggs,Pantry
+mixed_italian_herb,Mixed Italian Herb,aisle,Produce,Pantry
+adzuki_bean,Red Beans,protein_family,,legumes
+bacon,"Bacon, shortcut",protein_family,,pork
+barramundi_fillet,Barramundi,protein_family,,fish
+beef_chuck_trimmed,"Beef chuck, trimmed",protein_family,,beef
+beef_meatball,Beef meatballs,protein_family,,beef
+beef_mince,Beef mince,protein_family,,beef
+beef_mince_lean,"Beef mince, extra lean",protein_family,,beef
+beef_rump,"Beef rump steak, untrimmed",protein_family,,beef
+beef_steak,"Beef rump steak, trimmed",protein_family,,beef
+beef_strips,Beef strips,protein_family,,beef
+black_beans,"Black beans, drained",protein_family,,legumes
+bocconcini,Bocconcini,protein_family,,dairy
+can_kidney_bean,"Kidney beans, drained",protein_family,,legumes
+cheddar,Cheddar cheese,protein_family,,dairy
+chicken_breast,"Chicken, breast",protein_family,,chicken
+chicken_breast_tenderloin,Chicken Breast Tenderloin,protein_family,,chicken
+chicken_mince,Chicken mince,protein_family,,chicken
+chicken_thigh,"Chicken, thigh",protein_family,,chicken
+chorizo,Chorizo,protein_family,,pork
+chuck_beef,"Beef chuck, untrimmed",protein_family,,beef
+collagen_powder,Collagen powder,protein_family,,other
+cottage_cheese_lf,"Cottage cheese, low fat",protein_family,,dairy
+cream_cheese,Cream cheese,protein_family,,dairy
+danish_feta,Feta,protein_family,,dairy
+edamame,Edamame beans,protein_family,,legumes
+egg,"Egg, whole",protein_family,,egg
+egg_white,Egg white,protein_family,,egg
+egg_yolk,Egg yolk,protein_family,,egg
+extra_lean_beef_mince,"Beef mince, lean",protein_family,,beef
+feta,Feta cheese,protein_family,,dairy
+firm_feta,Firm Feta,protein_family,,dairy
+four_bean_mix,"Four bean mix, canned",protein_family,,legumes
+freshly_grated_parmesan_cheese,"Parmesan Cheese, grated",protein_family,,dairy
+g_can_chickpea,"Chickpeas, drained",protein_family,,legumes
+goat_cheese,Goat Cheese,protein_family,,dairy
+greek_yoghurt,"Greek yoghurt, natural",protein_family,,dairy
+haloumi,Haloumi,protein_family,,dairy
+high_protein_yoghurt,High Protein Yoghurt,protein_family,,dairy
+honey_olive_oil_labneh,Labneh,protein_family,,dairy
+lactose_free_greek_yoghurt,Lactose Free Greek Yoghurt,protein_family,,dairy
+lamb_backstrap,Lamb Backstrap,protein_family,,lamb
+lamb_leg_steak,Lamb Leg Steak,protein_family,,lamb
+lamb_mince,Lamb mince,protein_family,,lamb
+lamb_steak,Lamb Steak,protein_family,,lamb
+lean_stir_fry_beef_strip,Lean Stir-Fry Beef Strip,protein_family,,beef
+leg_ham,Leg ham,protein_family,,pork
+lentil_brown,"Brown lentils, drained",protein_family,,legumes
+lentil_green,"Green lentils, cooked",protein_family,,legumes
+lentils_kidney_bean,Lentils/Kidney Bean,protein_family,,legumes
+light_cottage_cheese,Light Cottage Cheese,protein_family,,dairy
+light_cream_cheese,Light Cream Cheese,protein_family,,dairy
+mascarpone_cheese,Mascarpone Cheese,protein_family,,dairy
+mozzarella,Mozzarella,protein_family,,dairy
+mozzarella_ball,Mozzarella Ball,protein_family,,dairy
+natural_yoghurt,Natural yoghurt,protein_family,,dairy
+parmesan,Parmesan cheese,protein_family,,dairy
+plain_greek_yogurt,Plain Greek Yogurt,protein_family,,dairy
+plain_tuna,Plain Tuna,protein_family,,fish
+pork,Pork,protein_family,,pork
+pork_loin_steak,Pork Loin Steak,protein_family,,pork
+pork_mince,Pork mince,protein_family,,pork
+pork_scotch_fillet,Pork Scotch Fillet,protein_family,,pork
+prawn,Prawns,protein_family,,seafood
+pre_cooked_bbq_chicken,Pre-Cooked Bbq Chicken,protein_family,,chicken
+prosciutto,Prosciutto,protein_family,,pork
+protein_powder,Protein powder,protein_family,,other
+ricotta,Ricotta,protein_family,,dairy
+salmon,"Salmon, Atlantic",protein_family,,fish
+sardine_in,Sardine In,protein_family,,fish
+sashimi_grade_salmon,Sashimi-Grade Salmon,protein_family,,fish
+sashimi_grade_tuna,Sashimi Grade Tuna,protein_family,,fish
+short_cut_bacon,Short Cut Bacon,protein_family,,pork
+smoked_salmon,Smoked salmon,protein_family,,fish
+tasty_cheese,Tasty cheese,protein_family,,dairy
+tin_butter_bean,Tin Butter Bean,protein_family,,legumes
+tofu_firm,"Tofu, firm",protein_family,,tofu_tempeh
+tofu_silken,"Tofu, silken",protein_family,,tofu_tempeh
+tub_cherry_bocconcini,Tub Cherry Bocconcini,protein_family,,dairy
+tub_chobani_greek_yoghurt,Tub Chobani Greek Yoghurt,protein_family,,dairy
+tub_lemon_chobani_greek_yoghurt,Tub Lemon Chobani Greek Yoghurt,protein_family,,dairy
+tuna_springwater,"Tuna, springwater, drained",protein_family,,fish
+turkey_mince,Turkey mince,protein_family,,turkey
+unsweetened_greek_yogurt,Unsweetened Greek Yogurt,protein_family,,dairy
+vanilla_greek_yogurt,Vanilla Greek Yogurt,protein_family,,dairy
+vanilla_high_protein_yoghurt,Vanilla High Protein Yoghurt,protein_family,,dairy
+vanilla_yopro_yogurt,Vanilla Yopro Yogurt,protein_family,,dairy
+white_fish_fillet,White Fish Fillet,protein_family,,fish
+yoghurt_farmer_union_greek,"Greek style yoghurt, Farmers Union",protein_family,,dairy

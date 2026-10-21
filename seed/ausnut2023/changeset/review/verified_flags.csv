@@ -1,0 +1,161 @@
+food_id,name,issue,ours_kcal,uses,ausnut_key,ausnut_name,ausnut_kcal,key_source,key_written
+aborio_rice,Aborio rice,no AUSNUT key,356,1,,,,,
+all_purpose_flour,All purpose flour,no AUSNUT key,353,1,,,,,
+almond_butter,Almond butter,no AUSNUT key,612,1,,,,,
+almond_meal,Almond meal,AUSNUT differs: fibre 8.9→11,614,4,F006077,"Nut, almond meal",570.3,existing key,True
+apple_sauce,Apple sauce,name doesn't match the key,77,2,F000104,"Apple, stewed, sugar sweetened, no added fat",97.5,reviewed relink: stewed apple (was dried apple),True
+avocado,Avocado,AUSNUT differs: kcal 138→156.1; C 0.2→2.2; fibre 7.5→5.9,138,27,F000162,"Avocado, raw",156.1,existing key,True
+bacon,"Bacon, shortcut",AUSNUT differs: kcal 137→313.1; P 21.3→15.4; F 5.5→28.2,137,0,F000228,"Bacon, middle rasher, no fat removed, raw",313.1,existing key,True
+basil,"Basil, fresh",AUSNUT differs: C 1.7→0.2,28,10,F000396,"Basil, green, fresh, raw",22.5,existing key,True
+basmati,"Basmati rice, uncooked",no AUSNUT key,367,0,,,,,
+basmati_rice,"Basmati rice, cooked",AUSNUT differs: F 2.5→0.2; C 29.6→34.7,158,4,F007661,"Rice, white, cooked",157.5,existing key,True
+beef_chuck_trimmed,"Beef chuck, trimmed",no AUSNUT key,156,0,,,,,
+beef_meatball,Beef meatballs,AUSNUT differs: kcal 245→297.1; P 25.16→20.9; F 11.78→22; C 9.23→2.7,245,1,F005484,"Meatball or rissole, beef mince, commercial, cooked",297.1,existing key,True
+beef_rump,"Beef rump steak, untrimmed",no AUSNUT key,195,4,,,,,
+beef_steak,"Beef rump steak, trimmed",AUSNUT differs: kcal 122→107.6; F 4.56→2.8,122,6,F000739,"Beef, rump steak, lean, raw",107.6,B2 relink,True
+beef_stock,Beef stock,no AUSNUT key,4,7,,,,,
+beef_strips,Beef strips,name doesn't match the key,130,2,F000561,"Beef, diced, lean, raw",137.2,existing key,False
+bi_carb_soda,Bi-carb soda,no AUSNUT key,0,2,,,,,
+biscoff_biscuit,Biscoff biscuit,no AUSNUT key,486,1,,,,,
+biscuit_digestive,Digestive biscuit,no AUSNUT key,482,2,,,,,
+black_beans,"Black beans, drained",AUSNUT differs: kcal 73→139.8; P 5→8.8; C 8.2→20; fibre 5.8→8.7,73,6,F010188,"Bean, black, canned, drained",139.8,High match,True
+black_olive,Black olives,AUSNUT differs: C 1.8→0,205,1,F006198,"Olive, green or black, drained",207.5,existing key,True
+bocconcini,Bocconcini,AUSNUT differs: C 3.4→0,265,2,F002406,"Cheese, bocconcini",246.7,existing key,True
+bone_broth,Bone broth,no AUSNUT key,35,1,,,,,
+brown_rice_and_quinoa_microwave_packet,"Brown rice and quinoa, microwaveable pouch",no AUSNUT key,171,1,,,,,
+brussel_sprout,Brussel sprouts,AUSNUT differs: C 2.1→4.2,36,1,F001914,"Brussels sprout, raw",44.0,existing key,True
+buckwheat,Buckwheat,AUSNUT differs: kcal 364→326; C 72→58; fibre 2.5→5,364,1,F001919,"Buckwheat groats, uncooked",326.0,existing key,True
+burger_bun,Burger bun,no AUSNUT key,263,10,,,,,
+burger_pickle,Burger pickle,no AUSNUT key,94,2,,,,,
+burger_thin,"Burger thins, white",no AUSNUT key,292,1,,,,,
+butter_unsalted,"Butter, unsalted",no AUSNUT key,723,0,,,,,
+butternut_pumpkin,Butternut pumpkin,no AUSNUT key,45,3,,,,,
+canned_coconut_milk,Coconut milk,AUSNUT differs: kcal 121→148.2; F 12.5→15.4,121,1,F002991,"Coconut, milk, canned",148.2,existing key,True
+cardamon,Cardamon,no AUSNUT key,295,1,,,,,
+cayenne_pepper,Cayenne pepper,no AUSNUT key,414,1,,,,,
+cherry,Cherry,AUSNUT differs: kcal 60→73.6; C 10.9→15.2,60,0,F002522,"Cherry, raw",73.6,existing key,True
+cherry_tomato,Cherry tomatoes,AUSNUT differs: C 2.2→3.5,16,21,F009190,"Tomato, cherry or grape, raw",21.5,existing key,True
+chia_seeds,Chia seeds,AUSNUT differs: P 14→23.8; C 7.7→3.1,426,9,F008209,"Seed, chia, dried",436.2,High match,True
+chicken_breast_tenderloin,Chicken Breast Tenderloin,name doesn't match the key,114,1,F002594,"Chicken, breast, lean, raw",98.5,existing key,False
+chicken_mince,Chicken mince,AUSNUT differs: kcal 136→96.6; F 6→1.1; C 1.1→0,136,14,F002739,"Chicken, mince, raw",96.6,existing key,True
+chicken_stock_cube,Chicken stock cube,no AUSNUT key,215,1,,,,,
+chicken_thigh,"Chicken, thigh",AUSNUT differs: kcal 145→104.2; F 8.37→3,145,11,F002806,"Chicken, thigh, lean, raw",104.2,existing key,True
+chilli_flakes,"Chilli flakes, dried",name doesn't match the key,306,6,F002893,"Chilli (chili), dried, ground",292.5,existing key,False
+chilli_oil,Chilli oil,no AUSNUT key,649,1,,,,,
+chilli_powder,Chilli powder,no AUSNUT key,306,1,,,,,
+chilli_red,Red Chilli,AUSNUT differs: fibre 10.6→7.2,48,14,F002901,"Chilli (chili), red, raw",46.1,existing key,True
+chocolate_chip_optional,Chocolate chips,no AUSNUT key,547,1,,,,,
+chocolate_dark,"Chocolate, dark",AUSNUT differs: C 44.1→33.4; fibre 1.2→10.9,587,0,F002922,"Chocolate, dark, high cocoa solids, >60% cocoa solids",575.0,reviewed relink: dark chocolate >60 % (was dark with nuts),True
+chorizo,Chorizo,no AUSNUT key,283,2,,,,,
+chuck_beef,"Beef chuck, untrimmed",no AUSNUT key,181,1,,,,,
+coconut_flake,"Coconut, desiccated",AUSNUT differs: kcal 603→663.7,603,0,F002987,"Coconut, grated & desiccated",663.7,High match,True
+coconut_milk_light,"Coconut milk, light",no AUSNUT key,69,6,,,,,
+coleslaw_mix,Slaw mix,no AUSNUT key,23,4,,,,,
+collagen_powder,Collagen powder,no AUSNUT key,358.98662,4,,,,,
+cooking_sake,Cooking sake,no AUSNUT key,95,2,,,,,
+coriander_tortilla_chip_serving,Tortilla Chip Serving,no AUSNUT key,490,1,,,,,
+cornflour,Corn starch,no AUSNUT key,350,15,,,,,
+cream_cheese,Cream cheese,AUSNUT differs: kcal 286→339.4; F 27.8→34.2,286,2,F002444,"Cheese, cream, plain",339.4,existing key,True
+crushed_tomato_canned,"Crushed tomatoes, canned",AUSNUT differs: kcal 31→18.9; C 5.5→3,31,5,F009222,"Tomato, whole, canned in tomato juice, undrained",18.9,B2 relink,True
+cumin_powder,Cumin powder,no AUSNUT key,426,1,,,,,
+daikon,Daikon,no AUSNUT key,21,1,,,,,
+danish_feta,Feta,no AUSNUT key,272,1,,,,,
+dark_soy_sauce,"Soy sauce, dark",AUSNUT differs: kcal 102→50; P 1.24→6.8; C 23.91→3.2,102,4,F008065,"Sauce, soy, commercial",50.0,B2 relink,True
+dates_dried,"Dates, pitted",no AUSNUT key,290,7,,,,,
+dijon_mustard,Dijon mustard,AUSNUT differs: kcal 117→83.2; P 4.5→5.8; F 5.2→3.1; C 13→6.2,117,19,F005973,"Mustard, cream style",83.2,existing key,True
+each_dried_rosemary,"Rosemary, dried",AUSNUT differs: kcal 271→314.1; P 9.43→4.9; C 2→20.4,271,5,F007715,"Rosemary, dried",314.1,existing key,True
+each_whole_wheat_flour_cornstarch,"Whole Wheat Flour, plain",AUSNUT differs: fibre 11.2→8.8,327,1,F004014,"Flour, wheat, wholemeal, plain",327.7,High match,True
+earl_grey_tea_bag,Earl Grey Tea Bag,no AUSNUT key,2,1,,,,,
+edamame,Edamame beans,AUSNUT differs: kcal 160→135; F 8→6.4; C 12→5.3; fibre 1.3→5.6,160,11,F010184,"Bean, edamame, canned, drained",135.0,High match,True
+egg_mayo,Egg Mayo,no AUSNUT key,428,0,,,,,
+elderflower_cordial,Elderflower Cordial,no AUSNUT key,22,1,,,,,
+extra_lean_beef_mince,"Beef mince, lean",no AUSNUT key,170,0,,,,,
+farmer_high_protein_milk,Dairy Farmers Protein Low Fat Milk,no AUSNUT key,55,0,,,,,
+feta_oil_spray,Olive Oil Spray,no AUSNUT key,896,1,,,,,
+fine_sea_salt,"Sea Salt, fine",no AUSNUT key,0,1,,,,,
+firm_feta,Firm Feta,no AUSNUT key,287,1,,,,,
+fish_sauce,Fish sauce,AUSNUT differs: kcal 24→50.9; P 5.49→6.8; C 0.6→4.4,24,6,F008004,"Sauce, fish, commercial",50.9,existing key,True
+five_spice,Chinese five spice,no AUSNUT key,290,4,,,,,
+flat_parsley,Parsley,AUSNUT differs: kcal 24→35.9; P 2.22→3.9,24,1,F006321,"Parsley, fresh, raw",35.9,High match,True
+four_bean_mix,"Four bean mix, canned",no AUSNUT key,71,1,,,,,
+freshly_grated_ginger,"Ginger, freshly grated",no AUSNUT key,32,1,,,,,
+fried_shallot,Fried Shallot,'Fried Shallot' (the crispy garnish is ~550–600 kcal) carries cooked-shallot numbers (41 kcal). Unused.,41,0,,,,,
+furikake,Furikake,no AUSNUT key,500,0,,,,,
+garam_masala,Garam masala,no AUSNUT key,315,4,,,,,
+garlic_infused_oil,Garlic infused olive oil,no AUSNUT key,823,25,,,,,
+garlic_powder,Garlic powder,no AUSNUT key,298,21,,,,,
+garlic_sauce,Garlic Sauce,AUSNUT differs: kcal 182→565.2; P 1.44→0.4; F 5.91→54.6; C 30.04→20,182,1,F008006,"Sauce, garlic, commercial",565.2,High match,True
+gf_pita_bread,Gluten-Free Pita Bread,AUSNUT differs: kcal 236→263.4; P 4.3→9.5; fibre 8.7→3.7,236,1,F001401,"Bread, flat (pita or Lebanese), white, commercial",263.4,existing key,True
+gf_rice_bubble,Gluten-Free Rice Bubble,name doesn't match the key,385,1,F001803,"Breakfast cereal, rice, puffed or popped, added vitamins B2, B3, B6 & folate, Fe & Zn",370.2,existing key,False
+glace_cherry,Glace Cherry,AUSNUT differs: kcal 313→257.6; fibre 9.1→0.9,313,1,F002521,"Cherry, glace or maraschino",257.6,reviewed relink: glacé cherries (was raw cherry),True
+gluten_free_arnott_scotch_finger,Gluten-Free Arnott Scotch Finger,no AUSNUT key,488,1,,,,,
+gluten_free_mini_wrap,Gluten-Free Mini Wrap,no AUSNUT key,231,1,,,,,
+gluten_free_plain_flour,Gluten-Free Self Raising Flour,AUSNUT differs: P 4.5→3.4; fibre 2.7→1.7,344,1,F003990,"Flour, gluten free mix",353.7,existing key,True
+gluten_free_puff_pastry,Gluten-Free Puff Pastry,no AUSNUT key,366,1,,,,,
+gochujang_paste,Gochujang Paste,no AUSNUT key,216,1,,,,,
+granola,Granola,AUSNUT differs: P 9.5→11.2; F 12.4→17.6; C 66.6→52.3,433,2,F009807,"Granola, commercial",424.5,High match,True
+gravy,Gravy,AUSNUT differs: C 5.3→6.8,45,3,F004268,"Gravy, purchased prepared",48.0,High match,True
+gyoza_wrappers_dumpling_wrapper,Gyoza Wrappers/Dumpling Wrapper,no AUSNUT key,228,1,,,,,
+high_protein_pasta,High-Protein Pasta,no AUSNUT key,343,1,,,,,
+high_protein_yoghurt,High Protein Yoghurt,AUSNUT differs: P 8.3→9.6; C 4.9→2.3,55,1,F009809,"Yoghurt, flavoured/added fruit, low fat (<1%), no added sugar, high protein",54.3,reviewed relink: low-fat high-protein yoghurt (was high-fat flavoured),True
+hoisin,Hoisin sauce,no AUSNUT key,180,1,,,,,
+honey,Honey,AUSNUT differs: kcal 315→277.7,315,45,F004380,Honey,277.7,existing key,True
+honey_olive_oil_labneh,Labneh,name doesn't match the key,138,0,F009655,"Yoghurt, natural, greek style (~10% fat)",131.5,B2 relink,True
+hot_sauce,Hot sauce,AUSNUT differs: kcal 128→112.8; F 0.71→2.6; C 30→18.9; fibre 3.14→4.4,128,3,F007997,"Sauce, chilli (chili), commercial",112.8,B2 relink,True
+hot_vegetable_stock,Vegetable Stock,no AUSNUT key,4,1,,,,,
+iceberg_lettuce,Iceberg lettuce,AUSNUT differs: C 0.4→2.1,9,7,F005192,"Lettuce, iceberg, raw",14.3,existing key,True
+italian_dried_herb_blend,Italian Dried Herb Blend,no AUSNUT key,278,1,,,,,
+jalapeno,Jalapeno,no AUSNUT key,43,8,,,,,
+kalamata_olives,Kalamata olives,AUSNUT differs: C 1.1→0,201,4,F006198,"Olive, green or black, drained",207.5,B2 relink,True
+kale,Kale,AUSNUT differs: kcal 46→25.6; C 5.2→0.3; fibre 3.6→5.2,46,1,F004781,"Kale, raw",25.6,"reviewed relink: kale, raw (was cooked)",True
+kecap_manis,Kecap manis,no AUSNUT key,379,2,,,,,
+kimchi,Kimchi,no AUSNUT key,15,1,,,,,
+korean_red_pepper_flake,Korean Red Pepper Flake,no AUSNUT key,140,1,,,,,
+lactose_free_greek_yoghurt,Lactose Free Greek Yoghurt,no AUSNUT key,123,1,,,,,
+ladyfinger_biscuit,Ladyfinger Biscuit,no AUSNUT key,379,1,,,,,
+lamb_backstrap,Lamb Backstrap,no AUSNUT key,201,1,,,,,
+lasagne_sheet,Lasagne Sheet,no AUSNUT key,271,1,,,,,
+lemongrass,Lemongrass,no AUSNUT key,99,4,,,,,
+lentil_brown,"Brown lentils, drained",AUSNUT differs: kcal 142→92; P 10→7.3; C 20.17→11.9; fibre 5.21→4.1,142,9,F010192,"Lentil, canned",92.0,B2 relink,True
+lentil_green,"Green lentils, cooked",AUSNUT differs: kcal 142→92; P 10→7.3; C 20.17→11.9; fibre 5.21→4.1,142,2,F005177,"Lentil, dried, cooked",92.0,existing key,True
+light_cottage_cheese,Light Cottage Cheese,AUSNUT differs: kcal 108→93; C 6.8→4.8,108,1,F002438,"Cheese, cottage, reduced fat",93.0,reviewed relink: reduced-fat cottage cheese (was regular),True
+light_cream,Light Cream,AUSNUT differs: C 4.8→3.6,200,3,F003261,"Cream, thickened, light (~18% fat)",185.2,reviewed relink: light thickened cream (was light SOUR cream),True
+maple_syrup,"Maple Syrup, No Sugar",no AUSNUT key,28,28,,,,,
+mayonnaise,Mayonnaise,AUSNUT differs: kcal 570→633.6,570,21,F005441,"Mayonnaise, regular fat, commercial",633.6,existing key,True
+microwave_brown_rice,Microwave Brown Rice,AUSNUT differs: fibre 3→1.7,187,1,F007647,"Rice, brown, purchased par-cooked or instant, cooked",172.8,B2 relink,True
+natural_peanut,Natural Peanut,no AUSNUT key,568,1,,,,,
+natural_yoghurt,Natural yoghurt,AUSNUT differs: kcal 84→73.1,84,5,F009694,"Yoghurt, natural, regular fat (~4%)",73.1,existing key,True
+olives,Olives,AUSNUT differs: C 1.8→0,205,0,F006198,"Olive, green or black, drained",207.5,existing key,True
+onion_powder,Onion powder,no AUSNUT key,349,5,,,,,
+panko_bread_crumb,Panko Bread Crumb,no AUSNUT key,366,1,,,,,
+parmesan,Parmesan cheese,AUSNUT differs: kcal 404→465.8; P 35.1→40.6; F 28.8→33.3,404,11,F002478,"Cheese, parmesan, dried, finely grated",465.8,existing key,True
+parsley,Parsley,AUSNUT differs: kcal 24→35.9; P 2.4→3.9,24,27,F006321,"Parsley, fresh, raw",35.9,existing key,True
+peanut,Peanuts,no AUSNUT key,568,2,,,,,
+pita,Pita,no AUSNUT key,257,0,,,,,
+plain_greek_yogurt,Plain Greek Yogurt,no AUSNUT key,129,1,,,,,
+plain_tuna,Plain Tuna,no AUSNUT key,124,1,,,,,
+pumpkin,Pumpkin,AUSNUT differs: kcal 45→34.4,45,2,F007555,"Pumpkin, peeled, raw",34.4,existing key,True
+quick_oats,Quick oats,no AUSNUT key,380,4,,,,,
+ramen_wok_ready_noodle,Ramen Wok-Ready Noodle (Obento),no AUSNUT key,146,1,,,,,
+red_onion,Red onion,AUSNUT differs: C 4.3→5.5,29,28,F009800,"Onion, mature, red skinned, peeled, raw",27.7,existing key,True
+rice_bubble,Rice Bubble,name doesn't match the key,382,1,F001803,"Breakfast cereal, rice, puffed or popped, added vitamins B2, B3, B6 & folate, Fe & Zn",370.2,existing key,False
+rice_paper_sheet,Rice Paper,AUSNUT differs: kcal 347→153; P 1→3.2; C 81.9→33.3,347,1,F007639,"Rice paper wrapper, soaked in water",153.0,existing key,True
+risoni,Risoni,no AUSNUT key,356,1,,,,,
+roasted_slithered_almond,Slithered Almond,AUSNUT differs: C 3.9→5.4; fibre 8.8→11,610,1,F006082,"Nut, almond, roasted, unsalted",588.4,existing key,True
+rolled_quinoa_flake,Rolled Quinoa Flake,no AUSNUT key,385,1,,,,,
+salt_reduced_chicken_stock,Salt Reduced Chicken Stock,no AUSNUT key,34,2,,,,,
+strawberry,Strawberries,AUSNUT differs: C 3.9→5.6,26,1,F008952,"Strawberry, raw",31.5,existing key,True
+sunflower_seeds,Sunflower seeds,AUSNUT differs: fibre 10.8→13,572,1,F008215,"Seed, sunflower, unsalted",564.5,existing key,True
+tofu_firm,"Tofu, firm",no AUSNUT key,120,18,,,,,
+vanilla_extract,Vanilla extract,no AUSNUT key,288,35,,,,,
+vanilla_yopro_yogurt,Vanilla Yopro Yogurt,no AUSNUT key,57,1,,,,,
+vegetable_stock,Vegetable stock,no AUSNUT key,4,3,,,,,
+weet_bix,Weet-Bix,no AUSNUT key,356,1,,,,,
+wholemeal_english_muffin,Wholemeal English Muffin,AUSNUT differs: fibre 6.2→4.7,232,1,F010990,"Muffin, English style, wholemeal, commercial",225.9,High match,True
+wholemeal_flour,Wholemeal flour,AUSNUT differs: fibre 11.2→8.8,327,9,F004014,"Flour, wheat, wholemeal, plain",327.7,reviewed relink: wholemeal WHEAT flour (was rye),True
+wholemeal_pita_pocket,Wholemeal Pita Pocket,no AUSNUT key,234,1,,,,,
+wholemeal_roll,Wholemeal bread roll,AUSNUT differs: kcal 237→261.7,237,2,F001360,"Bread roll, wholemeal, commercial",261.7,B2 relink,True
+wholemeal_self_raising_flour,Wholemeal Self-Raising Flour,AUSNUT differs: fibre 8.9→11.3,332,1,F004015,"Flour, wheat, wholemeal, self-raising",351.6,existing key,True
+wok_ready_noodle,Wok-Ready Noodle,no AUSNUT key,140,1,,,,,
+wok_ready_udon_noodle,Wok-Ready Udon Noodle,no AUSNUT key,140,1,,,,,
+yopro_vanilla_yoghurt,Yopro Vanilla Yoghurt,no AUSNUT key,57,1,,,,,

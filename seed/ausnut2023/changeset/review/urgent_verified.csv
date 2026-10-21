@@ -1,0 +1,10 @@
+food_id,name,ours_kcal,uses,ausnut_key,ausnut_name,ausnut_kcal,why
+egg_white,Egg white,197,2,F003706,"Egg, chicken, white (albumen) only, raw",46.8,197 kcal with P11.2 — a typo for ~47
+gf_pasta,"Gluten-Free Pasta, cooked",361,5,F006429,"Pasta, gluten free, plain, boiled, no added salt",152.7,"'Gluten-Free Pasta, cooked' carries dry-pasta numbers (361 kcal); cooked GF pasta is 153"
+haloumi,Haloumi,1050,2,F002466,"Cheese, haloumi (halloumi)",305.2,"1,050 kcal per 100 g is impossible (pure fat is 900); haloumi is 305"
+lamb_leg_steak,Lamb Leg Steak,553,1,F005095,"Lamb, steak, boneless, lean, raw",130.5,"553 kcal, fat 57.6 g — separable-fat numbers; lean lamb steak is ~130 kcal"
+leek,Leek,313,4,F005164,"Leek, raw",30.6,313 kcal but leek macros (P2.1 F0.4 C3.7) — a typo for ~31
+lentils_kidney_bean,Lentils/Kidney Bean,299,4,F000448,"Bean, red kidney, canned, drained",105.4,"carries DRIED kidney-bean numbers (299 kcal) but all 4 recipes use it as '1 can, drained and rinsed' (105 kcal) — about 3× too high. Suggest: merge into 'Kidney beans, drained' (verified), or split into lentils + kidney beans if the recipe means both"
+milk_chocolate,Milk chocolate,81,1,F002929,"Chocolate, milk",520.8,"81 kcal with chocolate-MILK macros; milk chocolate is 521 kcal. A second food 'chocolate' (verified, 521 kcal) exists — merge into it."
+whiite_chocolate,White Chocolate,543,1,F002946,"Chocolate, white",543.3,carbohydrate 546 g per 100 g — a typo for 54.6
+yoghurt_farmer_union_greek,"Greek style yoghurt, Farmers Union",513,0,F009655,"Yoghurt, natural, greek style (~10% fat)",131.5,513 kcal is impossible for yoghurt; Greek style is ~130. Unused.

@@ -1,0 +1,26 @@
+food_id,name,recipes_blocked,recipes_it_alone_blocks,verified_now
+wholemeal_wrap,Mini wholemeal wrap,7,7,False
+vermicelli_noodles,Vermicelli noodles,5,5,False
+lentils_kidney_bean,Lentils/Kidney Bean,4,4,True
+gf_pasta,"Gluten-Free Pasta, cooked",4,4,True
+maple_syrup_sf,Sugar-free maple syrup,3,3,False
+protein_powder,Protein powder,3,3,False
+milk_chocolate_chip_almond_flake,Milk Chocolate Chip Almond Flake,2,1,False
+whey_protein,Whey protein powder,2,1,False
+haloumi,Haloumi,2,2,True
+soba_noodles,Soba noodles,1,1,False
+orange_zest,Orange zest,1,1,False
+thyme_oregano_mix,Thyme/Oregano Mix,1,1,False
+sardine_in,Sardine In,1,1,False
+moroccan_seasoning,Moroccan seasoning,1,0,False
+pear_cou_cou,Pear Cou Cou,1,0,False
+vetta_smart_fibre_pasta,Vetta Smart Fibre Pasta,1,1,False
+wholegrain_wok_ready_noodle,Wholegrain Wok Ready Noodle,1,1,False
+pad_thai_noodle,Pad Thai Noodle,1,1,False
+protein_electrolyte,Protein Electrolyte,1,1,False
+mustard_seed,Mustard Seed,1,1,False
+packet_ravioli,Packet Ravioli,1,1,False
+strawberry_nesquik,Strawberry Nesquik,1,1,False
+vanilla_greek_yogurt,Vanilla Greek Yogurt,1,0,False
+nesquik,Nesquik,1,1,False
+lamb_leg_steak,Lamb Leg Steak,1,1,True

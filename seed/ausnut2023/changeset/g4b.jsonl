@@ -1,0 +1,116 @@
+{"batch": "g4b", "seq": 1, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "c9f1e20e-d98c-42ab-81c7-167bf33c76e2", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 2, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "d037d7e8-35d9-46fa-ba74-7a83a72be399", "expect_food": "salt_and_pepper", "expect_quantity": 2, "expect_unit": "tbsp", "parts": [{"food_id": "salt", "quantity": 1.0}, {"food_id": "pepper", "quantity": 1.0}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 3, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "97f646c3-d3bb-4758-b13e-3e4bede66097", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 4, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "ef6bf4aa-1fcf-4c9c-a168-71049830a063", "expect_food": "salt_and_pepper", "expect_quantity": 1, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.5}, {"food_id": "pepper", "quantity": 0.5}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 5, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "eba7f32d-cdeb-41bd-b5f0-05653c2c8925", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 6, "op": "delete_line", "food_id": "salt_and_pepper", "args": {"line_id": "ab1dc8a2-22d2-4e6a-b3a7-3aca392b7f8a", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp"}, "note": "split salt_and_pepper: recipe already lists each part"}
+{"batch": "g4b", "seq": 7, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "13b703e7-e98c-4b61-a70c-63948494b8b2", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 8, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "9bcd1097-b764-4ef8-80b4-95e64d0462bc", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 9, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "283b7dec-c755-4e95-b9ac-71bb6c0b94a8", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 10, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "d1c2ea5a-d8b8-4f22-91f2-8feeb43a5c6d", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 11, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "f5d3a329-f639-4f4c-a311-33ad04b163d2", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 12, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "0fe590d8-3c2f-4f8e-b2af-fbe25f5194d9", "expect_food": "salt_and_pepper", "expect_quantity": 1, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.5}, {"food_id": "pepper", "quantity": 0.5}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 13, "op": "split_line", "food_id": "salt_and_pepper", "args": {"line_id": "a5b0504e-40d6-4a73-aaf1-b120b6c02d75", "expect_food": "salt_and_pepper", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "salt", "quantity": 0.25}, {"food_id": "pepper", "quantity": 0.25}]}, "note": "'salt & pepper': one amount, split half and half"}
+{"batch": "g4b", "seq": 14, "op": "delete_food", "food_id": "salt_and_pepper", "args": {}, "note": "split into separate foods; now unused"}
+{"batch": "g4b", "seq": 15, "op": "split_line", "food_id": "each_paprika_and_cumin", "args": {"line_id": "cf67047a-65fe-4ddb-9882-f23d72f4db27", "expect_food": "each_paprika_and_cumin", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "paprika", "quantity": 1.0}, {"food_id": "cumin_powder", "quantity": 1.0}]}, "note": "'1 tbsp each paprika and cumin': the cumin was missing"}
+{"batch": "g4b", "seq": 16, "op": "split_line", "food_id": "each_paprika_and_cumin", "args": {"line_id": "cdacc128-6391-471b-9aff-7506940b9561", "expect_food": "each_paprika_and_cumin", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "paprika", "quantity": 1.0}, {"food_id": "cumin_powder", "quantity": 1.0}]}, "note": "'1 tbsp each paprika and cumin': the cumin was missing"}
+{"batch": "g4b", "seq": 17, "op": "split_line", "food_id": "each_paprika_and_cumin", "args": {"line_id": "124fe971-b0b0-461e-817b-814ed5a8fd4f", "expect_food": "each_paprika_and_cumin", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "paprika", "quantity": 1.0}, {"food_id": "cumin_powder", "quantity": 1.0}]}, "note": "'1 tbsp each paprika and cumin': the cumin was missing"}
+{"batch": "g4b", "seq": 18, "op": "split_line", "food_id": "each_paprika_and_cumin", "args": {"line_id": "74533b66-855d-48a3-8201-28bf656fb55f", "expect_food": "each_paprika_and_cumin", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "paprika", "quantity": 1.0}, {"food_id": "cumin_powder", "quantity": 1.0}]}, "note": "'1 tbsp each paprika and cumin': the cumin was missing"}
+{"batch": "g4b", "seq": 19, "op": "split_line", "food_id": "each_paprika_and_cumin", "args": {"line_id": "05dc4ba9-7026-4a63-a271-38eb6587ef79", "expect_food": "each_paprika_and_cumin", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "paprika", "quantity": 1.0}, {"food_id": "cumin_powder", "quantity": 1.0}]}, "note": "'1 tbsp each paprika and cumin': the cumin was missing"}
+{"batch": "g4b", "seq": 20, "op": "split_line", "food_id": "each_onion_garlic_powder", "args": {"line_id": "b9a6bb53-f5c2-48ef-a69c-2dd079096820", "expect_food": "each_onion_garlic_powder", "expect_quantity": 1, "expect_unit": "tsp", "parts": [{"food_id": "onion_powder", "quantity": 1.0}, {"food_id": "garlic_powder", "quantity": 1.0}]}, "note": "'1 tsp each onion and garlic powder': the garlic powder was missing"}
+{"batch": "g4b", "seq": 21, "op": "split_line", "food_id": "each_onion_garlic_powder", "args": {"line_id": "976932dc-acc3-42ee-8e75-a254c32e444e", "expect_food": "each_onion_garlic_powder", "expect_quantity": 1, "expect_unit": "tsp", "parts": [{"food_id": "onion_powder", "quantity": 1.0}, {"food_id": "garlic_powder", "quantity": 1.0}]}, "note": "'1 tsp each onion and garlic powder': the garlic powder was missing"}
+{"batch": "g4b", "seq": 22, "op": "split_line", "food_id": "each_onion_garlic_powder", "args": {"line_id": "c9948838-8626-4ca8-8eee-20d8f37687e7", "expect_food": "each_onion_garlic_powder", "expect_quantity": 1, "expect_unit": "tsp", "parts": [{"food_id": "onion_powder", "quantity": 1.0}, {"food_id": "garlic_powder", "quantity": 1.0}]}, "note": "'1 tsp each onion and garlic powder': the garlic powder was missing"}
+{"batch": "g4b", "seq": 23, "op": "split_line", "food_id": "each_onion_garlic_powder", "args": {"line_id": "a92f7eb4-d5ae-4c0d-a4c3-f5b971d9c9d0", "expect_food": "each_onion_garlic_powder", "expect_quantity": 1, "expect_unit": "tsp", "parts": [{"food_id": "onion_powder", "quantity": 1.0}, {"food_id": "garlic_powder", "quantity": 1.0}]}, "note": "'1 tsp each onion and garlic powder': the garlic powder was missing"}
+{"batch": "g4b", "seq": 24, "op": "split_line", "food_id": "each_onion_garlic_powder", "args": {"line_id": "2a0284fd-4092-4901-b86f-c5f43242a088", "expect_food": "each_onion_garlic_powder", "expect_quantity": 1, "expect_unit": "tsp", "parts": [{"food_id": "onion_powder", "quantity": 1.0}, {"food_id": "garlic_powder", "quantity": 1.0}]}, "note": "'1 tsp each onion and garlic powder': the garlic powder was missing"}
+{"batch": "g4b", "seq": 25, "op": "split_line", "food_id": "each_onion_and_garlic_powder", "args": {"line_id": "d83080e5-b2c6-42bd-9c40-48555cd71306", "expect_food": "each_onion_and_garlic_powder", "expect_quantity": 0.5, "expect_unit": "tsp", "parts": [{"food_id": "onion_powder", "quantity": 0.5}, {"food_id": "garlic_powder", "quantity": 0.5}]}, "note": "'½ tsp each onion and garlic powder': the garlic powder was missing"}
+{"batch": "g4b", "seq": 26, "op": "split_line", "food_id": "each_minced_ginger_and_minced_garlic", "args": {"line_id": "b6efda59-19da-453c-adb6-2721b6eaca86", "expect_food": "each_minced_ginger_and_minced_garlic", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "ginger_fresh", "quantity": 1.0}, {"food_id": "garlic", "quantity": 1.0}]}, "note": "'1 tbsp each minced ginger and garlic': the ginger was missing"}
+{"batch": "g4b", "seq": 27, "op": "split_line", "food_id": "each_minced_ginger_and_minced_garlic", "args": {"line_id": "d0468896-bf8d-439c-a952-0e0b652cae7f", "expect_food": "each_minced_ginger_and_minced_garlic", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "ginger_fresh", "quantity": 1.0}, {"food_id": "garlic", "quantity": 1.0}]}, "note": "'1 tbsp each minced ginger and garlic': the ginger was missing"}
+{"batch": "g4b", "seq": 28, "op": "split_line", "food_id": "each_minced_ginger_and_minced_garlic", "args": {"line_id": "80f9e543-afd3-4219-a5fc-ca28670e9cad", "expect_food": "each_minced_ginger_and_minced_garlic", "expect_quantity": 1, "expect_unit": "tbsp", "parts": [{"food_id": "ginger_fresh", "quantity": 1.0}, {"food_id": "garlic", "quantity": 1.0}]}, "note": "'1 tbsp each minced ginger and garlic': the ginger was missing"}
+{"batch": "g4b", "seq": 29, "op": "split_line", "food_id": "each_soy_sauce_sesame_oil", "args": {"line_id": "bdeba69f-d19e-4ce3-b5f8-9830a1db1704", "expect_food": "each_soy_sauce_sesame_oil", "expect_quantity": 2, "expect_unit": "tbsp", "parts": [{"food_id": "soy_sauce", "quantity": 2.0}, {"food_id": "sesame_oil", "quantity": 2.0}]}, "note": "'2 tbsp each soy sauce and sesame oil': the sesame oil was missing"}
+{"batch": "g4b", "seq": 30, "op": "repoint", "food_id": "dried_oregano", "args": {"to": "oregano"}, "note": "merged into oregano"}
+{"batch": "g4b", "seq": 31, "op": "delete_food", "food_id": "dried_oregano", "args": {}, "note": "merged into oregano"}
+{"batch": "g4b", "seq": 32, "op": "repoint", "food_id": "egg_quick_pickled_veg", "args": {"to": "egg"}, "note": "merged into egg"}
+{"batch": "g4b", "seq": 33, "op": "delete_food", "food_id": "egg_quick_pickled_veg", "args": {}, "note": "merged into egg"}
+{"batch": "g4b", "seq": 34, "op": "repoint", "food_id": "juice_from_1_lime", "args": {"to": "lime_juice"}, "note": "merged into lime_juice"}
+{"batch": "g4b", "seq": 35, "op": "delete_food", "food_id": "juice_from_1_lime", "args": {}, "note": "merged into lime_juice"}
+{"batch": "g4b", "seq": 36, "op": "repoint", "food_id": "lemongrass_stalk", "args": {"to": "lemongrass"}, "note": "merged into lemongrass"}
+{"batch": "g4b", "seq": 37, "op": "delete_food", "food_id": "lemongrass_stalk", "args": {}, "note": "merged into lemongrass"}
+{"batch": "g4b", "seq": 38, "op": "repoint", "food_id": "lime_juice_to_assemble", "args": {"to": "lime_juice"}, "note": "merged into lime_juice"}
+{"batch": "g4b", "seq": 39, "op": "delete_food", "food_id": "lime_juice_to_assemble", "args": {}, "note": "merged into lime_juice"}
+{"batch": "g4b", "seq": 40, "op": "repoint", "food_id": "mini_caper", "args": {"to": "capers"}, "note": "merged into capers"}
+{"batch": "g4b", "seq": 41, "op": "delete_food", "food_id": "mini_caper", "args": {}, "note": "merged into capers"}
+{"batch": "g4b", "seq": 42, "op": "repoint", "food_id": "mixed_black_and_white_sesame_seed", "args": {"to": "sesame_seeds"}, "note": "merged into sesame_seeds"}
+{"batch": "g4b", "seq": 43, "op": "delete_food", "food_id": "mixed_black_and_white_sesame_seed", "args": {}, "note": "merged into sesame_seeds"}
+{"batch": "g4b", "seq": 44, "op": "repoint", "food_id": "nori_sheet", "args": {"to": "nori"}, "note": "merged into nori"}
+{"batch": "g4b", "seq": 45, "op": "delete_food", "food_id": "nori_sheet", "args": {}, "note": "merged into nori"}
+{"batch": "g4b", "seq": 46, "op": "repoint", "food_id": "old_fashioned_rolled_oat", "args": {"to": "rolled_oats"}, "note": "merged into rolled_oats"}
+{"batch": "g4b", "seq": 47, "op": "delete_food", "food_id": "old_fashioned_rolled_oat", "args": {}, "note": "merged into rolled_oats"}
+{"batch": "g4b", "seq": 48, "op": "repoint", "food_id": "olive_oil_burger", "args": {"to": "olive_oil"}, "note": "merged into olive_oil"}
+{"batch": "g4b", "seq": 49, "op": "delete_food", "food_id": "olive_oil_burger", "args": {}, "note": "merged into olive_oil"}
+{"batch": "g4b", "seq": 50, "op": "repoint", "food_id": "olive_oil_coating", "args": {"to": "olive_oil"}, "note": "merged into olive_oil"}
+{"batch": "g4b", "seq": 51, "op": "delete_food", "food_id": "olive_oil_coating", "args": {}, "note": "merged into olive_oil"}
+{"batch": "g4b", "seq": 52, "op": "repoint", "food_id": "overly_ripe_banana", "args": {"to": "banana"}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 53, "op": "delete_food", "food_id": "overly_ripe_banana", "args": {}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 54, "op": "repoint", "food_id": "overripe_banana", "args": {"to": "banana"}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 55, "op": "delete_food", "food_id": "overripe_banana", "args": {}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 56, "op": "repoint", "food_id": "pesto_sauce", "args": {"to": "pesto"}, "note": "merged into pesto"}
+{"batch": "g4b", "seq": 57, "op": "delete_food", "food_id": "pesto_sauce", "args": {}, "note": "merged into pesto"}
+{"batch": "g4b", "seq": 58, "op": "repoint", "food_id": "powder", "args": {"to": "curry_powder"}, "note": "merged into curry_powder"}
+{"batch": "g4b", "seq": 59, "op": "delete_food", "food_id": "powder", "args": {}, "note": "merged into curry_powder"}
+{"batch": "g4b", "seq": 60, "op": "repoint", "food_id": "raspberry_tonic_water", "args": {"to": "tonic_water"}, "note": "merged into tonic_water"}
+{"batch": "g4b", "seq": 61, "op": "delete_food", "food_id": "raspberry_tonic_water", "args": {}, "note": "merged into tonic_water"}
+{"batch": "g4b", "seq": 62, "op": "repoint", "food_id": "red_long_chilli", "args": {"to": "chilli_red"}, "note": "merged into chilli_red"}
+{"batch": "g4b", "seq": 63, "op": "delete_food", "food_id": "red_long_chilli", "args": {}, "note": "merged into chilli_red"}
+{"batch": "g4b", "seq": 64, "op": "repoint", "food_id": "sake_small_pinch_salt_and_pepper", "args": {"to": "cooking_sake"}, "note": "merged into cooking_sake"}
+{"batch": "g4b", "seq": 65, "op": "delete_food", "food_id": "sake_small_pinch_salt_and_pepper", "args": {}, "note": "merged into cooking_sake"}
+{"batch": "g4b", "seq": 66, "op": "repoint", "food_id": "salt_and_black_pepper", "args": {"to": "salt"}, "note": "merged into salt"}
+{"batch": "g4b", "seq": 67, "op": "delete_food", "food_id": "salt_and_black_pepper", "args": {}, "note": "merged into salt"}
+{"batch": "g4b", "seq": 68, "op": "repoint", "food_id": "salt_black_pepper", "args": {"to": "salt"}, "note": "merged into salt"}
+{"batch": "g4b", "seq": 69, "op": "delete_food", "food_id": "salt_black_pepper", "args": {}, "note": "merged into salt"}
+{"batch": "g4b", "seq": 70, "op": "repoint", "food_id": "sesame_seed_tomato", "args": {"to": "sesame_seeds"}, "note": "merged into sesame_seeds"}
+{"batch": "g4b", "seq": 71, "op": "delete_food", "food_id": "sesame_seed_tomato", "args": {}, "note": "merged into sesame_seeds"}
+{"batch": "g4b", "seq": 72, "op": "repoint", "food_id": "sized_ripe_banana", "args": {"to": "banana"}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 73, "op": "delete_food", "food_id": "sized_ripe_banana", "args": {}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 74, "op": "repoint", "food_id": "slivered_almond", "args": {"to": "almond"}, "note": "merged into almond"}
+{"batch": "g4b", "seq": 75, "op": "delete_food", "food_id": "slivered_almond", "args": {}, "note": "merged into almond"}
+{"batch": "g4b", "seq": 76, "op": "repoint", "food_id": "soy", "args": {"to": "soy_sauce"}, "note": "merged into soy_sauce"}
+{"batch": "g4b", "seq": 77, "op": "delete_food", "food_id": "soy", "args": {}, "note": "merged into soy_sauce"}
+{"batch": "g4b", "seq": 78, "op": "repoint", "food_id": "spring_onion_green", "args": {"to": "spring_onion"}, "note": "merged into spring_onion"}
+{"batch": "g4b", "seq": 79, "op": "delete_food", "food_id": "spring_onion_green", "args": {}, "note": "merged into spring_onion"}
+{"batch": "g4b", "seq": 80, "op": "repoint", "food_id": "stalk_celery", "args": {"to": "celery"}, "note": "merged into celery"}
+{"batch": "g4b", "seq": 81, "op": "delete_food", "food_id": "stalk_celery", "args": {}, "note": "merged into celery"}
+{"batch": "g4b", "seq": 82, "op": "repoint", "food_id": "sun_dried_tomato_strip", "args": {"to": "sundried_tomato"}, "note": "merged into sundried_tomato"}
+{"batch": "g4b", "seq": 83, "op": "delete_food", "food_id": "sun_dried_tomato_strip", "args": {}, "note": "merged into sundried_tomato"}
+{"batch": "g4b", "seq": 84, "op": "repoint", "food_id": "sushi_seaweed_sheet", "args": {"to": "nori"}, "note": "merged into nori"}
+{"batch": "g4b", "seq": 85, "op": "delete_food", "food_id": "sushi_seaweed_sheet", "args": {}, "note": "merged into nori"}
+{"batch": "g4b", "seq": 86, "op": "repoint", "food_id": "taste_cheese", "args": {"to": "tasty_cheese"}, "note": "merged into tasty_cheese"}
+{"batch": "g4b", "seq": 87, "op": "delete_food", "food_id": "taste_cheese", "args": {}, "note": "merged into tasty_cheese"}
+{"batch": "g4b", "seq": 88, "op": "repoint", "food_id": "tenderloin_cut_raw_chicken", "args": {"to": "chicken_breast_tenderloin"}, "note": "merged into chicken_breast_tenderloin"}
+{"batch": "g4b", "seq": 89, "op": "delete_food", "food_id": "tenderloin_cut_raw_chicken", "args": {}, "note": "merged into chicken_breast_tenderloin"}
+{"batch": "g4b", "seq": 90, "op": "repoint", "food_id": "tin_diced_tomato", "args": {"to": "diced_tomato_canned"}, "note": "merged into diced_tomato_canned"}
+{"batch": "g4b", "seq": 91, "op": "delete_food", "food_id": "tin_diced_tomato", "args": {}, "note": "merged into diced_tomato_canned"}
+{"batch": "g4b", "seq": 92, "op": "copy_conversion", "food_id": "tin_tuna_in_spring_water", "args": {"to": "tuna_springwater", "unit": "x85g"}, "note": "merge into tuna_springwater"}
+{"batch": "g4b", "seq": 93, "op": "repoint", "food_id": "tin_tuna_in_spring_water", "args": {"to": "tuna_springwater"}, "note": "merged into tuna_springwater"}
+{"batch": "g4b", "seq": 94, "op": "delete_food", "food_id": "tin_tuna_in_spring_water", "args": {}, "note": "merged into tuna_springwater"}
+{"batch": "g4b", "seq": 95, "op": "repoint", "food_id": "tinned_tomato", "args": {"to": "diced_tomato_canned"}, "note": "merged into diced_tomato_canned"}
+{"batch": "g4b", "seq": 96, "op": "delete_food", "food_id": "tinned_tomato", "args": {}, "note": "merged into diced_tomato_canned"}
+{"batch": "g4b", "seq": 97, "op": "repoint", "food_id": "turmeric_powder", "args": {"to": "turmeric"}, "note": "merged into turmeric"}
+{"batch": "g4b", "seq": 98, "op": "delete_food", "food_id": "turmeric_powder", "args": {}, "note": "merged into turmeric"}
+{"batch": "g4b", "seq": 99, "op": "repoint", "food_id": "unripe_banana", "args": {"to": "banana"}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 100, "op": "delete_food", "food_id": "unripe_banana", "args": {}, "note": "merged into banana"}
+{"batch": "g4b", "seq": 101, "op": "repoint", "food_id": "unsweetened_cocoa_powder", "args": {"to": "cocoa_powder"}, "note": "merged into cocoa_powder"}
+{"batch": "g4b", "seq": 102, "op": "delete_food", "food_id": "unsweetened_cocoa_powder", "args": {}, "note": "merged into cocoa_powder"}
+{"batch": "g4b", "seq": 103, "op": "repoint", "food_id": "vine_tomato", "args": {"to": "tomato"}, "note": "merged into tomato"}
+{"batch": "g4b", "seq": 104, "op": "delete_food", "food_id": "vine_tomato", "args": {}, "note": "merged into tomato"}
+{"batch": "g4b", "seq": 105, "op": "delete_food", "food_id": "aaa", "args": {}, "note": "unused: test row 'aaa test'"}
+{"batch": "g4b", "seq": 106, "op": "delete_food", "food_id": "mcmuffin", "args": {}, "note": "unused: takeaway product, estimate numbers, unused"}
+{"batch": "g4b", "seq": 107, "op": "delete_food", "food_id": "mediterranean_orzo", "args": {}, "note": "unused: a dish name, estimate numbers, unused"}
+{"batch": "g4b", "seq": 108, "op": "delete_food", "food_id": "orange_peel_piece", "args": {}, "note": "unused: parse artefact, unused"}
+{"batch": "g4b", "seq": 109, "op": "delete_food", "food_id": "pepper_as_needed", "args": {}, "note": "unused: parse artefact, unused"}
+{"batch": "g4b", "seq": 110, "op": "delete_food", "food_id": "pinch_more_salt", "args": {}, "note": "unused: parse artefact, unused"}
+{"batch": "g4b", "seq": 111, "op": "delete_food", "food_id": "pinch_nutmeg", "args": {}, "note": "unused: parse artefact, unused"}
+{"batch": "g4b", "seq": 112, "op": "delete_food", "food_id": "pinch_salt_pepper", "args": {}, "note": "unused: parse artefact, unused"}
+{"batch": "g4b", "seq": 113, "op": "delete_food", "food_id": "pinch_sea_salt_flake", "args": {}, "note": "unused: parse artefact, unused"}
+{"batch": "g4b", "seq": 114, "op": "delete_food", "food_id": "sauce", "args": {}, "note": "unused: generic 'Sauce' keyed to BBQ sauce, unused"}
+{"batch": "g4b", "seq": 115, "op": "delete_food", "food_id": "spray_oil", "args": {}, "note": "unused: unused; olive_oil_spray is created in A"}
+{"batch": "g4b", "seq": 116, "op": "delete_food", "food_id": "vitawheat_9_seed_grain_biscuit", "args": {}, "note": "unused: branded, unused"}

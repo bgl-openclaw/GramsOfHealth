@@ -1,0 +1,17 @@
+food_id,name,tag,basis,removes_dietitian_verification
+haloumi,Haloumi,Dairy,haloumi is a cheese,True
+honey_olive_oil_labneh,Labneh,Dairy,labneh is strained yoghurt,True
+furikake,Furikake,Sesame,furikake is sesame-based,True
+tub_cherry_bocconcini,Tub Cherry Bocconcini,Dairy,bocconcini is a cheese,False
+pancake,Pancake,Gluten,"AUSNUT plain homemade pancake: flour, egg, milk",False
+pancake,Pancake,Egg,"AUSNUT plain homemade pancake: flour, egg, milk",False
+pancake,Pancake,Dairy,"AUSNUT plain homemade pancake: flour, egg, milk",False
+waffle,Waffle,Gluten,"AUSNUT plain waffle: flour, egg, milk",False
+waffle,Waffle,Egg,"AUSNUT plain waffle: flour, egg, milk",False
+waffle,Waffle,Dairy,"AUSNUT plain waffle: flour, egg, milk",False
+pikelet,Pikelet,Gluten,"AUSNUT plain homemade pikelet: flour, egg, milk",False
+pikelet,Pikelet,Egg,"AUSNUT plain homemade pikelet: flour, egg, milk",False
+pear_cou_cou,Pear Cou Cou,Gluten,couscous is wheat,False
+pearl_cou_cou,Pearl Cou Cou,Gluten,couscous is wheat,False
+pesto,Pesto,Tree nuts,basil pesto contains pine nuts (often cashews),False
+red_pesto,Red Pesto,Tree nuts,pesto contains nuts,False

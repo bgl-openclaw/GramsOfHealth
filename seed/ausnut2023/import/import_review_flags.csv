@@ -1,0 +1,52 @@
+food_id,ausnut_key,flag
+milk_full_cream,F005634,1 brand pack measures skipped
+oat_milk,F006131,Oats: tagged Gluten to match the dietitians' rolled oats and quick oats; dietitian decides
+yoghurt_natural_reduced_fat,F009690,9 brand pack measures skipped
+yoghurt_natural_low_fat,F009688,9 brand pack measures skipped
+custard_vanilla_reduced_fat,F003433,"Egg: commercial product, confirm on label"
+chicken_roast_deli_sliced,F010212,"Processed meat: dairy, gluten and soy possible, confirm on label"
+turkey_roast_deli_sliced,F009328,"Processed meat: dairy, gluten and soy possible, confirm on label"
+salami,F007818,"Processed meat: dairy, gluten and soy possible, confirm on label"
+pastrami,F010253,"Processed meat: dairy, gluten and soy possible, confirm on label"
+mackerel_canned_drained,F005262,1 brand pack measures skipped
+anchovies_canned,F000074,2 brand pack measures skipped
+meat_alternative_soy_pea_protein,F009822,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+falafel,F003804,"Falafel: flour content varies, confirm"
+falafel,F003804,1 brand pack measures skipped
+oat_bran,F006134,Oats: tagged Gluten to match the dietitians' rolled oats and quick oats; not sold as gluten free in Australia; dietitian decides
+bread_mixed_grain,F001621,1 brand pack measures skipped
+rye_crispbread,F001118,2 brand pack measures skipped
+wheat_crispbread,F001120,2 brand pack measures skipped
+weet_bix_style_wheat_biscuit,F001848,1 brand pack measures skipped
+oats_gluten_free,F010936,Oats: tagged Gluten to match the dietitians' rolled oats and quick oats; not sold as gluten free in Australia; dietitian decides
+tomato_canned_no_added_salt,F010071,1 brand pack measures skipped
+corn_baby_canned,F003204,1 brand pack measures skipped
+barbecue_sauce,F007987,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+plum_sauce,F008054,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+satay_sauce,F008058,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+pasta_sauce_tomato_based_jar,F008050,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+tartare_sauce,F008079,"Egg: commercial product, confirm on label"
+chocolate_dark_60_cocoa,F002922,"Chocolate: milk solids and soy lecithin possible, confirm on label"
+chocolate_dark_60_cocoa,F002922,5 brand pack measures skipped
+chocolate_dark_no_added_sugar,F009837,"Chocolate: milk solids and soy lecithin possible, confirm on label"
+chocolate_dark_no_added_sugar,F009837,5 brand pack measures skipped
+protein_powder_plant_based,F010636,"Protein powder: reference row only, use the pack label"
+protein_powder_plant_based,F010636,1 brand pack measures skipped
+olive_oil_spray,F006177,AUSNUT spray measure is 5 g (44 kcal); a one-second spray is closer to 0.3 g. Loaded as AUSNUT gives it; dietitian may override
+red_curry_paste,F006471,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+tikka_curry_paste,F006471,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+mixed_berries,F009881,"aisle not changed: live 'Pantry', rule suggests 'Frozen'"
+rosemary,F007716,"aisle not changed: live 'Pantry', rule suggests 'Produce'"
+tin_butter_bean,F000440,"aisle not changed: live 'Dairy & eggs', rule suggests 'Pantry'"
+tomato_passata,F009209,"aisle not changed: live 'Produce', rule suggests 'Pantry'"
+tomato_paste,F009208,"aisle not changed: live 'Produce', rule suggests 'Pantry'"
+pepita,F008212,"aisle not changed: live 'Produce', rule suggests 'Pantry'"
+taco_seasoning,F009072,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"
+vegetable_stock_pot,F008936,Stock: AUSNUT row covers all flavours incl. chicken and beef; vegan only if the product is vegetable stock
+swiss_brown_mushroom,F005946,default size not set: food already has each/size measures (each); setting it would rewrite 'each'
+oyster_mushroom,F005956,default size not set: food already has each/size measures (each); setting it would rewrite 'each'
+oyster_mushroom,F005956,"aisle not changed: live 'Meat & seafood', rule suggests 'Produce'"
+olive_oil_kewpie_mayonnaise,F005441,"Egg: commercial product, confirm on label"
+tomato_based_pizza_sauce,F008050,"density change > 10%: live 1 vs AUSNUT 1.1; every spoon and cup line of this food moves. Queue, do not write"
+tomato_based_pizza_sauce,F008050,"aisle not changed: live 'Produce', rule suggests 'Pantry'"
+tomato_based_pizza_sauce,F008050,"Commercial seasoning or sauce: wheat and soy possible, confirm on label"

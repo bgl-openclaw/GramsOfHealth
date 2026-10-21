@@ -1,0 +1,7 @@
+purchase_unit,rule
+can,"name has canned, or AUSNUT lists a can measure"
+bunch,fresh herbs (24403)
+each,"whole fruit; whole vegetables; milk, yoghurt, cream, custard, ice cream; sauces, oils, spreads, jars; bread, rolls, flat breads"
+punnet,"berries, cherries, grapes, cherry tomatoes"
+packet,"packaged salad and sprouts, snow peas, green beans; cheese; meat and fish; grains, flours, pasta, cereals, biscuits; nuts, seeds, dried fruit; spices; everything else"
+pouch,only where AUSNUT lists a pouch measure without brand (rice pouches)

@@ -1,0 +1,40 @@
+Grams Editor — G5a: show "AI verified" as its own food state (staff screens only)
+
+Paste AFTER the database step G1 has run (migrations 0041 + 0042 live) and BEFORE the AUSNUT import (G3). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Use the current branding (mem://branding.md). Australian English, sentence case, no em dashes.
+Add to project knowledge (mem://foods.md, create it if missing): "A food has three states: Verified (foods.verified, a dietitian checked it), AI verified (foods.ai_verified and not verified: numbers come from AUSNUT 2023 with evidence, not yet checked by a dietitian), Draft (neither). Dietitian verification always wins. Client screens only ever use dietitian verification."
+
+WHAT CHANGED IN THE DATABASE
+- foods gains: ausnut_key (text, e.g. "F006081"), ai_verified (boolean, default false), ai_verified_at (timestamptz), ai_match_confidence ('exact_key' | 'agreed_list' | 'high_match' | 'checked_verified'), ai_evidence (one line, max 400 characters). Screens that load foods with select * get these automatically.
+- The database clears AI verification by itself when someone changes kcal, protein, fat, carbs, fibre or density, changes a tag, or marks the food unverified. The app never needs to manage that.
+- recipe_verification gains three columns at the end: ai_verified_food_count, ai_verified_food_names (text[]), food_note (e.g. "3 foods AI verified, 1 unverified"). `status` and `reasons` are unchanged: a recipe whose foods are all verified OR AI verified, and is otherwise complete, is status 'ai_verified'.
+- food_leverage gains ai_verified and awaiting_dietitian_recipes. blocked_recipes now treats AI verified foods as done.
+- changes_to_review gains food_ai_verified_now. Import changes carry a note at the end of the summary, e.g. "[AUSNUT 2023 F006316]".
+
+1. One shared food-state helper + pill (e.g. src/lib/foodState.ts and src/components/FoodStatePill.tsx)
+   - foodState(f) = f.verified ? 'verified' : f.ai_verified ? 'ai_verified' : 'draft'.
+   - Pill labels: "Verified" (existing green style), "AI verified" (its own colour, clearly different from green, e.g. the brand's secondary/blue), "Draft — not verified" (existing style).
+   - When f.verified AND f.ai_verified (confidence 'checked_verified'), show "Verified" plus a small muted "AUSNUT checked" text next to it.
+   - Use this helper everywhere a food's verified state is shown to STAFF: the foods list pill and filter, the food editor badge, Quality's unverified-foods list, the recipe editor ingredient ticks, Needs attention, and the staff shopping list. Search the codebase for `.verified` on food objects and replace the direct checks.
+
+2. Foods list
+   - Filter options: All / Verified / AI verified / Draft (AI verified = ai_verified and not verified).
+   - Pill per row from the helper.
+
+3. Food editor
+   - Badge from the helper at the top.
+   - When ausnut_key is set: a small chip "AUSNUT {ausnut_key}".
+   - When ai_verified: a muted box "AI verified {ai_verified_at as e.g. 21 Oct 2026} · {confidence label}" with ai_evidence underneath. Confidence labels: exact_key "Same AUSNUT food as before", agreed_list "Agreed AUSNUT match", high_match "Strong name match", checked_verified "Checked against AUSNUT".
+   - Button "Remove AI verification" (dietitians/admins only; only when ai_verified): confirm dialog "This food will show as Draft until a dietitian verifies it.", then update foods set ai_verified = false, ai_verified_at = null, ai_match_confidence = null, ai_evidence = null for this food. Toast on success; show the error message on failure.
+   - The existing "Mark as verified" stays as it is (dietitian verification).
+
+4. Recipe screens
+   - Ingredient ticks: verified → existing tick; AI verified → a different tick style with tooltip "AI verified (AUSNUT), not yet checked by a dietitian"; draft → existing warning.
+   - Under the recipe status, show food_note when it isn't null.
+   - Sign-off dialog: when ai_verified_food_count > 0, list ai_verified_food_names under the heading "You're also confirming these AI verified foods:" before the sign-off button. The button and the sign-off call stay the same.
+
+5. Quality / Needs attention
+   - Where food_leverage is shown: keep blocked_recipes as the main number; add awaiting_dietitian_recipes as a second, muted number "awaiting dietitian".
+
+DO NOT CHANGE
+- Any client-facing screen (My table): clients keep seeing dietitian verification only (the database's client_recipe_screen is unchanged).
+- Saving foods: never send ai_* fields from the normal food form (the database handles them). Only the "Remove AI verification" button writes them.

@@ -1,0 +1,50 @@
+food_id,name,action,why,lines_moved
+dried_oregano,"Oregano, dried",merge into oregano,B3 duplicate,3
+egg_quick_pickled_veg,Egg Quick Pickled Veg,merge into egg,B3 duplicate,0
+juice_from_1_lime,"Lime Juice, freshly squeezed",merge into lime_juice,B3 duplicate,0
+lemongrass_stalk,Lemongrass Stalk,merge into lemongrass,B3 duplicate,1
+lime_juice_to_assemble,Lime Juice To Assemble,merge into lime_juice,B3 duplicate,0
+mini_caper,Mini Caper,merge into capers,capers,1
+mixed_black_and_white_sesame_seed,Mixed Black And White Sesame Seed,merge into sesame_seeds,sesame seeds,1
+nori_sheet,Nori Sheet,merge into nori,nori sheets,1
+old_fashioned_rolled_oat,Old Fashioned Rolled Oat,merge into rolled_oats,B3 duplicate,1
+olive_oil_burger,Olive Oil Burger,merge into olive_oil,B3 duplicate,1
+olive_oil_coating,Olive Oil Coating,merge into olive_oil,B3 duplicate,0
+overly_ripe_banana,Overly Ripe Banana,merge into banana,banana,1
+overripe_banana,Overripe Banana,merge into banana,banana,1
+pesto_sauce,Pesto Sauce,merge into pesto,B3 duplicate,1
+powder,Powder,merge into curry_powder,B3 duplicate,1
+raspberry_tonic_water,Raspberry Tonic Water,merge into tonic_water,B3 duplicate,1
+red_long_chilli,Red Long Chilli,merge into chilli_red,B3 duplicate,1
+sake_small_pinch_salt_and_pepper,Sake Small Pinch Salt And Pepper,merge into cooking_sake,garbled 'sake' + 'small pinch salt and pepper' (lines are 1 tsp sake),3
+salt_and_black_pepper,Salt And Black Pepper,merge into salt,B3 duplicate,0
+salt_black_pepper,Salt & Black Pepper,merge into salt,B3 duplicate,0
+sesame_seed_tomato,Sesame Seed Tomato,merge into sesame_seeds,B3 duplicate,1
+sized_ripe_banana,Sized Ripe Banana,merge into banana,garbled 'medium-sized ripe banana',1
+slivered_almond,Slivered Almond,merge into almond,slivered almonds,1
+soy,Soy,merge into soy_sauce,'2 tsp soy' in Spaghetti Bolognese; was keyed to soy LECITHIN (626 kcal),1
+spring_onion_green,Spring Onion Green,merge into spring_onion,B3 duplicate,1
+stalk_celery,Stalk Celery,merge into celery,B3 duplicate,0
+sun_dried_tomato_strip,Sun-Dried Tomato Strip,merge into sundried_tomato,sun-dried tomatoes,1
+sushi_seaweed_sheet,Sushi Seaweed Sheet,merge into nori,sushi seaweed = nori sheets,1
+taste_cheese,Taste Cheese,merge into tasty_cheese,typo of tasty cheese,1
+tenderloin_cut_raw_chicken,Tenderloin Cut Raw Chicken,merge into chicken_breast_tenderloin,chicken tenderloins,1
+tin_diced_tomato,Tin Diced Tomato,merge into diced_tomato_canned,canned diced tomatoes,1
+tin_tuna_in_spring_water,Tin Tuna In Spring Water,merge into tuna_springwater,B3 duplicate,1
+tinned_tomato,Tinned Tomato,merge into diced_tomato_canned,canned tomatoes,1
+turmeric_powder,Turmeric Powder,merge into turmeric,ground turmeric,1
+unripe_banana,Unripe Banana,merge into banana,banana,1
+unsweetened_cocoa_powder,Unsweetened Cocoa Powder,merge into cocoa_powder,B3 duplicate,1
+vine_tomato,Vine Tomato,merge into tomato,fresh tomato,1
+aaa,aaa test,delete (unused),test row 'aaa test',0
+mcmuffin,Mcmuffin,delete (unused),"takeaway product, estimate numbers, unused",0
+mediterranean_orzo,Mediterranean Orzo,delete (unused),"a dish name, estimate numbers, unused",0
+orange_peel_piece,Orange Peel Piece,delete (unused),"parse artefact, unused",0
+pepper_as_needed,Pepper As Needed,delete (unused),"parse artefact, unused",0
+pinch_more_salt,Pinch More Salt,delete (unused),"parse artefact, unused",0
+pinch_nutmeg,Pinch Nutmeg,delete (unused),"parse artefact, unused",0
+pinch_salt_pepper,Pinch Salt & Pepper,delete (unused),"parse artefact, unused",0
+pinch_sea_salt_flake,Pinch Sea Salt Flake,delete (unused),"parse artefact, unused",0
+sauce,Sauce,delete (unused),"generic 'Sauce' keyed to BBQ sauce, unused",0
+spray_oil,Spray Oil,delete (unused),unused; olive_oil_spray is created in A,0
+vitawheat_9_seed_grain_biscuit,Vitawheat 9 Seed & Grain Biscuit,delete (unused),"branded, unused",0

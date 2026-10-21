@@ -1,0 +1,5 @@
+action,food_id,display_name,ausnut_key,ausnut_name,recipes,note
+create,gelatine_powder,Gelatine powder,F004196,"Gelatine, all types",7 recipes with 'warm water + 3 tsp gelatine' in the method (data_issue),add ingredient line; dietitian confirms quantity
+reuse_existing,"(existing Coconut, desiccated)",Coconut flakes,F002987,"Coconut, grated & desiccated",6 recipes (optional topping),"do not create; re-add the line using the existing coconut, desiccated food"
+create,olive_oil_spray,Olive oil spray,F006177,"Oil, olive",Savoury egg muffins,same nutrients as olive oil; AUSNUT spray measure 5 g loads as a conversion
+none,,Quick pickled veg,,,5 recipes,"sub-recipe, not a food; dietitian re-adds carrot, cucumber, vinegar, sugar lines"

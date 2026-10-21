@@ -1,0 +1,42 @@
+action,food_id,ausnut_key,ausnut_name,note
+repoint_and_load_numbers,tasty_cheese,F002414,"Cheese, cheddar, natural, plain",
+repoint_and_load_numbers,turkey_mince,F010386,"Turkey, mince, raw",
+repoint_and_load_numbers,vermicelli_noodles,F006038,"Noodle, rice stick, boiled, drained",cooked basis; confirm recipes mean cooked weight
+repoint_and_load_numbers,vermicelli_rice_noodle,F006038,"Noodle, rice stick, boiled, drained",
+repoint_and_load_numbers,pad_thai_rice_noodle,F006038,"Noodle, rice stick, boiled, drained",
+repoint_and_load_numbers,red_curry_paste,F006471,"Paste, curry style",
+repoint_and_load_numbers,tikka_curry_paste,F006471,"Paste, curry style",
+repoint_and_load_numbers,mixed_berries,F009881,"Mixed berry, frozen",
+repoint_and_load_numbers,plain_rice_cake,F001147,"Biscuit, savoury, rice cake, plain",
+repoint_and_load_numbers,rosemary,F007716,"Rosemary, fresh, raw",fresh
+repoint_and_load_numbers,thyme,F009160,"Thyme, dried",dried
+repoint_and_load_numbers,light_cream_cheese,F002446,"Cheese, cream, plain, reduced fat",
+repoint_and_load_numbers,red_chili_flake,F002893,"Chilli (chili), dried, ground",
+repoint_and_load_numbers,tin_butter_bean,F000440,"Bean, lima or butter, canned, drained",
+repoint_and_load_numbers,powdered_sugar,F008980,"Sugar, white, icing",
+repoint_and_load_numbers,rice_pouch,F007678,"Rice, white, purchased par-cooked or instant, cooked",
+repoint_and_load_numbers,microwave_brown_rice_quinoa_pouch,F007647,"Rice, brown, purchased par-cooked or instant, cooked",no quinoa blend row in AUSNUT; brown rice par-cooked used
+repoint_and_load_numbers,tomato_passata,F009209,"Tomato, puree, commercial",
+repoint_and_load_numbers,tomato_paste,F009208,"Tomato, paste, added salt",
+repoint_and_load_numbers,pepita,F008212,"Seed, pumpkin, hulled & dried, unsalted",
+repoint_and_load_numbers,sundried_tomato,F009217,"Tomato, sundried or semi-sundried",
+repoint_and_load_numbers,taco_seasoning,F009072,"Seasoning mix, chilli based, for tacos",
+repoint_and_load_numbers,vegetable_stock_pot,F008936,"Stock, liquid, all flavours, prepared ","concentrate pot; live numbers already on a prepared-stock basis; AUSNUT row is prepared stock, all flavours"
+repoint_and_load_numbers,mixed_herbs_dried,F004365,"Herbs, dried, all types",
+repoint_and_load_numbers,salt,F007878,"Salt, table, iodised",
+repoint_and_load_numbers,salt_and_pepper,F007878,"Salt, table, iodised",salt and pepper to taste: salt row
+repoint_and_load_numbers,water,F009527,"Water, tap",
+repoint_and_load_numbers,pepper,F006618,"Pepper, black or white, ground",
+repoint_and_load_numbers,soy_sauce,F008065,"Sauce, soy, commercial",
+repoint_and_load_numbers,light_soy_sauce,F008065,"Sauce, soy, commercial",already on this key; load nutrients
+repoint_and_load_numbers,oregano,F006281,"Oregano, dried",already on this key; load nutrients
+repoint_and_load_numbers,tomato,F009193,"Tomato, common, raw","common tomato, not cherry"
+repoint_and_load_numbers,rice_vinegar,F009498,Vinegar (except balsamic vinegar),accepted generic
+repoint_and_load_numbers,apple_cider_vinegar,F009498,Vinegar (except balsamic vinegar),accepted generic
+repoint_and_load_numbers,white_vinegar,F009498,Vinegar (except balsamic vinegar),accepted generic
+repoint_and_load_numbers,sherry_vinegar,F009498,Vinegar (except balsamic vinegar),accepted generic
+repoint_and_load_numbers,seeded_mustard,F005973,"Mustard, cream style",accepted stand-in
+repoint_and_load_numbers,swiss_brown_mushroom,F005946,"Mushroom, common, raw",accepted stand-in
+repoint_and_load_numbers,oyster_mushroom,F005956,"Mushroom, oriental, raw","live key points at Oyster, raw (seafood); numbers are seafood numbers, must be replaced"
+repoint_and_load_numbers,olive_oil_kewpie_mayonnaise,F005441,"Mayonnaise, regular fat, commercial","live key points at Oil, olive (883 kcal); replace with mayonnaise"
+repoint_and_load_numbers,tomato_based_pizza_sauce,F008050,"Sauce, pasta, tomato based, commercial",live key points at salsa; tomato pasta sauce is the nearest row

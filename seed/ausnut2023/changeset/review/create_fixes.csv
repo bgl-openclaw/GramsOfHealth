@@ -1,0 +1,13 @@
+food_id,name,change,why
+milk_full_cream,"Milk, full cream","{""protein_family"": null}",milk would become a recipe's 'main protein' by weight (see protein family note)
+buttermilk,Buttermilk,"{""protein_family"": null}",as milk
+coconut_yoghurt_natural,"Coconut yoghurt, natural","{""protein_family"": null}",coconut yoghurt is not dairy and not a protein source
+custard_vanilla_reduced_fat,"Custard, vanilla, reduced fat","{""protein_family"": null}","a dessert, not a protein source"
+lobster_raw,"Lobster, raw","{""protein_family"": ""seafood""}","lobster is a crustacean (seafood), not fish"
+muesli_natural_untoasted,"Muesli, natural, untoasted","{""drop_tags"": [""Nut-free""]}",natural muesli usually contains nuts
+corn_flakes,Corn flakes,"{""drop_tags"": [""Gluten-free""], ""add_tags"": [""Gluten""]}",standard corn flakes contain barley malt
+squash_button,"Squash, button","{""protein_family"": null, ""drop_tags"": [""Shellfish""], ""add_tags"": [""Vegan"", ""Vegetarian""]}",'scallopini' squash matched the scallop rule — it's a vegetable
+honeydew_melon,Honeydew melon,"{""drop_tags"": [""Honey""], ""add_tags"": [""Vegan""]}",'honey dew' matched the honey rule
+mixed_nuts_unsalted,"Mixed nuts, unsalted","{""add_tags"": [""Tree nuts""]}",mixed nuts are tree nuts (Peanuts kept: real mixes often contain them)
+mixed_seeds,Mixed seeds,"{""add_tags"": [""Sesame""]}",seed mixes usually contain sesame
+black_bean_sauce,Black bean sauce,"{""protein_family"": null}","a sauce, not a legume serve"

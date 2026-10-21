@@ -1,0 +1,34 @@
+food_id,recipe,line,becomes,why
+salt_and_pepper,MOROCCAN LAMB COUS COUS SALAD,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,SPANNAKOPTIA,2 tbsp Salt & pepper (to taste),1 tbsp salt + 1 tbsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,BAKED SHAKSHUKA,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,EGGS ON TOAST,1 tsp Salt & pepper (to taste),0.5 tsp salt + 0.5 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,CHICKEN & QUINOA SALAD,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,BAKED VEGETABLE FRITTATA,0.5 tsp Salt & pepper (to taste),removed: the recipe already lists salt and pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,GREEK CHICKEN RISOTTO,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,RISSOLES & MASH = AUSTRALIAN DELIGHT!,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,RISSOLES & 3-VEG,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,LAMB KOFTA PITA BREADS,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,KOFTA PITA POCKETS,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,MEXICAN PICADILLO CON PAPAS,1 tsp Salt & pepper (to taste),0.5 tsp salt + 0.5 tsp pepper,"'salt & pepper': one amount, split half and half"
+salt_and_pepper,MEATBALL SHAKSHUKA,0.5 tsp Salt & pepper (to taste),0.25 tsp salt + 0.25 tsp pepper,"'salt & pepper': one amount, split half and half"
+each_paprika_and_cumin,TURKEY AND VEGETABLE ENCHILADAS,1 tbsp Paprika Powder,1 tbsp paprika + 1 tbsp cumin_powder,'1 tbsp each paprika and cumin': the cumin was missing
+each_paprika_and_cumin,BEEF AND VEGETABLE ENCHILADAS,1 tbsp Paprika Powder,1 tbsp paprika + 1 tbsp cumin_powder,'1 tbsp each paprika and cumin': the cumin was missing
+each_paprika_and_cumin,BLACK BEAN AND VEGETABLE ENCHILADAS,1 tbsp Paprika Powder,1 tbsp paprika + 1 tbsp cumin_powder,'1 tbsp each paprika and cumin': the cumin was missing
+each_paprika_and_cumin,CHICKEN AND VEGETABLE ENCHILADAS,1 tbsp Paprika Powder,1 tbsp paprika + 1 tbsp cumin_powder,'1 tbsp each paprika and cumin': the cumin was missing
+each_paprika_and_cumin,PORK AND VEGETABLE ENCHILADAS,1 tbsp Paprika Powder,1 tbsp paprika + 1 tbsp cumin_powder,'1 tbsp each paprika and cumin': the cumin was missing
+each_paprika_and_cumin,—,Paprika Powder,"food left in the library, now unused (verified: a dietitian deletes it)",
+each_onion_garlic_powder,TURKEY AND VEGETABLE ENCHILADAS,1 tsp Onion Powder,1 tsp onion_powder + 1 tsp garlic_powder,'1 tsp each onion and garlic powder': the garlic powder was missing
+each_onion_garlic_powder,BEEF AND VEGETABLE ENCHILADAS,1 tsp Onion Powder,1 tsp onion_powder + 1 tsp garlic_powder,'1 tsp each onion and garlic powder': the garlic powder was missing
+each_onion_garlic_powder,BLACK BEAN AND VEGETABLE ENCHILADAS,1 tsp Onion Powder,1 tsp onion_powder + 1 tsp garlic_powder,'1 tsp each onion and garlic powder': the garlic powder was missing
+each_onion_garlic_powder,CHICKEN AND VEGETABLE ENCHILADAS,1 tsp Onion Powder,1 tsp onion_powder + 1 tsp garlic_powder,'1 tsp each onion and garlic powder': the garlic powder was missing
+each_onion_garlic_powder,PORK AND VEGETABLE ENCHILADAS,1 tsp Onion Powder,1 tsp onion_powder + 1 tsp garlic_powder,'1 tsp each onion and garlic powder': the garlic powder was missing
+each_onion_garlic_powder,—,Onion Powder,"food left in the library, now unused (verified: a dietitian deletes it)",
+each_onion_and_garlic_powder,MEXICAN PICADILLO CON PAPAS,0.5 tsp Onion Powder,0.5 tsp onion_powder + 0.5 tsp garlic_powder,'½ tsp each onion and garlic powder': the garlic powder was missing
+each_onion_and_garlic_powder,—,Onion Powder,"food left in the library, now unused (verified: a dietitian deletes it)",
+each_minced_ginger_and_minced_garlic,ASIAN SALMON PARCELS,"1 tbsp Garlic, minced",1 tbsp ginger_fresh + 1 tbsp garlic,'1 tbsp each minced ginger and garlic': the ginger was missing
+each_minced_ginger_and_minced_garlic,ASIAN FISH PARCELS,"1 tbsp Garlic, minced",1 tbsp ginger_fresh + 1 tbsp garlic,'1 tbsp each minced ginger and garlic': the ginger was missing
+each_minced_ginger_and_minced_garlic,ASIAN TOFU PARCELS,"1 tbsp Garlic, minced",1 tbsp ginger_fresh + 1 tbsp garlic,'1 tbsp each minced ginger and garlic': the ginger was missing
+each_minced_ginger_and_minced_garlic,—,"Garlic, minced","food left in the library, now unused (verified: a dietitian deletes it)",
+each_soy_sauce_sesame_oil,VIETNAMESE BÁNH MÌ STYLE SLIDERS,2 tbsp Soy Sauce,2 tbsp soy_sauce + 2 tbsp sesame_oil,'2 tbsp each soy sauce and sesame oil': the sesame oil was missing
+each_soy_sauce_sesame_oil,—,Soy Sauce,"food left in the library, now unused (verified: a dietitian deletes it)",

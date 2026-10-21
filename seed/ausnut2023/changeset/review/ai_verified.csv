@@ -1,0 +1,102 @@
+food_id,name,confidence,ausnut_key,ausnut_name,now_kcal,new_kcal,uses,why
+apple_cider_vinegar,Apple cider vinegar,agreed_list,F009498,Vinegar (except balsamic vinegar),16,15.5,9,agreed re-point (B1)
+honey_mustard_dressing,Honey Mustard Dressing,high_match,F003599,"Dressing, honey mustard, homemade",300,340.8,0,ESTIMATE replaced: kcal 300→340.8; C 13.3→20.2
+lactose_free_milk,Lactose Free Milk,exact_key,F005599,"Milk, cow, fluid, regular fat (~3.5%), lactose free",60,58.8,1,same key as the food already carried
+light_cream_cheese,Light Cream Cheese,agreed_list,F002446,"Cheese, cream, plain, reduced fat",258,228.7,1,current numbers are full-fat cream cheese
+light_mayonnaise,Light Mayonnaise,agreed_list,F005437,"Mayonnaise, reduced or low fat, commercial",150,122.8,2,light mayonnaise = AUSNUT reduced/low-fat mayonnaise (current numbers were a category estimate)
+light_soy_sauce,Light soy sauce,agreed_list,F008065,"Sauce, soy, commercial",50,50.0,20,agreed re-point (B1)
+low_fat_mayo,Low Fat Mayo,agreed_list,F005437,"Mayonnaise, reduced or low fat, commercial",133,122.8,1,same food category; held only by the name rule ('Mayo' vs 'Mayonnaise')
+malt_vinegar,Malt Vinegar,agreed_list,F009498,Vinegar (except balsamic vinegar),20,15.5,1,malt vinegar = AUSNUT vinegar (except balsamic)
+mascarpone_cheese,Mascarpone Cheese,high_match,F010045,"Cheese, mascarpone",350,403.4,1,ESTIMATE replaced: kcal 350→403.4; P 22→2; F 28→42.8; C 2→3.9
+microwavable_rice,Microwavable Rice,agreed_list,F007678,"Rice, white, purchased par-cooked or instant, cooked",140,153.7,1,"microwave rice = AUSNUT white rice, par-cooked/instant, as rice_pouch"
+microwave_brown_rice_quinoa_pouch,Microwave Brown Rice & Quinoa Pouch,agreed_list,F007647,"Rice, brown, purchased par-cooked or instant, cooked",140,172.8,5,ESTIMATE replaced: kcal 140→172.8; F 1→2.1; C 28→33.2
+microwaveable_basmati_rice_pouch,Microwaveable Basmati Rice Pouch,agreed_list,F007678,"Rice, white, purchased par-cooked or instant, cooked",140,153.7,4,"microwave rice pouch = AUSNUT white rice, par-cooked/instant"
+mirin,Mirin,high_match,F005701,Mirin,227,168.7,1,ESTIMATE replaced: kcal 227→168.7; C 43→26.6
+miso_paste,Miso paste,exact_key,F005702,"Miso, soya (soy) bean paste",183,183.1,5,same key as the food already carried
+mixed_berries,Mixed berries,agreed_list,F009881,"Mixed berry, frozen",297,48.0,3,current numbers are goji berries; frozen mixed berries
+mixed_colour_tomato,Mixed-Colour Tomato,agreed_list,F009210,"Tomato, raw, not further defined",35,18.2,1,"fresh tomatoes (500 g) = AUSNUT tomato, raw, nfd"
+mixed_dried_fruit,Mixed Dried Fruit,exact_key,F005712,"Mixed fruit, dried",304,304.3,1,same key as the food already carried
+mixed_herbs_dried,"Mixed herbs, dried",agreed_list,F004365,"Herbs, dried, all types",259,293.5,6,"same food; AUSNUT herbs, dried"
+mixed_italian_herb,Mixed Italian Herb,agreed_list,F004365,"Herbs, dried, all types",320,293.5,1,"dried Italian herbs (1 tsp) = AUSNUT herbs, dried, all types"
+mixed_spice,Mixed Spice,agreed_list,F008746,"Spices, dried, all types (except chilli & paprika)",320,349.7,1,"mixed spice = AUSNUT spices, dried, all types"
+ml_reduced_salt_vegetable_stock,Ml Reduced Salt Vegetable Stock,agreed_list,F008937,"Stock, liquid, all flavours, reduced salt, prepared",4,4.3,1,"reduced-salt liquid stock = AUSNUT stock, liquid, reduced salt, prepared"
+mozzarella_ball,Mozzarella Ball,agreed_list,F002406,"Cheese, bocconcini",350,246.7,1,"a fresh mozzarella ball is the bocconcini type = AUSNUT cheese, bocconcini (not the firm pizza mozzarella); kept as its own food: recipes use '1 each' = 1 ball"
+naan_bread,Naan Bread,exact_key,F001647,"Bread, flat, naan",293,292.5,3,same key as the food already carried
+nori,Nori (seaweed),exact_key,F008204,"Seaweed, nori, dried",303,302.6,1,same key as the food already carried
+nutmeg,Nutmeg,exact_key,F006118,"Nutmeg, dried, ground",500,499.5,1,same key as the food already carried
+olive_oil_kewpie_mayonnaise,Olive Oil Kewpie Mayonnaise,agreed_list,F005441,"Mayonnaise, regular fat, commercial",883,633.6,1,current numbers are olive oil (883 kcal); Kewpie = regular mayonnaise
+oregano,"Oregano, dried",agreed_list,F006281,"Oregano, dried",262,262.0,34,agreed re-point (B1)
+oyster_mushroom,Oyster mushroom,agreed_list,F005956,"Mushroom, oriental, raw",64,27.2,3,"current numbers are raw OYSTERS (seafood); oyster mushroom = AUSNUT mushroom, oriental"
+packet_baking_milk_chocolate_melt,Packet Baking Milk Chocolate Melt,agreed_list,F002929,"Chocolate, milk",530,520.8,1,"milk chocolate melts = AUSNUT chocolate, milk"
+packet_microwave_rice,Packet Microwave Rice,agreed_list,F007678,"Rice, white, purchased par-cooked or instant, cooked",140,153.7,1,"microwave rice packet = AUSNUT white rice, par-cooked/instant"
+packet_prawn_dumpling,Packet Prawn Dumpling,agreed_list,F010533,"Dumpling, savoury, prawn, purchased frozen, cooked",150,184.0,1,"= AUSNUT dumpling, savoury, prawn, purchased frozen"
+pancake,Pancake,exact_key,F006298,"Crepe or pancake, plain, homemade",222,214.1,2,same key as the food already carried
+paprika,"Paprika, ground",agreed_list,F006316,"Paprika, dried, ground",282,313.3,37,"ground paprika = AUSNUT paprika, dried, ground (gate: 282 → 313 kcal; blocks 13 recipes)"
+passionfruit_pulp,Passionfruit Pulp,agreed_list,F006332,"Passionfruit, pulp, canned",105,116.2,0,"its own key, canned pulp (gate miss is 116 vs 105 kcal)"
+pepita,Pepitas (pumpkin seeds),agreed_list,F008212,"Seed, pumpkin, hulled & dried, unsalted",559,537.5,8,ESTIMATE replaced: C 11→2.1; fibre 6→4.6
+pepper,"Pepper, black, ground",agreed_list,F006618,"Pepper, black or white, ground",251,276.3,28,"same food; AUSNUT black pepper, ground (blocks 15 recipes)"
+pesto,Pesto,exact_key,F008029,"Sauce, basil pesto, commercial",382,381.9,4,same key as the food already carried
+pikelet,Pikelet,exact_key,F006701,"Pikelet, plain, homemade",277,277.2,1,same key as the food already carried
+pizza,Pizza,exact_key,F006725,"Pizza, cheese, takeaway",285,285.4,1,same key as the food already carried
+plain_rice_cake,Plain Rice Cake,agreed_list,F001147,"Biscuit, savoury, rice cake, plain",327,383.1,1,current numbers are a sponge-cake stand-in
+pomegranate,Pomegranate arils,agreed_list,F006842,"Pomegranate, peeled, raw",79,78.6,0,"arils = AUSNUT pomegranate, peeled, raw; held only by the name rule"
+pork,Pork,exact_key,F006883,"Pork, diced/stir-fry strips, raw",120,120.0,3,same key as the food already carried
+pork_loin_steak,Pork Loin Steak,exact_key,F007049,"Pork, steak, medallion or loin, lean, raw",112,112.1,2,same key as the food already carried
+pork_mince,Pork mince,exact_key,F007057,"Pork, mince, raw",179,178.8,8,same key as the food already carried
+powdered_sugar,Powdered Sugar,agreed_list,F008980,"Sugar, white, icing",382,382.4,1,agreed re-point (B1)
+pre_sliced_mushroom,Pre-Sliced Mushroom,agreed_list,F005946,"Mushroom, common, raw",35,27.2,1,"sliced button mushrooms = AUSNUT mushroom, common, raw"
+prosciutto,Prosciutto,exact_key,F007459,Prosciutto,293,292.5,1,same key as the food already carried
+puff_pastry,Puff pastry,exact_key,F006503,"Pastry, puff, vegetable oil, commercial, raw",316,315.7,1,same key as the food already carried
+radicchio,Radicchio,agreed_list,F002884,"Chicory, raw",23,16.0,2,"radicchio is a red chicory = AUSNUT chicory, raw"
+red_chili_flake,Red Chili Flake,agreed_list,F002893,"Chilli (chili), dried, ground",46,292.5,1,flakes are dried; current numbers are fresh chilli
+rice_pouch,Microwave rice pouch,agreed_list,F007678,"Rice, white, purchased par-cooked or instant, cooked",150,153.7,18,agreed re-point (B1)
+rice_vinegar,Rice wine vinegar,agreed_list,F009498,Vinegar (except balsamic vinegar),16,15.5,22,agreed re-point (B1)
+rosemary,"Rosemary, fresh",agreed_list,F007716,"Rosemary, fresh, raw",314,94.6,1,name says fresh; current numbers are dried rosemary
+salmon,"Salmon, Atlantic",exact_key,F007827,"Salmon, Atlantic, raw",231,230.6,9,same key as the food already carried
+salt,Salt,agreed_list,F007878,"Salt, table, iodised",0,0.0,54,agreed re-point (B1)
+sashimi_grade_salmon,Sashimi-Grade Salmon,agreed_list,F007863,"Salmon, sashimi style, raw",150,210.1,1,"= AUSNUT salmon, sashimi style, raw"
+sashimi_grade_tuna,Sashimi Grade Tuna,agreed_list,F009296,"Tuna, sashimi style, raw",150,122.8,3,"= AUSNUT tuna, sashimi style, raw"
+seeded_mustard,Seeded mustard,agreed_list,F005973,"Mustard, cream style",83,83.2,3,agreed re-point (B1)
+self_raising_flour,Self-raising flour,exact_key,F004009,"Flour, wheat, white, self-raising",353,353.5,7,same key as the food already carried
+sherry_vinegar,Sherry vinegar,agreed_list,F009498,Vinegar (except balsamic vinegar),16,15.5,2,agreed re-point (B1)
+shortcrust_pastry,Shortcrust pastry,exact_key,F006507,"Pastry, shortcrust, commercial, raw",395,395.1,4,same key as the food already carried
+smoked_salmon,Smoked salmon,high_match,F007864,"Salmon, smoked, sliced",180,188.1,1,"High-confidence name match, same state"
+snow_peas,Snow peas,agreed_list,F008373,"Snow pea, raw",87,39.0,2,"was keyed to boiled split peas; snow peas = AUSNUT snow pea, raw"
+sour_cream,Sour cream,exact_key,F003269,"Cream, sour",338,338.0,3,same key as the food already carried
+soy_sauce,Soy sauce,agreed_list,F008065,"Sauce, soy, commercial",60,50.0,46,same food; AUSNUT soy sauce (blocks 14 recipes; live density 1.15 kept)
+sriracha,Sriracha sauce,agreed_list,F007997,"Sauce, chilli (chili), commercial",93,112.8,3,"sriracha = AUSNUT sauce, chilli, commercial"
+star_anise,Star Anise,agreed_list,F008746,"Spices, dried, all types (except chilli & paprika)",150,349.7,1,"star anise = AUSNUT spices, dried, all types"
+sugar_white,"Sugar, white",agreed_list,F008976,"Sugar, white, granulated or lump",400,382.4,22,"white sugar = AUSNUT sugar, white, granulated (the High match was icing sugar)"
+sumac,Sumac,agreed_list,F008746,"Spices, dried, all types (except chilli & paprika)",150,349.7,1,"sumac = AUSNUT spices, dried, all types"
+sundried_tomato,Sun-dried tomatoes,agreed_list,F009217,"Tomato, sundried or semi-sundried",213,263.1,6,ESTIMATE replaced: kcal 213→263.1; P 5.1→11.2; F 2.9→4.6; fibre 12→14.7
+sweet_chilli_sauce,Sweet chilli sauce,high_match,F008071,"Sauce, sweet chilli (chili), commercial",228,225.1,0,"High-confidence name match, same state"
+sweet_potato,"Sweet potato, orange",exact_key,F009035,"Sweet potato, orange flesh, peeled, raw",65,65.2,3,same key as the food already carried
+swiss_brown_mushroom,Swiss brown mushroom,agreed_list,F005946,"Mushroom, common, raw",27,27.2,3,agreed re-point (B1)
+szechuan_peppercorn,Szechuan Peppercorn,agreed_list,F008746,"Spices, dried, all types (except chilli & paprika)",35,349.7,1,"Szechuan pepper = AUSNUT spices, dried, all types (current 35 kcal was a vegetable estimate)"
+taco_seasoning,Taco seasoning,agreed_list,F009072,"Seasoning mix, chilli based, for tacos",300,319.1,6,ESTIMATE replaced: P 9→6.2; F 7→4.8; C 50→58.1; fibre 18→8.7
+taco_seasoning_mix,Taco Seasoning Mix,exact_key,F009072,"Seasoning mix, chilli based, for tacos",319,319.1,1,same key as the food already carried
+tahini,Tahini,exact_key,F009076,Tahini,649,649.4,5,same key as the food already carried
+tasty_cheese,Tasty cheese,agreed_list,F002414,"Cheese, cheddar, natural, plain",247,403.0,17,current numbers are a bocconcini stand-in; tasty = cheddar
+thai_basil,Thai Basil,agreed_list,F000396,"Basil, green, fresh, raw",150,22.5,1,"Thai basil = AUSNUT basil, green, fresh"
+thickened_cream,Thickened cream,exact_key,F003270,"Cream, thickened",340,339.9,2,same key as the food already carried
+thyme,"Thyme, dried",agreed_list,F009160,"Thyme, dried",69,282.5,5,name says dried; current numbers are fresh thyme
+tin_butter_bean,Tin Butter Bean,agreed_list,F000440,"Bean, lima or butter, canned, drained",25,84.8,1,current numbers are fresh butter beans; recipe uses a 400 g tin
+tomato,"Tomato, common",agreed_list,F009193,"Tomato, common, raw",22,17.4,34,agreed re-point (B1)
+tomato_based_pizza_sauce,Tomato-Based Pizza Sauce,agreed_list,F008050,"Sauce, pasta, tomato based, commercial",35,54.0,1,"current numbers are salsa; pizza sauce = AUSNUT tomato pasta sauce, commercial"
+tomato_passata,Tomato passata,agreed_list,F009209,"Tomato, puree, commercial",35,23.4,14,ESTIMATE replaced: kcal 35→23.4; C 6→3.8
+tomato_paste,Tomato paste,agreed_list,F009208,"Tomato, paste, added salt",82,66.2,27,same food; AUSNUT tomato paste (blocks 9 recipes)
+tomato_sauce,Tomato sauce (ketchup),exact_key,F008083,"Sauce, tomato, commercial, regular",104,104.4,13,same key as the food already carried
+tonic_water,Tonic Water,exact_key,F008460,"Soft drink, tonic water",34,33.9,1,same key as the food already carried
+tortilla,Tortilla,exact_key,F001669,"Bread, flat, tortilla, white, commercial",302,301.9,8,same key as the food already carried
+tuna_springwater,"Tuna, springwater, drained",exact_key,F009300,"Tuna, unflavoured, canned in water, drained",129,123.8,4,same key as the food already carried
+turkey_mince,Turkey mince,agreed_list,F010386,"Turkey, mince, raw",117,147.7,8,current numbers are a turkey-breast stand-in
+turmeric,"Turmeric, ground",high_match,F009335,"Turmeric, dried, ground",312,291.3,5,"High-confidence name match, same state"
+tzatziki,Tzatziki,agreed_list,F003535,"Dip, cucumber & yoghurt, commercial",120,117.1,3,"tzatziki = AUSNUT dip, cucumber & yoghurt, commercial"
+unsweetened_greek_yogurt,Unsweetened Greek Yogurt,agreed_list,F009655,"Yoghurt, natural, greek style (~10% fat)",75,131.5,1,"= AUSNUT yoghurt, natural, greek style"
+waffle,Waffle,high_match,F010475,"Waffle, plain",150,231.4,1,ESTIMATE replaced: kcal 150→231.4; P 5→6.2; F 5→8; C 18→33.4; fibre 2→0.7
+water,Water,agreed_list,F009527,"Water, tap",0,0.0,41,agreed re-point (B1)
+white_and_pink_marshmallow,White And Pink Marshmallow,agreed_list,F005428,"Marshmallow, plain or flavoured",150,317.6,1,"= AUSNUT marshmallow, plain or flavoured"
+white_chocolate_button,White Chocolate Button,agreed_list,F002946,"Chocolate, white",543,543.3,0,its own key; held only by the name rule ('button')
+white_fish_fillet,White Fish Fillet,agreed_list,F003956,"Fish, white flesh, raw, not further defined",150,107.8,2,"= AUSNUT fish, white flesh, raw, nfd"
+white_potato,White Potato,agreed_list,F007356,"Potato, peeled, raw",111,57.8,1,"was keyed to white-flesh SWEET potato; potato = AUSNUT potato, peeled, raw"
+white_vinegar,White vinegar,agreed_list,F009498,Vinegar (except balsamic vinegar),16,15.5,8,agreed re-point (B1)

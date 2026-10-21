@@ -1,0 +1,309 @@
+food_id,unit,grams,basis,estimated
+cheese_cheddar_reduced_fat,cup (shredded),120.0,AUSNUT 2023 measure 46013 density 0.48 g/mL x 250 mL,0
+cheese_cheddar_reduced_fat,slice (sandwich size),21,AUSNUT 2023 measure 46014 slice sandwich size,0
+cheese_cheddar_reduced_fat,slice (cracker-size),7,AUSNUT 2023 measure 46015 slice cracker-size,0
+cheese_mozzarella_reduced_fat,cup (shredded),120.0,AUSNUT 2023 measure 46135 density 0.48 g/mL x 250 mL,0
+cheese_mozzarella_reduced_fat,stick,20,AUSNUT 2023 measure 46136 stick,0
+cheese_mozzarella_reduced_fat,tbsp,9.6,AUSNUT 2023 measure 46137 tablespoon,0
+cheese_mozzarella_reduced_fat,cup,120,AUSNUT 2023 measure 46138 cup,0
+cheese_mozzarella_reduced_fat,slice (sandwich size),21,AUSNUT 2023 measure 46139 slice sandwich size,0
+cheese_mozzarella_reduced_fat,slice (cracker-size),7,AUSNUT 2023 measure 46140 slice cracker-size,0
+cheese_ricotta_reduced_fat,tbsp,20.8,AUSNUT 2023 measure 46160 tablespoon,0
+cheese_ricotta_reduced_fat,cup,260,AUSNUT 2023 measure 46161 cup,0
+cheese_feta_reduced_fat,cup,157.5,AUSNUT 2023 measure 46073 density 0.63 g/mL x 250 mL,0
+cheese_feta_reduced_fat,cube,5,AUSNUT 2023 measure 46074 cube,0
+cheese_feta_reduced_fat,tbsp,12.6,AUSNUT 2023 measure 46075 tablespoon,0
+cheese_feta_reduced_fat,cup,157.5,AUSNUT 2023 measure 46076 cup,0
+cheese_brie,slice (cracker-size),5,AUSNUT 2023 measure 46001 slice cracker-size,0
+cheese_camembert,slice (cracker-size),5,AUSNUT 2023 measure 46003 slice cracker-size,0
+cheese_blue_vein,slice (cracker-size),5,AUSNUT 2023 measure 45995 slice cracker-size,0
+cheese_swiss,cup (shredded),120.0,AUSNUT 2023 measure 46172 density 0.48 g/mL x 250 mL,0
+cheese_swiss,slice (cracker-size),7,AUSNUT 2023 measure 46173 slice cracker-size,0
+cheese_swiss,slice (sandwich size),18,AUSNUT 2023 measure 46174 slice sandwich size,0
+cheese_gouda,cup (shredded),120.0,AUSNUT 2023 measure 46088 density 0.48 g/mL x 250 mL,0
+cheese_gouda,slice (cracker-size),7,AUSNUT 2023 measure 46089 slice cracker-size,0
+cheese_gouda,slice (sandwich size),20,AUSNUT 2023 measure 46090 slice sandwich size,0
+cheese_quark,tbsp,22.6,AUSNUT 2023 measure 46154 tablespoon,0
+cheese_quark,cup,282.5,AUSNUT 2023 measure 46155 cup,0
+ghee,tbsp,17,AUSNUT 2023 measure 43429 tablespoon,0
+ice_cream_vanilla,scoop,66,AUSNUT 2023 measure 46235 scoop,0
+chicken_drumstick_lean_raw,small,83,AUSNUT 2023 measure 45171 drumstick small,0
+chicken_drumstick_lean_raw,large,126,AUSNUT 2023 measure 45172 drumstick large,0
+chicken_drumstick_lean_raw,medium,101,AUSNUT 2023 measure 45173 drumstick medium,0
+chicken_wing_raw,wing (medium/large),46,AUSNUT 2023 measure 45219 wing medium/large,0
+chicken_wing_raw,small,27,AUSNUT 2023 measure 45220 wing small,0
+chicken_wing_raw,regular,46,AUSNUT 2023 measure 45219 one wing (medium/large),0
+chicken_roast_deli_sliced,regular,25,AUSNUT 2023 measure 45483 slice regular,0
+chicken_roast_deli_sliced,slice (shaved),10,AUSNUT 2023 measure 45484 slice shaved,0
+turkey_roast_deli_sliced,regular,25,AUSNUT 2023 measure 45574 slice regular,0
+turkey_roast_deli_sliced,slice (shaved),10,AUSNUT 2023 measure 45575 slice shaved,0
+veal_diced_or_strips_lean_raw,cup (sliced),215.0,AUSNUT 2023 measure 44807 density 0.86 g/mL x 250 mL,0
+salami,slice,23,AUSNUT 2023 measure 45515 slice,0
+salami,stick,15,AUSNUT 2023 measure 45516 stick,0
+pastrami,slice,52,AUSNUT 2023 measure 45509 slice,0
+salmon_canned_drained,can (small),210,AUSNUT 2023 measure 44007 can small,0
+salmon_canned_drained,can (large),415,AUSNUT 2023 measure 44008 can large,0
+tuna_canned_in_oil_drained,can (small),185,AUSNUT 2023 measure 44035 can small,0
+tuna_canned_in_oil_drained,can (large),425,AUSNUT 2023 measure 44036 can large,0
+tuna_canned_in_brine_drained,can (small),185,AUSNUT 2023 measure 44031 can small,0
+tuna_canned_in_brine_drained,can (large),425,AUSNUT 2023 measure 44032 can large,0
+mackerel_canned_drained,large,106,AUSNUT 2023 measure 43646 fillet large,0
+mackerel_canned_drained,medium,85,AUSNUT 2023 measure 43647 fillet medium,0
+mackerel_canned_drained,small,55,AUSNUT 2023 measure 43648 fillet small,0
+anchovies_canned,anchovy,4,AUSNUT 2023 measure 43955 anchovy,0
+snapper_raw,medium,150,AUSNUT 2023 measure 43737 fillet medium,0
+snapper_raw,small,82,AUSNUT 2023 measure 43738 fillet small,0
+snapper_raw,large,170,AUSNUT 2023 measure 43739 fillet large,0
+flathead_raw,small,80,AUSNUT 2023 measure 43592 fillet small,0
+flathead_raw,large,165,AUSNUT 2023 measure 43593 fillet large,0
+flathead_raw,medium,125,AUSNUT 2023 measure 43594 fillet medium,0
+blue_grenadier,medium,220,AUSNUT 2023 measure 43562 fillet medium,0
+blue_grenadier,small,145,AUSNUT 2023 measure 43563 fillet small,0
+blue_grenadier,large,290,AUSNUT 2023 measure 43564 fillet large,0
+basa_raw,medium,150,AUSNUT 2023 measure 43546 fillet medium,0
+basa_raw,large,170,AUSNUT 2023 measure 43547 fillet large,0
+basa_raw,small,100,AUSNUT 2023 measure 43548 fillet small,0
+ling_raw,medium,150,AUSNUT 2023 measure 43629 fillet medium,0
+ling_raw,small,82,AUSNUT 2023 measure 43630 fillet small,0
+ling_raw,large,170,AUSNUT 2023 measure 43631 fillet large,0
+trout_raw,small,126,AUSNUT 2023 measure 43755 fillet small,0
+trout_raw,large,180,AUSNUT 2023 measure 43756 fillet large,0
+trout_raw,medium,140,AUSNUT 2023 measure 43757 fillet medium,0
+tuna_steak_raw,large,200,AUSNUT 2023 measure 43763 fillet or steak large,0
+tuna_steak_raw,medium,140,AUSNUT 2023 measure 43764 fillet or steak medium,0
+tuna_steak_raw,small,90,AUSNUT 2023 measure 43765 fillet or steak small,0
+kingfish_raw,medium,150,AUSNUT 2023 measure 43621 fillet medium,0
+kingfish_raw,small,82,AUSNUT 2023 measure 43622 fillet small,0
+kingfish_raw,large,170,AUSNUT 2023 measure 43623 fillet large,0
+whiting_raw,medium,150,AUSNUT 2023 measure 43775 fillet medium,0
+whiting_raw,small,82,AUSNUT 2023 measure 43776 fillet small,0
+whiting_raw,large,170,AUSNUT 2023 measure 43777 fillet large,0
+squid_or_calamari_raw,calamari ring,22,AUSNUT 2023 measure 43928 calamari ring,0
+mussels_cooked,mussel,12,AUSNUT 2023 measure 43860 mussel,0
+scallops_raw,scallop,13,AUSNUT 2023 measure 43920 scallop,0
+octopus_raw,large,750,AUSNUT 2023 measure 43864 octopus large,0
+octopus_raw,medium,500,AUSNUT 2023 measure 43865 octopus medium,0
+octopus_raw,octopus (baby),25,AUSNUT 2023 measure 43866 octopus baby,0
+oysters_raw,oyster,15,AUSNUT 2023 measure 43879 oyster,0
+tempeh,slice,50,AUSNUT 2023 measure 46586 slice,0
+tofu_smoked,slice,35,AUSNUT 2023 measure 46591 slice,0
+meat_alternative_soy_pea_protein,fillet,63,AUSNUT 2023 measure 46572 fillet,0
+meat_alternative_soy_pea_protein,patty or rissole,113,AUSNUT 2023 measure 46573 patty or rissole,0
+meat_alternative_soy_pea_protein,strip,113,AUSNUT 2023 measure 46574 strip,0
+cannellini_beans_canned_drained,can (small),125,AUSNUT 2023 measure 50368 can small,0
+cannellini_beans_canned_drained,can (large),420,AUSNUT 2023 measure 50369 can large,0
+pinto_beans_canned_drained,can (small),125,AUSNUT 2023 measure 50376 can small,0
+pinto_beans_canned_drained,can (large),420,AUSNUT 2023 measure 50377 can large,0
+broad_beans_canned_drained,can (small),125,AUSNUT 2023 measure 50365 can small,0
+broad_beans_canned_drained,can (large),420,AUSNUT 2023 measure 50366 can large,0
+soy_beans_canned_drained,can (small),125,AUSNUT 2023 measure 50380 can small,0
+soy_beans_canned_drained,can (large),420,AUSNUT 2023 measure 50381 can large,0
+chickpea_flour,tbsp,7.4,AUSNUT 2023 measure 41360 tablespoon,0
+chickpea_flour,cup,92.5,AUSNUT 2023 measure 41361 cup,0
+bread_sourdough,bun or roll,120,AUSNUT 2023 measure 41601 bun or roll,0
+bread_sourdough,baguette (slice),11,AUSNUT 2023 measure 49922 baguette slice,0
+bread_sourdough,ciabatta (slice),26,AUSNUT 2023 measure 49925 ciabatta slice,0
+bread_sourdough,sourdough (slice),46,AUSNUT 2023 measure 49926 sourdough slice,0
+bread_mixed_grain,regular,36,AUSNUT 2023 measure 41539 slice regular,0
+bread_mixed_grain,sandwich thin,40,AUSNUT 2023 measure 41540 sandwich thin,0
+bread_rye,regular,125,AUSNUT 2023 measure 41558 bun or roll regular,0
+bread_rye,slice,40,AUSNUT 2023 measure 41560 slice,0
+bread_gluten_free,slice,36,AUSNUT 2023 measure 41576 slice,0
+bread_white_high_fibre,slice,36,AUSNUT 2023 measure 41489 slice,0
+bread_roll_white,regular,70,AUSNUT 2023 measure 41515 bun or roll regular,0
+bread_roll_mixed_grain,regular,70,AUSNUT 2023 measure 41552 bun or roll regular,0
+crumpet,crumpet (square),62,AUSNUT 2023 measure 41690 crumpet square,0
+crumpet,crumpet (round),42,AUSNUT 2023 measure 41691 crumpet round,0
+tortilla_corn,regular,28,AUSNUT 2023 measure 41439 wrap regular,0
+roti,regular,76,AUSNUT 2023 measure 41477 roti regular,0
+roti,small,31,AUSNUT 2023 measure 41478 roti small,0
+rice_crackers_plain,biscuit/cracker,1.9,AUSNUT 2023 measure 42019 biscuit/cracker,0
+rice_crackers_plain,packet,100,AUSNUT 2023 measure 42020 packet,0
+corn_cakes_plain,corn cake (thin),5.8,AUSNUT 2023 measure 41996 corn cake thin,0
+corn_cakes_plain,corn cake (thick),10,AUSNUT 2023 measure 41998 corn cake thick,0
+croutons,crouton,1,AUSNUT 2023 measure 41407 crouton,0
+croutons,handful,10,AUSNUT 2023 measure 41408 handful,0
+croutons,toast,33.3,AUSNUT 2023 measure 41409 toast,0
+capsicum_yellow,medium,190,AUSNUT 2023 measure 47325 capsicum medium,0
+capsicum_yellow,large,285,AUSNUT 2023 measure 47326 capsicum large,0
+capsicum_yellow,small,126,AUSNUT 2023 measure 47327 capsicum small,0
+capsicum_yellow,slice,15,AUSNUT 2023 measure 47329 slice,0
+chilli_green,chilli,12.25,AUSNUT 2023 measure 47431 chilli,0
+chilli_green,regular,12.25,AUSNUT 2023 measure 47431 one chilli,0
+onion_white,large,144,AUSNUT 2023 measure 47626 onion large,0
+onion_white,medium,104,AUSNUT 2023 measure 47627 onion medium,0
+onion_white,small,93,AUSNUT 2023 measure 47628 onion small,0
+onion_white,slice or ring,12.4,AUSNUT 2023 measure 47629 slice or ring,0
+fennel,fennel,234,AUSNUT 2023 measure 47495 fennel,0
+fennel,regular,234,AUSNUT 2023 measure 47495 one fennel,0
+celeriac,celeriac,254,AUSNUT 2023 measure 47416 celeriac,0
+celeriac,regular,254,AUSNUT 2023 measure 47416 one celeriac,0
+parsnip,parsnip,72,AUSNUT 2023 measure 47663 parsnip,0
+parsnip,piece (bite-size),8.4,AUSNUT 2023 measure 47664 piece bite-size,0
+parsnip,regular,72,AUSNUT 2023 measure 47663 one parsnip,0
+turnip,piece (bite-size),15,AUSNUT 2023 measure 48015 piece bite-size,0
+turnip,turnip,122,AUSNUT 2023 measure 48016 turnip,0
+turnip,regular,122,AUSNUT 2023 measure 48016 one turnip,0
+swede,swede (medium/large),359,AUSNUT 2023 measure 47897 swede medium/large,0
+swede,small,194,AUSNUT 2023 measure 47898 swede small,0
+swede,regular,359,AUSNUT 2023 measure 47897 one swede (medium/large),0
+choy_sum,bunch,62,AUSNUT 2023 measure 47286 bunch,0
+choy_sum,leaf,13,AUSNUT 2023 measure 47287 leaf,0
+gai_lan,leaf,13,AUSNUT 2023 measure 47261 leaf,0
+gai_lan,bunch,180,AUSNUT 2023 measure 47262 bunch,0
+silverbeet,leaf,42,AUSNUT 2023 measure 47851 leaf,0
+silverbeet,bunch,340,AUSNUT 2023 measure 47852 bunch,0
+spinach_mature,bunch,340,AUSNUT 2023 measure 47871 bunch,0
+spinach_mature,leaf,10,AUSNUT 2023 measure 47872 leaf,0
+endive,endive,390,AUSNUT 2023 measure 47492 endive,0
+endive,leaf,4,AUSNUT 2023 measure 47493 leaf,0
+endive,regular,390,AUSNUT 2023 measure 47492 one endive,0
+zucchini_golden,large,310,AUSNUT 2023 measure 48056 zucchini large,0
+zucchini_golden,medium,195,AUSNUT 2023 measure 48057 zucchini medium,0
+zucchini_golden,small,93,AUSNUT 2023 measure 48058 zucchini small,0
+squash_button,squash,57,AUSNUT 2023 measure 47887 squash,0
+squash_button,regular,57,AUSNUT 2023 measure 47887 one squash,0
+sugar_snap_peas,sugar snap pea,3.3,AUSNUT 2023 measure 47891 sugar snap pea,0
+broad_beans_raw,bean,2.5,AUSNUT 2023 measure 47200 bean,0
+corn_cob_raw,baby corn,12.5,AUSNUT 2023 measure 47902 baby corn,0
+corn_cob_raw,cob,164,AUSNUT 2023 measure 47904 cob,0
+corn_cob_raw,cobbette,47,AUSNUT 2023 measure 47905 cobbette,0
+corn_baby_canned,baby corn,2.2,AUSNUT 2023 measure 47919 baby corn,0
+asparagus,spear,16,AUSNUT 2023 measure 47173 spear,0
+asparagus,regular,16,AUSNUT 2023 measure 47173 one spear,0
+okra,okra,12,AUSNUT 2023 measure 47617 okra,0
+okra,regular,12,AUSNUT 2023 measure 47617 one okra,0
+bamboo_shoots_canned,bamboo shoot,7,AUSNUT 2023 measure 47195 bamboo shoot,0
+bamboo_shoots_canned,regular,7,AUSNUT 2023 measure 47195 one bamboo shoot,0
+water_chestnuts_canned,cup (sliced),147.5,AUSNUT 2023 measure 48025 density 0.59 g/mL x 250 mL,0
+water_chestnuts_canned,piece,7,AUSNUT 2023 measure 48026 piece,0
+water_chestnuts_canned,can,227,AUSNUT 2023 measure 50362 can,0
+beetroot_canned,slice,19,AUSNUT 2023 measure 47237 slice,0
+beetroot_canned,beetroot,33,AUSNUT 2023 measure 47238 beetroot,0
+beetroot_canned,regular,33,AUSNUT 2023 measure 47238 one beetroot,0
+sweet_potato_purple,large,745,AUSNUT 2023 measure 47957 sweet potato large,0
+sweet_potato_purple,medium,420,AUSNUT 2023 measure 47958 sweet potato medium,0
+sweet_potato_purple,small,197,AUSNUT 2023 measure 47959 sweet potato small,0
+cassava,cassava,408,AUSNUT 2023 measure 47390 cassava,0
+cassava,regular,408,AUSNUT 2023 measure 47390 one cassava,0
+taro,taro,309,AUSNUT 2023 measure 47972 taro,0
+taro,regular,309,AUSNUT 2023 measure 47972 one taro,0
+apple_pink_lady,cup (quarters or chopped),132.5,AUSNUT 2023 measure 44102 density 0.53 g/mL x 250 mL,0
+apple_pink_lady,cup (sliced),115.0,AUSNUT 2023 measure 44103 density 0.46 g/mL x 250 mL,0
+pear_nashi,cup (sliced or cubed),175.0,AUSNUT 2023 measure 44441 density 0.7 g/mL x 250 mL,0
+pear_nashi,pear (medium/large),190,AUSNUT 2023 measure 44442 pear medium/large,0
+pear_nashi,small,126,AUSNUT 2023 measure 44443 pear small,0
+pear_nashi,regular,190,AUSNUT 2023 measure 44442 one pear (medium/large),0
+blackberries,berry,5,AUSNUT 2023 measure 44203 berry,0
+blackberries,punnet,125,AUSNUT 2023 measure 44204 punnet,0
+mandarin,small,36.48,AUSNUT 2023 measure 44331 mandarin small,0
+mandarin,medium,53.96,AUSNUT 2023 measure 44332 mandarin medium,0
+mandarin,large,72.2,AUSNUT 2023 measure 44333 mandarin large,0
+mandarin,slice or segment,6.3,AUSNUT 2023 measure 44334 slice or segment,0
+grapefruit,small,238,AUSNUT 2023 measure 44292 grapefruit small,0
+grapefruit,large,279,AUSNUT 2023 measure 44293 grapefruit large,0
+grapefruit,medium,258,AUSNUT 2023 measure 44294 grapefruit medium,0
+lemon_zest_peel,tsp,1,AUSNUT 2023 measure 44311 teaspoon,0
+lemon_zest_peel,lemon,2,AUSNUT 2023 measure 44313 lemon,0
+lemon_zest_peel,peel/zest,2,AUSNUT 2023 measure 44314 peel/zest,0
+nectarine,cup (sliced),162.5,AUSNUT 2023 measure 44383 density 0.65 g/mL x 250 mL,0
+nectarine,nectarine,82,AUSNUT 2023 measure 44384 nectarine,0
+nectarine,regular,82,AUSNUT 2023 measure 44384 one nectarine,0
+apricot,apricot,40,AUSNUT 2023 measure 44162 apricot,0
+apricot,regular,40,AUSNUT 2023 measure 44162 one apricot,0
+plum,cup (sliced),175.0,AUSNUT 2023 measure 44532 density 0.7 g/mL x 250 mL,0
+plum,plum,70.5,AUSNUT 2023 measure 44533 plum,0
+plum,regular,70.5,AUSNUT 2023 measure 44533 one plum,0
+persimmon,persimmon,179,AUSNUT 2023 measure 44497 persimmon,0
+persimmon,regular,179,AUSNUT 2023 measure 44497 one persimmon,0
+papaya,cup (mashed),242.5,AUSNUT 2023 measure 44402 density 0.97 g/mL x 250 mL,0
+papaya,pawpaw (small/medium),816,AUSNUT 2023 measure 44404 pawpaw small/medium,0
+papaya,piece (bite-size),9,AUSNUT 2023 measure 44405 piece bite-size,0
+papaya,regular,816,AUSNUT 2023 measure 44404 one pawpaw (small/medium),0
+lychee,lychee,10,AUSNUT 2023 measure 44325 lychee,0
+lychee,regular,10,AUSNUT 2023 measure 44325 one lychee,0
+dragon_fruit,dragon fruit,182,AUSNUT 2023 measure 44251 dragon fruit,0
+dragon_fruit,regular,182,AUSNUT 2023 measure 44251 one dragon fruit,0
+rockmelon,cup (chopped),167.5,AUSNUT 2023 measure 44354 density 0.67 g/mL x 250 mL,0
+rockmelon,melon (whole),835,AUSNUT 2023 measure 44356 melon whole,0
+rockmelon,piece (bite-size),9,AUSNUT 2023 measure 44357 piece bite-size,0
+rockmelon,regular,835,AUSNUT 2023 measure 44356 one melon (whole),0
+honeydew_melon,medium,835,AUSNUT 2023 measure 44351 melon whole,0
+honeydew_melon,piece (bite-size),9,AUSNUT 2023 measure 44352 piece bite-size,0
+kiwifruit_green,cup (sliced),197.5,AUSNUT 2023 measure 44302 density 0.79 g/mL x 250 mL,0
+kiwifruit_green,kiwifruit,78,AUSNUT 2023 measure 44303 kiwifruit,0
+kiwifruit_green,regular,78,AUSNUT 2023 measure 44303 one kiwifruit,0
+rhubarb,stalk,20,AUSNUT 2023 measure 44567 stalk,0
+coconut_fresh_flesh,coconut,106,AUSNUT 2023 measure 46686 coconut,0
+dried_apricots,apricot,5,AUSNUT 2023 measure 44180 apricot,0
+prunes,prune,8,AUSNUT 2023 measure 44545 prune,0
+sultanas,sultana,1.4,AUSNUT 2023 measure 44585 sultana,0
+raisins,raisin,1.4,AUSNUT 2023 measure 44554 raisin,0
+figs_dried,fig (whole),19,AUSNUT 2023 measure 44264 fig whole,0
+figs_dried,slice,9,AUSNUT 2023 measure 44265 slice,0
+dried_mango,piece,6,AUSNUT 2023 measure 44345 piece,0
+dried_apple,piece,3.5,AUSNUT 2023 measure 44159 piece,0
+goji_berries_dried,berry,1.4,AUSNUT 2023 measure 44279 berry,0
+banana_chips,banana chip,1.4,AUSNUT 2023 measure 44201 banana chip,0
+peaches_canned_in_juice,peach (half),54,AUSNUT 2023 measure 44417 peach half,0
+peaches_canned_in_juice,slice,18,AUSNUT 2023 measure 44418 slice,0
+peaches_canned_in_juice,can,405,AUSNUT 2023 measure 50326 can,0
+peaches_canned_in_juice,regular,54,AUSNUT 2023 measure 44417 one peach (half),0
+pineapple_canned_in_juice,piece,5,AUSNUT 2023 measure 44512 piece,0
+pineapple_canned_in_juice,slice,40,AUSNUT 2023 measure 44513 slice,0
+cashews_raw,handful,36,AUSNUT 2023 measure 46732 handful,0
+cashews_raw,nut,1.3,AUSNUT 2023 measure 46733 nut,0
+cashews_roasted_unsalted,nut,1.3,AUSNUT 2023 measure 46739 nut,0
+cashews_roasted_unsalted,handful,36,AUSNUT 2023 measure 46740 handful,0
+macadamias_raw,handful,36,AUSNUT 2023 measure 46759 handful,0
+macadamias_raw,nut,2,AUSNUT 2023 measure 46760 nut,0
+pistachios_raw,handful,20,AUSNUT 2023 measure 46790 handful,0
+pistachios_raw,nut,0.8,AUSNUT 2023 measure 46791 nut,0
+pecans,handful,30,AUSNUT 2023 measure 46783 handful,0
+pecans,nut,2.2,AUSNUT 2023 measure 46784 nut,0
+hazelnuts,handful,36,AUSNUT 2023 measure 46756 handful,0
+hazelnuts,nut,0.8,AUSNUT 2023 measure 46757 nut,0
+brazil_nuts,handful,36,AUSNUT 2023 measure 46728 handful,0
+brazil_nuts,nut,3.3,AUSNUT 2023 measure 46729 nut,0
+mixed_nuts_unsalted,handful,36,AUSNUT 2023 measure 46836 handful,0
+mixed_nuts_unsalted,nut,1.5,AUSNUT 2023 measure 46837 nut,0
+salsa_tomato_based,packet,133,AUSNUT 2023 measure 47025 packet,0
+olives_green_stuffed,olive,4,AUSNUT 2023 measure 47125 olive,0
+sugar_raw,cube or lump,4.5,AUSNUT 2023 measure 48453 cube or lump,0
+chocolate_dark_60_cocoa,row,20.6,AUSNUT 2023 measure 48657 row,0
+chocolate_dark_60_cocoa,square,6.5,AUSNUT 2023 measure 48658 square,0
+chocolate_dark_60_cocoa,chocolate,12,AUSNUT 2023 measure 48659 chocolate,0
+chocolate_dark_no_added_sugar,chocolate,12,AUSNUT 2023 measure 48752 chocolate,0
+chocolate_dark_no_added_sugar,row,20.6,AUSNUT 2023 measure 48753 row,0
+chocolate_dark_no_added_sugar,square,6.5,AUSNUT 2023 measure 48754 square,0
+popcorn_air_popped,handful,3,AUSNUT 2023 measure 48304 handful,0
+kombucha,can,190,AUSNUT 2023 measure 40531 can,0
+sparkling_soda_water,can,200,AUSNUT 2023 measure 41153 can,0
+coffee_espresso_shot,espresso cup (double shot),80,AUSNUT 2023 measure 40545 espresso cup double shot,0
+coffee_espresso_shot,espresso cup (single shot),50,AUSNUT 2023 measure 40546 espresso cup single shot,0
+olive_oil_spray,spray,5,AUSNUT 2023 measure 43506 spray,0
+tasty_cheese,cup (shredded),120.0,AUSNUT 2023 measure 46004 density 0.48 g/mL x 250 mL,0
+tasty_cheese,slice (cracker-size),7,AUSNUT 2023 measure 46006 slice cracker-size,0
+tasty_cheese,slice (sandwich size),21,AUSNUT 2023 measure 46007 slice sandwich size,0
+mixed_berries,berry,4.4,AUSNUT 2023 measure 44369 berry,0
+plain_rice_cake,rice cake (thin),7,AUSNUT 2023 measure 42005 rice cake thin,0
+plain_rice_cake,rice cake (thick),12.5,AUSNUT 2023 measure 42006 rice cake thick,0
+light_cream_cheese,tbsp,20.2,AUSNUT 2023 measure 46051 tablespoon,0
+light_cream_cheese,cup,252.5,AUSNUT 2023 measure 46052 cup,0
+red_chili_flake,chilli,3,AUSNUT 2023 measure 49450 chilli,0
+tin_butter_bean,can (small),125,AUSNUT 2023 measure 50370 can small,0
+tin_butter_bean,can (large),420,AUSNUT 2023 measure 50371 can large,0
+rice_pouch,pouch,250,AUSNUT 2023 measure 41293 microwavable bag regular size,0
+microwave_brown_rice_quinoa_pouch,pouch,250,AUSNUT 2023 measure 41304 microwavable bag regular size,0
+tomato_passata,tbsp,20,AUSNUT 2023 measure 48004 tablespoon,0
+tomato_passata,cup,250,AUSNUT 2023 measure 48005 cup,0
+sundried_tomato,tomato,4.8,AUSNUT 2023 measure 50296 tomato,0
+taco_seasoning,packet,30,AUSNUT 2023 measure 49480 packet,0
+swiss_brown_mushroom,mushroom (extra large/giant),165,AUSNUT 2023 measure 47579 mushroom extra large/giant,0
+swiss_brown_mushroom,large,75,AUSNUT 2023 measure 47580 mushroom large,0
+swiss_brown_mushroom,medium,35,AUSNUT 2023 measure 47581 mushroom medium,0
+swiss_brown_mushroom,small,20,AUSNUT 2023 measure 47582 mushroom small,0
+swiss_brown_mushroom,mushroom (very small),12,AUSNUT 2023 measure 47583 mushroom very small,0
+swiss_brown_mushroom,slice,5.8,AUSNUT 2023 measure 47584 slice,0
+oyster_mushroom,mushroom,12,AUSNUT 2023 measure 47611 mushroom,0
+oyster_mushroom,regular,12,AUSNUT 2023 measure 47611 one mushroom,0
