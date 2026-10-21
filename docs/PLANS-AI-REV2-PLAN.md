@@ -104,6 +104,24 @@ The intern publishing gap can be closed on its own straight away (a small migrat
 - **The generator uses every meal type, whatever its confidence.** The dietitian does one large pass over all recipes before the planner is used, so the review list holds every recipe, not just medium and low rows.
 - **Protein spread counts lunch and dinner.** Snacks are the flexible slot used to top up the day's energy, protein, carbs and fat. The generator fills them last against what the day still needs (food items such as yoghurt or nuts allowed as snacks).
 
+## Gate A status (21 Oct 2026)
+
+- **P0 meal types: first pass done.** The review list is `seed/meal_types/meal_types_for_review.csv` (all 374 recipes; how to review: `seed/meal_types/HOW-TO-REVIEW.md`).
+  - Confidence: 322 high, 51 medium, 1 untitled.
+  - Old meal tags are kept and merged in.
+  - 45 recipes are suggested as discretionary.
+  - The classifier is draft migration `0046_recipe_meal_types.sql` (not applied). The first pass ran read-only from the same SQL.
+  - Today's usable pool by meal type: 8 dinners, 7 lunches, 5 breakfasts, 15 snacks.
+- **P1 plan model: draft migration `0047_plans_p1b.sql`, dry-run, not applied** (gate C).
+  - New test `tests/sql/plans_p1b.test.sql`: 10 groups pass. The existing `plans_p1` test still passes with it applied, so the current app's publishing is unaffected.
+  - Choices made:
+    - Confirmation is required only once a plan has a planner report. Hand-built plans publish exactly as today.
+    - Item ingredient changes use whole-recipe quantities, like profiles and the adjust solver.
+    - Food items and ingredient changes need the Lovable screens before the planner creates any.
+- **P2a roll-up: `packages/rollup`** (pure TypeScript on the engine).
+  - 11 tests cover a free-choice day, a leftover pair, a top-up, ingredient changes, an ingredient that can't be weighed (named, never zero), the tolerance bands and repeatability.
+  - The whole suite (53 tests) passes.
+
 ## Decisions needed (original list; 1, 2, 3 and 6 answered above)
 
 1. **Go** on gate A (meal-type first pass and CSV, P1 schema dry-run, P2a package).
