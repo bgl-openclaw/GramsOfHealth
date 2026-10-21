@@ -97,7 +97,14 @@ The intern publishing gap can be closed on its own straight away (a small migrat
 - **Snapshot parity.** The publish snapshot is built by the app's engine copy. Food items and adjustments make that code bigger, and the database check must cover them.
 - **Cost and latency.** The explainer costs a few cents per plan. Opus can take 10–20 s, so stream the answer.
 
-## Decisions needed
+## Owner decisions (21 Oct 2026)
+
+- **Go on gate A.**
+- **Interns keep publishing.** The intern gap stays open by choice. Confirm-with-notes (P1) is open to any staff member who can publish the plan, not dietitians only.
+- **The generator uses every meal type, whatever its confidence.** The dietitian does one large pass over all recipes before the planner is used, so the review list holds every recipe, not just medium and low rows.
+- **Protein spread counts lunch and dinner.** Snacks are the flexible slot used to top up the day's energy, protein, carbs and fat. The generator fills them last against what the day still needs (food items such as yoghurt or nuts allowed as snacks).
+
+## Decisions needed (original list; 1, 2, 3 and 6 answered above)
 
 1. **Go** on gate A (meal-type first pass and CSV, P1 schema dry-run, P2a package).
 2. Medium- and low-confidence meal types stay out of the generator until reviewed? (recommended: yes)
