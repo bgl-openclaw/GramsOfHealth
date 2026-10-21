@@ -9,8 +9,8 @@ Nothing has been applied. Everything below was checked against the live database
 | Item | Where | State |
 |---|---|---|
 | Package rev 2 in the repo | `seed/ausnut2023/` | identical copy of `Downloads/ausnut2023 2` |
-| G1a enum migration | `supabase/migrations/0041_ausnut_source_enum.sql` | draft, dry-run OK |
-| G1b schema migration | `supabase/migrations/0042_ausnut_reference_ai_verified.sql` | draft, dry-run OK |
+| G1a enum migration | `supabase/drafts/0041_ausnut_source_enum.sql` | draft, dry-run OK |
+| G1b schema migration | `supabase/drafts/0042_ausnut_reference_ai_verified.sql` | draft, dry-run OK |
 | G1 test | `tests/sql/ausnut_g1.test.sql` | 10/10 in the dry run |
 | Snapshot script | `scripts/ausnut/snapshot.py` | written (read-only) |
 | Reference loader | `scripts/ausnut/load_reference.py` | `--check` passes: 662 classifications, 3,741 foods, 9,802 measures (14 AUSNUT measures have no master row; skipped and listed) |

@@ -163,7 +163,7 @@ List with suggestions: `review/line_proposals.csv`.
 - `scripts/ausnut/decisions.py`: every hand decision, with its reason.
 - `scripts/ausnut/build_changeset.py`: decisions + package + live library → `seed/ausnut2023/changeset/*.jsonl`. It stops if anything would fail.
 - `scripts/ausnut/apply_changeset.py`: upload / dry-run / apply, one batch at a time.
-- `supabase/migrations/0043_ausnut_apply.sql`: the change machinery and the dietitians' queue (`ausnut_review_queue`).
+- `supabase/drafts/0043_ausnut_apply.sql`: the change machinery and the dietitians' queue (`ausnut_review_queue`).
 - `tests/sql/ausnut_apply.test.sql`: generated from the real changeset by `make_apply_test.py`.
 - `seed/ausnut2023/changeset/review/*.csv`: every list above, plus:
   - `recipes_after.csv`: each recipe, before and after;
