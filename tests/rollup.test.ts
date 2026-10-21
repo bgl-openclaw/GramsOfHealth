@@ -108,6 +108,12 @@ describe("rollupPlan", () => {
     expect(r.cycle.distinct_ingredients).toBe(7);
   });
 
+  it("leaves alternatives (behind Swap) out of every total", () => {
+    const withOption = { ...plan, items: [...plan.items, { id: "alt", day: 1, slot: "Dinner", recipe_id: "muffins", servings: 2, option_of: "cook" }] };
+    const r2 = rollupPlan(withOption, lib);
+    expect(JSON.stringify(r2)).toBe(JSON.stringify(r));
+  });
+
   it("is deterministic: item order doesn't change the result", () => {
     const shuffled = { ...plan, items: [...plan.items].reverse() };
     expect(JSON.stringify(rollupPlan(shuffled, lib))).toBe(JSON.stringify(r));

@@ -89,14 +89,20 @@ The rest of Stage 2 is unchanged: 2C templates and groups, 2D intake/notes/docum
 
 Unchanged from the build roadmap. The plan model work in gate C (options per slot, release date, slot states, food items) is what C1 and C4 need, which is why items 4 and 5 above are worth adding now.
 
-## 4. Decisions needed now
+## 4. Owner answers (22 Oct 2026)
 
-1. **Options per slot and release date** go into 0047 before gate C? (recommended: yes)
-2. **Lunch eligibility** on by default? (recommended: yes)
-3. **Disliked recipes:** penalised for now, or excluded?
-4. **Interns and AI:** may interns approve AI diffs, and see AI-3 consult summaries for their clients?
-5. **Merge to `main`:** open the pull request now?
-6. Still open from the build roadmap:
+1. **Options per slot and release date: yes**, with the plan looking set. One recipe per slot is shown, and alternatives stay behind Swap and are used only if needed. Both are now in draft 0047 (`option_of`, `release_on`) and dry-run; the roll-up ignores alternatives.
+2. **Lunch eligibility: yes.** Lunch slots also take dinner recipes (a planner setting, on by default).
+3. **Disliked recipes: always excluded**, like blocked ones. This overrides rev 2's "penalise". A thin pool shows up in the report's pre-check instead.
+4. **Interns: yes.** Interns may approve AI suggestions and see AI-3 consult summaries for clients they are allocated to.
+5. **Merge to `main`: yes.** A pull request is open.
+
+Dietitian answers are collected on live pages Claude reads back:
+- AUSNUT: https://claude.ai/artifact/JNqBi3w2f8WE5MNpAog2Hn
+- Planner set-up (rules, meal types, swap groups): https://claude.ai/artifact/6KzWBgS79BtL1FueRJ9e5z
+
+## 5. Decisions still open (from the build roadmap)
+
    - F1.1 (un-verify only on calorie changes)
    - readiness bars (Nikki)
    - energy bands

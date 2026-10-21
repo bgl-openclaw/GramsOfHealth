@@ -1,0 +1,427 @@
+<title>Planner Set-up Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a working checklist in three parts (rules, meal types, swap groups), each list collapsible and signed off on its own. Same identity as the AUSNUT review page. */
+:root {
+  --bg: #f5f7f6; --surface: #ffffff; --sunk: #eef2f0; --ink: #17221f; --muted: #5a6964; --rule: #d9e1de;
+  --accent: #0b6872; --accent-soft: #e2f0f1; --on-accent: #ffffff;
+  --good: #2f7a3e; --good-soft: #e5f2e7; --warn: #9a5b00; --warn-soft: #fbefdc; --crit: #b3261e; --crit-soft: #fbe6e4;
+  --f-display: "Literata", Georgia, "Times New Roman", serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111816; --surface: #18211e; --sunk: #141c19; --ink: #e4ece9; --muted: #9db0aa; --rule: #2c3a36;
+  --accent: #5fc3cc; --accent-soft: #163438; --on-accent: #0b1f22;
+  --good: #7ccb8b; --good-soft: #17301d; --warn: #f0b860; --warn-soft: #3a2a10; --crit: #ff8a80; --crit-soft: #3d1a17; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #111816; --surface: #18211e; --sunk: #141c19; --ink: #e4ece9; --muted: #9db0aa; --rule: #2c3a36;
+  --accent: #5fc3cc; --accent-soft: #163438; --on-accent: #0b1f22;
+  --good: #7ccb8b; --good-soft: #17301d; --warn: #f0b860; --warn-soft: #3a2a10; --crit: #ff8a80; --crit-soft: #3d1a17; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.55 var(--f-body); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top { padding-block: 32px 20px; display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font: 600 12px/1.3 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 650 clamp(28px, 5vw, 40px)/1.12 var(--f-display); margin: 0; text-wrap: balance; }
+h2 { font: 650 22px/1.25 var(--f-display); margin: 0; text-wrap: balance; }
+h3 { font: 700 15.5px/1.35 var(--f-body); margin: 0; }
+p { margin: 0; max-width: 72ch; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.mono { font-family: var(--f-mono); font-size: .9em; font-variant-numeric: tabular-nums; }
+.howto { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 4px; }
+.howto div { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.howto b { font-size: 14px; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px; }
+.jump a { font: 600 13px var(--f-body); color: var(--accent); text-decoration: none; border: 1px solid var(--rule); background: var(--surface); border-radius: 99px; padding: 6px 12px; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.strip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+.strip .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-block: 10px; }
+.bar { flex: 1 1 220px; height: 8px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; min-width: 0; }
+.bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.strip .count { font: 500 13px var(--f-mono); font-variant-numeric: tabular-nums; }
+.status { font-size: 13px; padding: 4px 10px; border-radius: 99px; background: var(--sunk); color: var(--muted); }
+.status.ok { background: var(--good-soft); color: var(--good); }
+.status.warn { background: var(--warn-soft); color: var(--warn); }
+.status.bad { background: var(--crit-soft); color: var(--crit); }
+
+main { display: flex; flex-direction: column; gap: 40px; padding-block: 28px 64px; }
+.part { display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 64px; }
+.part > .lead { display: flex; flex-direction: column; gap: 6px; }
+.partno { font: 600 12px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.owner { background: var(--accent-soft); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+.owner ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 2px; }
+
+details.sec { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
+details.sec > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+details.sec > summary::-webkit-details-marker { display: none; }
+details.sec > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+.sumL { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.chev { width: 9px; height: 9px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); transition: transform .15s; flex: none; }
+details[open] > summary .chev { transform: rotate(45deg); }
+.pill { font: 600 12px/1 var(--f-body); padding: 6px 9px; border-radius: 99px; white-space: nowrap; background: var(--sunk); color: var(--muted); }
+.pill.done { background: var(--good-soft); color: var(--good); }
+.pill.todo { background: var(--warn-soft); color: var(--warn); }
+.secbody { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--rule); }
+
+.item { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 18px; background: var(--surface); }
+.item.decided { border-color: color-mix(in srgb, var(--good) 45%, var(--rule)); background: color-mix(in srgb, var(--good-soft) 35%, var(--surface)); }
+.item .txt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.item .ctl { display: flex; flex-direction: column; gap: 6px; min-width: 13rem; }
+.sugg { font-size: 14px; }
+.sugg b { color: var(--accent); font-weight: 600; }
+.opts { display: flex; flex-direction: column; gap: 2px; border: 0; padding: 0; margin: 0; }
+.opts label { display: flex; gap: 8px; align-items: center; font-size: 14px; padding: 4px 6px; border-radius: 6px; cursor: pointer; }
+.opts label:hover { background: var(--sunk); }
+.opts input { accent-color: var(--accent); width: 16px; height: 16px; margin: 0; }
+textarea, input[type=text], select { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 9px; width: 100%; min-width: 0; }
+textarea { min-height: 2.6em; resize: vertical; grid-column: 1 / -1; }
+textarea:focus, input:focus, select:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.who { font-size: 12px; color: var(--muted); grid-column: 1 / -1; }
+.who:empty { display: none; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--accent); font: inherit; font-size: 13px; cursor: pointer; text-align: left; }
+.btn { font: 600 14px var(--f-body); border-radius: 8px; padding: 9px 14px; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+
+.tools { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.tools input[type=text] { max-width: 260px; }
+.later { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+.tw { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th { text-align: left; font: 600 11px/1.3 var(--f-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 9px 10px; border-bottom: 1px solid var(--rule); white-space: nowrap; background: var(--sunk); }
+td { padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.c0 { font-weight: 600; min-width: 12rem; }
+td.num { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+tr.changed td { background: color-mix(in srgb, var(--accent-soft) 70%, var(--surface)); }
+tr.flagged td, tr.suspect td { background: var(--warn-soft); }
+tr.note td { padding-top: 0; }
+.sub { display: block; font-weight: 400; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+.warnline { display: block; font-weight: 600; color: var(--warn); font-size: 12.5px; margin-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { font: 600 12px/1 var(--f-body); border: 1px solid var(--rule); background: var(--surface); color: var(--muted); border-radius: 99px; padding: 6px 9px; cursor: pointer; white-space: nowrap; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip.treat[aria-pressed="true"] { background: var(--warn); border-color: var(--warn); color: var(--surface); }
+.chip.x[aria-pressed="true"] { background: var(--muted); border-color: var(--muted); color: var(--surface); }
+.flag { font: 600 12px var(--f-body); border: 1px solid var(--rule); background: var(--surface); color: var(--muted); border-radius: 99px; padding: 5px 10px; cursor: pointer; }
+.flag[aria-pressed="true"] { background: var(--warn); border-color: var(--warn); color: var(--surface); }
+td select { min-width: 12rem; }
+.secfoot { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; }
+.sign { background: var(--surface); border: 2px solid var(--accent); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.sign ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 4px; }
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-block: 16px 32px; }
+@media (max-width: 640px) { .item { grid-template-columns: 1fr; } .item .ctl { min-width: 0; } }
+@media (prefers-reduced-motion: reduce) { .bar i, .chev { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">Grams of Health · meal planner set-up</div>
+    <h1>Planner set-up review</h1>
+    <p>Three things the meal planner needs from a dietitian before it's used: the rules it judges plans by, which slots each recipe fits, and which foods it may suggest swapping. <b>Nothing changes in the app until you sign off.</b> Each part has its own sign-off, so you can do them in any order.</p>
+    <div class="howto">
+      <div><b>Choices save as you make them</b><span class="muted small">Anyone with access sees the same answers, live. You can stop and come back.</span></div>
+      <div><b>Pre-filled</b><span class="muted small">Every row has a suggestion. Change only what's wrong; untouched rows keep the suggestion once you've checked the list.</span></div>
+      <div><b>Size</b><span class="muted small" id="sizeTxt"></span></div>
+    </div>
+    <nav class="jump" aria-label="Parts" id="jump"></nav>
+  </header>
+</div>
+
+<div class="strip" role="region" aria-label="Progress">
+  <div class="wrap">
+    <span class="count" id="countTxt">…</span>
+    <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+    <span class="status" id="status" role="status">Connecting…</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <main id="main"></main>
+  <footer>Built 22 Oct 2026 from the Grams of Health library (374 recipes) and the AUSNUT 2023 new foods. The same lists are in the project repository under <span class="mono">seed/meal_types/</span> and <span class="mono">seed/swap_groups/</span>.</footer>
+</div>
+
+<script type="application/json" id="data">/*DATA*/</script>
+<script>
+(function () {
+  "use strict";
+  const D = JSON.parse(document.getElementById("data").textContent);
+  const dec = {}, secs = {}, sign = {}, draft = {}, timers = {}, chains = {};
+  let db = null, user = null, me = null, canWrite = false, live = false;
+  const $ = (s, r) => (r || document).querySelector(s);
+  const TYPES = [["breakfast", "Breakfast"], ["lunch", "Lunch"], ["dinner", "Dinner"], ["snack", "Snack"]];
+  const GROUP = Object.fromEntries(D.groups.map(g => [g.key, g.title]));
+
+  function h(tag, props, ...kids) {
+    const e = document.createElement(tag);
+    if (props) for (const [k, v] of Object.entries(props)) {
+      if (v == null || v === false) continue;
+      if (k === "text") e.textContent = v; else if (k === "cls") e.className = v;
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? "" : v);
+    }
+    for (const k of kids.flat()) if (k != null && k !== false) e.append(k.nodeType ? k : document.createTextNode(String(k)));
+    return e;
+  }
+  const safeId = k => "k_" + k.replace(/[^A-Za-z0-9_-]/g, "_");
+  const fmtDate = iso => { try { return new Date(iso).toLocaleString("en-AU", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }); } catch (e) { return ""; } };
+  const body = k => Object.assign({}, dec[k] || {}, draft[k] || {});
+  const sameSet = (a, b) => a.length === b.length && a.every(x => b.includes(x));
+  function setStatus(t, c) { const s = $("#status"); s.textContent = t; s.className = "status " + (c || ""); }
+
+  async function write(path, data) {
+    chains[path] = (chains[path] || Promise.resolve()).then(async () => {
+      setStatus("Saving…", "warn");
+      try { await db.doc(path).set(data); setStatus("All changes saved", "ok"); }
+      catch (e) {
+        if (e && (e.code === "invalid_argument" || e.code === "permission_denied" || e.code === "not_granted")) { canWrite = false; setStatus("Read only: ask the owner for Contributor access", "bad"); lockAll(); }
+        else if (e && e.code === "unavailable") { await new Promise(r => setTimeout(r, 600 + Math.random() * 800)); try { await db.doc(path).set(data); setStatus("All changes saved", "ok"); } catch (e2) { setStatus("Couldn't save. Check your connection and try again.", "bad"); } }
+        else setStatus("Couldn't save: " + ((e && e.message) || "unknown error"), "bad");
+      }
+    });
+    return chains[path];
+  }
+  function save(key, patch, delay) {
+    if (!live || !canWrite) return;
+    draft[key] = Object.assign({}, draft[key] || {}, patch);
+    clearTimeout(timers[key]);
+    const go = () => { const b = Object.assign({}, dec[key] || {}, draft[key], { by: me, at: new Date().toISOString() }); dec[key] = b; delete draft[key]; write("decisions/" + key, b); refreshItem(key); progress(); };
+    if (delay) { timers[key] = setTimeout(go, delay); refreshItem(key, true); progress(); } else go();
+  }
+  function flush(key) { if (timers[key]) { clearTimeout(timers[key]); timers[key] = null; save(key, {}, 0); } }
+
+  const els = {};
+  const reg = (k, fn) => (els[k] = els[k] || []).push(fn);
+  const refreshItem = (k, typing) => (els[k] || []).forEach(fn => fn(typing));
+
+  /* ---------- completion ---------- */
+  function decideDone(it) { const b = body(it.key); return !!b.choice && (b.choice !== "change" || !!(b.note || "").trim()); }
+  function secDone(s) { return s.kind === "decide" ? s.items.every(decideDone) : !!(secs[s.id] && secs[s.id].checked); }
+
+  /* ---------- render ---------- */
+  function render() {
+    const m = D.meta;
+    $("#sizeTxt").textContent = `${D.parts[0].sections[0].items.length} rules · ${m.base} recipes (+${m.variants} variants) · ${m.groups} swap groups, ${m.swap_rows} rows`;
+    const jump = $("#jump"), main = $("#main");
+    D.parts.forEach((p, i) => {
+      jump.append(h("a", { href: "#part_" + p.id, text: `${i + 1}. ${p.title}` }));
+      const part = h("section", { cls: "part", id: "part_" + p.id, "aria-labelledby": "h_" + p.id },
+        h("div", { cls: "lead" }, h("span", { cls: "partno", text: "Part " + (i + 1) }), h("h2", { id: "h_" + p.id, text: p.title }), h("p", { cls: "muted", text: p.intro })));
+      if (p.owner) part.append(h("div", { cls: "owner" }, h("b", { cls: "small", text: "Already decided by the owner" }), h("ul", { cls: "small" }, p.owner.map(t => h("li", { text: t })))));
+      for (const s of p.sections) part.append(renderSection(s));
+      part.append(renderSign(p));
+      main.append(part);
+    });
+  }
+
+  function renderSection(s) {
+    const pill = h("span", { cls: "pill", id: "pill_" + s.id });
+    const det = h("details", { cls: "sec", id: "sec_" + s.id, open: s.open || null },
+      h("summary", null, h("span", { cls: "sumL" }, h("span", { cls: "chev", "aria-hidden": "true" }), h("h3", { text: `${s.title} · ${s.items.length}` })), pill));
+    const b = h("div", { cls: "secbody" });
+    if (s.intro) b.append(h("p", { cls: "muted", text: s.intro }));
+    if (s.kind === "decide") for (const it of s.items) b.append(decideItem(it));
+    else b.append(tableFor(s));
+    det.append(b);
+    return det;
+  }
+
+  function decideItem(it) {
+    const txt = h("div", { cls: "txt" }, h("h3", { text: it.title }), h("p", { cls: "sugg" }, h("b", { text: "Proposed: " }), it.suggestion), it.why ? h("p", { cls: "small muted", text: it.why }) : null);
+    const note = h("textarea", { id: safeId(it.key) + "_note", "aria-label": "Note for " + it.title, placeholder: "The numbers you'd use, or anything we should know", hidden: true,
+      oninput: e => save(it.key, { note: e.target.value }, 700), onblur: () => flush(it.key) });
+    const addNote = h("button", { cls: "linkbtn", type: "button", text: "Add a note", onclick: () => { note.hidden = false; note.focus(); addNote.hidden = true; } });
+    const fs = h("fieldset", { cls: "opts" }, h("legend", { cls: "small muted", text: "Your answer" }));
+    for (const o of it.options) {
+      const id = safeId(it.key) + "_" + o.v;
+      fs.append(h("label", { for: id }, h("input", { type: "radio", name: safeId(it.key), id, value: o.v, disabled: true,
+        onchange: () => { save(it.key, { choice: o.v }); if (o.v === "change") { note.hidden = false; note.focus(); addNote.hidden = true; } } }), o.label));
+    }
+    const who = h("div", { cls: "who" });
+    const row = h("div", { cls: "item" }, txt, h("div", { cls: "ctl" }, fs, addNote), note, who);
+    reg(it.key, typing => {
+      const b = body(it.key);
+      row.classList.toggle("decided", decideDone(it));
+      for (const r of row.querySelectorAll("input[type=radio]")) r.checked = r.value === b.choice;
+      if (document.activeElement !== note && !typing) note.value = b.note || "";
+      if ((b.note || "").trim() || b.choice === "change") { note.hidden = false; addNote.hidden = true; }
+      who.dataset.by = b.by || ""; who.dataset.at = b.at || ""; names();
+    });
+    return row;
+  }
+
+  function tableFor(s) {
+    const filter = h("input", { type: "text", id: "f_" + s.id, placeholder: "Filter this list", "aria-label": "Filter " + s.title });
+    const onlyCh = h("input", { type: "checkbox", id: "oc_" + s.id });
+    const tools = h("div", { cls: "tools" }, s.items.length > 15 ? filter : null, h("label", { cls: "later", for: "oc_" + s.id }, onlyCh, "Show changed or flagged only"));
+    let cols;
+    if (s.kind === "mealtypes") cols = ["Recipe", "Slots it can fill", "Treat", ""];
+    else if (s.kind === "skim") cols = s.cols.concat([""]);
+    else if (s.kind === "swaps") cols = ["Food", "kcal", "Protein", "Fat", "Carbs", "Allergens", "In this group?", ""];
+    else cols = ["Food", "Role", "Used in", "Add to a group?", ""];
+    const tb = h("tbody");
+    for (const it of s.items) {
+      const { tr, ntr, search, changed } = rowFor(s, it);
+      tb.append(tr, ntr);
+      const vis = () => { const q = filter.value.trim().toLowerCase(); const show = (!q || search.includes(q)) && (!onlyCh.checked || changed()); tr.hidden = !show; ntr.hidden = !show || ntr.dataset.open !== "1"; };
+      filter.addEventListener("input", vis); onlyCh.addEventListener("change", vis); reg(it.key, vis);
+    }
+    const btn = h("button", { cls: "btn", type: "button", id: "chk_" + s.id, disabled: true, text: "I've checked this list",
+      onclick: () => { const v = { checked: !(secs[s.id] && secs[s.id].checked), by: me, at: new Date().toISOString() }; secs[s.id] = v; write("sections/" + s.id, v); refreshSec(s.id); progress(); } });
+    return h("div", null, tools, h("div", { cls: "tw" }, h("table", null, h("thead", null, h("tr", null, cols.map(c => h("th", { text: c })))), tb)),
+      h("div", { cls: "secfoot" }, h("span", { cls: "muted small", id: "chkwho_" + s.id }), btn));
+  }
+
+  function noteRow(it, ncol, placeholder) {
+    const inp = h("input", { type: "text", id: safeId(it.key) + "_n", placeholder, "aria-label": "Note", disabled: true, oninput: e => save(it.key, { note: e.target.value }, 700), onblur: () => flush(it.key) });
+    const ntr = h("tr", { cls: "note", hidden: true }, h("td", { colspan: String(ncol) }, inp));
+    return { inp, ntr };
+  }
+
+  function rowFor(s, it) {
+    let tr, ntr, inp, changed, search;
+    const noteBtn = h("button", { cls: "flag", type: "button", disabled: true, text: "Note" });
+    if (s.kind === "mealtypes") {
+      const cells = h("td", { cls: "c0" }, it.title, h("span", { cls: "sub", text: it.ing || "no ingredients" }),
+        h("span", { cls: "sub", text: (it.old ? `Old tag: ${it.old} · ` : "") + it.why }));
+      const chipBox = h("div", { cls: "chips" });
+      const chipEls = {};
+      for (const [v, lab] of TYPES) { chipEls[v] = h("button", { cls: "chip", type: "button", "aria-pressed": "false", disabled: true, text: lab, onclick: () => toggleType(v) }); chipBox.append(chipEls[v]); }
+      chipEls.not_a_meal = h("button", { cls: "chip x", type: "button", "aria-pressed": "false", disabled: true, text: "Not a meal", onclick: () => toggleType("not_a_meal") });
+      chipBox.append(chipEls.not_a_meal);
+      const treat = h("button", { cls: "chip treat", type: "button", "aria-pressed": "false", disabled: true, text: "Treat", onclick: () => save(it.key, { types: cur().types, disc: !cur().disc }) });
+      const cur = () => { const b = body(it.key); return { types: b.types || it.types, disc: b.disc != null ? b.disc : it.disc }; };
+      function toggleType(v) {
+        let t = cur().types.slice();
+        if (t.includes(v)) t = t.filter(x => x !== v);
+        else t = v === "not_a_meal" ? ["not_a_meal"] : t.filter(x => x !== "not_a_meal").concat([v]);
+        save(it.key, { types: t, disc: cur().disc });
+      }
+      ({ inp, ntr } = noteRow(it, 4, "Note (optional)"));
+      tr = h("tr", null, cells, h("td", null, chipBox), h("td", null, treat), h("td", null, noteBtn));
+      changed = () => { const c = cur(); return !sameSet(c.types, it.types) || c.disc !== it.disc || !!(body(it.key).note || "").trim(); };
+      search = (it.title + " " + it.ing).toLowerCase();
+      reg(it.key, typing => {
+        const c = cur();
+        for (const k of Object.keys(chipEls)) chipEls[k].setAttribute("aria-pressed", c.types.includes(k) ? "true" : "false");
+        treat.setAttribute("aria-pressed", c.disc ? "true" : "false");
+        tr.classList.toggle("changed", changed());
+      });
+    } else if (s.kind === "skim") {
+      const cells = it.cells.map((c, i) => h("td", { cls: i === 0 ? "c0" : "", text: c || "" }));
+      ({ inp, ntr } = noteRow(it, s.cols.length + 1, "How should it differ from its base?"));
+      noteBtn.textContent = "Flag";
+      tr = h("tr", null, cells, h("td", null, noteBtn));
+      noteBtn.onclick = () => { const on = !body(it.key).flagged; save(it.key, { flagged: on }); if (on) setTimeout(() => inp.focus(), 0); };
+      changed = () => !!body(it.key).flagged;
+      search = it.cells.join(" ").toLowerCase();
+      reg(it.key, () => { const f = !!body(it.key).flagged; noteBtn.setAttribute("aria-pressed", f ? "true" : "false"); noteBtn.textContent = f ? "Flagged" : "Flag"; tr.classList.toggle("flagged", f); if (f) ntr.dataset.open = "1"; });
+    } else if (s.kind === "swaps") {
+      const name = h("td", { cls: "c0" }, it.food, it.check ? h("span", { cls: "warnline", text: "Check values: " + it.check }) : null,
+        h("span", { cls: "sub", text: [it.status, it.uses && it.uses !== "0" ? `in ${it.uses} recipe${it.uses === "1" ? "" : "s"}` : "", it.cross].filter(Boolean).join(" · ") }));
+      const sel = h("select", { id: safeId(it.key) + "_s", "aria-label": "Keep " + it.food + " in " + s.title + "?", disabled: true, onchange: e => save(it.key, { choice: e.target.value }) },
+        h("option", { value: "keep", text: "Keep" }), h("option", { value: "remove", text: "Remove from group" }),
+        D.groups.filter(g => g.key !== s.group).map(g => h("option", { value: "move:" + g.key, text: "Move to: " + g.title })));
+      ({ inp, ntr } = noteRow(it, 8, it.check ? "Correct values per 100 g, if you know them" : "Note (optional)"));
+      tr = h("tr", { cls: it.check ? "suspect" : "" }, name, h("td", { cls: "num", text: it.kcal }), h("td", { cls: "num", text: it.p }), h("td", { cls: "num", text: it.f }),
+        h("td", { cls: "num", text: it.c }), h("td", { cls: "small", text: it.allergens || "—" }), h("td", null, sel), h("td", null, noteBtn));
+      changed = () => { const b = body(it.key); return (b.choice && b.choice !== "keep") || !!(b.note || "").trim(); };
+      search = (it.food + " " + it.allergens).toLowerCase();
+      reg(it.key, () => { const b = body(it.key); if (document.activeElement !== sel) sel.value = b.choice || "keep"; tr.classList.toggle("changed", !!(b.choice && b.choice !== "keep")); });
+    } else {
+      const sel = h("select", { id: safeId(it.key) + "_s", "aria-label": "Add " + it.food + " to a group?", disabled: true, onchange: e => save(it.key, { choice: e.target.value }) },
+        h("option", { value: "leave", text: "Leave out" }), D.groups.map(g => h("option", { value: "add:" + g.key, text: "Add to: " + g.title })));
+      ({ inp, ntr } = noteRow(it, 5, "Note (optional)"));
+      tr = h("tr", null, h("td", { cls: "c0" }, it.food, h("span", { cls: "sub", text: it.status })), h("td", { text: it.role }), h("td", { cls: "num", text: it.uses }), h("td", null, sel), h("td", null, noteBtn));
+      changed = () => { const b = body(it.key); return (b.choice && b.choice !== "leave") || !!(b.note || "").trim(); };
+      search = it.food.toLowerCase();
+      reg(it.key, () => { const b = body(it.key); if (document.activeElement !== sel) sel.value = b.choice || "leave"; tr.classList.toggle("changed", !!(b.choice && b.choice !== "leave")); });
+    }
+    if (s.kind !== "skim") noteBtn.onclick = () => { ntr.dataset.open = "1"; ntr.hidden = false; inp.focus(); };
+    reg(it.key, typing => { const b = body(it.key); if (document.activeElement !== inp && !typing) inp.value = b.note || ""; if ((b.note || "").trim()) ntr.dataset.open = "1"; });
+    tr.dataset.key = it.key;
+    return { tr, ntr, search, changed };
+  }
+
+  function renderSign(p) {
+    return h("section", { cls: "sign", "aria-labelledby": "sg_" + p.id },
+      h("h2", { id: "sg_" + p.id, text: "Sign off: " + p.title.toLowerCase() }),
+      h("p", { id: "signTxt_" + p.id }), h("ul", { id: "signTodo_" + p.id, cls: "small" }),
+      h("div", null, h("button", { cls: "btn", type: "button", id: "signBtn_" + p.id, disabled: true, text: "Sign off " + p.title.toLowerCase(),
+        onclick: () => { sign[p.id] = { by: me, at: new Date().toISOString() }; write("signoff/" + p.id, sign[p.id]); progress(); } })));
+  }
+
+  /* ---------- live state ---------- */
+  function refreshSec(id) {
+    const b = secs[id] || {}, btn = $("#chk_" + id); if (!btn) return;
+    btn.textContent = b.checked ? "Checked ✓ (undo)" : "I've checked this list"; btn.classList.toggle("ghost", !!b.checked);
+    const w = $("#chkwho_" + id); w.dataset.by = b.checked ? (b.by || "") : ""; w.dataset.at = b.checked ? (b.at || "") : ""; names();
+  }
+  let nameTimer = null;
+  function names() {
+    clearTimeout(nameTimer);
+    nameTimer = setTimeout(async () => {
+      const all = Array.from(document.querySelectorAll(".who, [id^=chkwho_]"));
+      const ids = Array.from(new Set(all.map(e => e.dataset.by).concat(Object.values(sign).map(s => s && s.by)).filter(Boolean)));
+      let ps = {}; if (user && ids.length) { try { ps = await user.profiles(ids); } catch (e) { ps = {}; } }
+      const nm = id => (id && ps[id] && ps[id].name) || "Someone";
+      for (const e of all) { const by = e.dataset.by, at = e.dataset.at; e.textContent = by || at ? `${e.id.startsWith("chkwho_") ? "Checked by " : ""}${nm(by)} · ${fmtDate(at)}` : ""; }
+      for (const p of D.parts) { const s = sign[p.id]; if (s && s.at) $("#signTxt_" + p.id).textContent = `Signed off by ${nm(s.by)} on ${fmtDate(s.at)}.`; }
+    }, 120);
+  }
+  function progress() {
+    let need = 0, done = 0;
+    for (const p of D.parts) {
+      const todo = [];
+      for (const s of p.sections) {
+        const pill = $("#pill_" + s.id);
+        if (s.kind === "decide") {
+          const d = s.items.filter(decideDone).length; need += s.items.length; done += d;
+          pill.textContent = `${d} of ${s.items.length}`; pill.className = "pill " + (d === s.items.length ? "done" : "todo");
+          if (d < s.items.length) todo.push(`${s.title}: ${s.items.length - d} to answer`);
+        } else {
+          const ok = secDone(s); need += 1; done += ok ? 1 : 0;
+          const ch = s.items.filter(it => { const b = body(it.key); return b.flagged || (b.choice && !["keep", "leave"].includes(b.choice)) || b.types || b.disc != null || (b.note || "").trim(); }).length;
+          pill.textContent = (ok ? "Checked" : "To check") + (ch ? ` · ${ch} changed` : ""); pill.className = "pill " + (ok ? "done" : "todo");
+          if (!ok) todo.push(`${s.title}: not checked yet`);
+        }
+      }
+      const btn = $("#signBtn_" + p.id), ul = $("#signTodo_" + p.id), st = $("#signTxt_" + p.id), sg = sign[p.id];
+      btn.disabled = !(live && canWrite) || todo.length > 0; btn.hidden = !!sg; ul.hidden = !!sg || !todo.length;
+      ul.replaceChildren(...todo.map(t => h("li", { text: t })));
+      if (!sg) st.textContent = todo.length ? "Sign off once every list in this part is answered or checked. Still to do:" : "Everything in this part is done. Sign off to let the owner load it.";
+    }
+    $("#countTxt").textContent = `${done} of ${need} answered or checked`;
+    $("#barFill").style.width = (need ? 100 * done / need : 0) + "%";
+    names();
+  }
+  function unlock() { for (const e of document.querySelectorAll("#main input, #main select, #main button, #main textarea")) e.disabled = false; progress(); }
+  function lockAll() { for (const e of document.querySelectorAll("#main input, #main select, #main button, #main textarea")) e.disabled = true; }
+
+  render();
+  for (const k of Object.keys(els)) refreshItem(k);
+  progress();
+
+  (async () => {
+    const C = window.claude;
+    db = C && C.use ? await C.use("db") : null;
+    user = C && C.use ? await C.use("user") : null;
+    if (!db) { setStatus("Can't save in this view. Open the page from its claude.ai link.", "bad"); return; }
+    me = user ? await user.id() : null;
+    const cw = user ? await user.can("data.write") : null;
+    canWrite = cw !== false;
+    db.collection("decisions").onSnapshot(snap => {
+      for (const ch of snap.docChanges()) { if (ch.type === "removed") delete dec[ch.doc.id]; else dec[ch.doc.id] = ch.doc.data(); refreshItem(ch.doc.id); }
+      if (!live) { live = true; if (canWrite) { unlock(); setStatus("Connected · choices save as you go", "ok"); } else setStatus("Read only: ask the owner for Contributor access to answer", "warn"); }
+      progress();
+    }, () => setStatus("Lost connection. Reload the page.", "bad"));
+    db.collection("sections").onSnapshot(snap => { for (const ch of snap.docChanges()) { if (ch.type === "removed") delete secs[ch.doc.id]; else secs[ch.doc.id] = ch.doc.data(); refreshSec(ch.doc.id); } progress(); }, () => {});
+    db.collection("signoff").onSnapshot(snap => { for (const ch of snap.docChanges()) { if (ch.type === "removed") delete sign[ch.doc.id]; else sign[ch.doc.id] = ch.doc.data(); } progress(); }, () => {});
+  })();
+})();
+</script>

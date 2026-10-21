@@ -17,6 +17,10 @@
 --  8. client_meal_slots.energy_share (% of the day; null = the planner's default for the slot kind).
 --  9. plan_publish_check / publish_meal_plan check and compare the new fields. Snapshots from the current app
 --     (without the new fields) still publish plans that don't use them.
+-- 10. Alternatives (owner, 22 Oct 2026: "the plan looks set up; swap only if needed"): option_of links an alternative
+--     to the item it can replace (same day and slot). Hidden behind Swap; never counted in totals or shopping.
+-- 11. Release date: publish_meal_plan(plan, snapshot, release_on). The client sees a version from that date (Sydney);
+--     null = straight away. my_plans / my_plan_version only show released versions.
 -- Test: tests/sql/plans_p1b.test.sql (and tests/sql/plans_p1.test.sql must still pass).
 
 -- 1. food items, top-ups, leftovers ---------------------------------------------------------------------
@@ -27,7 +31,8 @@ alter table meal_plan_items
   add column if not exists unit           text,
   add column if not exists boosts_item_id uuid references meal_plan_items (id) on delete cascade,
   add column if not exists batch_group    uuid,
-  add column if not exists batch_role     text;
+  add column if not exists batch_role     text,
+  add column if not exists option_of      uuid references meal_plan_items (id) on delete cascade;
 alter table meal_plan_items drop constraint if exists meal_plan_items_kind;
 alter table meal_plan_items add constraint meal_plan_items_kind check (
   (recipe_id is not null and food_id is null and quantity is null and unit is null)
@@ -40,7 +45,11 @@ alter table meal_plan_items drop constraint if exists meal_plan_items_batch;
 alter table meal_plan_items add constraint meal_plan_items_batch check (
   (batch_group is null) = (batch_role is null)
   and (batch_role is null or (batch_role in ('cook', 'eat') and recipe_id is not null)));
+alter table meal_plan_items drop constraint if exists meal_plan_items_option;
+alter table meal_plan_items add constraint meal_plan_items_option check (
+  option_of is null or (option_of <> id and batch_group is null and boosts_item_id is null));
 create unique index if not exists meal_plan_items_one_cook on meal_plan_items (meal_plan_id, batch_group) where batch_role = 'cook';
+comment on column meal_plan_items.option_of is 'An alternative for another item in the same day and slot. The plan shows the main item; alternatives sit behind Swap and are not counted in totals or shopping.';
 comment on column meal_plan_items.food_id is 'A food item (snack or top-up) instead of a recipe: food_id + quantity + unit.';
 comment on column meal_plan_items.boosts_item_id is 'A top-up: the meal this food is added to (same plan, same day).';
 comment on column meal_plan_items.batch_group is 'Leftovers: items sharing a batch_group are one cook-up. batch_role cook = cooked here (shopping counts the whole group once), eat = leftovers.';
@@ -51,6 +60,12 @@ begin
   if new.boosts_item_id is not null
      and not exists (select 1 from meal_plan_items i where i.id = new.boosts_item_id and i.meal_plan_id = new.meal_plan_id) then
     raise exception 'A top-up must add to a meal in the same plan.';
+  end if;
+  if new.option_of is not null
+     and not exists (select 1 from meal_plan_items i where i.id = new.option_of and i.meal_plan_id = new.meal_plan_id
+                     and coalesce(i.day, 1) = coalesce(new.day, 1) and i.meal_slot is not distinct from new.meal_slot
+                     and i.option_of is null) then
+    raise exception 'An alternative must sit with a meal in the same plan, day and slot.';
   end if;
   return new;
 end $$;
@@ -399,6 +414,9 @@ language sql stable security invoker set search_path = public as $$
            then 'A leftover needs the meal it comes from (the day it''s cooked).' end,
       case when exists (select 1 from groups where first_eat_day < cook_day)
            then 'Leftovers can''t be eaten before the day they''re cooked.' end,
+      case when exists (select 1 from items o join items m on m.id = o.option_of
+                        where coalesce(o.day, 1) <> coalesce(m.day, 1) or o.meal_slot is distinct from m.meal_slot)
+           then 'An alternative must be in the same day and slot as the meal it replaces.' end,
       case when exists (select 1 from items t join items b on b.id = t.boosts_item_id
                         where coalesce(t.day, 1) <> coalesce(b.day, 1))
            then 'A top-up must be on the same day as the meal it adds to.' end,
@@ -427,9 +445,13 @@ language sql stable security invoker set search_path = public as $$
   from blockers b, review r
 $$;
 
-create or replace function publish_meal_plan(p_plan_id uuid, p_snapshot jsonb) returns jsonb
+alter table meal_plan_versions add column if not exists release_on date;
+comment on column meal_plan_versions.release_on is 'The client sees this version from this date (practice time zone). Null = as soon as it is published.';
+drop function if exists publish_meal_plan(uuid, jsonb);
+create or replace function publish_meal_plan(p_plan_id uuid, p_snapshot jsonb, p_release_on date default null) returns jsonb
 language plpgsql security definer set search_path = public as $$
 declare
+  v_today date := (now() at time zone coalesce(app_setting('timezone'), 'Australia/Sydney'))::date;
   v_uid uuid := auth.uid();
   v_name text;
   v_check jsonb;
@@ -462,13 +484,13 @@ begin
   -- The snapshot must describe the plan exactly as saved.
   with s as (
     select item_id, recipe_id, profile_id, coalesce(day, 1) as day, meal_slot, servings_override,
-           food_id, quantity, unit, boosts_item_id, batch_group, batch_role
+           food_id, quantity, unit, boosts_item_id, batch_group, batch_role, option_of
     from jsonb_to_recordset(p_snapshot->'items')
       as x(item_id uuid, recipe_id uuid, profile_id uuid, day int, meal_slot text, servings_override numeric,
-           food_id text, quantity numeric, unit text, boosts_item_id uuid, batch_group uuid, batch_role text)),
+           food_id text, quantity numeric, unit text, boosts_item_id uuid, batch_group uuid, batch_role text, option_of uuid)),
   i as (
     select id, recipe_id, profile_id, coalesce(day, 1), meal_slot, servings_override,
-           food_id, quantity, unit, boosts_item_id, batch_group, batch_role
+           food_id, quantity, unit, boosts_item_id, batch_group, batch_role, option_of
     from meal_plan_items where meal_plan_id = p_plan_id)
   select (select count(*) from (select * from s except all select * from i) a)
        + (select count(*) from (select * from i except all select * from s) b)
@@ -513,17 +535,102 @@ begin
   select coalesce(nullif(btrim(full_name), ''), email) into v_name from profiles where id = v_uid;
   v_no := (v_check->>'next_version')::int;
   insert into meal_plan_versions (meal_plan_id, version_no, snapshot, needs_review_recipes, published_by, published_by_name,
-                                  generation_id, review_notes, confirmed_at, confirmed_by_name)
+                                  generation_id, review_notes, confirmed_at, confirmed_by_name, release_on)
   values (p_plan_id, v_no, p_snapshot,
           array(select jsonb_array_elements_text(v_check->'needs_review')), v_uid, coalesce(v_name, 'Unknown'),
-          v_plan.generation_id, v_plan.review_notes, v_plan.confirmed_at, v_plan.confirmed_by_name);
+          v_plan.generation_id, v_plan.review_notes, v_plan.confirmed_at, v_plan.confirmed_by_name,
+          case when p_release_on > v_today then p_release_on end);
 
   perform set_config('goh.plan_status', 'on', true);
   update meal_plans set status = 'published' where id = p_plan_id;
   perform set_config('goh.plan_status', '', true);
 
   return jsonb_build_object('ok', true, 'version_no', v_no, 'needs_review', v_check->'needs_review',
-    'message', format('Version %s published.', v_no));
+    'release_on', case when p_release_on > v_today then p_release_on end,
+    'message', case when p_release_on > v_today
+                    then format('Version %s published. The client sees it from %s.', v_no, to_char(p_release_on, 'FMDD Mon YYYY'))
+                    else format('Version %s published.', v_no) end);
+end $$;
+
+-- the client only sees versions whose release date has arrived
+create or replace function my_plans()
+returns table (plan_id uuid, title text, start_date date, days integer, end_date date, version_no integer, published_at timestamptz, is_current boolean)
+language sql stable security definer set search_path = public as $$
+  with today as (select (now() at time zone coalesce(app_setting('timezone'), 'Australia/Sydney'))::date as d),
+  latest as (
+    select distinct on (v.meal_plan_id) v.meal_plan_id, v.version_no, v.published_at, v.snapshot
+    from meal_plan_versions v join meal_plans p on p.id = v.meal_plan_id, today
+    where p.client_id = my_client_id() and (v.release_on is null or v.release_on <= today.d)
+    order by v.meal_plan_id, v.version_no desc),
+  rows as (
+    select l.meal_plan_id, coalesce(l.snapshot -> 'plan' ->> 'title', 'Your meal plan') as title,
+           nullif(l.snapshot -> 'plan' ->> 'start_date', '')::date as start_date,
+           greatest(coalesce((l.snapshot -> 'plan' ->> 'days')::int, jsonb_array_length(l.snapshot -> 'days')), 1) as days,
+           l.version_no, l.published_at,
+           (now() at time zone app_setting('timezone'))::date as today
+    from latest l),
+  ranked as (
+    select r.*, r.start_date + r.days - 1 as end_date,
+           row_number() over (order by
+             case when r.start_date <= r.today and r.today <= r.start_date + r.days - 1 then 0
+                  when r.start_date > r.today then 1 else 2 end,
+             case when r.start_date > r.today then r.start_date end asc,
+             r.start_date desc nulls last, r.published_at desc) as rk
+    from rows r)
+  select meal_plan_id, title, start_date, days, end_date, version_no, published_at, rk = 1
+  from ranked order by rk
+$$;
+
+create or replace function my_plan_version(p_plan_id uuid, p_version_no integer default null) returns jsonb
+language plpgsql stable security definer set search_path = public as $$
+declare
+  v_id uuid := my_client_id();
+  c clients%rowtype;
+  v meal_plan_versions%rowtype;
+  s jsonb;
+  v_num boolean;
+  v_items jsonb;
+  v_days jsonb;
+  v_today date := (now() at time zone coalesce(app_setting('timezone'), 'Australia/Sydney'))::date;
+begin
+  if v_id is null or not exists (select 1 from meal_plans where id = p_plan_id and client_id = v_id) then
+    return null;
+  end if;
+  select * into c from clients where id = v_id;
+  v_num := c.numbers_allowed and c.client_shows_numbers;
+  select * into v from meal_plan_versions
+   where meal_plan_id = p_plan_id and (p_version_no is null or version_no = p_version_no)
+     and (release_on is null or release_on <= v_today)
+   order by version_no desc limit 1;
+  if not found then return null; end if;
+  s := v.snapshot;
+
+  select coalesce(jsonb_agg(
+           case when v_num then e.i - 'version_status'
+                else (e.i - 'version_status' - 'per_serve' - 'totals')
+                     || jsonb_build_object('show_macros_export', false,
+                          'lines', coalesce((select jsonb_agg(l.x - 'kcal' - 'protein' - 'carb' - 'fat' - 'fibre' order by l.n)
+                                             from jsonb_array_elements(e.i -> 'lines') with ordinality as l(x, n)), '[]'::jsonb))
+           end order by e.n), '[]'::jsonb)
+    into v_items
+    from jsonb_array_elements(coalesce(s -> 'items', '[]'::jsonb)) with ordinality as e(i, n);
+
+  select coalesce(jsonb_agg(case when v_num then d.x else d.x - 'targets' - 'totals' - 'targets_day_type' end order by d.n), '[]'::jsonb)
+    into v_days
+    from jsonb_array_elements(coalesce(s -> 'days', '[]'::jsonb)) with ordinality as d(x, n);
+
+  return jsonb_build_object(
+    'plan_id', p_plan_id,
+    'version_no', v.version_no,
+    'published_at', v.published_at,
+    'show_numbers', v_num,
+    'plan', (s -> 'plan') - 'client_id',
+    'slots', coalesce(s -> 'slots', '[]'::jsonb),
+    'days', v_days,
+    'items', v_items,
+    'week_average', case when v_num then s -> 'week_average' end,
+    'shopping', coalesce(s -> 'shopping', '[]'::jsonb),
+    'unresolved', coalesce(s -> 'unresolved', '[]'::jsonb));
 end $$;
 
 create or replace function start_new_plan_version(p_plan_id uuid) returns jsonb
@@ -551,5 +658,5 @@ end $$;
 -- 9. grants --------------------------------------------------------------------------------------------------------------
 revoke execute on function meal_plan_items_check(), meal_plan_item_deltas_guard(), plan_stamp_actor(),
   plan_clear_confirmation(), meal_plans_guard() from public, anon, authenticated;
-revoke execute on function confirm_plan(uuid, text, boolean) from public, anon;
-grant execute on function confirm_plan(uuid, text, boolean) to authenticated;
+revoke execute on function confirm_plan(uuid, text, boolean), publish_meal_plan(uuid, jsonb, date), my_plans(), my_plan_version(uuid, integer) from public, anon;
+grant execute on function confirm_plan(uuid, text, boolean), publish_meal_plan(uuid, jsonb, date), my_plans(), my_plan_version(uuid, integer) to authenticated;

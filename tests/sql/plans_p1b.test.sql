@@ -4,7 +4,7 @@
 do $$
 declare
   adm uuid; c uuid; p uuid; p2 uuid; ra uuid; rn uuid; l1 uuid; l2 uuid; f1 text; f2 text;
-  iR uuid; iFood uuid; iT uuid; iC uuid; iE uuid; i9 uuid; g uuid := gen_random_uuid(); gen uuid; h text;
+  iR uuid; iFood uuid; iT uuid; iC uuid; iE uuid; i9 uuid; iO uuid; cu uuid := gen_random_uuid(); cid uuid; pr uuid; g uuid := gen_random_uuid(); gen uuid; h text;
   res jsonb; snap jsonb; n int; s text; raised boolean; log text := '';
 begin
   select id into adm from profiles where role = 'admin' order by created_at limit 1;
@@ -197,6 +197,66 @@ begin
     exception when check_violation then raised := true; end;
   if not raised then raise exception 'FAIL T10b 0%% share'; end if;
   log := log || ' | T10 slot energy share saved (blank = default), 0 refused';
+
+  -- T11 alternatives: same day and slot, no chains, never on a leftover or top-up; a drifted one blocks publishing
+  insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot, option_of) values (p, rn, 7, 1, 'Lunch', iR) returning id into iO;
+  raised := false; begin insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot, option_of) values (p, rn, 8, 1, 'Dinner', iR);
+    exception when raise_exception then raised := true; end;
+  if not raised then raise exception 'FAIL T11a alternative in another slot'; end if;
+  raised := false; begin insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot, option_of) values (p, rn, 8, 1, 'Lunch', iO);
+    exception when raise_exception then raised := true; end;
+  if not raised then raise exception 'FAIL T11b alternative of an alternative'; end if;
+  raised := false; begin insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot, option_of, batch_group, batch_role) values (p, ra, 9, 1, 'Dinner', iC, g, 'eat'); exception when check_violation then raised := true; end;
+  if not raised then raise exception 'FAIL T11c leftover as an alternative'; end if;
+  update meal_plan_items set meal_slot = 'Dinner' where id = iR;
+  if not (plan_publish_check(p)->'blockers' ? 'An alternative must be in the same day and slot as the meal it replaces.') then raise exception 'FAIL T11d'; end if;
+  update meal_plan_items set meal_slot = 'Lunch' where id = iR;
+  snap := jsonb_build_object('items', (select jsonb_agg(jsonb_build_object('item_id', i.id, 'recipe_id', i.recipe_id, 'profile_id', i.profile_id, 'day', i.day,
+                'meal_slot', i.meal_slot, 'servings_override', i.servings_override, 'food_id', i.food_id, 'quantity', i.quantity, 'unit', i.unit,
+                'boosts_item_id', i.boosts_item_id, 'batch_group', i.batch_group, 'batch_role', i.batch_role, 'option_of', i.option_of,
+                'deltas', (select coalesce(jsonb_agg(jsonb_build_object('kind', d.kind, 'line_ref', d.line_ref, 'new_food_id', d.new_food_id,
+                           'new_quantity', d.new_quantity, 'new_unit', d.new_unit)), '[]'::jsonb) from meal_plan_item_deltas d where d.item_id = i.id)))
+              from meal_plan_items i where i.meal_plan_id = p),
+    'slot_states', (select jsonb_agg(jsonb_build_object('day', day, 'meal_slot', meal_slot, 'state', state, 'reason', reason)) from meal_plan_slot_states where meal_plan_id = p and state is not null),
+    'days', (select jsonb_agg(jsonb_build_object('day', day, 'day_type', day_type)) from plan_days(p)));
+  res := confirm_plan(p, 'Checked protein on days 1-3');
+  res := publish_meal_plan(p, jsonb_set(snap, '{items}', (select jsonb_agg(x - 'option_of') from jsonb_array_elements(snap->'items') x)));
+  if (res->>'ok')::boolean then raise exception 'FAIL T11e snapshot without the alternative link accepted'; end if;
+  res := publish_meal_plan(p, snap);
+  if not (res->>'ok')::boolean then raise exception 'FAIL T11f %', res; end if;
+  log := log || ' | T11 ok';
+
+  -- T12 release date: the client sees a version only from its release date
+  execute 'reset role';
+  insert into auth.users (id, email, raw_user_meta_data) values (cu, 'zz.p1b.client@example.com', '{"account_type":"client","full_name":"ZZtest Rhea Release"}');
+  select id into cid from clients where user_id = cu;
+  insert into meal_plans (title, days, client_id, start_date) values ('ZZ P1b release', 1, cid, date '2026-10-26') returning id into pr;
+  insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot) values (pr, ra, 0, 1, 'Lunch');
+  execute 'set local role authenticated';
+  snap := jsonb_build_object('items', (select jsonb_agg(jsonb_build_object('item_id', id, 'recipe_id', recipe_id, 'day', day, 'meal_slot', meal_slot)) from meal_plan_items where meal_plan_id = pr),
+                             'days', (select jsonb_agg(jsonb_build_object('day', day, 'day_type', day_type)) from plan_days(pr)), 'plan', jsonb_build_object('title', 'ZZ P1b release'));
+  res := publish_meal_plan(pr, snap, (now() at time zone 'Australia/Sydney')::date + 3);
+  if not (res->>'ok')::boolean or res->>'message' not like '%The client sees it from%'
+     or (select release_on from meal_plan_versions where meal_plan_id = pr and version_no = 1) is null then raise exception 'FAIL T12a %', res; end if;
+  execute 'reset role';
+  perform set_config('request.jwt.claims', json_build_object('sub', cu, 'role', 'authenticated')::text, true);
+  perform set_config('request.jwt.claim.sub', cu::text, true);
+  execute 'set local role authenticated';
+  if exists (select 1 from my_plans()) or my_plan_version(pr) is not null then raise exception 'FAIL T12b client saw an unreleased version'; end if;
+  execute 'reset role';
+  perform set_config('request.jwt.claims', json_build_object('sub', adm, 'role', 'authenticated')::text, true);
+  perform set_config('request.jwt.claim.sub', adm::text, true);
+  execute 'set local role authenticated';
+  res := start_new_plan_version(pr);
+  res := publish_meal_plan(pr, snap);
+  if not (res->>'ok')::boolean or (res->>'version_no')::int <> 2 then raise exception 'FAIL T12c %', res; end if;
+  execute 'reset role';
+  perform set_config('request.jwt.claims', json_build_object('sub', cu, 'role', 'authenticated')::text, true);
+  perform set_config('request.jwt.claim.sub', cu::text, true);
+  execute 'set local role authenticated';
+  if (select version_no from my_plans()) <> 2 or (my_plan_version(pr)->>'version_no')::int <> 2 or my_plan_version(pr, 1) is not null
+    then raise exception 'FAIL T12d released version not shown'; end if;
+  log := log || ' | T12 ok';
 
   execute 'reset role';
   raise exception 'ALL PASS (rolled back): %', log;

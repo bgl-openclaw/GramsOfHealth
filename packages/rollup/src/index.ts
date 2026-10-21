@@ -14,6 +14,7 @@
  *  - Leftovers count where they're eaten; the batch is cooked once (cook events,
  *    cooked serves = all serves in the group). Top-ups report what they add to
  *    the meal they boost.
+ *  - Alternatives (option_of) sit behind Swap and are left out of every total.
  *  - Lines the engine can't resolve are left out and the result says so
  *    (confidence false, with the reason) — never treated as zero silently.
  *
@@ -85,6 +86,8 @@ export interface PlanItem {
   batch_group?: string | null;
   batch_role?: "cook" | "eat" | null;
   boosts_item_id?: string | null;
+  /** An alternative for another item (behind Swap). Never counted in totals, ingredients or cook-ups. */
+  option_of?: string | null;
 }
 export interface PlanInput {
   days: PlanDay[];
@@ -296,7 +299,8 @@ function amdrBand(pct: number, lo: number, hi: number): Band {
 
 export function rollupPlan(plan: PlanInput, lib: Library, tolerances: Partial<Tolerances> = {}): Rollup {
   const tol = { ...DEFAULT_TOLERANCES, ...tolerances };
-  const sorted = [...plan.items].sort((a, b) => a.day - b.day || byKey(a.slot, b.slot) || byKey(a.id, b.id));
+  // alternatives sit behind Swap: the plan is judged on the meals it shows
+  const sorted = plan.items.filter((it) => !it.option_of).sort((a, b) => a.day - b.day || byKey(a.slot, b.slot) || byKey(a.id, b.id));
   const items = sorted.map((it) => itemMacros(it, lib));
   const byId = new Map(items.map((r) => [r.id, r]));
   const problems: string[] = [];

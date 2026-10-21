@@ -5,13 +5,13 @@ Everything waiting on a dietitian, in the order it's needed. Nothing here change
 | # | What | Where | Needed for |
 |---|---|---|---|
 | 1 | **AUSNUT food import**: urgent values, splits, measures, roles, protein families and aisles | Review page (share as Contributor): https://claude.ai/artifact/JNqBi3w2f8WE5MNpAog2Hn | Applying AUSNUT, which takes usable recipes from 26 to about 201 |
-| 2 | **Meal types**: which slots each of the 374 recipes can fill, and which are treats | `seed/meal_types/meal_types_for_review.csv` (how to: `seed/meal_types/HOW-TO-REVIEW.md`) | The meal planner (it uses whatever is in this list) |
-| 3 | **Swap groups**: which foods can replace each other in suggestions, plus 40 foods whose values look wrong | `seed/swap_groups/swap_groups_for_review.csv` and `not_in_a_group.csv` (how to: `seed/swap_groups/HOW-TO-REVIEW.md`) | Ingredient-swap suggestions in the planner report |
-| 4 | **Planner rules**: the tolerances and slot energy shares below | This page; tick or change | The planner report's "on target / within / under / over" |
+| 2–4 | **Planner set-up**: the rules (tolerances, slot energy shares), meal types for every recipe, and swap groups (with 40 foods whose values look wrong) | **Live review page** (share as Contributor): https://claude.ai/artifact/6KzWBgS79BtL1FueRJ9e5z. Three parts, each signed off separately | The meal planner and its report |
 
-## 4. Planner rules to confirm
+The CSVs in `seed/meal_types/` and `seed/swap_groups/` hold the same lists for reference. Answers are made on the live page, which Claude reads back before loading anything.
 
-No professional body publishes a tolerance for written client plans, so these are practice policy (from the research). Please tick **Agree** or write the number you'd use.
+## Reference: the planner rules (answered on the live page, part 1)
+
+No professional body publishes a tolerance for written client plans, so these are practice policy (from the research). The dietitian answers each one on the live page; this table is for reference.
 
 | Rule | Proposed | Agree? | Change to |
 |---|---|---|---|
@@ -24,7 +24,9 @@ No professional body publishes a tolerance for written client plans, so these ar
 | Treats | About one discretionary serve a day | ☐ | |
 | Serving sizes | Planner uses ¼-serve steps from 0.5 to 2 serves; anything outside 0.75–1.5 is flagged for a look | ☐ | |
 | Repeats | Default: no main on consecutive days unless it's a planned leftover; no recipe more than 3 times in 7 days (each client's own settings override this) | ☐ | |
-| Protein rotation | Counts lunches and dinners only; snacks are used to top up the day's protein, carbs and fat (owner decision) | ☐ | |
+| Protein rotation | Counts lunches and dinners only; snacks are used to top up the day's protein, carbs and fat (owner decision) | — | |
+
+Also decided by the owner (22 Oct): lunch slots also take dinner recipes; recipes containing a disliked food are always left out; the plan shows one recipe per slot, with alternatives behind Swap.
 
 **Slot energy shares** (the owner has agreed these defaults; each client's slots can override them):
 
@@ -32,4 +34,3 @@ No professional body publishes a tolerance for written client plans, so these ar
 |---|---|---|---|
 | 25% | 30% | 30% | 15% |
 
-Notes:
