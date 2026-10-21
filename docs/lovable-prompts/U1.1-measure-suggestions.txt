@@ -1,0 +1,23 @@
+Grams Editor — U1.1: make measure suggestions visible + no silent Save (small follow-up to U1)
+
+Owner tested U1: everything works except the measure suggestions — clicking into the size-name box shows nothing, so "cup (grated)" never appears. The <datalist> only shows once you type (and in Safari often not at all). Also, Save silently does nothing when the weight is empty. Do NOT create migrations. Do NOT edit src/lib/engine.ts, adjust.ts or energy.ts.
+
+1. Visible suggestion chips (both places that add a measure):
+   - the "+" Add a size popover in src/routes/_app.recipes.$id.tsx (CreateSizePopover), and
+   - the add-measure row in src/routes/_app.foods.$id.tsx (UnitConversionsEditor).
+   Replace the <datalist> with a row of small clickable chips under the name input, built from MEASURE_SUGGESTIONS in src/lib/units.ts:
+   - Shown as soon as the popover/row is visible (no typing needed); wrap onto several lines; small pill style matching the existing tag chips.
+   - While typing, show only chips that contain the typed text (case-insensitive); if nothing matches, hide the row.
+   - Hide chips for measures this food already has (compare normalised names).
+   - Clicking a chip fills the name box with that exact text and moves focus to the weight box. Free text still allowed.
+2. No silent Save: in both places, if the name is empty show "Enter a measure name"; if the weight is empty or ≤ 0 show "Enter the weight in grams" (or "in mL" when mL is selected). Same red text style as the existing "Grams and kg are built in" message. Never just return silently.
+3. Food page Buy as hint: when purchase_unit is "each" say "The shopping list rounds up to whole items."; otherwise "The shopping list rounds up to whole {purchase_unit}." (no added "s").
+
+ACCEPTANCE
+a. On a recipe line with Carrot, press "+": chips are visible straight away and include "cup (grated)" and "cup (diced)"; "small/medium/large" are NOT shown (Carrot already has them).
+b. Type "cup": only the cup chips remain. Click "cup (grated)": the name box says "cup (grated)" and the cursor is in the weight box.
+c. Press Save with the weight empty → "Enter the weight in grams" shows; nothing is saved.
+d. Same chips and messages on the Carrot food page's add-measure row.
+e. Carrot's Buy as hint reads "The shopping list rounds up to whole items."
+
+REPORT BACK: files changed; confirm engine.ts / adjust.ts / energy.ts untouched and no migrations.
