@@ -1,0 +1,9 @@
+Client questions: three small fixes from the code review. No database changes.
+
+1. New questions and sections land at the TOP instead of the bottom.
+   - In ClientAppSettings, a new question is saved with position = questions.length + 1, and a new section with position = taken.length + 1. Existing positions are 10, 20, 30…, so the new item sorts first.
+   - Fix: new question position = (highest position among that section's questions, or 0) + 10. New section position = (highest position among all sections, or 0) + 10.
+2. The privacy consent question (locked) still shows the "Answer type" dropdown in its editor. The database refuses any change to it, so the dropdown can only produce an error. Hide "Answer type" for locked questions, as Section and Required already are.
+3. The welcome step lists fixed topics ("About you, Your goals, Food, Health and lifestyle"). Build that list from the client's own sections instead (intake.sections titles, leaving out the consent section), so a client whose form leaves out Lifestyle isn't told it's coming.
+
+Keep everything else as it is.
