@@ -1,0 +1,78 @@
+Grams Editor — P1c-a: invite links that work, client sign-up that creates their own file, sign in through an invite (owner-approved)
+
+The database is done (migration 0040, live). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Every RPC returns { ok: false, message } for expected refusals: show `message`, never assume success. Use the app's CURRENT branding (mem://branding.md: The Table for staff, My table for clients) and the existing client-area components; phone first, 44px+ tap targets. The practice name shown to clients still comes from the database (practice_name).
+Update mem://client-area.md: replace "Client self-registration creates an unlinked client account" with "Client self-registration creates the client's own file (source self_signup, status new); dietitians merge duplicates from New sign-ups", and add the new client RPCs below to its allowed list. Client-facing copy: Australian English, sentence case, plain and friendly, no em dashes, and avoid the words "journey", "holistic", "wellness", "nourish", "empower".
+
+WHAT CHANGED IN THE DATABASE
+- A client who signs up on /join now gets their OWN client file straight away (clients.source = 'self_signup', clients.status = 'new'), linked to their login, with an intake form open (the intake screens come in P1c-b). They are never attached to an existing client by email, because emails aren't verified yet. Dietitians see new sign-ups in client_signup_queue() and can merge duplicates.
+- clients.status can now also be 'new' (a self sign-up the dietitian hasn't accepted yet): 'new' | 'active' | 'paused' | 'finished'. New column clients.source: 'staff' | 'self_signup'.
+- client_overview gains: source, intake_status ('open' | 'submitted' | 'reviewed' | null), intake_submitted_at, has_app_account.
+
+RPCs (new or changed)
+- invite_client_to_app(p_client_id, p_email?) → { ok, token, email, expires_at, full_name, first_name, practice_name, sender_name, account_exists, message }. Saves p_email to the client if they had no email. Reuses a live link. account_exists = true means this person already has a client login: the SAME link will ask them to sign in and connect.
+- client_app_status(p_client_id) → as before, plus invite.account_exists, source, client_status, intake_status, first_name, practice_name, sender_name.
+- get_client_invitation(p_token) (works signed out) → { found, valid, reason: 'used' | 'expired' | null, email, full_name, first_name, practice_name, practice_email, account_exists, expires_at }. found = false → not a client invite: fall back to the existing staff invite lookup (lookupInvitation / get_invitation), unchanged.
+- claim_client_invite(p_token) (signed in) → { ok, message }. Connects the signed-in client account to the invited client file (if they had their own sign-up file, it is folded into the dietitian's one).
+- client_signup_queue() (dietitians/admins; everyone else gets []) → [{ client_id, full_name, email, phone, source, client_status, created_at, has_account, intake_status, submitted_at, matches: [{ client_id, full_name, email, has_account, reasons: ('same email' | 'same phone' | 'same name')[] }] }].
+- merge_client_into(p_from, p_into) → { ok, message, client_id }. p_from must be a self sign-up nobody has done dietitian work on; its login, food needs, supplements, weights, goal and answers move into p_into, then p_from is deleted.
+- link_client_account / unlink_client_account / client_app_signups are unchanged (now only needed after an unlink).
+
+1. "Send invite" dialog (staff) — build ONE reusable dialog (e.g. src/components/client/ShareInviteDialog.tsx) used everywhere an invite is created or re-sent. Input = the invite_client_to_app result (+ the client's phone if known).
+   - The link `${window.location.origin}/register?token=${token}` in a read-only field with "Copy link".
+   - "Email invite" (primary button): opens the dietitian's email app with mailto:{email}?subject=…&body=… (encodeURIComponent, \r\n line breaks).
+     Subject: "Your {practice_name} account"
+     Body:
+       Hi {first_name},
+
+       {account_exists ? "Here's the link to connect your account with {practice_name}. Sign in with your usual email and password:" : "We've set up your {practice_name} account. Create your password here:"}
+       {link}
+
+       You'll be able to see your meal plan, recipes and shopping list, and tell us a bit about yourself before your first consult. The link works until {expires_at formatted like "Tue 4 Nov"}.
+
+       {sender_name}
+   - "Text invite" (only when the client has a phone): sms:{phone}?&body={encoded "Hi {first_name}, here's your {practice_name} link: {link}"}.
+   - "Copy message" (copies the email body).
+   - Small note under the buttons: "Automatic emails are coming soon. For now this opens your email app with the message ready to send."
+
+2. Add a client and invite them (staff, Clients list; dietitians/admins only)
+   - New "Add & invite" button next to "New client". Dialog: Full name (required), Email (required here), Phone, Assigned dietitian (default: me). Create with the existing saveClient (status 'active'), then invite_client_to_app(new id) → open the Send invite dialog. Errors inline.
+   - The full New client form: add an "Invite to the app after saving" checkbox (default ticked when an email is filled in). After saving, if ticked → invite → Send invite dialog → then the client page.
+
+3. "App access" section on the client page (replaces the P1a invite form)
+   - Not invited: "Not invited yet" + Email field (prefilled with the client's email; required if they have none) + "Invite to app" → Send invite dialog.
+   - Invite live: "Invite sent to {email}, expires {date}" + "Send again" (call invite_client_to_app again to get the full payload, then open the dialog) + when invite.account_exists: "They already have an account, so the link will ask them to sign in."
+   - Connected: unchanged ("Connected: {email}, since {date}" + Unlink with confirm).
+   - "Allow numbers" switch unchanged. Show a small "Signed up themselves" badge when source = 'self_signup'.
+   - Interns: read-only as before (no buttons, no link).
+
+4. "New sign-ups" panel (Clients list, dietitians/admins) — the main panel; keep the old WaitingSignups panel below it (it only appears when an account has been unlinked)
+   - Title "New sign-ups and details to review ({n})", hidden when the list is empty. Data: client_signup_queue().
+   - Each row: name, email, phone, "Signed up {date}"; badges "Signed up themselves" (source = 'self_signup') and "New" (client_status = 'new'); intake: "Filling in their details" (open) / "Details sent {date}" (submitted) / "Reviewed".
+   - Possible duplicates: for each match show "Might be {match.full_name} ({reasons joined with ', '})" and a "Merge into {match.full_name}" button → confirm dialog: "{row name}'s sign-up will be merged into {match name}. Their login, food needs, supplements, weight, goal and answers move across; anything already on {match name}'s file stays as it is. This can't be undone." → merge_client_into(row.client_id, match.client_id) → toast the message → refresh.
+   - Actions: "Open" (client page) and, when client_status = 'new', "Accept as client" (update clients set status = 'active' and, if empty, assigned_dietitian = me) → refresh.
+   - A small count badge on the Clients nav item = number of rows (dietitians/admins only).
+
+5. Status 'new' everywhere: the client editor status select gets "New (not yet accepted)"; the clients list shows a "New" pill (coral tint) and the status filter includes it. Otherwise a 'new' client is a normal client (plans, targets etc. all work).
+
+6. Register page (/register?token=…)
+   - First call get_client_invitation(token). found = false → the existing staff invite page, unchanged.
+   - Client invite, valid, account_exists = false → warm welcome in the client-area style: "Welcome, {first_name}" / "{practice_name} has set up your account. Create a password to get started." Fields: Email (read-only, from the invite), Full name (prefilled with full_name), Password (show/hide), Phone (optional). supabase.auth.signUp with options.data { account_type: 'client', invitation_token: token, full_name, phone } → if no session, signInWithPassword → go to /me/welcome (P1c-b builds that screen; until then send them to /me). Under the form: "Already have an account? Sign in to connect it" → switches the page to sign-in mode.
+   - Sign-in mode (account_exists = true, or chosen): "Welcome back, {first_name}" / "Sign in to connect your account with {practice_name}." Email (read-only), Password → signInWithPassword → claim_client_invite(token) → toast the message → /me. If the claim returns ok: false, show its message with a "Go to my account" button (/me).
+   - Already signed in when the link opens: a client or pending account → "Connect my account" button (claim_client_invite → /me); a staff account → "This invitation is for a client. Sign out to use it." with Sign out.
+   - Invalid links: reason 'used' → "This link has already been used. Sign in to see your account." (button to /login); reason 'expired' → "This link has expired. Ask {practice_name} for a new one." with a mailto:{practice_email} button.
+   - If signUp fails with "User already registered" → switch to sign-in mode with "Looks like you already have an account. Sign in to connect it."
+   - "Forgot your password?" → "Email {practice_email} and we'll help you reset it." (mailto). Automatic reset emails come later.
+
+7. Login page: support /login?invite=<token> — after a successful sign-in, if the account is a client (or pending), call claim_client_invite(token), toast its message, then go to /me. Without ?invite: unchanged. Add the same "Forgot your password?" help (use a PRACTICE_EMAIL constant 'info@gramsofhealth.com' in src/lib/client-area.ts — app_settings isn't readable before sign-in).
+
+8. /join (client sign-up without an invite): same fields; copy: "Create your account and tell us about yourself. Your dietitian will take it from there." After sign-up go to /me/welcome (until P1c-b exists: /me). The "connecting your account" screen (my_details().linked = false) now only appears for accounts a dietitian has unlinked: keep it.
+
+ACCEPTANCE (the owner runs the signed-in steps; do the code-level checks and screenshots yourself)
+a. Clients → Add & invite (name + email) → Send invite dialog → "Email invite" opens the mail app with the message and link; Copy link works.
+b. Private window → open the link → "Welcome, {first name}" → create a password → lands in the client area; the client page shows Connected; the invite is no longer live.
+c. Create a client using the email of an EXISTING client login (e.g. one made on /join) → the dialog says they'll be asked to sign in → open the link signed out → sign-in mode → sign in → connected; their old self sign-up disappears from New sign-ups (merged).
+d. /join with a brand-new email → lands in the client area with their own file; appears in New sign-ups as "Signed up themselves"; "Accept as client" works.
+e. /join using the email of a client a dietitian already created → New sign-ups shows "Might be {name} (same email)" → Merge works.
+f. A used link and an expired link show the friendly messages; a staff account opening a client link sees "Sign out to use it".
+
+REPORT BACK: files changed; screenshots of the Send invite dialog, the register page (create and sign-in modes, phone + desktop), and the New sign-ups panel; confirm no migrations and engine.ts / adjust.ts / energy.ts untouched.

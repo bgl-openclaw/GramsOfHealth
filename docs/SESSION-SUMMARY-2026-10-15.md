@@ -93,6 +93,20 @@ Owner decisions: interns are allocated per client (separate tick for check-ins),
 - `meal_plan_versions` append-only: app builds the snapshot, `publish_meal_plan` checks it matches the saved plan (items, serves, days, day types), records Needs-review recipes, locks the plan; `start_new_plan_version` reopens. Published booklets/shopping lists render from the snapshot only.
 - Tests: `tests/sql/plans_p1.test.sql` (11 checks, all pass live); `npm test` 42 green.
 
+### 2.11 Client app P0 — security lockdown (21 Oct) — migration 0038
+- Owner: one build window (this one) for the client app; the original backend window stood down.
+- The 13 library tables (recipes, lines, steps, foods, conversions, tags, food tags, overrides, profiles/deltas, swaps, exclusions, legacy recipe_tags) → staff-only read/write; AFCD → staff read-only. Profiles: own row or staff. Recipe sign-offs: staff read. Recipe photos: public read, staff-only writes. Role `client` added.
+- Test `tests/sql/p0_lockdown.test.sql`: every role × every table (staff unchanged; pending/client see and change nothing).
+- Owner still to do (Supabase dashboard): rotate DB password + service-role key; leaked-password protection. Old test login already gone.
+
+### 2.12 Client app P1a — accounts + client read surface (21 Oct) — migrations 0039, 0039b + Lovable prompt `docs/lovable-prompts/P1a-client-area.txt`
+- Owner: client area inside the same app; dietitians/admins invite, link and allow numbers; numbers on both sides (dietitian allows → client chooses); copy-and-send invite links; "Request a change" → assigned dietitian, fallback info@gramsofhealth.com; Lovable designs it warm and on brand. Subdomain can come later (decide before P1b).
+- `app_settings` (practice name/email, timezone, client_contact). `clients.user_id / numbers_allowed / client_shows_numbers` with a guard trigger. Client invites (role client + client_id) — accepting REQUIRES the invite token (email confirmation is off, so email matching alone would be unsafe); staff invites unchanged. Self-registration (`account_type: client`) → unlinked client account; dietitian links it.
+- Staff RPCs: invite_client_to_app, link_client_account, unlink_client_account, client_app_status, client_app_signups. Client RPCs (the only things a client can read): my_details, my_plans, my_plan_version (published snapshots; calories/macros/targets stripped in the database unless allowed AND chosen), set_my_show_numbers.
+- 0039b: the app's invite page sends `invitation_token` — both keys now accepted.
+- Test `tests/sql/client_accounts_p1a.test.sql` (8 checks, all pass live).
+- Next: P1b (magic link, Google, emailed invites via Resend, email confirmation on — needs owner setup + final domain), P1c (pre-filled intake sheet → dietitian review; HighLevel later).
+
 ---
 
 ## 3. Open items

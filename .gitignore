@@ -29,3 +29,7 @@ f3cbbd28-*.html
 images/
 "design_handoff_recipe_tool 2/"
 design_handoff_recipe_tool 2/
+
+# python caches
+__pycache__/
+*.pyc

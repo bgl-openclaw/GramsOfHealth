@@ -104,6 +104,24 @@ export type Database = {
         }
         Relationships: []
       }
+      app_settings: {
+        Row: {
+          description: string | null
+          key: string
+          value: string
+        }
+        Insert: {
+          description?: string | null
+          key: string
+          value: string
+        }
+        Update: {
+          description?: string | null
+          key?: string
+          value?: string
+        }
+        Relationships: []
+      }
       change_log: {
         Row: {
           action: string
@@ -163,6 +181,33 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      client_areas: {
+        Row: {
+          blurb: string
+          icon: string | null
+          key: string
+          position: number
+          status: string
+          title: string
+        }
+        Insert: {
+          blurb: string
+          icon?: string | null
+          key: string
+          position?: number
+          status?: string
+          title: string
+        }
+        Update: {
+          blurb?: string
+          icon?: string | null
+          key?: string
+          position?: number
+          status?: string
+          title?: string
+        }
+        Relationships: []
       }
       client_checkins: {
         Row: {
@@ -437,6 +482,123 @@ export type Database = {
             columns: ["set_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_intake: {
+        Row: {
+          answers: Json
+          client_id: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          submitted_at: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          answers?: Json
+          client_id: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          submitted_at?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          answers?: Json
+          client_id?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          submitted_at?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_intake_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_intake_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_intake_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_intake_updated_by_fkey"
+            columns: ["updated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_intake_log: {
+        Row: {
+          action: string
+          changed_at: string
+          changed_by: string | null
+          client_id: string
+          field: string
+          id: number
+          new_value: string | null
+          old_value: string | null
+        }
+        Insert: {
+          action: string
+          changed_at?: string
+          changed_by?: string | null
+          client_id: string
+          field: string
+          id?: never
+          new_value?: string | null
+          old_value?: string | null
+        }
+        Update: {
+          action?: string
+          changed_at?: string
+          changed_by?: string | null
+          client_id?: string
+          field?: string
+          id?: never
+          new_value?: string | null
+          old_value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_intake_log_changed_by_fkey"
+            columns: ["changed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_intake_log_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_intake_log_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
             referencedColumns: ["id"]
           },
         ]
@@ -719,6 +881,7 @@ export type Database = {
       }
       client_supplements: {
         Row: {
+          added_by: string | null
           client_id: string
           created_at: string
           dose: string | null
@@ -731,6 +894,7 @@ export type Database = {
           timing: string | null
         }
         Insert: {
+          added_by?: string | null
           client_id: string
           created_at?: string
           dose?: string | null
@@ -743,6 +907,7 @@ export type Database = {
           timing?: string | null
         }
         Update: {
+          added_by?: string | null
           client_id?: string
           created_at?: string
           dose?: string | null
@@ -755,6 +920,13 @@ export type Database = {
           timing?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "client_supplements_added_by_fkey"
+            columns: ["added_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "client_supplements_client_id_fkey"
             columns: ["client_id"]
@@ -910,6 +1082,7 @@ export type Database = {
         Row: {
           activity_level: string | null
           assigned_dietitian: string | null
+          client_shows_numbers: boolean
           created_at: string
           date_of_birth: string | null
           email: string | null
@@ -918,14 +1091,18 @@ export type Database = {
           height_cm: number | null
           id: string
           notes: string | null
+          numbers_allowed: boolean
           phone: string | null
           protein_g_per_kg: number | null
           sex: string
+          source: string
           status: string
+          user_id: string | null
         }
         Insert: {
           activity_level?: string | null
           assigned_dietitian?: string | null
+          client_shows_numbers?: boolean
           created_at?: string
           date_of_birth?: string | null
           email?: string | null
@@ -934,14 +1111,18 @@ export type Database = {
           height_cm?: number | null
           id?: string
           notes?: string | null
+          numbers_allowed?: boolean
           phone?: string | null
           protein_g_per_kg?: number | null
           sex?: string
+          source?: string
           status?: string
+          user_id?: string | null
         }
         Update: {
           activity_level?: string | null
           assigned_dietitian?: string | null
+          client_shows_numbers?: boolean
           created_at?: string
           date_of_birth?: string | null
           email?: string | null
@@ -950,10 +1131,13 @@ export type Database = {
           height_cm?: number | null
           id?: string
           notes?: string | null
+          numbers_allowed?: boolean
           phone?: string | null
           protein_g_per_kg?: number | null
           sex?: string
+          source?: string
           status?: string
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -967,6 +1151,13 @@ export type Database = {
             foreignKeyName: "clients_assigned_dietitian_fkey"
             columns: ["assigned_dietitian"]
             isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clients_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
@@ -1230,9 +1421,49 @@ export type Database = {
           },
         ]
       }
+      intake_questions: {
+        Row: {
+          active: boolean
+          clinical: boolean
+          help: string | null
+          key: string
+          kind: string
+          label: string
+          options: Json | null
+          position: number
+          required: boolean
+          section: string
+        }
+        Insert: {
+          active?: boolean
+          clinical?: boolean
+          help?: string | null
+          key: string
+          kind: string
+          label: string
+          options?: Json | null
+          position?: number
+          required?: boolean
+          section: string
+        }
+        Update: {
+          active?: boolean
+          clinical?: boolean
+          help?: string | null
+          key?: string
+          kind?: string
+          label?: string
+          options?: Json | null
+          position?: number
+          required?: boolean
+          section?: string
+        }
+        Relationships: []
+      }
       invitations: {
         Row: {
           accepted_at: string | null
+          client_id: string | null
           created_at: string
           email: string
           expires_at: string | null
@@ -1243,6 +1474,7 @@ export type Database = {
         }
         Insert: {
           accepted_at?: string | null
+          client_id?: string | null
           created_at?: string
           email: string
           expires_at?: string | null
@@ -1253,6 +1485,7 @@ export type Database = {
         }
         Update: {
           accepted_at?: string | null
+          client_id?: string | null
           created_at?: string
           email?: string
           expires_at?: string | null
@@ -1261,7 +1494,22 @@ export type Database = {
           role?: string
           token?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "invitations_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "invitations_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       meal_plan_days: {
         Row: {
@@ -2185,12 +2433,16 @@ export type Database = {
           client_id: string | null
           default_kcal: number | null
           full_name: string | null
+          has_app_account: boolean | null
+          intake_status: string | null
+          intake_submitted_at: string | null
           latest_checkin_on: string | null
           latest_weight_kg: number | null
           latest_weight_on: string | null
           plan_count: number | null
           primary_goal: string | null
           primary_goal_label: string | null
+          source: string | null
           status: string | null
         }
         Relationships: [
@@ -2455,10 +2707,41 @@ export type Database = {
       }
     }
     Functions: {
+      _intake_normalise: {
+        Args: { p_key: string; p_value: Json }
+        Returns: Json
+      }
+      _log_client_change: {
+        Args: {
+          p_action: string
+          p_client_id: string
+          p_field: string
+          p_new: string
+          p_old: string
+        }
+        Returns: undefined
+      }
+      _merge_client_records: {
+        Args: { p_from: string; p_into: string }
+        Returns: Json
+      }
+      app_setting: { Args: { p_key: string }; Returns: string }
       can_access_client: { Args: { p_client_id: string }; Returns: boolean }
       can_access_plan: { Args: { p_plan_id: string }; Returns: boolean }
       can_view_checkins: { Args: { p_client_id: string }; Returns: boolean }
       change_log_fmt: { Args: { v: Json }; Returns: string }
+      claim_client_invite: { Args: { p_token: string }; Returns: Json }
+      client_app_signups: {
+        Args: never
+        Returns: {
+          created_at: string
+          email: string
+          full_name: string
+          phone: string
+          user_id: string
+        }[]
+      }
+      client_app_status: { Args: { p_client_id: string }; Returns: Json }
       client_energy_inputs: {
         Args: { p_as_of?: string; p_client_id: string }
         Returns: {
@@ -2476,6 +2759,7 @@ export type Database = {
           weight_kg: number
         }[]
       }
+      client_intake_for_staff: { Args: { p_client_id: string }; Returns: Json }
       client_recipe_screen: {
         Args: { p_client_id: string }
         Returns: {
@@ -2487,9 +2771,12 @@ export type Database = {
           status: string
         }[]
       }
+      client_signup_queue: { Args: never; Returns: Json }
+      client_tag_kind: { Args: { p_tag_id: string }; Returns: string }
       current_staff_role: { Args: never; Returns: string }
       delete_user: { Args: { target_id: string }; Returns: undefined }
       food_field_label: { Args: { k: string }; Returns: string }
+      get_client_invitation: { Args: { p_token: string }; Returns: Json }
       get_invitation: {
         Args: { p_token: string }
         Returns: {
@@ -2498,10 +2785,44 @@ export type Database = {
           valid: boolean
         }[]
       }
+      intake_missing: { Args: { p_client_id: string }; Returns: Json }
+      invite_client_to_app: {
+        Args: { p_client_id: string; p_email?: string }
+        Returns: Json
+      }
       is_admin: { Args: never; Returns: boolean }
       is_clinician: { Args: never; Returns: boolean }
       is_staff: { Args: never; Returns: boolean }
+      link_client_account: {
+        Args: { p_client_id: string; p_user_id: string }
+        Returns: Json
+      }
       mark_changes_reviewed: { Args: { p_ids?: number[] }; Returns: number }
+      merge_client_into: {
+        Args: { p_from: string; p_into: string }
+        Returns: Json
+      }
+      my_areas: { Args: never; Returns: Json }
+      my_client_id: { Args: never; Returns: string }
+      my_details: { Args: never; Returns: Json }
+      my_intake: { Args: never; Returns: Json }
+      my_plan_version: {
+        Args: { p_plan_id: string; p_version_no?: number }
+        Returns: Json
+      }
+      my_plans: {
+        Args: never
+        Returns: {
+          days: number
+          end_date: string
+          is_current: boolean
+          plan_id: string
+          published_at: string
+          start_date: string
+          title: string
+          version_no: number
+        }[]
+      }
       plan_days: {
         Args: { p_plan_id: string }
         Returns: {
@@ -2541,6 +2862,10 @@ export type Database = {
         Args: { p_note?: string; p_recipe_id: string }
         Returns: Json
       }
+      save_client_intake_answers: {
+        Args: { p_answers: Json; p_client_id: string }
+        Returns: Json
+      }
       save_client_structure: {
         Args: {
           p_client_id: string
@@ -2550,8 +2875,16 @@ export type Database = {
         }
         Returns: undefined
       }
+      save_my_intake: { Args: { p_changes: Json }; Returns: Json }
+      set_client_intake_status: {
+        Args: { p_client_id: string; p_status: string }
+        Returns: Json
+      }
+      set_my_show_numbers: { Args: { p_show: boolean }; Returns: Json }
       sign_off_recipe: { Args: { p_recipe_id: string }; Returns: Json }
       start_new_plan_version: { Args: { p_plan_id: string }; Returns: Json }
+      submit_my_intake: { Args: never; Returns: Json }
+      unlink_client_account: { Args: { p_client_id: string }; Returns: Json }
     }
     Enums: {
       food_source: "afcd" | "custom"

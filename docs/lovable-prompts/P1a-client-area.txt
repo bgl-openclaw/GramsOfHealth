@@ -1,0 +1,55 @@
+Grams Editor — P1a: the client area (phone-first, warm, on-brand) + app access for staff (owner-approved)
+
+Clients are getting their own space inside this app: they sign in and see their published meal plan, the recipes in it, a shopping list and their details. Staff invite them, link accounts and decide whether numbers are shown. The database is done (migrations 0038, 0039, 0039b) — do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Every RPC below returns { ok, message, … } for expected refusals where noted — show `message`; never assume success.
+
+DESIGN — you design this section. The owner wants it to feel INVITING, not clinical, and on brand:
+- Palette from the existing design system: brand green #003018 (primary), green-mid #2f7a4d, coral #ef835c (warm accents, highlights, today markers), green-tint #eef3ef, paper #f4f3ef background, white cards, ink #1c2019 / soft #5c625b. Fonts already loaded: IBM Plex Sans (UI), IBM Plex Mono (numbers), Oswald (recipe-card headings) — use them; no new brand colours.
+- Phone first (375 px) and lovely on desktop too. Big recipe photos, generous spacing, rounded cards (16 px+), soft shadows, 44 px+ tap targets, good contrast. A bottom tab bar on phones (Home · My plan · Shopping · Me); a simple top bar on wider screens. No staff sidebar.
+- Friendly, encouraging, plain words. Never show staff jargon: no "Needs review", "AI Verified", "snapshot", "version", "slot kind", "draft", food IDs or verification statuses.
+- Friendly empty and loading states (e.g. "Your dietitian is putting your plan together — we'll have it here soon.").
+- Include screenshots (phone + desktop) of every client screen in your report.
+
+DATABASE (already live)
+- profiles.role can be 'client'. Clients may NOT read any table — every table is closed to them. A client reads ONLY these RPCs:
+  • my_details() → { linked, full_name, first_name, practice_name, practice_email, contact_email, dietitian_name, primary_goal {label, detail, target_date} | null, requirements [{label, kind: 'avoid'|'diet'|'prefer'}], foods_to_avoid [name], foods_disliked [name], supplements [{name, dose, timing}], numbers_allowed, show_numbers, targets [{day_type, kcal, protein_g, carb_g, fat_g, fibre_g}] | null }. linked=false → the account isn't linked to a client yet (only practice_name/email returned).
+  • my_plans() → rows { plan_id, title, start_date, days, end_date, version_no, published_at, is_current } — published plans only; exactly one is_current (today's plan, else the next upcoming, else the most recent).
+  • my_plan_version(p_plan_id, p_version_no default latest) → the published plan as the client may see it: { plan {title, notes, start_date, days, client_name}, slots [{name, free_choice, …}], days [{day, date, weekday, day_type, (targets, totals when numbers)}], items [{item_id, recipe_id, day, meal_slot, title, version_name, recipe_servings, servings, servings_override, image_url_1, image_url_2, time_minutes, show_macros_export, lines [{section, food_name, quantity, unit, grams, prep_note, (kcal… when numbers)}], steps [text], tags [label], (per_serve, totals when numbers)}], week_average (null without numbers), shopping [{food_name, aisle, grams, buy, appears_in}], unresolved [{food_name, quantity, unit, recipe_title}], show_numbers }.
+    When numbers are hidden the database has ALREADY removed every calorie/macro/target field and set show_macros_export=false — just don't render what isn't there.
+  • set_my_show_numbers(p_show) → { ok, numbers_allowed, show_numbers, message }.
+- Staff RPCs (dietitians/admins; interns get refusals): invite_client_to_app(p_client_id, p_email default null) → { ok, token, email, expires_at, message }; link_client_account(p_client_id, p_user_id); unlink_client_account(p_client_id); client_app_status(p_client_id) → { linked, account {email, full_name, created_at} | null, invite {email, expires_at, token (dietitians/admins only)} | null, numbers_allowed, client_shows_numbers }; client_app_signups() → [{ user_id, email, full_name, phone, created_at }] (client accounts not linked to anyone).
+- clients.numbers_allowed (dietitians/admins change it with a normal update; others are refused). clients.client_shows_numbers is the client's own switch — staff can't change it.
+- Sign-up: the existing invite page already sends options.data.invitation_token — keep it; that's what links a client invite. A self-registration sends options.data.account_type = 'client' → an unlinked client account until a dietitian links it.
+
+1. Roles & routing
+   - UserRole gains 'client' (src/lib/users.ts and wherever roles are listed; the Users page role selector should NOT offer 'client').
+   - After sign-in: client → /me; staff → as today; pending → the existing "awaiting access" screen.
+   - The staff layout (_app) sends a client to /me; the client layout sends anyone who isn't a client to /.
+   - A client whose my_details().linked is false sees a warm "Your account is ready — your dietitian will connect it to your plan shortly" screen with the practice email, and Sign out.
+
+2. Client area (new route tree with its own layout, e.g. src/routes/_client.tsx + /me…)
+   - Home (/me): "Good morning/afternoon/evening, {first_name}"; a card for their dietitian ("{dietitian_name}" or practice name) with "Request a change" = mailto:{contact_email}?subject=Change request — {full_name}; the current plan card (title, "Mon 26 Oct – Sun 1 Nov", today's meals as photo cards by meal) → My plan. Empty state when my_plans() is empty.
+   - My plan (/me/plan, ?plan=<id> for others): plan picker when there's more than one (current first, then upcoming, then past). A day strip (weekday + date chips, today highlighted in coral). The day's meals grouped by the plan's meal slots in order: photo, title, "1½ serves" (servings), time; a free-choice slot with nothing in it reads "Free choice — enjoy something you love". Tap → recipe. Plan notes shown nicely if present. ONLY when show_numbers: the day's calories/macros against that day's targets as gentle progress bars (green within 90–110%, amber otherwise — no red alarms) and a week average.
+   - Recipe (/me/plan/<planId>/recipe/<itemId>): hero photo, title, time, "Makes {recipe_servings} serves · you're having {servings}", ingredients grouped by section (quantity + unit + food name + prep note, fractions like ½ ¼ ⅓ as on the A4 card), numbered method. Macros per serve ONLY when show_numbers. "Download recipe card (PDF)": render the existing A4 RecipeCard from syntheticCardData(item) (src/lib/plan-snapshot.ts) and export with the existing PDF export; when numbers are hidden treat missing macro fields as 0 and keep the macro footer hidden (show_macros_export is already false).
+   - Shopping (/me/shopping): the current plan's shopping list grouped by aisle (Produce, Dairy & eggs, Meat & seafood, Bakery, Pantry, Frozen, Drinks, Other), each item with its "buy …" hint (or grams), "for: {appears_in}" in small text, and a tick-off that's saved on the phone (localStorage keyed by plan id + version; wrap reads/writes in try/catch) with "Clear ticks". If unresolved has items: a soft note "A few items need a quick check with your dietitian" listing them.
+   - Me (/me/details): name; goal; "Always avoid" (requirements kind avoid + foods_to_avoid), "Your way of eating" (kind diet), "We'll lean towards" (kind prefer), "Foods you'd rather skip" (foods_disliked); supplements (name · dose · timing). Numbers: if numbers_allowed → a switch "Show calories & macros" (set_my_show_numbers; refresh everything after) and, when on, the targets per day type; if NOT allowed → show nothing about numbers at all. "Request a change" (mailto as above), Sign out.
+   - Data: the client area calls ONLY the four RPCs above — never a table.
+
+3. Staff side
+   - Client page: a new "App access" section (dietitians/admins; interns see it read-only, without buttons or the link):
+     • From client_app_status: "Not invited yet" / "Invite sent — expires {date}" with Copy link / "Connected — {account email}, since {date}" with Unlink (confirm).
+     • "Invite to app" → invite_client_to_app → show the link `${window.location.origin}/register?token=${token}` with Copy link and a short "Send this to {first name}" hint. If the client has no email, show the message and let them type one (passed as p_email).
+     • "Allow numbers in the client app" switch → update clients.numbers_allowed; underneath, read-only: "{first name} has them turned on/off" (client_shows_numbers) when allowed.
+   - Clients list: an "App sign-ups waiting (N)" panel for dietitians/admins (client_app_signups): each with name, email, phone, signed-up date and "Link to client…" → a searchable picker of clients that aren't connected yet → link_client_account → refresh. Hide the panel when N = 0.
+   - Register page (/register): when the invite role is 'client', show a warm welcome ("Welcome to {practice}! Create your account to see your plan"), hide Job title and Organisation, keep invitation_token in the sign-up data. Staff invites unchanged.
+   - New public Join page (/join) for clients without an invite: full name, email, password (show/hide), phone (optional) → supabase.auth.signUp with options.data { account_type: 'client', full_name, phone } → sign in → /me (they'll see the "connecting your account" screen). On the login page add "New client? Create your account" → /join. Same warm look as the client area.
+
+ACCEPTANCE (the owner runs the signed-in steps; do the code-level checks and screenshots yourself)
+a. Client page → App access → Invite to app → a link is shown and copies.
+b. Opening that link in a private window → warm client welcome → create account → lands on Home with their published plan.
+c. A client typing /recipes or /clients is sent back to /me; staff never see /me.
+d. Numbers hidden by default: no calories/macros/targets anywhere for the client (incl. the PDF). Dietitian turns "Allow numbers" on → the client's Me page shows the switch; on → numbers appear; off → gone.
+e. Shopping ticks survive a reload on the same device.
+f. /join → account shows "connecting your account"; it appears in "App sign-ups waiting"; linking it shows the plan.
+g. Screenshots of every client screen at phone and desktop width.
+
+REPORT BACK: files changed, route list, the screenshots, and confirmation that engine.ts / adjust.ts / energy.ts are untouched, no migrations, and the client area calls only my_details / my_plans / my_plan_version / set_my_show_numbers.

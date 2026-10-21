@@ -1,0 +1,26 @@
+Grams Editor — P1.1: three fixes to the published-plan snapshot (from code review of commit 1763cb24)
+
+Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts.
+
+1. Booklet cards can show a food as 0 kcal (bug) — src/lib/plan-snapshot.ts syntheticCardData + src/routes/plans.$id.print.tsx
+   A line that can't be weighed has grams 0 and macros 0. syntheticCardData then gives that FOOD per-100 g values of 0, and the print page merges every item's synthetic foods into one shared map (Object.assign — last wins). So if a food appears anywhere in the plan in a line that can't be weighed (e.g. "2 tbsp coriander" next to "1 bunch coriander"), every card using that food shows it as 0 kcal / 0 g protein. It also shows unweighable lines as 1 g.
+   Fix:
+   - Derive a food's per-100 g values ONLY from lines with grams > 0. Never overwrite a food that already has values with one from a 0-gram line. If a food only has 0-gram lines, give it all-zero values (so its name still shows).
+   - For a 0-gram line, add a conversion of 0 g for that unit (the engine then shows 0 g, exactly as the live card does) — not grams/quantity of 1.
+   - In the print page, keep per-card foods/conversions (don't merge across cards), or merge only after the rule above.
+   - Test (plan-snapshot.test.ts): one item with "1 bunch coriander" (weighable, 40 g) and another item — listed AFTER it — with "2 tbsp coriander" (grams 0). The first card's computeRecipe per-serve numbers still equal its snapshot per_serve; the 0-gram line computes 0 g.
+
+2. Publish freezes data that may be hours old — src/routes/_app.plans.$id.index.tsx onPublish
+   The snapshot is built from the foods, conversions, recipe versions, items, days and slots loaded when the page opened. The database checks items and day types, but not nutrition, so a food corrected by a colleague in the meantime would be frozen with its old values.
+   Fix: inside onPublish, after the needs-review confirm and before buildPlanSnapshot, re-load foods, unit conversions, plan versions (loadPlanVersions), plan items, plan_days and plan_slots, and build the snapshot from those fresh results (also update the page state with them).
+
+3. Published shopping list hides lines that can't be weighed
+   The live shopping list warns "N ingredient lines can't be resolved to grams … missing from the shopping totals". The snapshot silently drops those lines, so a published list looks complete when it isn't.
+   Fix: add "unresolved": [ { "food_name", "quantity", "unit", "recipe_title" } ] to the snapshot (lines with grams 0 that the live list would list), and show the same amber warning on the published shopping page (and on the booklet's shopping page, one line: "N items couldn't be weighed and aren't included"). Keep SNAPSHOT_SCHEMA at 1 but treat a missing "unresolved" as [] (versions already published).
+
+ACCEPTANCE (code-level; the owner runs the signed-in checks)
+a. The new test passes; existing snapshot tests still pass.
+b. Show the diff of onPublish: the fresh reloads happen after the confirm and before buildPlanSnapshot.
+c. A snapshot built from a plan with an unweighable line has a non-empty "unresolved"; an old snapshot without the key renders with no warning and no crash.
+
+REPORT BACK: files changed; confirm engine.ts / adjust.ts / energy.ts untouched and no migrations.

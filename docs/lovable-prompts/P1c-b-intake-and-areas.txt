@@ -1,0 +1,86 @@
+Grams Editor — P1c-b: "Tell us about you" intake for clients, dietitian review, coming-soon areas (owner-approved)
+
+Builds on P1c-a. The database is done (migration 0040, live). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Use the app's CURRENT branding (mem://branding.md: The Table / My table) and the existing client-area components; phone first, 44px+ tap targets. Update mem://client-area.md with the intake screens and the client RPC list at the end of this prompt. Client-facing copy: Australian English, sentence case, plain and friendly, no em dashes, and avoid "journey", "holistic", "wellness", "nourish", "empower".
+
+CLIENT RPCs (client accounts only; staff get { ok: false, message: 'Client accounts only.' })
+- my_intake() → {
+    ok, status: 'open' | 'submitted' | 'reviewed', can_edit, submitted_at,
+    about: { full_name, email (read-only), phone, date_of_birth, sex: 'female' | 'male' | 'other' | 'unspecified', height_cm, activity_level, weight_kg, weight_recorded_on },
+    goal: { goal_type, label, detail, target_date, mine } | null,
+    requirements: [{ tag_id, label, kind: 'avoid' | 'diet' | 'prefer' | 'other', mine }],
+    food_rules: [{ name, rule: 'avoid' | 'dislike' }]   (set by the dietitian; read-only),
+    supplements: [{ id, name, dose, timing, mine }],
+    answers: { [question_key]: value },
+    sections: [{ key, title }]   (about, goals, food, health, lifestyle, consent, in order),
+    questions: [{ key, section, label, help, kind: 'text' | 'long_text' | 'number' | 'date' | 'single' | 'multi' | 'yes_no' | 'scale', options: string[] | null, required }],
+    options: { sexes: [{ key, label }], activity_levels: [{ key, label }], goal_types: [{ key, label }], avoid: [{ tag_id, label }], diet: [{ tag_id, label }], prefer: [{ tag_id, label }] },
+    missing: string[]   (labels still needed before sending) }
+- save_my_intake(p_changes) — send ONLY what changed on that step. Keys (all optional):
+    about: { full_name, phone, date_of_birth 'YYYY-MM-DD', sex, height_cm, activity_level }
+    weight_kg: number
+    goal: { goal_type, detail, target_date } | null
+    requirements_add: [tag_id], requirements_remove: [tag_id]
+    supplements_add: [{ name, dose, timing }], supplements_remove: [id]
+    answers: { key: value | null }
+  Answer value types: text / long_text / date → string; number and scale (1–5) → number; single → one of options; multi → array of options; yes_no → boolean; null, '' or [] removes the answer.
+  Returns { ok: true, message, skipped, intake } (intake = fresh my_intake, use it to refresh) or { ok: false, message } with NOTHING saved (all-or-nothing): show the message on that step and keep the user's input.
+  Items with mine = false were set by the dietitian: show them, but don't offer remove (the server keeps them and names them in message).
+  After review (can_edit = false) the server only accepts requirements_add with an 'avoid' tag.
+- submit_my_intake() → { ok: true, status: 'submitted', message } or { ok: false, message, missing }. Do NOT pass this through unwrapRpc (it would throw away `missing`): read the result and show "Still needed: …" with a link to each step.
+- my_areas() → [{ key, title, blurb, icon (a lucide icon name), status: 'coming_soon' | 'live' }]. None of these areas are built yet: render every one as a locked "Coming soon" tile, whatever the status.
+- my_details() gains client_status ('new' | 'active' | …), intake_status, intake_missing_count.
+
+STAFF RPCs
+- client_intake_for_staff(p_client_id) → { ok, status, source, client_status, submitted_at, reviewed_at, reviewed_by_name, updated_at, missing, sections, questions: [{ key, section, label, kind, options, clinical, active, answer }], hidden_clinical_count, changes: [{ field, action: 'set' | 'add' | 'remove', old_value, new_value, changed_at, by_client, changed_by_name }], changes_since_review }. Interns: health (clinical) questions are left out by the server and changes is [].
+- save_client_intake_answers(p_client_id, p_answers) (dietitians/admins) → { ok, message }. Same value rules as above.
+- set_client_intake_status(p_client_id, 'reviewed' | 'open') (dietitians/admins) → { ok, status, message }.
+- Tables for Settings (admins can write, staff can read): client_areas (key, title, blurb, icon, status 'live' | 'coming_soon' | 'hidden', position) and intake_questions (key, section, label, help, kind, options jsonb array, required, clinical, position, active).
+
+1. Welcome + intake wizard (/me/welcome; steps can be one route with a step param)
+   - Step 0 "Welcome, {first_name}": what we'll ask (about you, your goals, food, health, lifestyle), "About 5 minutes. You can stop and come back any time.", "Only your dietitian sees your answers." Button "Let's start".
+   - Then one step per entry in `sections`:
+     • About you: Full name, Phone, Date of birth (date input), Sex (options.sexes; help "We use this to estimate your energy needs"), Height (cm), Current weight (kg; show "Last entered {date}" when weight_recorded_on is set), How active are you (options.activity_levels), then the 'about' questions.
+     • Your goals: Main goal as single-choice cards (options.goal_types) + "Tell us more" (goal.detail) + optional target date. If goal.mine = false, show it read-only with "Set by your dietitian". Then the 'goals' questions.
+     • Food: three chip groups — "Foods you must avoid" (options.avoid; sub-text "Allergies, intolerances or beliefs"), "Your way of eating" (options.diet), "Health focus" (options.prefer). Selected chips = current requirements; chips with mine = false are locked with a small "Set by your dietitian" note. Show food_rules read-only ("Your dietitian has noted: …"). Then the 'food' questions.
+     • Health: a note at the top "Only your dietitian sees these answers." The 'health' questions + a Supplements list (add name / dose / timing; remove only your own).
+     • Lifestyle: the 'lifestyle' questions.
+     • Almost done: the 'consent' questions (yes_no as checkboxes; required ones marked), a short summary of anything in `missing`, and "Send to my dietitian" → submit_my_intake.
+   - Render questions generically by kind: text → input; long_text → textarea; number → numeric input; date → date input; single → tappable option cards (a select when there are more than 6 options); multi → toggle chips; yes_no → checkbox for consents, Yes/No toggle otherwise; scale → 1–5 segmented control with `help` as the anchor text. Required ones show "(required)". Show `help` under the label.
+   - Save on "Next" and when leaving the page (only changed fields); a quiet "Saved" tick. Progress bar "Step 2 of 6". "Finish later" saves and returns Home. Re-entering /me/welcome resumes at the first step that still has something in `missing` (or step 1).
+   - After a successful submit: a friendly thank-you screen "Thanks, {first_name}! Your details are with {dietitian_name or practice_name}." → Home.
+   - Phone first, big tap targets, generous spacing.
+
+2. Home (/me)
+   - Intake status 'open': a prominent card "Tell us about you" with progress (use intake_missing_count) → /me/welcome.
+   - 'submitted' and no plan yet: "Thanks! Your dietitian is reviewing your details and putting your plan together."
+   - client_status 'new' and no plan: a short 4-step timeline: Create your account ✓ · Tell us about you (✓ once submitted) · Your dietitian reviews · Your plan arrives here.
+   - Existing plan cards stay exactly as they are.
+   - "Coming soon" section: a grid of my_areas tiles (lucide icon by name with a sensible fallback, title, blurb, "Coming soon" pill, muted styling). Tapping opens a small sheet: "We're still building this. It'll appear here when it's ready."
+
+3. Me (/me/details)
+   - Read view of my_intake grouped like the wizard (About you, Goals, Food, Health, Lifestyle). If can_edit: "Update my details" on each group → the wizard at that step. If reviewed (can_edit = false): read-only + "Something changed? Send a change request" (existing mailto) + an "Add an allergy or food to avoid" button (avoid chips only → save_my_intake({ requirements_add })).
+   - A "More" list with the coming-soon areas.
+   - Keep the numbers switch exactly as in P1a.
+
+4. Staff: "Intake" section on the client page (below the identity section)
+   - Data: client_intake_for_staff(client id).
+   - Header: status pill — "Client filling in" (open) / "Sent {date}" (submitted, coral) / "Reviewed by {name}, {date}" (reviewed); plus "{n} changes since review" when changes_since_review > 0; plus "Still missing: …" when `missing` isn't empty.
+   - Answers grouped by section; unanswered → "—"; health (clinical) answers carry a small "Health" tag. For interns show "{hidden_clinical_count} health answers are only visible to dietitians" when > 0.
+   - Dietitians/admins: "Mark reviewed" (set_client_intake_status(id, 'reviewed')), "Ask client to update" (… 'open'), "Edit answers" (inline edit → save_client_intake_answers(id, { key: value })).
+   - "What the client changed" (collapsible): changes newest first, by_client rows highlighted. Friendly field names: 'answer:<key>' → that question's label; full_name, phone, date_of_birth, sex, height_cm, activity_level, weight_kg, goal, requirement, supplement, intake, merged → plain words.
+   - The core facts the client entered (DOB, sex, height, weight, activity, goal, food needs, supplements) already show in the existing client sections; no need to repeat them here.
+
+5. Settings (admins): a "Client app" card
+   - Areas: table of client_areas (title, blurb, status select "Coming soon" / "Hidden"; disable "Live" because no area is built yet), updated directly in the table.
+   - Intake questions: list grouped by section (from intake_questions): edit label, help, options (one per line), required, health-only (clinical), active, order (position). "Add question" (key made from the label: lowercase letters, digits and underscores, starting with a letter). Never delete a question: switch Active off instead.
+
+ACCEPTANCE (the owner runs the signed-in steps; do the code-level checks and screenshots yourself)
+a. A /join client lands on the welcome → completes all steps → Send → Home shows the thank-you card; on the staff side their file shows "Sent {date}" with the answers.
+b. Leaving midway and coming back resumes at the right step; Home shows "Tell us about you" with progress.
+c. An impossible date of birth or weight shows the server's message on that step and nothing typed is lost.
+d. A dietitian-created client (with DOB, height and an allergy already entered) signs up through an invite → the wizard shows those prefilled; the allergy chip is locked "Set by your dietitian".
+e. Dietitian marks reviewed → the client's Me page is read-only but "Add an allergy" still works; the staff side then shows "1 change since review".
+f. An intern assigned to the client sees the Intake section without health answers.
+g. Coming-soon tiles show on Home; setting one to Hidden in Settings removes it.
+
+REPORT BACK: files changed; screenshots (phone + desktop) of the welcome, each wizard step, the thank-you screen, Home (open / submitted), Me (editable / reviewed), the staff Intake section and the Settings card. Confirm: no migrations; engine.ts / adjust.ts / energy.ts untouched; the client area calls only my_details, my_plans, my_plan_version, set_my_show_numbers, my_intake, save_my_intake, submit_my_intake, my_areas, claim_client_invite and get_client_invitation.

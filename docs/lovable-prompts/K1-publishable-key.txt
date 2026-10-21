@@ -1,0 +1,15 @@
+Grams Editor — K1: switch to Supabase's new publishable key (security; no behaviour change)
+
+We're retiring Supabase's legacy JWT-based keys. The app must use the project's new PUBLISHABLE key instead of the legacy anon key. The publishable key is designed to be public (safe in browser code). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Change nothing else.
+
+1. src/lib/supabase.ts: set SUPABASE_ANON_KEY to
+   sb_publishable_9AAlki9ZmkFiasAXunT3Ow_soZijhBW
+   Keep the exported name SUPABASE_ANON_KEY (src/routes/api/render-pdf.ts and others import it) and add a one-line comment: "Supabase publishable key (replaces the legacy anon JWT)."
+2. Search the WHOLE project for the old legacy key (any string starting "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" that contains "anon"), for "service_role", and for any other Supabase key or VITE_SUPABASE_* / SUPABASE_* env usage. Replace every legacy anon key with the publishable key above. If you find a service_role key or secret anywhere in the code, REMOVE it and tell me where it was (don't replace it).
+3. Nothing else changes: same URL, same sign-in, same queries.
+
+ACCEPTANCE
+a. Searching src for "eyJhbGciOi" finds nothing; for "sb_publishable_" finds only src/lib/supabase.ts (plus any place it's imported).
+b. Build passes.
+
+REPORT BACK: every file changed, the exact search terms and results, and confirm no service-role key or secret exists anywhere in the project.
