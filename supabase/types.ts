@@ -1059,6 +1059,7 @@ export type Database = {
           potassium_100g: number | null
           protein_100g: number | null
           protein_family: string | null
+          purchase_unit: string | null
           role: string | null
           satfat_100g: number | null
           sodium_100g: number | null
@@ -1087,6 +1088,7 @@ export type Database = {
           potassium_100g?: number | null
           protein_100g?: number | null
           protein_family?: string | null
+          purchase_unit?: string | null
           role?: string | null
           satfat_100g?: number | null
           sodium_100g?: number | null
@@ -1115,6 +1117,7 @@ export type Database = {
           potassium_100g?: number | null
           protein_100g?: number | null
           protein_family?: string | null
+          purchase_unit?: string | null
           role?: string | null
           satfat_100g?: number | null
           sodium_100g?: number | null
@@ -1260,6 +1263,32 @@ export type Database = {
         }
         Relationships: []
       }
+      meal_plan_days: {
+        Row: {
+          day: number
+          day_type: string
+          meal_plan_id: string
+        }
+        Insert: {
+          day: number
+          day_type: string
+          meal_plan_id: string
+        }
+        Update: {
+          day?: number
+          day_type?: string
+          meal_plan_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_days_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       meal_plan_items: {
         Row: {
           day: number | null
@@ -1329,6 +1358,54 @@ export type Database = {
           },
         ]
       }
+      meal_plan_versions: {
+        Row: {
+          id: string
+          meal_plan_id: string
+          needs_review_recipes: string[]
+          published_at: string
+          published_by: string | null
+          published_by_name: string
+          snapshot: Json
+          version_no: number
+        }
+        Insert: {
+          id?: string
+          meal_plan_id: string
+          needs_review_recipes?: string[]
+          published_at?: string
+          published_by?: string | null
+          published_by_name: string
+          snapshot: Json
+          version_no: number
+        }
+        Update: {
+          id?: string
+          meal_plan_id?: string
+          needs_review_recipes?: string[]
+          published_at?: string
+          published_by?: string | null
+          published_by_name?: string
+          snapshot?: Json
+          version_no?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_versions_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_versions_published_by_fkey"
+            columns: ["published_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       meal_plans: {
         Row: {
           client_id: string | null
@@ -1336,6 +1413,8 @@ export type Database = {
           days: number | null
           id: string
           notes: string | null
+          start_date: string | null
+          status: string
           title: string
         }
         Insert: {
@@ -1344,6 +1423,8 @@ export type Database = {
           days?: number | null
           id?: string
           notes?: string | null
+          start_date?: string | null
+          status?: string
           title: string
         }
         Update: {
@@ -1352,6 +1433,8 @@ export type Database = {
           days?: number | null
           id?: string
           notes?: string | null
+          start_date?: string | null
+          status?: string
           title?: string
         }
         Relationships: [
@@ -1957,6 +2040,7 @@ export type Database = {
       unit_conversions: {
         Row: {
           basis: string | null
+          estimated: boolean
           food_id: string
           grams: number
           id: number
@@ -1964,6 +2048,7 @@ export type Database = {
         }
         Insert: {
           basis?: string | null
+          estimated?: boolean
           food_id: string
           grams: number
           id?: never
@@ -1971,6 +2056,7 @@ export type Database = {
         }
         Update: {
           basis?: string | null
+          estimated?: boolean
           food_id?: string
           grams?: number
           id?: never
@@ -2195,6 +2281,7 @@ export type Database = {
           quantity: number | null
           recipe_id: string | null
           unit: string | null
+          via_estimate: boolean | null
         }
         Relationships: [
           {
@@ -2241,6 +2328,7 @@ export type Database = {
           priced: boolean | null
           recipe_id: string | null
           unit: string | null
+          via_estimate: boolean | null
         }
         Relationships: [
           {
@@ -2345,6 +2433,8 @@ export type Database = {
         Row: {
           ai_verified: boolean | null
           data_issue: string | null
+          estimated_ingredients: string[] | null
+          estimated_line_count: number | null
           has_image: boolean | null
           has_title: boolean | null
           line_count: number | null
@@ -2412,6 +2502,37 @@ export type Database = {
       is_clinician: { Args: never; Returns: boolean }
       is_staff: { Args: never; Returns: boolean }
       mark_changes_reviewed: { Args: { p_ids?: number[] }; Returns: number }
+      plan_days: {
+        Args: { p_plan_id: string }
+        Returns: {
+          carb_g: number
+          date: string
+          day: number
+          day_type: string
+          day_type_source: string
+          fat_g: number
+          fibre_g: number
+          kcal: number
+          protein_g: number
+          targets_day_type: string
+          weekday: string
+        }[]
+      }
+      plan_publish_check: { Args: { p_plan_id: string }; Returns: Json }
+      plan_slots: {
+        Args: { p_plan_id: string }
+        Returns: {
+          free_choice: boolean
+          name: string
+          position: number
+          slot_kind: string
+          source: string
+        }[]
+      }
+      publish_meal_plan: {
+        Args: { p_plan_id: string; p_snapshot: Json }
+        Returns: Json
+      }
       reason_list: {
         Args: { items: string[]; max_items?: number }
         Returns: string
@@ -2430,6 +2551,7 @@ export type Database = {
         Returns: undefined
       }
       sign_off_recipe: { Args: { p_recipe_id: string }; Returns: Json }
+      start_new_plan_version: { Args: { p_plan_id: string }; Returns: Json }
     }
     Enums: {
       food_source: "afcd" | "custom"

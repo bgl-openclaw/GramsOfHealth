@@ -1,0 +1,73 @@
+Grams Editor — P1: plans for full clients — dates & day types, the client's own meal slots, quarter serves, Draft → Published (owner-approved)
+
+Background: today plan days are just "Day 1, Day 2…", every day uses the client's Default targets, the slots are always Breakfast/Lunch/Dinner/Snacks, half serves can't be saved (the column was whole numbers), and a sent plan silently changes when a recipe is edited. The database is done (migration 0037) — do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Every RPC below returns { ok, message, … } for expected refusals — show `message` when ok is false; never assume success.
+
+DATABASE (already live)
+- meal_plans: new start_date (date | null) and status ('draft' | 'published'). status changes ONLY through the RPCs below (a direct update is refused).
+- meal_plan_items.servings_override is now a decimal in steps of 0.25 (1, 1.25, 1.5 …); other values are refused.
+- meal_plan_days (meal_plan_id, day, day_type): per-day day-type OVERRIDES only. Delete the row to go back to the weekly pattern.
+- rpc plan_days(p_plan_id) → one row per day: day, date (null without a start date), weekday ('Mon'…), day_type ('default'|'hard'|'moderate'|'rest'), day_type_source ('override'|'weekly pattern'|'default'), targets_day_type (which targets were used — 'default' when that day type has none; null when the plan has no client/targets), kcal, protein_g, carb_g, fat_g, fibre_g.
+- rpc plan_slots(p_plan_id) → position, name, slot_kind ('breakfast'|'lunch'|'dinner'|'snack'|null), free_choice, source ('client'|'default'|'item'). Client slots in the client's order; the default four when there's no client (or the client has none); plus any slot name an item still uses.
+- rpc plan_publish_check(p_plan_id) → { can_publish, blockers: [text], needs_review: [recipe titles], next_version }.
+- rpc publish_meal_plan(p_plan_id, p_snapshot jsonb) → { ok, version_no, needs_review, message }. The database checks the snapshot matches the saved plan (see section 4) and records the Needs-review recipes itself.
+- rpc start_new_plan_version(p_plan_id) → { ok, message }. Plan goes back to draft; the last published version stays "the published version" until you publish again.
+- meal_plan_versions (read-only): id, meal_plan_id, version_no, snapshot, needs_review_recipes, published_at, published_by_name.
+- While a plan is published the database refuses: adding/editing items, day-type overrides, start date / days changes. Title and notes stay editable. Item DELETE is allowed (so deleting a recipe still works) — but the UI must not offer it on a published plan.
+- Deleting a plan that has published versions is dietitian/admin only (interns get a refusal message); it removes the versions too.
+
+1. Data layer (src/data/index.ts or a new src/data/plans.ts)
+   - MealPlan: + start_date: string | null; status: "draft" | "published". MealPlanItem.servings_override: number | null (decimal).
+   - listPlanDays, listPlanSlots, setPlanDayType(planId, day, dayType | null) (null = delete the override), getPublishCheck, publishPlan(planId, snapshot), startNewPlanVersion, listPlanVersions(planId) (no snapshot column; newest first), getPlanVersion(planId, versionNo) (with snapshot).
+
+2. Plan editor (src/routes/_app.plans.$id.index.tsx)
+   - Header: a Start date picker beside Days. For a client plan with no start date show "Start date needed to publish".
+   - Days come from plan_days. Day header: "Mon 26 Oct · Moderate day" (or "Day 3 · Default" without a date). A small day-type select per day (Default / Hard / Moderate / Rest); choosing a value writes an override; when overridden show "Reset to weekly pattern" (deletes the override). When targets_day_type ≠ day_type show an amber note: "No {Hard}-day targets set — using Default targets."
+   - Each day's balance bars and gap-fill use THAT day's targets from plan_days (not the Default target). The weekly average compares against the average of the days' targets.
+   - Slots come from plan_slots, in order — replace the fixed MEAL_SLOTS in the plan editor (keep the constant for anything else that uses it). Items with a null meal_slot show in the first slot. Free-choice slots show a "Free choice" chip; a recipe can still be added and then counts normally. Gap-fill opens on the plan's first dinner-kind slot (else the last slot).
+   - Servings input: step 0.25, min 0.25. On a database refusal show the message and revert.
+   - Status: a chip "Draft" or "Published · v{n}".
+   - Publish button (draft only): call getPublishCheck → if blockers, show them and stop. If needs_review is not empty, confirm: "These recipes are still in Needs review: {list}. Their numbers may change once they're checked. Publish anyway?" Also refuse (UI) while any item's saved version is unavailable (existing check). Then build the snapshot (section 4), call publishPlan, toast its message, reload.
+   - Published: the editor is read-only (no add / remove / move / servings / day type / start date / days; title and notes stay editable). Banner: "Published as version {n} on {date} by {name}. The client's booklet and shopping list are frozen." with a "Start new version" button → startNewPlanVersion → toast message → reload.
+   - Version history (collapsible under the header): "Version 2 · 21 Oct 2026 · {name}" + "1 recipe was in Needs review" when needs_review_recipes isn't empty, each with "Booklet" and "Shopping list" links for that version.
+
+3. Booklet, print page and shopping list
+   - The print page (the route the export renders) and src/routes/_app.plans.$id.shopping.tsx accept ?version=N. With a version: load that meal_plan_versions row and render ONLY from its snapshot — no live reads of recipes, lines, foods, conversions, targets or profiles. Show "Published version N" on screen (not in the PDF).
+   - Export page: a published plan exports the latest published version by default (pass version=N to the print path); a version dropdown lists older ones. A draft exports live data with "DRAFT" on the cover.
+   - Shopping list: a published plan shows its latest published version by default, with a "View current draft" link when a new draft exists.
+
+4. Snapshot — new src/lib/plan-snapshot.ts, built from exactly what the editor/print/shopping already compute (resolveVersion, computeRecipe, buyHint …). It must contain EVERYTHING the print page and the shopping list need to render a version without live data. Required shape (keys the database checks are marked ✓):
+   {
+     "schema": 1,
+     "plan": { "id", "title", "notes", "client_id", "client_name", "start_date", "days" },
+     "slots": [ plan_slots rows ],
+     "days": [ { "day" ✓, "day_type" ✓, "date", "weekday", "targets_day_type",
+                 "targets": { "kcal", "protein", "carb", "fat", "fibre" } | null,
+                 "totals": { "kcal", "protein", "carb", "fat", "fibre" } } ],   ← one per plan_days row
+     "items": [ { "item_id" ✓, "recipe_id" ✓, "profile_id" ✓, "day" ✓, "meal_slot" ✓, "servings_override" ✓,   ← exactly as saved in meal_plan_items (null stays null)
+                  "title", "version_name", "version_status", "recipe_servings", "servings",
+                  "image_url_1", "image_url_2", "time_minutes", "show_macros_export",
+                  "per_serve": { … }, "totals": { … },
+                  "lines": [ { "section", "food_id", "food_name", "quantity", "unit", "grams", "prep_note" } ],
+                  "steps": [ "…" ], "tags": [ "…" ] } ],
+     "week_average": { "totals": { … }, "targets": { … } | null },
+     "shopping": [ { "food_id", "food_name", "aisle", "grams", "buy", "appears_in": [ "…" ] } ]
+   }
+   Add any other field the print page reads. Numbers are the same engine numbers the editor shows. If the database replies "The plan changed while publishing", reload and let the user try again.
+
+5. Client page plans list + new plans
+   - Show status and start date for each plan.
+   - "New plan" for a client asks for a start date (default: next Monday) and days (default 7) — a client plan needs a start date before it can be published.
+   - Plans index: a status chip per plan.
+   - Delete: when the plan has published versions, confirm "This plan has {n} published version(s). Deleting removes them too." and show the database's message if it refuses.
+
+ACCEPTANCE (the owner will run these signed in; do the code-level checks yourself)
+a. Nikki's 7-day plan with start date Mon 26 Oct 2026: headers Mon/Tue = Moderate (2,090 kcal), Wed/Thu = Default (1,800), Fri/Sat = Moderate, Sun = Default — her weekly pattern.
+b. Override Wed to Hard → amber "No Hard-day targets set — using Default targets."; bars still use 1,800. Reset → back to Default.
+c. Nikki's plan shows Breakfast, Snack 1, Lunch, Snack 2, Dinner; a plan with no client shows Breakfast, Lunch, Dinner, Snacks.
+d. Servings 1.25 saves and survives a reload.
+e. Publish with a Needs-review recipe → the warning names it → publish → "Version 1 published."; editor read-only; banner shown.
+f. Change one ingredient quantity in a recipe used by that plan (then change it back): the published booklet and shopping list don't change.
+g. Start new version → editable → publish → "Version 2 published."; history lists both versions with working links.
+h. A client plan with no start date → Publish shows "Set a start date before publishing."
+
+REPORT BACK: files changed, the snapshot builder in full, which routes render from the snapshot, and confirm engine.ts / adjust.ts / energy.ts untouched and no migrations.
