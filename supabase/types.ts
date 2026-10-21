@@ -300,34 +300,49 @@ export type Database = {
       client_clinical_records: {
         Row: {
           client_id: string
+          client_note: string | null
           created_at: string
           file_path: string | null
           id: string
           kind: string
           measurements: Json | null
           recorded_on: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          reviewed_by_name: string | null
+          source: string
           summary: string | null
           uploaded_by: string | null
         }
         Insert: {
           client_id: string
+          client_note?: string | null
           created_at?: string
           file_path?: string | null
           id?: string
           kind: string
           measurements?: Json | null
           recorded_on: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          reviewed_by_name?: string | null
+          source?: string
           summary?: string | null
           uploaded_by?: string | null
         }
         Update: {
           client_id?: string
+          client_note?: string | null
           created_at?: string
           file_path?: string | null
           id?: string
           kind?: string
           measurements?: Json | null
           recorded_on?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          reviewed_by_name?: string | null
+          source?: string
           summary?: string | null
           uploaded_by?: string | null
         }
@@ -344,6 +359,13 @@ export type Database = {
             columns: ["client_id"]
             isOneToOne: false
             referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_clinical_records_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
@@ -3244,6 +3266,15 @@ export type Database = {
         Args: { p_from: string; p_into: string }
         Returns: Json
       }
+      add_my_result: {
+        Args: {
+          p_file_path: string
+          p_kind: string
+          p_note?: string
+          p_recorded_on: string
+        }
+        Returns: Json
+      }
       app_setting: { Args: { p_key: string }; Returns: string }
       can_access_client: { Args: { p_client_id: string }; Returns: boolean }
       can_access_plan: { Args: { p_plan_id: string }; Returns: boolean }
@@ -3292,6 +3323,7 @@ export type Database = {
       }
       client_signup_queue: { Args: never; Returns: Json }
       client_tag_kind: { Args: { p_tag_id: string }; Returns: string }
+      clinical_file_in_use: { Args: { p_path: string }; Returns: boolean }
       confirm_plan: {
         Args: { p_confirm?: boolean; p_notes?: string; p_plan_id: string }
         Returns: Json
@@ -3366,6 +3398,7 @@ export type Database = {
           version_no: number
         }[]
       }
+      my_results: { Args: never; Returns: Json }
       plan_days: {
         Args: { p_plan_id: string }
         Returns: {
@@ -3401,6 +3434,7 @@ export type Database = {
         Args: { items: string[]; max_items?: number }
         Returns: string
       }
+      remove_my_result: { Args: { p_id: string }; Returns: Json }
       reorder_intake: {
         Args: { p_questions: Json; p_sections: Json }
         Returns: Json
