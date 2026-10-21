@@ -29,7 +29,7 @@ Rev 2 replaces the detail of the build roadmap's 2A (plan model), 2B (generator 
 | 1A.4 meal types | **First pass done**: all 374 recipes in the dietitian's review list; classifier is draft 0046 |
 | Swap groups (rev 2 suggestions) | **Drafted**: 45 groups, 382 rows, in the dietitian's review |
 | 1B.1 energy-vs-macro check | Not built. The swap-group draft found **40 foods with suspect values** (e.g. haloumi 1,050 kcal, egg white 197 kcal, high-protein pasta 505 g carbs) |
-| 2A plan model | **P1b live** (0047, applied 22 Oct, gate C): food items, top-ups, item ingredient changes, leftovers, slot states, alternatives behind Swap, release dates, generator runs, confirm with notes, edit log, slot energy shares. Lovable screens next |
+| 2A plan model | **P1b live** (0047, applied 22 Oct, gate C): food items, top-ups, item ingredient changes, leftovers, slot states, alternatives behind Swap, release dates, generator runs, confirm with notes, edit log, slot energy shares. 0049 (22 Oct): a moved meal takes its alternatives and top-ups; `use_plan_alternative` swaps in one step; the client app gets slot states. Lovable part A built and published; fix-up P1b-a.1 next, then part B |
 | 2A.7 rollupPlan | **Built** (`packages/rollup`, 11 tests) |
 | Supabase region (decision 15) | **Confirmed Sydney** (ap-southeast-2) |
 
@@ -72,7 +72,7 @@ Plans (rev 2 replaces 2A/2B):
 | Gate | Work | Depends on |
 |---|---|---|
 | **C** | **Done 22 Oct**: 0047 live with alternatives and release dates; Lovable prompt P1b for the screens | — |
-| **D** | P3 generator in a `planner` Edge Function: pre-check, beam search, exact serve fitting, profile fallback, repair, report with suggestions. Acceptance fixtures agreed first | C; D2–D3 for useful plans |
+| **D** | P3 generator in a `planner` Edge Function: pre-check, beam search, exact serve fitting, profile fallback, repair, report with suggestions. Acceptance fixtures agreed first. **Round serves and quantities on write** (e.g. 2 decimals): publishing compares the app's copy with the database's, and a 17-digit value from SQL division comes back rounded from JavaScript, so every publish of that plan would be refused | C; D2–D3 for useful plans |
 | **E** | P4 edit tools (swap with ranked options, nudge, fix day, dislike, lock, move, leftover, top-up, free choice, regenerate) + Lovable plan board (2B.9) | D |
 | **F** | AI-0 groundwork, then the P5 co-pilot (AI-5): grammar first, Translator, Strategist, Explainer (dietitian and client wording), Refusals, `ai_requests` | D, E; API key; consent 2D.7 for client data |
 

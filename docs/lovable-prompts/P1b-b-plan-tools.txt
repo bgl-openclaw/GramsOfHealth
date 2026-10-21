@@ -4,7 +4,7 @@ Plans P1b, part B: adjusting one meal, cooking extra, confirming a plan, and its
    - On a recipe item in the plan editor, "Adjust this meal" opens the existing AdjustPanel for that item's recipe, starting from its variation's lines (resolveVersion).
    - Saving does NOT create a recipe profile. It writes meal_plan_item_deltas for that item:
      - Diff the variation's lines against the adjusted lines with diffToDeltas.
-     - Insert each change with item_id and source 'adjust'.
+     - Insert each change with item_id and source 'adjust', and with base_section set to the changed line's section (the section an added line goes into).
      - Replace any earlier ones: delete where item_id = this item, then insert.
    - Only lines with a real ingredient line id (line_ref) can be changed or removed. Lines a variation added stay as they are.
    - Quantities are whole-recipe, as in profiles.

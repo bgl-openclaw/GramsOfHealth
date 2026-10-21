@@ -3437,6 +3437,7 @@ export type Database = {
       submit_my_intake: { Args: never; Returns: Json }
       team_compliance: { Args: never; Returns: Json }
       unlink_client_account: { Args: { p_client_id: string }; Returns: Json }
+      use_plan_alternative: { Args: { p_item_id: string }; Returns: Json }
     }
     Enums: {
       food_source: "afcd" | "custom"

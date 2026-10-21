@@ -1,4 +1,4 @@
--- tests/sql/plans_p1b.test.sql — live test of migration 0047 (always rolls back).
+-- tests/sql/plans_p1b.test.sql — live test of migration 0047, updated for 0049 (always rolls back).
 --   pass → "ALL PASS (rolled back)"   fail → "FAIL: ..."
 -- Throwaway client "ZZ P1b Test"; runs as the earliest admin (signed in as an app user), briefly as an intern.
 do $$
@@ -198,7 +198,7 @@ begin
   if not raised then raise exception 'FAIL T10b 0%% share'; end if;
   log := log || ' | T10 slot energy share saved (blank = default), 0 refused';
 
-  -- T11 alternatives: same day and slot, no chains, never on a leftover or top-up; a drifted one blocks publishing
+  -- T11 alternatives: same day and slot, no chains, never on a leftover or top-up; they move with their meal (0049)
   insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot, option_of) values (p, rn, 7, 1, 'Lunch', iR) returning id into iO;
   raised := false; begin insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot, option_of) values (p, rn, 8, 1, 'Dinner', iR);
     exception when raise_exception then raised := true; end;
@@ -208,9 +208,12 @@ begin
   if not raised then raise exception 'FAIL T11b alternative of an alternative'; end if;
   raised := false; begin insert into meal_plan_items (meal_plan_id, recipe_id, position, day, meal_slot, option_of, batch_group, batch_role) values (p, ra, 9, 1, 'Dinner', iC, g, 'eat'); exception when check_violation then raised := true; end;
   if not raised then raise exception 'FAIL T11c leftover as an alternative'; end if;
+  -- since 0049 moving the meal moves its alternative and top-up too, so nothing is left behind
   update meal_plan_items set meal_slot = 'Dinner' where id = iR;
-  if not (plan_publish_check(p)->'blockers' ? 'An alternative must be in the same day and slot as the meal it replaces.') then raise exception 'FAIL T11d'; end if;
+  if (select meal_slot from meal_plan_items where id = iO) <> 'Dinner' or (select meal_slot from meal_plan_items where id = iT) <> 'Dinner'
+     or plan_publish_check(p)->'blockers' ? 'An alternative must be in the same day and slot as the meal it replaces.' then raise exception 'FAIL T11d'; end if;
   update meal_plan_items set meal_slot = 'Lunch' where id = iR;
+  if (select meal_slot from meal_plan_items where id = iO) <> 'Lunch' then raise exception 'FAIL T11d back'; end if;
   snap := jsonb_build_object('items', (select jsonb_agg(jsonb_build_object('item_id', i.id, 'recipe_id', i.recipe_id, 'profile_id', i.profile_id, 'day', i.day,
                 'meal_slot', i.meal_slot, 'servings_override', i.servings_override, 'food_id', i.food_id, 'quantity', i.quantity, 'unit', i.unit,
                 'boosts_item_id', i.boosts_item_id, 'batch_group', i.batch_group, 'batch_role', i.batch_role, 'option_of', i.option_of,
