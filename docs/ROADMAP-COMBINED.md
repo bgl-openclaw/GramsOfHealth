@@ -29,7 +29,7 @@ Rev 2 replaces the detail of the build roadmap's 2A (plan model), 2B (generator 
 | 1A.4 meal types | **First pass done**: all 374 recipes in the dietitian's review list; classifier is draft 0046 |
 | Swap groups (rev 2 suggestions) | **Drafted**: 45 groups, 382 rows, in the dietitian's review |
 | 1B.1 energy-vs-macro check | Not built. The swap-group draft found **40 foods with suspect values** (e.g. haloumi 1,050 kcal, egg white 197 kcal, high-protein pasta 505 g carbs) |
-| 2A plan model | **P1b drafted and dry-run** (0047, not applied): food items, top-ups, item ingredient changes, leftovers, slot states, generator runs, confirm with notes, edit log, slot energy shares |
+| 2A plan model | **P1b live** (0047, applied 22 Oct, gate C): food items, top-ups, item ingredient changes, leftovers, slot states, alternatives behind Swap, release dates, generator runs, confirm with notes, edit log, slot energy shares. Lovable screens next |
 | 2A.7 rollupPlan | **Built** (`packages/rollup`, 11 tests) |
 | Supabase region (decision 15) | **Confirmed Sydney** (ap-southeast-2) |
 
@@ -71,7 +71,7 @@ Plans (rev 2 replaces 2A/2B):
 
 | Gate | Work | Depends on |
 |---|---|---|
-| **C** | P1b plan model live (0047, adding "option of" and release date if agreed) + Lovable prompt for food items, top-ups, ingredient changes, leftovers, slot states and confirm-with-notes | owner go |
+| **C** | **Done 22 Oct**: 0047 live with alternatives and release dates; Lovable prompt P1b for the screens | — |
 | **D** | P3 generator in a `planner` Edge Function: pre-check, beam search, exact serve fitting, profile fallback, repair, report with suggestions. Acceptance fixtures agreed first | C; D2–D3 for useful plans |
 | **E** | P4 edit tools (swap with ranked options, nudge, fix day, dislike, lock, move, leftover, top-up, free choice, regenerate) + Lovable plan board (2B.9) | D |
 | **F** | AI-0 groundwork, then the P5 co-pilot (AI-5): grammar first, Translator, Strategist, Explainer (dietitian and client wording), Refusals, `ai_requests` | D, E; API key; consent 2D.7 for client data |
