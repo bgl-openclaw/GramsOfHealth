@@ -1,4 +1,4 @@
--- 0047_plans_p1b.sql — Plans P1b: the plan model the generator needs (plans roadmap rev 2). DRAFT, NOT APPLIED.
+-- 0047_plans_p1b.sql — Plans P1b: the plan model the generator needs (plans roadmap rev 2). APPLIED live 22 Oct 2026 (gate C).
 -- Builds on 0037 (quarter serves, start date, draft/published, day types, client slots, sealed versions).
 -- Owner decisions (21 Oct 2026): any staff member with access to a plan may confirm and publish it (interns
 -- included). Confirmation is required before publishing once the plan has a planner report.

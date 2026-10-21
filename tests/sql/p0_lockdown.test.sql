@@ -10,7 +10,8 @@ declare
     'swap_suggestions', 'tags', 'unit_conversions', 'afcd_master', 'recipe_signoffs',
     'clients', 'meal_plans', 'meal_plan_items', 'meal_plan_versions', 'change_log',
     'intake_questions', 'intake_sections', 'client_areas', 'client_intake', 'client_intake_log',
-    'credential_types', 'staff_credentials'];
+    'credential_types', 'staff_credentials', 'meal_plan_item_deltas', 'meal_plan_slot_states', 'plan_pool_snapshots',
+    'plan_generations', 'plan_edits'];
   staff_sees text := ''; other_sees text := '';
   nprofiles int;
 begin
@@ -33,7 +34,7 @@ begin
       if r in ('admin', 'dietitian', 'intern') then
         -- staff: full library; client-scoped tables follow their own rules (intern unallocated → none)
         if t in ('clients', 'meal_plans', 'meal_plan_items', 'meal_plan_versions', 'change_log', 'client_intake', 'client_intake_log',
-                 'staff_credentials') then
+                 'staff_credentials', 'meal_plan_item_deltas', 'meal_plan_slot_states', 'plan_generations', 'plan_edits') then
           null;
         elsif n <> base then raise exception 'FAIL % sees %/% rows of %', r, n, base, t;
         end if;

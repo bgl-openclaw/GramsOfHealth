@@ -609,6 +609,7 @@ export type Database = {
       client_meal_slots: {
         Row: {
           client_id: string
+          energy_share: number | null
           free_choice: boolean
           id: string
           name: string
@@ -618,6 +619,7 @@ export type Database = {
         }
         Insert: {
           client_id: string
+          energy_share?: number | null
           free_choice?: boolean
           id?: string
           name: string
@@ -627,6 +629,7 @@ export type Database = {
         }
         Update: {
           client_id?: string
+          energy_share?: number | null
           free_choice?: boolean
           id?: string
           name?: string
@@ -1617,43 +1620,165 @@ export type Database = {
           },
         ]
       }
+      meal_plan_item_deltas: {
+        Row: {
+          base_food_id: string | null
+          base_quantity: number | null
+          base_section: string | null
+          base_unit: string | null
+          created_at: string
+          id: string
+          item_id: string
+          kind: string
+          line_ref: string | null
+          new_food_id: string | null
+          new_quantity: number | null
+          new_unit: string | null
+          position: number
+          source: string
+        }
+        Insert: {
+          base_food_id?: string | null
+          base_quantity?: number | null
+          base_section?: string | null
+          base_unit?: string | null
+          created_at?: string
+          id?: string
+          item_id: string
+          kind: string
+          line_ref?: string | null
+          new_food_id?: string | null
+          new_quantity?: number | null
+          new_unit?: string | null
+          position?: number
+          source?: string
+        }
+        Update: {
+          base_food_id?: string | null
+          base_quantity?: number | null
+          base_section?: string | null
+          base_unit?: string | null
+          created_at?: string
+          id?: string
+          item_id?: string
+          kind?: string
+          line_ref?: string | null
+          new_food_id?: string | null
+          new_quantity?: number | null
+          new_unit?: string | null
+          position?: number
+          source?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_item_deltas_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plan_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_item_deltas_new_food_id_fkey"
+            columns: ["new_food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "meal_plan_item_deltas_new_food_id_fkey"
+            columns: ["new_food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
+        ]
+      }
       meal_plan_items: {
         Row: {
+          batch_group: string | null
+          batch_role: string | null
+          boosts_item_id: string | null
           day: number | null
+          food_id: string | null
           id: string
           meal_plan_id: string
           meal_slot: string | null
+          option_of: string | null
           position: number
           profile_id: string | null
-          recipe_id: string
+          quantity: number | null
+          recipe_id: string | null
           servings_override: number | null
+          unit: string | null
         }
         Insert: {
+          batch_group?: string | null
+          batch_role?: string | null
+          boosts_item_id?: string | null
           day?: number | null
+          food_id?: string | null
           id?: string
           meal_plan_id: string
           meal_slot?: string | null
+          option_of?: string | null
           position: number
           profile_id?: string | null
-          recipe_id: string
+          quantity?: number | null
+          recipe_id?: string | null
           servings_override?: number | null
+          unit?: string | null
         }
         Update: {
+          batch_group?: string | null
+          batch_role?: string | null
+          boosts_item_id?: string | null
           day?: number | null
+          food_id?: string | null
           id?: string
           meal_plan_id?: string
           meal_slot?: string | null
+          option_of?: string | null
           position?: number
           profile_id?: string | null
-          recipe_id?: string
+          quantity?: number | null
+          recipe_id?: string | null
           servings_override?: number | null
+          unit?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "meal_plan_items_boosts_item_id_fkey"
+            columns: ["boosts_item_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plan_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
           {
             foreignKeyName: "meal_plan_items_meal_plan_id_fkey"
             columns: ["meal_plan_id"]
             isOneToOne: false
             referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_option_of_fkey"
+            columns: ["option_of"]
+            isOneToOne: false
+            referencedRelation: "meal_plan_items"
             referencedColumns: ["id"]
           },
           {
@@ -1686,34 +1811,84 @@ export type Database = {
           },
         ]
       }
+      meal_plan_slot_states: {
+        Row: {
+          day: number
+          locked: boolean
+          meal_plan_id: string
+          meal_slot: string
+          reason: string | null
+          state: string | null
+        }
+        Insert: {
+          day: number
+          locked?: boolean
+          meal_plan_id: string
+          meal_slot: string
+          reason?: string | null
+          state?: string | null
+        }
+        Update: {
+          day?: number
+          locked?: boolean
+          meal_plan_id?: string
+          meal_slot?: string
+          reason?: string | null
+          state?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_slot_states_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       meal_plan_versions: {
         Row: {
+          confirmed_at: string | null
+          confirmed_by_name: string | null
+          generation_id: string | null
           id: string
           meal_plan_id: string
           needs_review_recipes: string[]
           published_at: string
           published_by: string | null
           published_by_name: string
+          release_on: string | null
+          review_notes: string | null
           snapshot: Json
           version_no: number
         }
         Insert: {
+          confirmed_at?: string | null
+          confirmed_by_name?: string | null
+          generation_id?: string | null
           id?: string
           meal_plan_id: string
           needs_review_recipes?: string[]
           published_at?: string
           published_by?: string | null
           published_by_name: string
+          release_on?: string | null
+          review_notes?: string | null
           snapshot: Json
           version_no: number
         }
         Update: {
+          confirmed_at?: string | null
+          confirmed_by_name?: string | null
+          generation_id?: string | null
           id?: string
           meal_plan_id?: string
           needs_review_recipes?: string[]
           published_at?: string
           published_by?: string | null
           published_by_name?: string
+          release_on?: string | null
+          review_notes?: string | null
           snapshot?: Json
           version_no?: number
         }
@@ -1737,30 +1912,51 @@ export type Database = {
       meal_plans: {
         Row: {
           client_id: string | null
+          confirmed_at: string | null
+          confirmed_by: string | null
+          confirmed_by_name: string | null
           created_at: string
           days: number | null
+          generation_id: string | null
           id: string
           notes: string | null
+          report: Json | null
+          report_at: string | null
+          review_notes: string | null
           start_date: string | null
           status: string
           title: string
         }
         Insert: {
           client_id?: string | null
+          confirmed_at?: string | null
+          confirmed_by?: string | null
+          confirmed_by_name?: string | null
           created_at?: string
           days?: number | null
+          generation_id?: string | null
           id?: string
           notes?: string | null
+          report?: Json | null
+          report_at?: string | null
+          review_notes?: string | null
           start_date?: string | null
           status?: string
           title: string
         }
         Update: {
           client_id?: string | null
+          confirmed_at?: string | null
+          confirmed_by?: string | null
+          confirmed_by_name?: string | null
           created_at?: string
           days?: number | null
+          generation_id?: string | null
           id?: string
           notes?: string | null
+          report?: Json | null
+          report_at?: string | null
+          review_notes?: string | null
           start_date?: string | null
           status?: string
           title?: string
@@ -1778,6 +1974,20 @@ export type Database = {
             columns: ["client_id"]
             isOneToOne: false
             referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plans_confirmed_by_fkey"
+            columns: ["confirmed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plans_generation_id_fkey"
+            columns: ["generation_id"]
+            isOneToOne: false
+            referencedRelation: "plan_generations"
             referencedColumns: ["id"]
           },
         ]
@@ -1824,6 +2034,130 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      plan_edits: {
+        Row: {
+          actor: string | null
+          actor_name: string | null
+          created_at: string
+          diff: Json
+          id: number
+          meal_plan_id: string
+          operation: string
+        }
+        Insert: {
+          actor?: string | null
+          actor_name?: string | null
+          created_at?: string
+          diff?: Json
+          id?: never
+          meal_plan_id: string
+          operation: string
+        }
+        Update: {
+          actor?: string | null
+          actor_name?: string | null
+          created_at?: string
+          diff?: Json
+          id?: never
+          meal_plan_id?: string
+          operation?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_edits_actor_fkey"
+            columns: ["actor"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "plan_edits_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plan_generations: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          id: string
+          meal_plan_id: string
+          planner_version: string
+          pool_hash: string
+          report: Json
+          seed: number
+          settings: Json
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          meal_plan_id: string
+          planner_version: string
+          pool_hash: string
+          report: Json
+          seed: number
+          settings: Json
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          meal_plan_id?: string
+          planner_version?: string
+          pool_hash?: string
+          report?: Json
+          seed?: number
+          settings?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_generations_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "plan_generations_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "plan_generations_pool_hash_fkey"
+            columns: ["pool_hash"]
+            isOneToOne: false
+            referencedRelation: "plan_pool_snapshots"
+            referencedColumns: ["hash"]
+          },
+        ]
+      }
+      plan_pool_snapshots: {
+        Row: {
+          content: Json
+          created_at: string
+          hash: string
+          recipe_count: number
+        }
+        Insert: {
+          content: Json
+          created_at?: string
+          hash: string
+          recipe_count: number
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          hash?: string
+          recipe_count?: number
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -2958,6 +3292,10 @@ export type Database = {
       }
       client_signup_queue: { Args: never; Returns: Json }
       client_tag_kind: { Args: { p_tag_id: string }; Returns: string }
+      confirm_plan: {
+        Args: { p_confirm?: boolean; p_notes?: string; p_plan_id: string }
+        Returns: Json
+      }
       credential_status: { Args: { p_due: string }; Returns: string }
       current_staff_role: { Args: never; Returns: string }
       delete_user: { Args: { target_id: string }; Returns: undefined }
@@ -3056,7 +3394,7 @@ export type Database = {
         }[]
       }
       publish_meal_plan: {
-        Args: { p_plan_id: string; p_snapshot: Json }
+        Args: { p_plan_id: string; p_release_on?: string; p_snapshot: Json }
         Returns: Json
       }
       reason_list: {
