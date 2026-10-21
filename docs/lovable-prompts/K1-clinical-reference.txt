@@ -1,0 +1,93 @@
+Clinical reference: blood marker ranges, nutrient reference values (NRVs) and plan rules, for the dietitians to decide. The database is live (migration 0051) and loaded from the two workbooks the practice prepared. Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Show database refusals word for word.
+
+OWNER'S DECISION
+- Nothing here is used by the app until a dietitian decides it. These values will change over time.
+- The reference values come from the workbooks and can't be edited in the app. Dietitians record the practice's own decision beside them.
+- Admins and dietitians decide. Interns can read and comment.
+
+DATABASE (live)
+Tables with one row per workbook row:
+- clinical_markers: 49 blood markers (Marker decisions tab)
+- marker_ranges: 311 ranges by age, sex and pregnancy (Ranges by age tab)
+- nutrient_reference_values: 310 NRV rows (NRVs tab)
+- nutrition_targets: 11 (Targets and ranges tab)
+- plan_rules: 9 (Plan rules tab)
+- reference_decisions: 12 open questions D1–D12 (Decisions tab)
+- reference_sources: references with links
+
+Every row has:
+- row_key
+- ref (jsonb: the workbook's reference columns exactly as printed; show them as label: value)
+- review_state:
+  - 'proposed': not decided yet
+  - 'decided'
+  - 'changed': the workbook changed this row after it was decided; it's inactive until decided again. previous_ref holds the old values; show old → new.
+- decided_by_name, decided_at (stamped by the database; show "Decided by … on …")
+- comments
+- retired_at (no longer in the workbook; hide by default)
+
+Parsed fields on top of ref:
+- marker_ranges:
+  - marker_code, population, sex ('any' | 'male' | 'female'), age_from_days, age_to_days, pregnancy, unit, range_type
+  - low, high: numbers read from the printed value; null when it isn't a plain number or a simple limit
+  - low_text, high_text: as printed
+  - is_gap: pink in the workbook, no Australian source
+  - is_comparator: grey, New Zealand comparison only
+- nutrient_reference_values: nutrient_code, nutrient, unit, food_column (null = not stored in the food library yet), life_stage, sex, status ('general' | 'pregnancy' | 'lactation'), ear, rdi, ai, ul, sdt, ul_applies_to
+- nutrition_targets: code, what, unit, life_stage, sex, lower, upper
+- plan_rules: code, rule
+- reference_decisions: code, question
+
+The decision fields the app writes (update by row_key; send them together):
+- clinical_markers: track (boolean), practice_range, refer_when, food_action, retest_window, variation_pct, practice_note
+- marker_ranges: decision ('agree' | 'reject' | 'edit'), practice_low, practice_high, dietitian_note. 'edit' needs practice_low or practice_high (the database refuses otherwise).
+- nutrient_reference_values: decision, check_against ('ear' | 'rdi' | 'ai' | 'sdt'), practice_target, practice_ceiling, use_in_checks (boolean)
+- nutrition_targets: decision, practice_lower, practice_upper, use_in_checks
+- plan_rules: use_rule (boolean), practice_defaults, when_to_offer, practice_note
+- reference_decisions: decision (text), settings (text)
+- every table: comments (any staff), change_reason (the "why", optional; it goes into the change log)
+
+The database refuses:
+- changing ref or any parsed field;
+- inserting or deleting rows;
+- interns changing anything but comments.
+
+It stamps who and when, and logs every change in reference_change_log (at, by_name, table_name, row_key, field, old_value, new_value, reason, kind).
+
+Views:
+- reference_review_progress (tab, total, decided, changed)
+- active_marker_ranges, active_nutrient_reference_values, active_nutrition_targets, active_plan_rules: decided rows only. Nothing uses these yet; the planner and the results reader will.
+
+WHAT TO BUILD
+1. Settings: a "Clinical reference" card (admins, dietitians and interns) opening /settings/reference.
+2. /settings/reference, with tabs in this order:
+   Decisions (start here) · Markers · Ranges · NRVs · Targets · Plan rules · Change log · Sources
+   - Each tab shows a progress line from reference_review_progress: "18 of 311 decided · 2 changed".
+   - Filters: To decide (proposed), Changed, Decided, All. Search by name or code.
+   - Ranges: group by marker. Pink background for is_gap rows; grey for is_comparator, labelled "Comparison only (New Zealand)".
+   - Where low_text or high_text isn't a plain number, show it as printed with "Kept as printed: enter the practice's value if you use this range".
+   - NRVs: group by nutrient. Show "Not stored in the food library yet" when food_column is null.
+3. Deciding a row: inline controls matching each tab's decision fields.
+   - Ranges / NRVs / Targets: Agree · Don't use · Edit (Edit opens the practice value fields). NRVs and Targets also get "Use in plan checks", and NRVs get "Check against".
+   - An optional "Why?" box is sent as change_reason.
+   - After saving, reload the row: the database sets review_state and the stamp.
+   - Interns see the values and a comment box only.
+   - "Changed" rows show the old and new reference values side by side above the controls.
+4. Bulk agree: on Ranges, a marker group header has "Agree to all national harmonised ranges" for that marker's proposed rows with range_type 'Reference interval (national harmonised)'. It updates each row as above, then shows a count.
+5. Change log tab: newest first; who, when, which row (row_key), field, old → new, why. Filter by tab.
+6. Sources tab: short name, full reference, link (opens in a new tab).
+7. "Download" on each tab: a CSV with the reference columns (from ref) and the decision columns, so the research workstream can see the decisions.
+8. Read only for this screen's data: never compute ranges or targets in the app; the database views decide what's active.
+
+TESTS
+- Interns get comment-only controls.
+- Edit without a practice value shows the database's refusal.
+- A 'changed' row renders old → new.
+- Bulk agree only touches proposed national harmonised rows of that marker.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
+- which checks need someone signed in

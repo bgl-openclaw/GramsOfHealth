@@ -1191,6 +1191,101 @@ export type Database = {
           },
         ]
       }
+      clinical_markers: {
+        Row: {
+          category: string
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          food_action: string | null
+          id: string
+          name: string
+          position: number | null
+          practice_note: string | null
+          practice_range: string | null
+          previous_ref: Json | null
+          ref: Json
+          refer_when: string | null
+          retest_window: string | null
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          track: boolean | null
+          unit: string | null
+          updated_at: string
+          variation_pct: string | null
+        }
+        Insert: {
+          category?: string
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          food_action?: string | null
+          id?: string
+          name: string
+          position?: number | null
+          practice_note?: string | null
+          practice_range?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          refer_when?: string | null
+          retest_window?: string | null
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          track?: boolean | null
+          unit?: string | null
+          updated_at?: string
+          variation_pct?: string | null
+        }
+        Update: {
+          category?: string
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          food_action?: string | null
+          id?: string
+          name?: string
+          position?: number | null
+          practice_note?: string | null
+          practice_range?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          refer_when?: string | null
+          retest_window?: string | null
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          track?: boolean | null
+          unit?: string | null
+          updated_at?: string
+          variation_pct?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_markers_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       credential_types: {
         Row: {
           active: boolean
@@ -1613,6 +1708,129 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "clients"
             referencedColumns: ["id"]
+          },
+        ]
+      }
+      marker_ranges: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          change_reason: string | null
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          dietitian_note: string | null
+          high: number | null
+          high_text: string | null
+          id: string
+          is_comparator: boolean
+          is_gap: boolean
+          low: number | null
+          low_text: string | null
+          marker_code: string
+          population: string
+          position: number | null
+          practice_high: number | null
+          practice_low: number | null
+          pregnancy: boolean
+          previous_ref: Json | null
+          range_type: string
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          sex: string
+          unit: string | null
+          updated_at: string
+        }
+        Insert: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          change_reason?: string | null
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          dietitian_note?: string | null
+          high?: number | null
+          high_text?: string | null
+          id?: string
+          is_comparator?: boolean
+          is_gap?: boolean
+          low?: number | null
+          low_text?: string | null
+          marker_code: string
+          population: string
+          position?: number | null
+          practice_high?: number | null
+          practice_low?: number | null
+          pregnancy?: boolean
+          previous_ref?: Json | null
+          range_type: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          sex: string
+          unit?: string | null
+          updated_at?: string
+        }
+        Update: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          change_reason?: string | null
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          dietitian_note?: string | null
+          high?: number | null
+          high_text?: string | null
+          id?: string
+          is_comparator?: boolean
+          is_gap?: boolean
+          low?: number | null
+          low_text?: string | null
+          marker_code?: string
+          population?: string
+          position?: number | null
+          practice_high?: number | null
+          practice_low?: number | null
+          pregnancy?: boolean
+          previous_ref?: Json | null
+          range_type?: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          sex?: string
+          unit?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marker_ranges_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marker_ranges_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
           },
         ]
       }
@@ -2057,6 +2275,223 @@ export type Database = {
           },
         ]
       }
+      nutrient_reference_values: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          ai: number | null
+          change_reason: string | null
+          check_against: string | null
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          ear: number | null
+          food_column: string | null
+          id: string
+          life_stage: string
+          nutrient: string
+          nutrient_code: string
+          position: number | null
+          practice_ceiling: number | null
+          practice_target: number | null
+          previous_ref: Json | null
+          rdi: number | null
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          sdt: number | null
+          sex: string
+          status: string
+          ul: number | null
+          ul_applies_to: string | null
+          unit: string | null
+          updated_at: string
+          use_in_checks: boolean | null
+        }
+        Insert: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          food_column?: string | null
+          id?: string
+          life_stage: string
+          nutrient: string
+          nutrient_code: string
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          sdt?: number | null
+          sex: string
+          status: string
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string
+          use_in_checks?: boolean | null
+        }
+        Update: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          food_column?: string | null
+          id?: string
+          life_stage?: string
+          nutrient?: string
+          nutrient_code?: string
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          sdt?: number | null
+          sex?: string
+          status?: string
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string
+          use_in_checks?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrient_reference_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nutrition_targets: {
+        Row: {
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          id: string
+          life_stage: string | null
+          lower: number | null
+          position: number | null
+          practice_lower: number | null
+          practice_upper: number | null
+          previous_ref: Json | null
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          sex: string
+          unit: string | null
+          updated_at: string
+          upper: number | null
+          use_in_checks: boolean | null
+          what: string
+        }
+        Insert: {
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          sex: string
+          unit?: string | null
+          updated_at?: string
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what: string
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          sex?: string
+          unit?: string | null
+          updated_at?: string
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrition_targets_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       plan_edits: {
         Row: {
           actor: string | null
@@ -2180,6 +2615,86 @@ export type Database = {
           recipe_count?: number
         }
         Relationships: []
+      }
+      plan_rules: {
+        Row: {
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string
+          position: number | null
+          practice_defaults: string | null
+          practice_note: string | null
+          previous_ref: Json | null
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          rule: string
+          updated_at: string
+          use_rule: boolean | null
+          when_to_offer: string | null
+        }
+        Insert: {
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          rule: string
+          updated_at?: string
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          rule?: string
+          updated_at?: string
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_rules_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
@@ -2599,6 +3114,199 @@ export type Database = {
           },
         ]
       }
+      reference_change_log: {
+        Row: {
+          at: string
+          by_id: string | null
+          by_name: string | null
+          field: string
+          id: number
+          kind: string
+          new_value: string | null
+          old_value: string | null
+          reason: string | null
+          row_key: string
+          table_name: string
+        }
+        Insert: {
+          at?: string
+          by_id?: string | null
+          by_name?: string | null
+          field: string
+          id?: never
+          kind?: string
+          new_value?: string | null
+          old_value?: string | null
+          reason?: string | null
+          row_key: string
+          table_name: string
+        }
+        Update: {
+          at?: string
+          by_id?: string | null
+          by_name?: string | null
+          field?: string
+          id?: never
+          kind?: string
+          new_value?: string | null
+          old_value?: string | null
+          reason?: string | null
+          row_key?: string
+          table_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reference_change_log_by_id_fkey"
+            columns: ["by_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reference_decisions: {
+        Row: {
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          id: string
+          position: number | null
+          previous_ref: Json | null
+          question: string
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          settings: string | null
+          updated_at: string
+          workbook: string
+        }
+        Insert: {
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          position?: number | null
+          previous_ref?: Json | null
+          question: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          settings?: string | null
+          updated_at?: string
+          workbook: string
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          position?: number | null
+          previous_ref?: Json | null
+          question?: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          settings?: string | null
+          updated_at?: string
+          workbook?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reference_decisions_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reference_imports: {
+        Row: {
+          file_name: string | null
+          id: number
+          imported_at: string
+          summary: Json
+          workbook: string
+        }
+        Insert: {
+          file_name?: string | null
+          id?: never
+          imported_at?: string
+          summary?: Json
+          workbook: string
+        }
+        Update: {
+          file_name?: string | null
+          id?: never
+          imported_at?: string
+          summary?: Json
+          workbook?: string
+        }
+        Relationships: []
+      }
+      reference_sources: {
+        Row: {
+          content_hash: string
+          created_at: string
+          full_reference: string | null
+          id: string
+          link: string | null
+          position: number | null
+          retired_at: string | null
+          row_key: string
+          short_name: string
+          updated_at: string
+          workbook: string
+        }
+        Insert: {
+          content_hash: string
+          created_at?: string
+          full_reference?: string | null
+          id?: string
+          link?: string | null
+          position?: number | null
+          retired_at?: string | null
+          row_key: string
+          short_name: string
+          updated_at?: string
+          workbook: string
+        }
+        Update: {
+          content_hash?: string
+          created_at?: string
+          full_reference?: string | null
+          id?: string
+          link?: string | null
+          position?: number | null
+          retired_at?: string | null
+          row_key?: string
+          short_name?: string
+          updated_at?: string
+          workbook?: string
+        }
+        Relationships: []
+      }
       saved_views: {
         Row: {
           created_at: string
@@ -2870,6 +3578,370 @@ export type Database = {
       }
     }
     Views: {
+      active_marker_ranges: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          change_reason: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          dietitian_note: string | null
+          effective_high: number | null
+          effective_low: number | null
+          high: number | null
+          high_text: string | null
+          id: string | null
+          is_comparator: boolean | null
+          is_gap: boolean | null
+          low: number | null
+          low_text: string | null
+          marker_code: string | null
+          population: string | null
+          position: number | null
+          practice_high: number | null
+          practice_low: number | null
+          pregnancy: boolean | null
+          previous_ref: Json | null
+          range_type: string | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          sex: string | null
+          unit: string | null
+          updated_at: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marker_ranges_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marker_ranges_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      active_nutrient_reference_values: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          ai: number | null
+          change_reason: string | null
+          check_against: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          ear: number | null
+          effective_ceiling: number | null
+          effective_target: number | null
+          food_column: string | null
+          id: string | null
+          life_stage: string | null
+          nutrient: string | null
+          nutrient_code: string | null
+          position: number | null
+          practice_ceiling: number | null
+          practice_target: number | null
+          previous_ref: Json | null
+          rdi: number | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          sdt: number | null
+          sex: string | null
+          status: string | null
+          ul: number | null
+          ul_applies_to: string | null
+          unit: string | null
+          updated_at: string | null
+          use_in_checks: boolean | null
+        }
+        Insert: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          effective_ceiling?: never
+          effective_target?: never
+          food_column?: string | null
+          id?: string | null
+          life_stage?: string | null
+          nutrient?: string | null
+          nutrient_code?: string | null
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sdt?: number | null
+          sex?: string | null
+          status?: string | null
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          use_in_checks?: boolean | null
+        }
+        Update: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          effective_ceiling?: never
+          effective_target?: never
+          food_column?: string | null
+          id?: string | null
+          life_stage?: string | null
+          nutrient?: string | null
+          nutrient_code?: string | null
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sdt?: number | null
+          sex?: string | null
+          status?: string | null
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          use_in_checks?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrient_reference_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      active_nutrition_targets: {
+        Row: {
+          change_reason: string | null
+          code: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          effective_lower: number | null
+          effective_upper: number | null
+          id: string | null
+          life_stage: string | null
+          lower: number | null
+          position: number | null
+          practice_lower: number | null
+          practice_upper: number | null
+          previous_ref: Json | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          sex: string | null
+          unit: string | null
+          updated_at: string | null
+          upper: number | null
+          use_in_checks: boolean | null
+          what: string | null
+        }
+        Insert: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          effective_lower?: never
+          effective_upper?: never
+          id?: string | null
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sex?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what?: string | null
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          effective_lower?: never
+          effective_upper?: never
+          id?: string | null
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sex?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrition_targets_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      active_plan_rules: {
+        Row: {
+          change_reason: string | null
+          code: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string | null
+          position: number | null
+          practice_defaults: string | null
+          practice_note: string | null
+          previous_ref: Json | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          rule: string | null
+          updated_at: string | null
+          use_rule: boolean | null
+          when_to_offer: string | null
+        }
+        Insert: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          rule?: string | null
+          updated_at?: string | null
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          rule?: string | null
+          updated_at?: string | null
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_rules_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       changes_to_review: {
         Row: {
           action: string | null
@@ -3246,6 +4318,15 @@ export type Database = {
         }
         Relationships: []
       }
+      reference_review_progress: {
+        Row: {
+          changed: number | null
+          decided: number | null
+          tab: string | null
+          total: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       _intake_normalise: {
@@ -3433,6 +4514,18 @@ export type Database = {
       reason_list: {
         Args: { items: string[]; max_items?: number }
         Returns: string
+      }
+      reference_log_change: {
+        Args: {
+          p_by_name: string
+          p_field: string
+          p_new: string
+          p_old: string
+          p_reason: string
+          p_row_key: string
+          p_table: string
+        }
+        Returns: undefined
       }
       remove_my_result: { Args: { p_id: string }; Returns: Json }
       reorder_intake: {
