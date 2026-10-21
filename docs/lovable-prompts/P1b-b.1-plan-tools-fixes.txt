@@ -1,0 +1,38 @@
+Plans P1b part B: fixes from the code review. No database changes. Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Show database messages word for word.
+
+1. History names the person.
+   - plan_edits stores the name in actor_name (and the id in actor). The database fills both.
+   - editAuthor in plan-history.ts checks five other column names but not actor_name, so every entry says "Someone". Read actor_name.
+   - created_at is the time. Drop the other guesses.
+2. "Adjust this meal" opens on the meal as it is now.
+   - Today it starts from the variation's lines. Reopening an adjusted meal shows the original recipe, and saving drops the earlier changes.
+   - Start the AdjustPanel from the meal's current lines instead: resolvePlanItem(item, …).lines, which is the variation plus this meal's saved changes.
+   - When saving, keep diffing against the variation's lines, as now.
+     - Lines added earlier for this meal have ids starting "profile_add_" and come out as 'add' again, which is correct.
+     - Lines with real ingredient ids give quantity, swap or remove.
+   - Lines the variation itself added can't be changed for one meal. Show a short note in the window: "Lines added by the variation stay as they are." If the dietitian changed one, list it in the success message as not saved, rather than dropping it silently.
+3. Leftovers are the same food as the meal they come from.
+   - Hide "Adjust this meal" on leftover items (batch_role 'eat').
+   - Saving an adjustment on a cook meal also saves the same changes on each of its leftovers: the same rows, with each leftover's item_id.
+   - Reset on a cook meal resets its leftovers too.
+   - "Cook extra for…" on a meal that's already adjusted copies its changes onto the new leftover.
+4. Same-day leftovers come after the cook meal.
+   - Leftovers on the cook's day must be in a later meal, using the order of the client's meal slots. Cooked at lunch, eaten at dinner is fine; cooked at dinner, eaten at lunch the same day isn't.
+   - Apply this in the Cook extra window and when dragging a leftover, with the same message as today.
+5. When the last leftover of a cook-up is removed, clear the cook meal's batch_group and batch_role so it's a normal meal again. "Add alternative" then comes back.
+6. Undo confirmation: the third input of confirm_plan is p_confirm. Remove the p_confirmed fallback.
+7. Serves history: record one change_serves entry when the serves box loses focus (or 1 second after typing stops), with the value before editing started and the final value. Today every keystroke logs an entry.
+8. Saving an adjustment deletes the old changes, then inserts the new ones. If the insert fails, put the previous rows back, so a failed save doesn't quietly wipe the meal's earlier changes. Show the database message.
+
+TESTS
+- editAuthor returns actor_name.
+- Reopening an adjusted meal starts from its adjusted lines, and saving with no edits keeps the same changes.
+- An adjustment on a cook meal is copied to its leftovers.
+- A same-day leftover in an earlier slot is refused.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
+- which checks need someone signed in
