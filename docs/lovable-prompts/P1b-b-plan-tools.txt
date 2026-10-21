@@ -1,4 +1,4 @@
-Plans P1b, part B: adjusting one meal, cooking extra, confirming a plan, and its history. Do this after part A is built and checked. The database is live (migration 0047). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Show database refusals word for word.
+Plans P1b, part B: adjusting one meal, cooking extra, confirming a plan, and its history. Part A and its fixes are built and checked. The database is live (migrations 0047 and 0049). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Show database refusals word for word.
 
 1. Adjust one meal (item ingredient changes).
    - On a recipe item in the plan editor, "Adjust this meal" opens the existing AdjustPanel for that item's recipe, starting from its variation's lines (resolveVersion).
@@ -12,6 +12,7 @@ Plans P1b, part B: adjusting one meal, cooking extra, confirming a plan, and its
    - The recipe and its variations are never changed.
 2. Cook extra (leftovers).
    - On a recipe item, "Cook extra for…" picks a later day and slot (and serves, default 1).
+   - Don't offer it on a meal that has alternatives, or on a food item. The database won't swap a leftovers meal, so its alternatives would be stuck.
    - It makes the original item batch_role 'cook' and inserts a new item with:
      - the same recipe and variation
      - the chosen day and slot
