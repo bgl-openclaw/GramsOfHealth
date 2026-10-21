@@ -9,7 +9,7 @@ declare
     'recipe_profile_deltas', 'recipe_profiles', 'recipe_tag_overrides', 'recipe_tags', 'recipes',
     'swap_suggestions', 'tags', 'unit_conversions', 'afcd_master', 'recipe_signoffs',
     'clients', 'meal_plans', 'meal_plan_items', 'meal_plan_versions', 'change_log',
-    'intake_questions', 'client_areas', 'client_intake', 'client_intake_log'];
+    'intake_questions', 'intake_sections', 'client_areas', 'client_intake', 'client_intake_log'];
   staff_sees text := ''; other_sees text := '';
   nprofiles int;
 begin

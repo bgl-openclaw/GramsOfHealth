@@ -490,6 +490,7 @@ export type Database = {
         Row: {
           answers: Json
           client_id: string
+          question_keys: string[] | null
           reviewed_at: string | null
           reviewed_by: string | null
           status: string
@@ -500,6 +501,7 @@ export type Database = {
         Insert: {
           answers?: Json
           client_id: string
+          question_keys?: string[] | null
           reviewed_at?: string | null
           reviewed_by?: string | null
           status?: string
@@ -510,6 +512,7 @@ export type Database = {
         Update: {
           answers?: Json
           client_id?: string
+          question_keys?: string[] | null
           reviewed_at?: string | null
           reviewed_by?: string | null
           status?: string
@@ -1429,6 +1432,7 @@ export type Database = {
           key: string
           kind: string
           label: string
+          locked: boolean
           options: Json | null
           position: number
           required: boolean
@@ -1441,6 +1445,7 @@ export type Database = {
           key: string
           kind: string
           label: string
+          locked?: boolean
           options?: Json | null
           position?: number
           required?: boolean
@@ -1453,10 +1458,43 @@ export type Database = {
           key?: string
           kind?: string
           label?: string
+          locked?: boolean
           options?: Json | null
           position?: number
           required?: boolean
           section?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "intake_questions_section_fkey"
+            columns: ["section"]
+            isOneToOne: false
+            referencedRelation: "intake_sections"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
+      intake_sections: {
+        Row: {
+          active: boolean
+          builtins: string[]
+          key: string
+          position: number
+          title: string
+        }
+        Insert: {
+          active?: boolean
+          builtins?: string[]
+          key: string
+          position?: number
+          title: string
+        }
+        Update: {
+          active?: boolean
+          builtins?: string[]
+          key?: string
+          position?: number
+          title?: string
         }
         Relationships: []
       }
@@ -2785,6 +2823,21 @@ export type Database = {
           valid: boolean
         }[]
       }
+      intake_client_questions: {
+        Args: { p_client_id: string }
+        Returns: {
+          help: string
+          key: string
+          kind: string
+          label: string
+          locked: boolean
+          options: Json
+          q_pos: number
+          required: boolean
+          s_pos: number
+          section: string
+        }[]
+      }
       intake_missing: { Args: { p_client_id: string }; Returns: Json }
       invite_client_to_app: {
         Args: { p_client_id: string; p_email?: string }
@@ -2858,6 +2911,10 @@ export type Database = {
         Args: { items: string[]; max_items?: number }
         Returns: string
       }
+      reorder_intake: {
+        Args: { p_questions: Json; p_sections: Json }
+        Returns: Json
+      }
       revoke_recipe_signoff: {
         Args: { p_note?: string; p_recipe_id: string }
         Returns: Json
@@ -2876,6 +2933,10 @@ export type Database = {
         Returns: undefined
       }
       save_my_intake: { Args: { p_changes: Json }; Returns: Json }
+      set_client_intake_questions: {
+        Args: { p_client_id: string; p_question_keys: string[] }
+        Returns: Json
+      }
       set_client_intake_status: {
         Args: { p_client_id: string; p_status: string }
         Returns: Json

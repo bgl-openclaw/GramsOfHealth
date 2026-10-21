@@ -118,16 +118,17 @@ begin
     raise exception 'FAIL T4 %', res; end if;
   log := log || ' | T4 client removes own items only; dietitian''s stay (named in the message, shown as not theirs)';
 
-  -- T5 review locks the form (adding a must-avoid still allowed); interns: no review, no health answers
+  -- T5 review locks the form (adding a must-avoid still allowed); interns: no review, but (since 0044) every answer
   perform set_config('request.jwt.claims', json_build_object('sub', adm, 'role', 'authenticated')::text, true);
   perform set_config('request.jwt.claim.sub', adm::text, true);
   update profiles set role = 'intern' where id = adm;
   if (set_client_intake_status(c1, 'reviewed')->>'ok')::boolean then raise exception 'FAIL T5a intern reviewed'; end if;
   insert into client_staff_access (client_id, profile_id) values (c1, adm);
   d := client_intake_for_staff(c1);
-  if (d->>'ok') is distinct from 'true' or exists (select 1 from jsonb_array_elements(d->'questions') q where (q->>'clinical')::boolean)
-     or (d->>'hidden_clinical_count')::int <> 1 or jsonb_array_length(d->'changes') <> 0 then
-    raise exception 'FAIL T5b intern sees health answers %', d; end if;
+  if (d->>'ok') is distinct from 'true'
+     or not exists (select 1 from jsonb_array_elements(d->'questions') q where q->>'key' = 'medications' and jsonb_typeof(q->'answer') = 'string')
+     or (d->>'hidden_clinical_count')::int <> 0 or jsonb_array_length(d->'changes') = 0 then
+    raise exception 'FAIL T5b intern view (0044: interns see every answer) %', d; end if;
   update profiles set role = 'admin' where id = adm;
   res := set_client_intake_status(c1, 'reviewed');
   if not (res->>'ok')::boolean then raise exception 'FAIL T5c %', res; end if;
@@ -150,7 +151,7 @@ begin
     raise exception 'FAIL T5g staff view %', d; end if;
   res := set_client_intake_status(c1, 'open');
   if (select status from client_intake where client_id = c1) <> 'open' then raise exception 'FAIL T5h reopen'; end if;
-  log := log || ' | T5 reviewed → form locked except adding a must-avoid; intern can''t review and sees no health answers; dietitian sees answers + client changes since review; reopen works';
+  log := log || ' | T5 reviewed → form locked except adding a must-avoid; intern can''t review but sees every answer (0044); dietitian sees answers + client changes since review; reopen works';
 
   -- T6 dietitian first: create (name + email), invite, client signs up through the link → their info is there
   insert into clients (full_name, email, date_of_birth, height_cm) values ('ZZtest Dana Diet', 'zz.dana@example.com', '1985-02-02', 170) returning id into c2;
@@ -295,7 +296,7 @@ begin
   execute 'set local role authenticated';
   begin perform _merge_client_records(c3, c2); raise exception 'FAIL T11e client ran internal merge';
   exception when insufficient_privilege then null; end;
-  if (select count(*) from client_intake_log) + (select count(*) from intake_questions) + (select count(*) from client_areas) <> 0 then
+  if (select count(*) from client_intake_log) + (select count(*) from intake_questions) + (select count(*) from intake_sections) + (select count(*) from client_areas) <> 0 then
     raise exception 'FAIL T11f client reads new tables'; end if;
   execute 'reset role';
   log := log || ' | T11 coming-soon areas (hidden ones left out); staff refused by client functions; anon/clients can''t run internal helpers or read the new tables';
