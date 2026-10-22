@@ -22,15 +22,13 @@ AGREE = [{"v": "agree", "label": "Agree"}, {"v": "change", "label": "Use differe
 RULES = [
     ("energy", "Energy, each day", "Within ±10% of the day-type target is fine; within ±5% is shown as on target.",
      "Mifflin-St Jeor itself is only within about 10% of measured resting energy, so tighter plan precision buys nothing real."),
-    ("protein", "Protein, each day", "Never under target; up to +15% over is fine.", "Protein is checked every day; the asymmetry is policy."),
+    ("protein", "Protein, each day (the client's own target)", "Never under target; up to +15% over is fine.",
+     "Protein is checked every day; the asymmetry is policy. The NRV protein floor is a separate question (D11 under Clinical reference)."),
     ("carb_fat", "Carbohydrate and fat, each day", "Within ±10% of target.", ""),
-    ("fibre", "Fibre", "Judged on the weekly average against the client's fibre target (shown daily, not judged daily).",
-     "Adequate intake 25 g women, 30 g men (NHMRC); 28 g and 38 g shown as a stretch."),
-    ("amdr", "Energy split over the week", "Protein 15–25%, fat 20–35%, carbohydrate 45–65% of energy (NHMRC AMDR).",
-     "Athletes or deliberate high-protein plans can sit above 25% protein as a recorded choice."),
+    ("fibre", "Fibre (the client's own target)", "Judged on the weekly average against the client's own fibre target (shown daily, not judged daily).",
+     "The population fibre values (adequate intake and the 28 g / 38 g targets) are decided once, under Settings → Clinical reference."),
     ("meal_protein", "Protein at main meals", "Flag (not fail) a lunch or dinner under 0.3 g/kg, or under 20 g for clients 65+.",
      "AND/DC/ACSM 0.3 g/kg per eating occasion; 20–25 g per main meal in older-adult trials."),
-    ("treats", "Treats", "About one discretionary serve a day (600 kJ).", "Nutrition Australia convention. Uses the Treat tick in part 2."),
     ("serves", "Serving sizes", "Quarter-serve steps from 0.5 to 2 serves; anything outside 0.75–1.5 is flagged for a look.", ""),
     ("repeats", "Repeats", "No main on consecutive days unless it's a planned leftover; no recipe more than 3 times in 7 days. Each client's own settings override this.", ""),
     ("shares", "Slot energy shares", "Breakfast 25%, lunch 30%, dinner 30%, snacks 15% (split between snack slots). Each client's slots can override.",
@@ -51,7 +49,7 @@ def read(p):
 parts, groups_meta = [], []
 
 # ---- part 1: rules
-parts.append({"id": "rules", "title": "Planner rules", "intro": "How close a plan has to be before the planner calls it on target. No professional body publishes these for written client plans, so they are practice policy. Agree, or say what you'd use.",
+parts.append({"id": "rules", "title": "Planner rules", "intro": "How close a plan has to be to the client's own targets before the planner calls it on target. No professional body publishes these for written client plans, so they are practice policy. Agree, or say what you'd use. Population values (nutrient reference values, the protein/fat/carbohydrate energy split, saturated fat, sodium and the treat allowance) are not on this page: they're decided once, in the app under Settings → Clinical reference.",
               "sections": [{"id": "rules", "kind": "decide", "title": "Tolerances and defaults", "intro": "", "open": True,
                             "items": [{"key": "rule:" + k, "title": t, "suggestion": s, "why": w, "options": AGREE} for k, t, s, w in RULES]}]})
 
@@ -85,7 +83,7 @@ msecs = [{"id": "mt_" + k, "kind": "mealtypes", "title": f"{t}", "intro": "", "i
 msecs.append({"id": "mt_variants", "kind": "skim", "title": "Variants (follow their base recipe)",
               "intro": "These are versions of another recipe (a different protein, or FODMAP-friendly). They take the base recipe's meal types. Flag one only if it should differ, and say how.",
               "cols": ["Variant", "Base recipe", "Meal types"], "items": sorted(variants, key=lambda i: i["cells"][0].lower())})
-parts.append({"id": "meal_types", "title": "Meal types", "intro": "Which slots each recipe can fill. Every recipe is pre-filled. Change what's wrong, then press \"I've checked this list\" at the foot of each list. Treat marks discretionary foods (about one serve a day).",
+parts.append({"id": "meal_types", "title": "Meal types", "intro": "Which slots each recipe can fill. Every recipe is pre-filled. Change what's wrong, then press \"I've checked this list\" at the foot of each list. Treat marks discretionary foods; how many a plan allows is decided under Settings → Clinical reference (D12).",
               "owner": OWNER, "sections": msecs})
 
 # ---- part 3: swap groups
