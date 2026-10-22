@@ -3,18 +3,24 @@
  * Runs in the browser; nothing leaves the device. The app supplies the PDF's text items (pdf.js getTextContent)
  * and the marker list (clinical_markers); this returns one row per value, ready for client_result_values.
  *
+ * Layouts handled:
+ *   • "Ferritin  45  ug/L  (30-500)"            value first, then unit and range (flag anywhere)
+ *   • "Ferritin(30-400) ug/L  60  92"           range and unit first, then one value per collection date
+ *     (cumulative reports: the "Date Collected" row above gives each column's date; the column for this report's
+ *      collection — matched by request number when the report prints one — is the value read)
+ *
  * A value is "sure" only when every rule holds (docs/RESULTS-READER-PLAN.md):
  *   1 read from the PDF's own text (photos/scans: always "check")
  *   2 the test name matches a marker name or a name labs print for it
  *   3 the unit is the marker's unit, or one with a known exact conversion
- *   4 the number is clean (no limit sign, no stray characters, one value on the line)
+ *   4 the number is clean (no limit sign) and is the only candidate, or its date column is known
  *   5 it is inside the marker's plausibility limits
- *   6 the lab's range and H/L flag agree with the number
+ *   6 if the lab printed a range or flag, they agree with the number
  *   7 one collection date was found on the report
  * Anything else is "check", with the reasons listed.
  */
 
-export const READER_VERSION = "0.1.0";
+export const READER_VERSION = "0.2.0";
 
 export type TextItem = { str: string; x: number; y: number; page: number; height?: number };
 export type Line = { page: number; y: number; text: string; cells: { text: string; x: number }[] };
@@ -25,8 +31,8 @@ export type ReaderMarker = {
   unit: string | null;
   /** Names and abbreviations labs print (the marker's own name is always included). */
   names?: string[];
-  /** Printed units with the factor to the marker's unit (value × factor). The marker's own unit is factor 1. */
-  units?: { unit: string; factor: number }[];
+  /** Printed units with the conversion to the marker's unit: value × factor + offset. "" = no unit printed is fine. */
+  units?: { unit: string; factor: number; offset?: number }[];
   plausibleLow?: number | null;
   plausibleHigh?: number | null;
 };
@@ -111,12 +117,20 @@ export function normName(s: string): string {
   return s.toLowerCase().replace(/[µμ]/g, "u").replace(/[^a-z0-9%]+/g, " ").replace(/\s+/g, " ").trim();
 }
 export function normUnit(s: string): string {
-  return s.toLowerCase().replace(/[µμ]/g, "u").replace(/\s+/g, "").replace(/\^|\*/g, "").replace(/²/g, "2").replace(/iu\//g, "u/")
-    .replace(/^mu\//, "mu/");
+  return s.toLowerCase().replace(/[µμ]/g, "u").replace(/\s+/g, "").replace(/\^|\*/g, "").replace(/²/g, "2").replace(/iu\//g, "u/");
 }
 
-const KNOWN_UNITS = ["mmol/l", "umol/l", "nmol/l", "pmol/l", "g/l", "mg/l", "ug/l", "ng/ml", "u/l", "mu/l", "%", "fl", "pg",
-  "x109/l", "x1012/l", "l/l", "ml/min/1.73m2", "mg/mmol", "mmol/mol", "ratio", "s", "mm/h", "g/dl", "mg/dl", "kg/m2"];
+/** Tidies a printed line so names, ranges, limits and units come apart cleanly. */
+export function cleanLine(s: string): string {
+  return s
+    .replace(/([A-Za-z.'])\(/g, "$1 (")              // "Ferritin(30-400)" → "Ferritin (30-400)"
+    .replace(/([([])\s+/g, "$1").replace(/\s+([)\]])/g, "$1")
+    .replace(/(<=|>=|<|>|≤|≥)\s+(?=\d)/g, "$1")      // "< 3.0" → "<3.0", "(< 31)" → "(<31)"
+    .replace(/(\d)\s*(?:-|–)\s*(\d)/g, "$1-$2")      // "30 - 500" → "30-500"
+    .replace(/(\d)\s+to\s+(\d)/gi, "$1-$2")          // "3.0 to 5.5" → "3.0-5.5"
+    .replace(/(\S)\s+\/(?=[A-Za-z])/g, "$1/")        // "x10^12 /L" → "x10^12/L"
+    .replace(/\s+/g, " ").trim();
+}
 
 // ---------- dates ----------
 
@@ -130,34 +144,42 @@ function isoDate(d: number, m: number, y: number): string | null {
   return `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 }
 
-/** Dates in a string (Australian order: day first). */
+/** Dates in a string, in the order they appear (Australian order: day first). */
 export function datesIn(s: string): string[] {
-  const out: string[] = [];
+  const found: { at: number; iso: string }[] = [];
   // the same "/" or "-" both times, so a range like "11.5-16.5" isn't read as a date
   for (const m of s.matchAll(/(?<![\d.])(\d{1,2})([/-])(\d{1,2})\2(\d{2,4})(?![\d.])/g)) {
     const v = isoDate(+m[1], +m[3], +m[4]);
-    if (v) out.push(v);
+    if (v) found.push({ at: m.index ?? 0, iso: v });
   }
   for (const m of s.matchAll(/\b(\d{1,2})[\s-]([A-Za-z]{3,4})[a-z]*[\s-](\d{2,4})\b/g)) {
     const mo = MONTHS[m[2].toLowerCase()];
     const v = mo ? isoDate(+m[1], mo, +m[3]) : null;
-    if (v) out.push(v);
+    if (v) found.push({ at: m.index ?? 0, iso: v });
   }
   for (const m of s.matchAll(/\b(\d{4})-(\d{2})-(\d{2})\b/g)) {
     const v = isoDate(+m[3], +m[2], +m[1]);
-    if (v) out.push(v);
+    if (v) found.push({ at: m.index ?? 0, iso: v });
   }
-  return out;
+  return found.sort((a, b) => a.at - b.at).map((f) => f.iso);
 }
 
 const DATE_LABEL = /\b(date\s+collected|collected|collection(\s+date)?|specimen\s+(collected|date)|date\s+of\s+(collection|sample)|sample\s+date)\b/i;
 const OTHER_LABEL = /\b(reported|received|printed|requested|registered|dob|date\s+of\s+birth)\b/i;
+const COLUMN_HEADER = /^(date\s+collected|collected|collection\s+date)\b(?!\s*:)/i;
 
-/** The collection date: the dates right after a "collected" label (up to the next other label).
- *  More than one distinct date → ambiguous (e.g. a report with several collections side by side). */
+/** A cumulative report's column row: "Date Collected  4 Jun 25  16 Oct 26" (no colon, no other label, 2+ dates). */
+function isColumnHeader(text: string): boolean {
+  return COLUMN_HEADER.test(text) && !OTHER_LABEL.test(text) && datesIn(text).length >= 2;
+}
+
+/** The report's collection date: the date right after a "Collected" label (up to the next other label).
+ *  Cumulative column rows ("Date Collected  4 Jun 25  16 Oct 26") are not counted here.
+ *  More than one distinct date → ambiguous. */
 export function findCollectionDate(lines: Line[]): { date: string | null; note: string | null } {
   const found = new Set<string>();
   for (const l of lines) {
+    if (isColumnHeader(l.text)) continue;
     const m = DATE_LABEL.exec(l.text);
     if (!m) continue;
     let rest = l.text.slice(m.index + m[0].length);
@@ -172,63 +194,66 @@ export function findCollectionDate(lines: Line[]): { date: string | null; note: 
 
 // ---------- one line ----------
 
-const SKIP = /\b(collected|reported|received|requested|dob|date of birth|medicare|phone|fax|lab(oratory)? (no|number|ref)|page \d|ref(erence)? (range|interval)|units?\b.*\brange|patient|address|doctor|copy to|provider)\b/i;
-const NUM = /^(<=|>=|<|>|≤|≥)?\s*(\d+(?:\.\d+)?)$/;
+const SKIP = /\b(reported|received|requested|dob|date of birth|medicare|phone|fax|lab(oratory)? (no|number|ref)|page \d|ref(erence)? (range|interval)|units?\b.*\brange|patient|address|doctor|copy to|provider|request number|time collected|specimen type)\b/i;
+const NUM = /^(<=|>=|<|>|≤|≥)?(\d+(?:\.\d+)?)$/;
+const KNOWN_UNITS = ["mmol/l", "umol/l", "nmol/l", "pmol/l", "g/l", "mg/l", "ug/l", "ng/ml", "u/l", "mu/l", "%", "fl", "pg",
+  "x109/l", "x1012/l", "l/l", "mg/mmol", "mmol/mol", "ratio", "s", "mm/h", "g/dl", "mg/dl", "kg/m2"];
+function isUnitToken(t: string): boolean {
+  return /[/%\d^]/.test(t) || KNOWN_UNITS.includes(normUnit(t));
+}
 const FLAG = /^(HH|LL|H|L|\*)$/;
 
+type Range = { low: number | null; high: number | null; text: string };
 type Parsed = {
-  valueText: string; value: number | null; comparator: string | null; flag: ReadValue["lab_flag"];
-  unit: string | null; rangeText: string | null; low: number | null; high: number | null; extraNumbers: number;
+  values: { text: string; value: number; comparator: string | null }[];
+  flag: ReadValue["lab_flag"];
+  unit: string | null;
+  range: Range | null;
 };
 
-function parseRange(s: string): { low: number | null; high: number | null; text: string } | null {
+function parseRange(s: string): Range | null {
   const t = s.trim().replace(/^[([]|[)\]]$/g, "").trim();
-  let m = t.match(/^(\d+(?:\.\d+)?)\s*(?:-|–|to)\s*(\d+(?:\.\d+)?)$/);
+  let m = t.match(/^(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)$/);
   if (m) return { low: +m[1], high: +m[2], text: s.trim() };
-  m = t.match(/^(<=|<|≤)\s*(\d+(?:\.\d+)?)$/);
+  m = t.match(/^(<=|<|≤)(\d+(?:\.\d+)?)$/);
   if (m) return { low: null, high: +m[2], text: s.trim() };
-  m = t.match(/^(>=|>|≥)\s*(\d+(?:\.\d+)?)$/);
+  m = t.match(/^(>=|>|≥)(\d+(?:\.\d+)?)$/);
   if (m) return { low: +m[2], high: null, text: s.trim() };
   return null;
 }
 
-/** Splits the part of a line after the test name into value, flag, unit and range. */
+/** Splits the part of a line after the test name into values, flag, unit and range, in any order. */
 export function parseResultTail(tail: string): Parsed | null {
-  const tokens = tail.replace(/([([])\s+/g, "$1").replace(/\s+([)\]])/g, "$1").replace(/(\d)\s*(-|–)\s*(\d)/g, "$1-$3")
-    .split(/\s+/).filter(Boolean);
-  let i = 0;
-  const p: Parsed = { valueText: "", value: null, comparator: null, flag: null, unit: null, rangeText: null, low: null, high: null, extraNumbers: 0 };
-  // value (a comparator may be a separate token: "< 5")
-  if (/^(<=|>=|<|>|≤|≥)$/.test(tokens[0] ?? "") && NUM.test(tokens[1] ?? "")) { tokens.splice(0, 2, tokens[0] + tokens[1]); }
-  let first = tokens[i] ?? "";
-  let flagStuck: string | null = null;
-  const stuck = first.match(/^((?:<=|>=|<|>|≤|≥)?\d+(?:\.\d+)?)(HH|LL|H|L|\*)$/);
-  if (stuck) { first = stuck[1]; flagStuck = stuck[2]; }
-  const m = first.match(NUM);
-  if (!m) return null;
-  p.valueText = first;
-  p.comparator = m[1] ?? null;
-  p.value = +m[2];
-  i++;
-  if (flagStuck) p.flag = flagStuck as Parsed["flag"];
-  for (; i < tokens.length; i++) {
-    const t = tokens[i];
+  const tokens = cleanLine(tail).split(" ").filter(Boolean);
+  const p: Parsed = { values: [], flag: null, unit: null, range: null };
+  let words = 0;
+  for (const raw of tokens) {
+    let t = raw;
+    const stuckFlag = t.match(/^((?:<=|>=|<|>|≤|≥)?\d+(?:\.\d+)?)(HH|LL|H|L|\*)$/);
+    if (stuckFlag) { t = stuckFlag[1]; if (!p.flag) p.flag = stuckFlag[2] as Parsed["flag"]; }
+    const stuckPct = t.match(/^(\d+(?:\.\d+)?)%$/);
+    if (stuckPct) { t = stuckPct[1]; if (!p.unit) p.unit = "%"; }
     if (!p.flag && FLAG.test(t)) { p.flag = t as Parsed["flag"]; continue; }
-    if (!p.rangeText) {
+    if (/^[([]/.test(t) || /\d-\d/.test(t)) {
       const r = parseRange(t);
-      if (r && (/^[([]/.test(t) || /\d(-|–)\d/.test(t) || /^(<=|>=|<|>|≤|≥)/.test(t))) {
-        Object.assign(p, { rangeText: r.text, low: r.low, high: r.high });
-        continue;
-      }
-      if (/^[([]?\d/.test(t) && /^to$/i.test(tokens[i + 1] ?? "")) {
-        const r3 = parseRange(tokens.slice(i, i + 3).join(" "));
-        if (r3) { Object.assign(p, { rangeText: r3.text, low: r3.low, high: r3.high }); i += 2; continue; }
-      }
+      if (r && !p.range) { p.range = r; continue; }
+      if (r) continue;
     }
-    if (!p.unit && !NUM.test(t) && /[a-zA-Zµμ%/]/.test(t)) { p.unit = t; continue; }
-    if (NUM.test(t) && !p.rangeText) p.extraNumbers++;
+    const m = t.match(NUM);
+    if (m) { p.values.push({ text: t, value: +m[2], comparator: m[1] ?? null }); continue; }
+    if (!p.unit && /[a-zA-Zµμ%/]/.test(t)) { p.unit = t; continue; }
+    if (/[A-Za-z]/.test(t)) words++;
   }
-  return p;
+  if (words >= 2) return null;                       // a sentence, not a result line
+  // "2 mg/L <5": a trailing limit after a plain value is the range, not a second value
+  if (!p.range && p.values.length >= 2) {
+    const last = p.values[p.values.length - 1];
+    if (last.comparator && p.values.slice(0, -1).every((v) => !v.comparator)) {
+      p.range = parseRange(last.text);
+      p.values.pop();
+    }
+  }
+  return p.values.length ? p : null;
 }
 
 type NameIndex = { key: string; marker: ReaderMarker }[];
@@ -245,12 +270,10 @@ function nameIndex(markers: ReaderMarker[]): NameIndex {
 }
 
 /** The marker named at the start of the line, and the rest of the line. */
-function matchName(line: Line, idx: NameIndex): { marker: ReaderMarker | null; printed: string; tail: string } | null {
-  const text = line.text;
+function matchName(text: string, idx: NameIndex): { marker: ReaderMarker | null; printed: string; tail: string } | null {
   const n = normName(text);
   for (const { key, marker } of idx) {
     if (n === key || n.startsWith(key + " ")) {
-      // walk the printed text to the same number of normalised words
       const words = key.split(" ").length;
       const parts = text.split(/\s+/);
       let taken = 0, cut = 0;
@@ -262,57 +285,100 @@ function matchName(line: Line, idx: NameIndex): { marker: ReaderMarker | null; p
       return { marker, printed: parts.slice(0, cut).join(" "), tail: parts.slice(cut).join(" ") };
     }
   }
-  // an unknown test: words up to the first number
-  const m = text.match(/^([A-Za-z][A-Za-z0-9 ,.'()/+-]*?)\s+((?:<=|>=|<|>|≤|≥)?\s*\d[\s\S]*)$/);
+  // an unknown test: words up to the first range or number
+  const m = text.match(/^([A-Za-z][A-Za-z0-9 ,.'/+-]*?)\s+([([]|(?:<=|>=|<|>|≤|≥)?\d)([\s\S]*)$/);
   if (!m) return null;
-  return { marker: null, printed: m[1].trim(), tail: m[2] };
+  return { marker: null, printed: m[1].trim(), tail: m[2] + m[3] };
 }
 
-function unitFactor(marker: ReaderMarker, printed: string | null): number | null {
-  if (!printed) return null;
-  const u = normUnit(printed);
-  if (marker.unit && normUnit(marker.unit) === u) return 1;
-  for (const c of marker.units ?? []) if (normUnit(c.unit) === u) return c.factor;
+function conversion(marker: ReaderMarker, printed: string | null): { factor: number; offset: number } | null {
+  const own = marker.unit ? [marker.unit, marker.unit.split(" (")[0]] : [];
+  const u = normUnit(printed ?? "");
+  if (printed && own.some((o) => normUnit(o) === u)) return { factor: 1, offset: 0 };
+  for (const c of marker.units ?? []) if (normUnit(c.unit) === u) return { factor: c.factor, offset: c.offset ?? 0 };
   return null;
 }
+
+type Columns = { dates: string[]; ids: string[] | null };
 
 /** Reads every result line. `method` is "ocr" when the text came from a photo or scan. */
 export function readReport(lines: Line[], markers: ReaderMarker[], method: "text" | "ocr" = "text"): ReadResult {
   const idx = nameIndex(markers);
   const { date, note } = findCollectionDate(lines);
-  const values: ReadValue[] = [];
-  let unmatched = 0;
+  const values: (ReadValue & { native: boolean })[] = [];
+  let cols: Columns | null = null;
+  let pendingIds: string[] | null = null;
+  let requestId: string | null = null;
   for (const line of lines) {
-    if (SKIP.test(line.text) || datesIn(line.text).length) continue;
-    const hit = matchName(line, idx);
+    const text = cleanLine(line.text);
+    // section boundaries and cumulative headers
+    if (/^name of test\b/i.test(text)) { cols = null; pendingIds = null; continue; }
+    const ref = text.match(/\blab(?:oratory)?\s*ref(?:erence)?\s*:?\s*\d+-(\d{5,})-/i);
+    if (ref) { requestId = ref[1]; cols = null; pendingIds = null; continue; }
+    if (/^request\s+number\b/i.test(text)) { pendingIds = text.match(/\b\d{5,}\b/g); continue; }
+    if (isColumnHeader(text)) {
+      const dates = datesIn(text);
+      cols = { dates, ids: pendingIds && pendingIds.length === dates.length ? pendingIds : null };
+      continue;
+    }
+    if (SKIP.test(text) || DATE_LABEL.test(text) || datesIn(text).length) continue;
+    const hit = matchName(text, idx);
     if (!hit) continue;
-    const p = parseResultTail(hit.tail);
+    const tail = hit.tail.split(" ").filter(Boolean);
+    while (tail.length && /^[A-Za-z][A-Za-z'.-]*$/.test(tail[0]) && !FLAG.test(tail[0]) && !isUnitToken(tail[0])
+           && !(hit.marker && conversion(hit.marker, tail[0]))) {
+      hit.printed += " " + tail.shift();
+    }
+    const p = parseResultTail(tail.join(" "));
     if (!p) continue;
-    const looksLikeResult = !!p.rangeText || (!!p.unit && KNOWN_UNITS.includes(normUnit(p.unit)));
-    if (!hit.marker && !looksLikeResult) continue;
+    if (!hit.marker && !p.range) continue;            // unknown tests count only when a range is printed
     const reasons: string[] = [];
     if (method !== "text") reasons.push("read from a photo or scan");
-    if (!hit.marker) { reasons.push("test name not on the marker list"); unmatched++; }
-    const factor = hit.marker ? unitFactor(hit.marker, p.unit) : null;
-    if (hit.marker) {
-      if (!p.unit) reasons.push("no unit printed");
-      else if (factor == null) reasons.push(`unit ${p.unit} isn't the marker's unit (${hit.marker.unit ?? "none set"})`);
+    if (!hit.marker) reasons.push("test name not on the marker list");
+
+    // which value, and its date
+    let pick = p.values[0];
+    let measured: string | null = date;
+    if (cols && cols.dates.length >= 2) {
+      if (p.values.length === cols.dates.length) {
+        let i = cols.ids && requestId ? cols.ids.indexOf(requestId) : -1;
+        if (i < 0) {
+          const same = cols.dates.map((d, j) => (d === date ? j : -1)).filter((j) => j >= 0);
+          if (same.length === 1) i = same[0];
+          else if (same.length > 1) { i = same[same.length - 1]; reasons.push("two collections on the report's date; took the last column"); }
+          else { i = cols.dates.length - 1; reasons.push("this report's date isn't among the columns; took the last column"); }
+        }
+        pick = p.values[i];
+        measured = cols.dates[i];
+      } else {
+        pick = p.values[p.values.length - 1];
+        reasons.push("couldn't line the values up with their dates; took the last one");
+      }
+    } else if (p.values.length > 1) {
+      reasons.push("more than one number on the line (several dates side by side?)");
     }
-    if (p.comparator) reasons.push(`the result is a limit (${p.valueText}), not an exact number`);
-    if (p.extraNumbers > 0) reasons.push("more than one number on the line (several dates side by side?)");
-    const value = p.value;
-    if (hit.marker && value != null) {
+
+    const conv = hit.marker ? conversion(hit.marker, p.unit) ?? (!p.unit ? conversion(hit.marker, "") : null) : null;
+    if (hit.marker && !conv) {
+      if (!p.unit) reasons.push("no unit printed");
+      else reasons.push(`unit ${p.unit} isn't the marker's unit (${hit.marker.unit ?? "none set"})`);
+    }
+    if (pick.comparator) reasons.push(`the result is a limit (${pick.text}), not an exact number`);
+    const value = pick.value;
+    const inMarkerUnit = conv ? Math.round((value * conv.factor + conv.offset) * 1e6) / 1e6 : null;
+    if (hit.marker) {
       const lo = hit.marker.plausibleLow, hi = hit.marker.plausibleHigh;
-      const inMarkerUnit = value * (factor ?? 1);   // limits are in the marker's own unit
       if (lo == null && hi == null) reasons.push("no plausibility limits set for this marker yet");
-      else if (factor == null) reasons.push("can't check plausibility without a known unit");
+      else if (inMarkerUnit == null) reasons.push("can't check plausibility without a known unit");
       else if ((lo != null && inMarkerUnit < lo) || (hi != null && inMarkerUnit > hi)) reasons.push("outside the plausibility limits");
     }
-    if (!p.rangeText) reasons.push("no reference range printed");
-    else if (value != null) {
-      const above = p.high != null && value > p.high, below = p.low != null && value < p.low;
+    if (p.range && !pick.comparator) {
+      const above = p.range.high != null && value > p.range.high, below = p.range.low != null && value < p.range.low;
       const flagHigh = p.flag === "H" || p.flag === "HH", flagLow = p.flag === "L" || p.flag === "LL";
-      if (above !== flagHigh || below !== flagLow || (p.flag === "*" && !above && !below)) reasons.push("the lab's flag and range don't agree with the number");
+      // a flag must match the side the value is on; no flag is fine (cumulative reports rarely print one per column)
+      if ((flagHigh && !above) || (flagLow && !below) || (p.flag === "*" && !above && !below)) {
+        reasons.push("the lab's flag and range don't agree with the number");
+      }
     }
     if (!date) reasons.push(note ?? "no collection date found");
     else if (note) reasons.push(note);
@@ -320,22 +386,30 @@ export function readReport(lines: Line[], markers: ReaderMarker[], method: "text
       marker_code: hit.marker?.code ?? null,
       name_as_printed: hit.printed.slice(0, 200),
       value,
-      value_text: p.valueText.slice(0, 60),
+      value_text: pick.text.slice(0, 60),
       unit_as_printed: p.unit?.slice(0, 40) ?? null,
-      value_std: value != null && factor != null && !p.comparator ? Math.round(value * factor * 1e6) / 1e6 : null,
-      lab_low: p.low,
-      lab_high: p.high,
-      lab_range_text: p.rangeText?.slice(0, 80) ?? null,
+      value_std: pick.comparator ? null : inMarkerUnit,
+      lab_low: p.range?.low ?? null,
+      lab_high: p.range?.high ?? null,
+      lab_range_text: p.range?.text.slice(0, 80) ?? null,
       lab_flag: p.flag,
-      measured_on: date,
+      measured_on: measured,
       page: line.page,
       line_text: line.text.slice(0, 500),
       method,
       certainty: reasons.length ? "check" : "sure",
       check_reasons: reasons,
+      native: !!conv && conv.factor === 1 && conv.offset === 0 && !!p.unit,
     });
   }
+  // The same test printed twice for one date (e.g. HbA1c in % and in mmol/mol): keep the one in the marker's own unit.
+  const kept = values.filter((v) => v.native || !v.marker_code
+    || !values.some((o) => o !== v && o.native && o.marker_code === v.marker_code && o.measured_on === v.measured_on));
+  const out: ReadValue[] = kept.map(({ native: _n, ...v }) => v);
   const pages = new Set(lines.map((l) => l.page)).size;
-  const sure = values.filter((v) => v.certainty === "sure").length;
-  return { reader_version: READER_VERSION, method, measured_on: date, date_note: note, values, pages, sure, please_check: values.length - sure, unmatched };
+  const sure = out.filter((v) => v.certainty === "sure").length;
+  return {
+    reader_version: READER_VERSION, method, measured_on: date, date_note: note, values: out, pages, sure,
+    please_check: out.length - sure, unmatched: out.filter((v) => !v.marker_code).length,
+  };
 }

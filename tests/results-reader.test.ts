@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
   findCollectionDate, itemsFromPdfJs, linesFromText, parseResultTail, readReport, toLines, type ReaderMarker,
@@ -73,7 +74,7 @@ describe("results reader", () => {
   });
 
   it("several collection dates make every value 'check'", () => {
-    const c = readReport(linesFromText("Collected  12/10/2026  03/04/2026\nFerritin  45  ug/L  (30-500)"), markers);
+    const c = readReport(linesFromText("Collected: 12/10/2026, 03/04/2026\nFerritin  45  ug/L  (30-500)"), markers);
     expect(c.date_note).toMatch(/more than one collection date/);
     expect(c.values[0].certainty).toBe("check");
   });
@@ -83,8 +84,10 @@ describe("results reader", () => {
     expect(c.values[0].check_reasons).toContain("no collection date found");
   });
 
-  it("a flag that disagrees with the range → check", () => {
-    const c = readReport(linesFromText("Collected: 12/10/2026\nFerritin  18  ug/L  (30-500)"), markers);
+  it("a flag that disagrees with the range → check (no flag at all is fine)", () => {
+    const ok = readReport(linesFromText("Collected: 12/10/2026\nFerritin  18  ug/L  (30-500)"), markers);
+    expect(ok.values[0].certainty).toBe("sure");
+    const c = readReport(linesFromText("Collected: 12/10/2026\nFerritin  18  H  ug/L  (30-500)"), markers);
     expect(c.values[0].check_reasons).toContain("the lab's flag and range don't agree with the number");
   });
 
@@ -110,9 +113,12 @@ describe("results reader", () => {
   });
 
   it("parses common result layouts", () => {
-    expect(parseResultTail("18L ug/L (30-500)")).toMatchObject({ value: 18, flag: "L", unit: "ug/L", low: 30, high: 500 });
-    expect(parseResultTail("< 5 mg/L (<5)")).toMatchObject({ valueText: "<5", comparator: "<", high: 5 });
-    expect(parseResultTail("4.1 mmol/L 3.0 to 5.5")).toMatchObject({ value: 4.1, low: 3, high: 5.5 });
+    expect(parseResultTail("18L ug/L (30-500)")).toMatchObject({ values: [{ value: 18 }], flag: "L", unit: "ug/L", range: { low: 30, high: 500 } });
+    expect(parseResultTail("< 5 mg/L (<5)")).toMatchObject({ values: [{ text: "<5", comparator: "<" }], range: { high: 5 } });
+    expect(parseResultTail("4.1 mmol/L 3.0 to 5.5")).toMatchObject({ values: [{ value: 4.1 }], range: { low: 3, high: 5.5 } });
+    expect(parseResultTail("2 mg/L <5")).toMatchObject({ values: [{ value: 2 }], range: { high: 5 } });
+    expect(parseResultTail("(3.9-5.2) mmol/L 5.9 6.7")).toMatchObject({ values: [{ value: 5.9 }, { value: 6.7 }], range: { low: 3.9, high: 5.2 }, unit: "mmol/L" });
+    expect(parseResultTail("values between 60 and 89 mL/min should be interpreted")).toBeNull();
   });
 
   it("finds a collection date written with a month name", () => {
@@ -130,5 +136,63 @@ describe("results reader", () => {
     const lines = toLines(items);
     expect(lines.map((l) => l.text)).toEqual(["Collected: 12/10/2026", "Ferritin 45 ug/L (30-500)"]);
     expect(readReport(lines, markers).values[0]).toMatchObject({ marker_code: "ferritin", value: 45, certainty: "sure" });
+  });
+});
+
+// Laverty's cumulative layout (anonymised fixture): name (range) unit, then one value per collection date.
+describe("results reader: Laverty cumulative report", () => {
+  const lim = { plausibleLow: 0.01, plausibleHigh: 100000 };
+  const lv: ReaderMarker[] = [
+    { code: "total_cholesterol", name: "Total cholesterol", unit: "mmol/L", names: ["Chol"], ...lim },
+    { code: "ldl_c", name: "LDL cholesterol", unit: "mmol/L", names: ["LDL"], ...lim },
+    { code: "hdl_c", name: "HDL cholesterol", unit: "mmol/L", names: ["HDL"], ...lim },
+    { code: "vitamin_d", name: "25-OH vitamin D", unit: "nmol/L", names: ["Serum 25(OH) Vitamin D"], ...lim },
+    { code: "hba1c", name: "HbA1c", unit: "mmol/mol (%)", names: ["HbA1c- IFCC", "HbA1c- NGSP"], ...lim },
+    { code: "crp", name: "CRP", unit: "mg/L", ...lim },
+    { code: "tsh", name: "TSH", unit: "mU/L", units: [{ unit: "mIU/L", factor: 1 }], ...lim },
+    { code: "ferritin", name: "Ferritin", unit: "µg/L", ...lim },
+    { code: "sodium", name: "Sodium", unit: "mmol/L", names: ["Na"], ...lim },
+    { code: "egfr", name: "eGFR", unit: "mL/min/1.73m²", units: [{ unit: "mL/min/1.73sqM", factor: 1 }], ...lim },
+    { code: "haematocrit", name: "Haematocrit", unit: "L/L", names: ["Hct"], units: [{ unit: "", factor: 1 }], ...lim },
+  ];
+  const r = readReport(linesFromText(readFileSync(new URL("./fixtures/laverty-cumulative.txt", import.meta.url), "utf8")), lv);
+  const get = (code: string) => r.values.filter((v) => v.marker_code === code);
+
+  it("reads this report's column, not the oldest one", () => {
+    expect(r.measured_on).toBe("2026-10-16");
+    expect(get("total_cholesterol")).toMatchObject([{ value: 6.7, measured_on: "2026-10-16", lab_low: 3.9, lab_high: 5.2, certainty: "sure" }]);
+    expect(get("ldl_c")[0]).toMatchObject({ value: 4, certainty: "sure" });
+    expect(get("tsh")[0]).toMatchObject({ value: 2, measured_on: "2026-10-16", certainty: "sure" });
+    expect(get("ferritin")[0]).toMatchObject({ value: 92, name_as_printed: "Ferritin", lab_low: 30, lab_high: 400, certainty: "sure" });
+  });
+
+  it("two collections on the same day: the request number picks the column", () => {
+    expect(get("sodium")[0]).toMatchObject({ value: 142, certainty: "sure", check_reasons: [] });
+    expect(get("egfr")).toMatchObject([{ value: 88, certainty: "sure" }]);   // the eGFR sentence below the table is ignored
+  });
+
+  it("limits stay 'check'; a unitless test can be sure when the marker allows it", () => {
+    expect(get("crp")[0]).toMatchObject({ value_text: "<3.0", certainty: "check" });
+    expect(get("haematocrit")[0]).toMatchObject({ value: 0.47, certainty: "sure" });
+  });
+
+  it("HbA1c printed in % and mmol/mol: keeps the marker's own unit", () => {
+    expect(get("hba1c")).toMatchObject([{ value: 32, unit_as_printed: "mmol/mol", name_as_printed: "HbA1c- IFCC" }]);
+  });
+
+  it("a value without a printed range can be sure (vitamin D)", () => {
+    expect(get("vitamin_d")[0]).toMatchObject({ value: 54, certainty: "sure" });
+  });
+
+  it("ignores the lab's decision-limit and target text", () => {
+    const names = r.values.map((v) => v.name_as_printed);
+    for (const n of ["Sufficiency", "Mild deficiency", "Marked deficiency", "Toxicity", "Haemolysis", "Fasting status"]) expect(names).not.toContain(n);
+    expect(r.values.every((v) => v.measured_on === "2026-10-16")).toBe(true);
+  });
+
+  it("tests not on the marker list come through as 'check' when the lab printed a range", () => {
+    const unknown = r.values.filter((v) => !v.marker_code).map((v) => v.name_as_printed);
+    expect(unknown).toEqual(expect.arrayContaining(["Trig", "Iron", "K", "Creat", "Alk Phos", "Hb", "Plat"]));
+    expect(r.values.filter((v) => !v.marker_code).every((v) => v.certainty === "check")).toBe(true);
   });
 });

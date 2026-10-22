@@ -37,3 +37,43 @@ Make dexa_ranges_dietitian_decides.xlsx with exactly the same tabs and column na
 - Range types: use the same vocabulary, and add any DEXA ones you need, e.g. "Classification (WHO T-score)" or "Manufacturer reference database (not Australian)". Flag non-Australian reference data the same way the blood workbook does.
 - Same food action / refer to GP / retest columns per marker.
 ```
+
+## Addendum: names and units seen on a Laverty Pathology report (22 Oct 2026)
+
+From an anonymised Laverty cumulative report. Add these to "Names printed on reports" and "Units printed on reports" on Marker decisions. Paste into the research window together with the block above.
+
+```text
+D. NAMES AND UNITS LAVERTY PRINTS (from a real report layout, details removed)
+Names printed → marker:
+- Chol → total_cholesterol
+- Trig → triglycerides
+- HDL → hdl_c
+- LDL → ldl_c
+- Non-HDL → non_hdl_c
+- Serum 25(OH) Vitamin D → vitamin_d
+- HbA1c- IFCC (mmol/mol) and HbA1c- NGSP (%) → hba1c
+- CRP → crp
+- TSH → tsh
+- Iron → serum_iron
+- T'ferrin → transferrin
+- T. Sat. → transferrin_sat
+- Ferritin → ferritin
+- Na → sodium; K → potassium; Cl → chloride; HCO3 → bicarbonate
+- Urea → urea; Creat → creatinine
+- eGFR → egfr
+- Bili → bilirubin; AST, ALT, GGT → ast, alt, ggt; Alk Phos → alp
+- Protein → total_protein; Albumin → albumin
+- Ca → calcium; Corr Ca → calcium_adjusted
+- PO4 → phosphate; Mg → magnesium
+- Hb → haemoglobin; Hct → haematocrit; MCV → mcv
+
+Units as printed:
+- umol/L = µmol/L; ug/L = µg/L; mIU/L = mU/L; mL/min/1.73sqM = mL/min/1.73m²
+- Hct is printed with no unit (L/L implied): allow "no unit printed" for haematocrit.
+- HbA1c % (NGSP) → mmol/mol (IFCC): IFCC = (NGSP − 2.15) × 10.929, i.e. factor 10.929, offset −23.5.
+- Transferrin is printed in umol/L, but the marker unit is g/L. Give the exact conversion, or add umol/L as the marker's unit.
+
+Fix in the marker list:
+- calcium and calcium_adjusted are both named "Calcium". Name the second "Calcium (corrected)" so they can be told apart.
+- Decide whether to track the tests the report prints that aren't on the list: anion gap, globulin, RCC, MCH, MCHC, RDW, WBC and differential (neutrophils, lymphocytes, monocytes, eosinophils, basophils), platelets, cholesterol/HDL ratio.
+```
