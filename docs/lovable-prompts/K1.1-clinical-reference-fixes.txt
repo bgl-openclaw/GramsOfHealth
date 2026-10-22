@@ -1,0 +1,27 @@
+Clinical reference: two fixes from the code review. No database changes. Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts.
+
+1. The screen never shows (blocking).
+   - src/routes/_app.settings.reference.tsx is a CHILD of the Settings route (routeTree: getParentRoute → AppSettingsRoute).
+   - _app.settings.tsx renders the Settings page and has no <Outlet/>.
+   - So /settings/reference shows the Settings page again and ClinicalReference never renders.
+   - Fix: make it a sibling page with the same URL.
+     - Rename the file to src/routes/_app.settings_.reference.tsx.
+     - Use createFileRoute("/_app/settings_/reference"); the trailing underscore stops the nesting and the URL stays /settings/reference.
+     - Let the route tree regenerate.
+   - Keep the Settings card linking to /settings/reference.
+   - Add a "← Settings" link at the top of the Clinical reference screen.
+2. Show rows in the workbook's order, not alphabetically by row_key.
+   - fetchPaged orders by row_key, which jumbles the age bands within a marker ("Adult" before "Child 0 to <1 wk").
+   - Every reference table has a position column (the workbook row order). Order by position (ascending), then row_key.
+   - Sources: order by workbook, then position.
+   - Within the Ranges and NRVs groups, keep that order.
+
+TESTS
+- The route tree has /_app/settings_/reference with _app as its parent, not settings.
+- fetchTable orders by position.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
