@@ -20,6 +20,29 @@ Many kinds of document: GP and specialist letters, pathology, DEXA, transcripts,
 - **First readers:** GP referral letters, specialist letters, transcripts.
 - **Medicare numbers:** store them (admins and dietitians only), validated with the card's check digit. Invalid numbers are flagged, not saved.
 
+## Status (22 Oct 2026, later)
+
+The owner said "go", asking for logic per letter type **and an AI pass**. They chose **Anthropic's API directly** for it. This supersedes the "no AI" answer for letters and transcripts; the bloods reader stays rules-only.
+
+**Built:**
+- **Database (0053, live):**
+  - documents (new kinds, text, AI summary);
+  - client address;
+  - referrals, care team, medications, conditions, allergies;
+  - Medicare (check digit);
+  - client_document_facts, where every quote must be in the document and AI items are never sure;
+  - apply_document_facts: fill empty fields only, conflicts shown;
+  - decide_document_fact.
+- **Rules reader** `packages/document-reader` (13 tests):
+  - sorting, including "this letter also contains pathology";
+  - GP and specialist letters, discharge summaries: letterhead, patient details, referral and pathway, medications (run-on lines split), allergies, history with dates, signature and provider number, measurements, plan notes.
+- **AI pass:** Edge Function `document-ai` (deployed). Claude suggests items with exact quotes; only quotes found in the document are kept; they're saved as "Please check". It needs the `ANTHROPIC_API_KEY` secret, set by the owner.
+- **Lovable prompts:**
+  - `D1-document-intake.txt`: sections, documents area, reading, review, AI pass.
+  - `D2-start-from-documents.txt`: new client from documents, highlight and add, transcripts.
+
+**Before going live with real clients:** the privacy policy and client consent must cover AI processing by Anthropic (overseas). Check Anthropic's commercial data terms and retention options.
+
 ## How it would work
 
 1. **Upload.** On a new client ("Start from documents") or in an existing client file, drop in any number of files: PDF, photos, Word (.docx), text transcripts.

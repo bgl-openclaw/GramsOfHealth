@@ -182,6 +182,77 @@ export type Database = {
           },
         ]
       }
+      client_allergies: {
+        Row: {
+          as_printed: string | null
+          client_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          kind: string
+          noted_on: string | null
+          reaction: string | null
+          record_id: string | null
+          substance: string | null
+          updated_at: string
+        }
+        Insert: {
+          as_printed?: string | null
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          kind: string
+          noted_on?: string | null
+          reaction?: string | null
+          record_id?: string | null
+          substance?: string | null
+          updated_at?: string
+        }
+        Update: {
+          as_printed?: string | null
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          kind?: string
+          noted_on?: string | null
+          reaction?: string | null
+          record_id?: string | null
+          substance?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_allergies_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_allergies_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_allergies_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_allergies_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_areas: {
         Row: {
           blurb: string
@@ -208,6 +279,95 @@ export type Database = {
           title?: string
         }
         Relationships: []
+      }
+      client_care_team: {
+        Row: {
+          address: string | null
+          client_id: string
+          created_at: string
+          created_by: string | null
+          email: string | null
+          fax: string | null
+          id: string
+          is_primary: boolean
+          name: string
+          notes: string | null
+          phone: string | null
+          practice: string | null
+          provider_number: string | null
+          record_id: string | null
+          role: string
+          specialty: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          fax?: string | null
+          id?: string
+          is_primary?: boolean
+          name: string
+          notes?: string | null
+          phone?: string | null
+          practice?: string | null
+          provider_number?: string | null
+          record_id?: string | null
+          role: string
+          specialty?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          fax?: string | null
+          id?: string
+          is_primary?: boolean
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          practice?: string | null
+          provider_number?: string | null
+          record_id?: string | null
+          role?: string
+          specialty?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_care_team_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_care_team_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_care_team_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_care_team_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       client_checkins: {
         Row: {
@@ -299,9 +459,12 @@ export type Database = {
       }
       client_clinical_records: {
         Row: {
+          ai_summary: Json | null
           client_id: string
           client_note: string | null
           created_at: string
+          doc_meta: Json | null
+          document_text: string | null
           file_path: string | null
           id: string
           kind: string
@@ -318,9 +481,12 @@ export type Database = {
           uploaded_by: string | null
         }
         Insert: {
+          ai_summary?: Json | null
           client_id: string
           client_note?: string | null
           created_at?: string
+          doc_meta?: Json | null
+          document_text?: string | null
           file_path?: string | null
           id?: string
           kind: string
@@ -337,9 +503,12 @@ export type Database = {
           uploaded_by?: string | null
         }
         Update: {
+          ai_summary?: Json | null
           client_id?: string
           client_note?: string | null
           created_at?: string
+          doc_meta?: Json | null
+          document_text?: string | null
           file_path?: string | null
           id?: string
           kind?: string
@@ -389,6 +558,188 @@ export type Database = {
             columns: ["uploaded_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_conditions: {
+        Row: {
+          as_printed: string | null
+          client_id: string
+          condition: string
+          created_at: string
+          created_by: string | null
+          id: string
+          noted_on: string | null
+          notes: string | null
+          record_id: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          as_printed?: string | null
+          client_id: string
+          condition: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          noted_on?: string | null
+          notes?: string | null
+          record_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          as_printed?: string | null
+          client_id?: string
+          condition?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          noted_on?: string | null
+          notes?: string | null
+          record_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_conditions_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_conditions_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_conditions_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_conditions_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_document_facts: {
+        Row: {
+          ai_model: string | null
+          applied_at: string | null
+          certainty: string
+          check_reasons: string[]
+          client_id: string
+          created_at: string
+          created_by: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          existing_value: string | null
+          field: string
+          id: string
+          method: string
+          page: number | null
+          quote: string
+          record_id: string
+          section: string
+          status: string
+          target_id: string | null
+          target_table: string | null
+          value: Json
+        }
+        Insert: {
+          ai_model?: string | null
+          applied_at?: string | null
+          certainty: string
+          check_reasons?: string[]
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          existing_value?: string | null
+          field: string
+          id?: string
+          method: string
+          page?: number | null
+          quote?: string
+          record_id: string
+          section: string
+          status?: string
+          target_id?: string | null
+          target_table?: string | null
+          value: Json
+        }
+        Update: {
+          ai_model?: string | null
+          applied_at?: string | null
+          certainty?: string
+          check_reasons?: string[]
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          existing_value?: string | null
+          field?: string
+          id?: string
+          method?: string
+          page?: number | null
+          quote?: string
+          record_id?: string
+          section?: string
+          status?: string
+          target_id?: string | null
+          target_table?: string | null
+          value?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_document_facts_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
             referencedColumns: ["id"]
           },
         ]
@@ -692,6 +1043,151 @@ export type Database = {
           },
         ]
       }
+      client_medicare: {
+        Row: {
+          client_id: string
+          irn: number | null
+          number: string
+          record_id: string | null
+          updated_at: string
+          updated_by: string | null
+          valid_to: string | null
+        }
+        Insert: {
+          client_id: string
+          irn?: number | null
+          number: string
+          record_id?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          valid_to?: string | null
+        }
+        Update: {
+          client_id?: string
+          irn?: number | null
+          number?: string
+          record_id?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          valid_to?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_medicare_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_medicare_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medicare_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medicare_updated_by_fkey"
+            columns: ["updated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_medications: {
+        Row: {
+          active: boolean
+          as_printed: string | null
+          client_id: string
+          created_at: string
+          created_by: string | null
+          dose: string | null
+          form: string | null
+          frequency: string | null
+          id: string
+          name: string
+          notes: string | null
+          record_id: string | null
+          started_on: string | null
+          stopped_on: string | null
+          strength: string | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          as_printed?: string | null
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          dose?: string | null
+          form?: string | null
+          frequency?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          record_id?: string | null
+          started_on?: string | null
+          stopped_on?: string | null
+          strength?: string | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          as_printed?: string | null
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          dose?: string | null
+          form?: string | null
+          frequency?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          record_id?: string | null
+          started_on?: string | null
+          stopped_on?: string | null
+          strength?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_medications_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_medications_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medications_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medications_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_protein_preferences: {
         Row: {
           client_id: string
@@ -769,6 +1265,96 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "protein_families"
             referencedColumns: ["key"]
+          },
+        ]
+      }
+      client_referrals: {
+        Row: {
+          client_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          notes: string | null
+          pathway: string
+          plan_name: string | null
+          reason: string | null
+          record_id: string | null
+          referral_date: string | null
+          referrer_id: string | null
+          sessions_approved: number | null
+          status: string
+          updated_at: string
+          valid_until: string | null
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          notes?: string | null
+          pathway: string
+          plan_name?: string | null
+          reason?: string | null
+          record_id?: string | null
+          referral_date?: string | null
+          referrer_id?: string | null
+          sessions_approved?: number | null
+          status?: string
+          updated_at?: string
+          valid_until?: string | null
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          notes?: string | null
+          pathway?: string
+          plan_name?: string | null
+          reason?: string | null
+          record_id?: string | null
+          referral_date?: string | null
+          referrer_id?: string | null
+          sessions_approved?: number | null
+          status?: string
+          updated_at?: string
+          valid_until?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_referrals_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_referrals_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_referrals_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_referrals_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_referrals_referrer_id_fkey"
+            columns: ["referrer_id"]
+            isOneToOne: false
+            referencedRelation: "client_care_team"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1261,6 +1847,7 @@ export type Database = {
       clients: {
         Row: {
           activity_level: string | null
+          address_line: string | null
           assigned_dietitian: string | null
           client_shows_numbers: boolean
           created_at: string
@@ -1273,14 +1860,18 @@ export type Database = {
           notes: string | null
           numbers_allowed: boolean
           phone: string | null
+          postcode: string | null
           protein_g_per_kg: number | null
           sex: string
           source: string
+          state: string | null
           status: string
+          suburb: string | null
           user_id: string | null
         }
         Insert: {
           activity_level?: string | null
+          address_line?: string | null
           assigned_dietitian?: string | null
           client_shows_numbers?: boolean
           created_at?: string
@@ -1293,14 +1884,18 @@ export type Database = {
           notes?: string | null
           numbers_allowed?: boolean
           phone?: string | null
+          postcode?: string | null
           protein_g_per_kg?: number | null
           sex?: string
           source?: string
+          state?: string | null
           status?: string
+          suburb?: string | null
           user_id?: string | null
         }
         Update: {
           activity_level?: string | null
+          address_line?: string | null
           assigned_dietitian?: string | null
           client_shows_numbers?: boolean
           created_at?: string
@@ -1313,10 +1908,13 @@ export type Database = {
           notes?: string | null
           numbers_allowed?: boolean
           phone?: string | null
+          postcode?: string | null
           protein_g_per_kg?: number | null
           sex?: string
           source?: string
+          state?: string | null
           status?: string
+          suburb?: string | null
           user_id?: string | null
         }
         Relationships: [
@@ -4648,6 +5246,7 @@ export type Database = {
         Returns: Json
       }
       app_setting: { Args: { p_key: string }; Returns: string }
+      apply_document_facts: { Args: { p_record_id: string }; Returns: Json }
       can_access_client: { Args: { p_client_id: string }; Returns: boolean }
       can_access_plan: { Args: { p_plan_id: string }; Returns: boolean }
       can_view_checkins: { Args: { p_client_id: string }; Returns: boolean }
@@ -4702,7 +5301,20 @@ export type Database = {
       }
       credential_status: { Args: { p_due: string }; Returns: string }
       current_staff_role: { Args: never; Returns: string }
+      decide_document_fact: {
+        Args: { p_decision: string; p_fact_id: string; p_value?: Json }
+        Returns: Json
+      }
       delete_user: { Args: { target_id: string }; Returns: undefined }
+      doc_text_norm: { Args: { p: string }; Returns: string }
+      document_fact_file: {
+        Args: {
+          f: Database["public"]["Tables"]["client_document_facts"]["Row"]
+          p_overwrite: boolean
+          p_value: Json
+        }
+        Returns: Json
+      }
       food_field_label: { Args: { k: string }; Returns: string }
       get_client_invitation: { Args: { p_token: string }; Returns: Json }
       get_invitation: {
@@ -4745,6 +5357,7 @@ export type Database = {
         Args: { p_checked: boolean; p_id: string }
         Returns: Json
       }
+      medicare_number_valid: { Args: { p: string }; Returns: boolean }
       merge_client_into: {
         Args: { p_from: string; p_into: string }
         Returns: Json
