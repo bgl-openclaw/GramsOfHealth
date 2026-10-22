@@ -2,7 +2,7 @@
 
 Reads the values from a bloods or DEXA PDF into the client's file.
 
-**Status (22 Oct 2026):** bloods round 1 is being built.
+**Status (22 Oct 2026):** bloods round 1 built in Lovable (reviewed; reader copy byte-identical). Waiting on signed-in testing with real PDFs.
 - Database: `client_result_values` + `read_*` on records (migration 0052).
 - Reader logic: `packages/results-reader`, 15 tests in `tests/results-reader.test.ts`.
 - App wiring: Lovable prompt `docs/lovable-prompts/R2-results-reader.txt`.
