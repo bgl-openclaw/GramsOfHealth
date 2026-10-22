@@ -68,12 +68,17 @@ const TOOL = {
 };
 
 const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
+/** JSON with object keys sorted, so {a,b} and {b,a} compare equal (as jsonb does). */
+const canon = (v: unknown): string => Array.isArray(v) ? `[${v.map(canon).join(",")}]`
+  : v && typeof v === "object" ? `{${Object.keys(v as Record<string, unknown>).sort().map((k) => `${JSON.stringify(k)}:${canon((v as Record<string, unknown>)[k])}`).join(",")}}`
+  : JSON.stringify(v);
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: CORS });
   if (req.method !== "POST") return json({ ok: false, message: "POST only." }, 405);
   const key = Deno.env.get("ANTHROPIC_API_KEY");
-  if (!key) return json({ ok: false, message: "The AI pass isn't set up yet: add ANTHROPIC_API_KEY as an Edge Function secret in Supabase." }, 503);
+  // not set up is an answer, not a failure: the app shows it once and carries on
+  if (!key) return json({ ok: false, code: "not_set_up", message: "The AI pass isn't set up yet: add ANTHROPIC_API_KEY as an Edge Function secret in Supabase." });
   const model = Deno.env.get("AI_MODEL") || "claude-sonnet-5-5";
 
   const auth = req.headers.get("Authorization") ?? "";
@@ -106,7 +111,7 @@ Deno.serve(async (req) => {
 
   const text = norm(rec.document_text);
   const { data: existing } = await sb.from("client_document_facts").select("section, field, value").eq("record_id", rec.id);
-  const seen = new Set((existing ?? []).map((f) => `${f.section}|${f.field}|${JSON.stringify(f.value)}`));
+  const seen = new Set((existing ?? []).map((f) => `${f.section}|${f.field}|${canon(f.value)}`));
   let droppedQuote = 0, droppedRepeat = 0, droppedShape = 0;
   const rows = [];
   for (const f of suggested) {
@@ -114,7 +119,7 @@ Deno.serve(async (req) => {
     if (f.section === "client" && !CLIENT_FIELDS.includes(f.field)) { droppedShape++; continue; }
     const quote = String(f.quote).slice(0, 2000);
     if (!text.includes(norm(quote))) { droppedQuote++; continue; }
-    const k = `${f.section}|${f.field}|${JSON.stringify(f.value)}`;
+    const k = `${f.section}|${f.field}|${canon(f.value)}`;
     if (seen.has(k)) { droppedRepeat++; continue; }
     seen.add(k);
     rows.push({ record_id: rec.id, client_id: rec.client_id, section: f.section, field: f.field, value: f.value, quote,
