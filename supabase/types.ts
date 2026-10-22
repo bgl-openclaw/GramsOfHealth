@@ -306,6 +306,9 @@ export type Database = {
           id: string
           kind: string
           measurements: Json | null
+          read_at: string | null
+          read_by: string | null
+          read_summary: Json | null
           recorded_on: string
           reviewed_at: string | null
           reviewed_by: string | null
@@ -322,6 +325,9 @@ export type Database = {
           id?: string
           kind: string
           measurements?: Json | null
+          read_at?: string | null
+          read_by?: string | null
+          read_summary?: Json | null
           recorded_on: string
           reviewed_at?: string | null
           reviewed_by?: string | null
@@ -338,6 +344,9 @@ export type Database = {
           id?: string
           kind?: string
           measurements?: Json | null
+          read_at?: string | null
+          read_by?: string | null
+          read_summary?: Json | null
           recorded_on?: string
           reviewed_at?: string | null
           reviewed_by?: string | null
@@ -359,6 +368,13 @@ export type Database = {
             columns: ["client_id"]
             isOneToOne: false
             referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_clinical_records_read_by_fkey"
+            columns: ["read_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
@@ -805,6 +821,142 @@ export type Database = {
             columns: ["tag_id"]
             isOneToOne: false
             referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_result_values: {
+        Row: {
+          certainty: string
+          check_reasons: string[]
+          client_id: string
+          created_at: string
+          created_by: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string
+          lab_flag: string | null
+          lab_high: number | null
+          lab_low: number | null
+          lab_range_text: string | null
+          line_text: string | null
+          marker_code: string | null
+          measured_on: string | null
+          method: string
+          name_as_printed: string
+          original: Json | null
+          page: number | null
+          reader_version: string | null
+          record_id: string
+          status: string
+          unit_as_printed: string | null
+          updated_at: string
+          value: number | null
+          value_std: number | null
+          value_text: string
+        }
+        Insert: {
+          certainty: string
+          check_reasons?: string[]
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method: string
+          name_as_printed: string
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id: string
+          status: string
+          unit_as_printed?: string | null
+          updated_at?: string
+          value?: number | null
+          value_std?: number | null
+          value_text: string
+        }
+        Update: {
+          certainty?: string
+          check_reasons?: string[]
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method?: string
+          name_as_printed?: string
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id?: string
+          status?: string
+          unit_as_printed?: string | null
+          updated_at?: string
+          value?: number | null
+          value_std?: number | null
+          value_text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "client_result_values_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
             referencedColumns: ["id"]
           },
         ]
@@ -4101,6 +4253,145 @@ export type Database = {
             columns: ["tag_id"]
             isOneToOne: false
             referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_result_values_usable: {
+        Row: {
+          certainty: string | null
+          check_reasons: string[] | null
+          client_id: string | null
+          created_at: string | null
+          created_by: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string | null
+          lab_flag: string | null
+          lab_high: number | null
+          lab_low: number | null
+          lab_range_text: string | null
+          line_text: string | null
+          marker_code: string | null
+          measured_on: string | null
+          method: string | null
+          name_as_printed: string | null
+          original: Json | null
+          page: number | null
+          reader_version: string | null
+          record_id: string | null
+          status: string | null
+          unit_as_printed: string | null
+          updated_at: string | null
+          value: number | null
+          value_for_marker: number | null
+          value_std: number | null
+          value_text: string | null
+        }
+        Insert: {
+          certainty?: string | null
+          check_reasons?: string[] | null
+          client_id?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method?: string | null
+          name_as_printed?: string | null
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id?: string | null
+          status?: string | null
+          unit_as_printed?: string | null
+          updated_at?: string | null
+          value?: number | null
+          value_for_marker?: never
+          value_std?: number | null
+          value_text?: string | null
+        }
+        Update: {
+          certainty?: string | null
+          check_reasons?: string[] | null
+          client_id?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method?: string | null
+          name_as_printed?: string | null
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id?: string | null
+          status?: string | null
+          unit_as_printed?: string | null
+          updated_at?: string | null
+          value?: number | null
+          value_for_marker?: never
+          value_std?: number | null
+          value_text?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "client_result_values_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
             referencedColumns: ["id"]
           },
         ]

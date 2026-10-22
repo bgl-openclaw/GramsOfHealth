@@ -1,6 +1,15 @@
 # Results reader: plan (22 October 2026)
 
-Reads the values from a bloods or DEXA PDF into the client's file. **Not built yet.** It starts after the owner's blood and DEXA logic (marker list, units, ranges and decision rules) arrives from the other workstream.
+Reads the values from a bloods or DEXA PDF into the client's file.
+
+**Status (22 Oct 2026):** bloods round 1 is being built.
+- Database: `client_result_values` + `read_*` on records (migration 0052).
+- Reader logic: `packages/results-reader`, 15 tests in `tests/results-reader.test.ts`.
+- App wiring: Lovable prompt `docs/lovable-prompts/R2-results-reader.txt`.
+- Not in round 1:
+  - **Photos and scans** (OCR) come later.
+  - **DEXA** waits for its workbook.
+  - **Auto-accepting:** until clinical_markers carries lab names, unit conversions and plausibility limits (requested from the research workstream), every value is "Please check".
 
 ## Owner decisions (22 Oct 2026)
 
