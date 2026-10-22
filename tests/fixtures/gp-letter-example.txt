@@ -1,0 +1,44 @@
+Example Family Doctors
+75 Example Avenue
+Exampletown NSW 2000
+Phone: 02 9000 0000 Fax: 9000 0001
+Email: frontdesk@example.com
+ABN: 12345678901
+_______________________________________________________________________________________
+21/10/2026
+Nikki Example
+1 Dietitian Street
+Exampletown. 2000
+Phone: 0400 000 001
+RE: Ms T
+DOB: 17/07/1967
+Dear Nikki,
+Thank you for seeing Ms T for an opinion and management of her dyslipidaemia under a GPMP.
+Her current medications are:
+Actemra 162mg/0.9mL Prefilled syringe 1 Syringe Once a week.
+Bactrim DS 160mg;800mg Tablet 1 Tablet Mon,Wed,and Friday. Doxycycline 100mg Tablet 1 Tablet Twice a day for 7 days. Havrix 1440 1,440 Elisa units Syringe 1 Syringe Stat.
+Mycophenolate 500mg Tablet 2 Tablets Twice a day.
+Otodex 0.5mg;5mg;0.05mg/mL Ear Drops 4 drops Before bed.
+Panafcort 1mg Tablet 7mg Daily As directed.
+Prolia 60mg/mL Injection 1 Injection Dec - June.
+Somac 40mg Tablet 1 Tablet Daily.
+Typhim Vi 0.025mg/0.5mL Syringe 1 Syringe.
+Allergies:
+Nil known.
+Past Medical History:
+Meningioma with vascogenic odema
+Asthma
+Osteoporosis
+Obstructive sleep apnoea
+16/12/2024 Interstitial lung disease
+16/12/2024 Rheumatoid arthritis
+Yours faithfully,
+Dr Alex Example
+1234567A
+Electronically signed
+Ms T
+55 Fake Ave, EXAMPLETOWN. 2000
+Phone: 0488 888 888
+Birthdate: 17/07/1967 Sex: F Medicare Number: 11111111 Your Reference: 00084300 Lab Reference: 26-90000001-LIP-0 Laboratory: Laverty Pathology
+Name of Test: LIPID STUDIES (LIP-0)
+Requested: 12/08/2026 Collected: 16/10/2026 Reported: 16/10/2026 14:46

@@ -1,0 +1,160 @@
+table,row_key,column,as printed,read as,note
+nutrient_reference_values,protein|Infants 0-6 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Infants 7-12 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Children 1-3 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Children 4-8 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Boys 9-13 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Boys 14-18 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Girls 9-13 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Girls 14-18 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Men 19-30 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Men 31-50 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Men 51-70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Men over 70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Women 19-30 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Women 31-50 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Women 51-70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Women over 70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Pregnancy 14-18 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Pregnancy 19-30 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Pregnancy 31-50 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Lactation 14-18 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Lactation 19-30 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,protein|Lactation 31-50 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Infants 0-6 months|Any|General,AI,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Infants 0-6 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Infants 7-12 months|Any|General,AI,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Infants 7-12 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Children 1-3 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Children 4-8 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Boys 9-13 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Boys 14-18 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Girls 9-13 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Girls 14-18 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Men 19-30 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Men 31-50 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Men 51-70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Men over 70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Women 19-30 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Women 31-50 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Women 51-70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Women over 70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Pregnancy 14-18 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Pregnancy 19-30 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Pregnancy 31-50 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Lactation 14-18 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Lactation 19-30 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,fibre|Lactation 31-50 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,sodium|Infants 0-6 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,sodium|Infants 7-12 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,sodium|Children 1-3 y|Any|General,AI,200-400,,not a number: kept as printed
+nutrient_reference_values,sodium|Children 4-8 y|Any|General,AI,300-600,,not a number: kept as printed
+nutrient_reference_values,sodium|Boys 9-13 y|Male|General,AI,400-800,,not a number: kept as printed
+nutrient_reference_values,sodium|Boys 14-18 y|Male|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Girls 9-13 y|Female|General,AI,400-800,,not a number: kept as printed
+nutrient_reference_values,sodium|Girls 14-18 y|Female|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Men 19-30 y|Male|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Men 19-30 y|Male|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Men 31-50 y|Male|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Men 31-50 y|Male|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Men 51-70 y|Male|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Men 51-70 y|Male|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Men over 70 y|Male|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Men over 70 y|Male|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Women 19-30 y|Female|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Women 19-30 y|Female|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Women 31-50 y|Female|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Women 31-50 y|Female|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Women 51-70 y|Female|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Women 51-70 y|Female|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Women over 70 y|Female|General,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Women over 70 y|Female|General,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Pregnancy 14-18 y|Female|Pregnancy,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Pregnancy 14-18 y|Female|Pregnancy,UL,Unconfirmed,,not a number: kept as printed
+nutrient_reference_values,sodium|Pregnancy 19-30 y|Female|Pregnancy,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Pregnancy 19-30 y|Female|Pregnancy,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Pregnancy 31-50 y|Female|Pregnancy,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Pregnancy 31-50 y|Female|Pregnancy,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Lactation 14-18 y|Female|Lactation,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Lactation 14-18 y|Female|Lactation,UL,"Unconfirmed (2006: 2,300)",,not a number: kept as printed
+nutrient_reference_values,sodium|Lactation 19-30 y|Female|Lactation,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Lactation 19-30 y|Female|Lactation,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,sodium|Lactation 31-50 y|Female|Lactation,AI,460-920,,not a number: kept as printed
+nutrient_reference_values,sodium|Lactation 31-50 y|Female|Lactation,UL,Not determined,,not a number: kept as printed
+nutrient_reference_values,potassium|Infants 0-6 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Infants 7-12 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Children 1-3 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Children 4-8 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Boys 9-13 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Boys 14-18 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Girls 9-13 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Girls 14-18 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Men 19-30 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Men 31-50 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Men 51-70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Men over 70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Women 19-30 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Women 31-50 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Women 51-70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Women over 70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Pregnancy 14-18 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Pregnancy 19-30 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Pregnancy 31-50 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Lactation 14-18 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Lactation 19-30 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,potassium|Lactation 31-50 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,calcium|Infants 0-6 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,calcium|Infants 7-12 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,magnesium|Infants 0-6 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,magnesium|Infants 7-12 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,folate|Infants 0-6 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,folate|Infants 7-12 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Infants 0-6 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Infants 7-12 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Children 1-3 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Children 4-8 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Boys 9-13 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Boys 14-18 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Girls 9-13 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Girls 14-18 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Men 19-30 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Men 31-50 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Men 51-70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Men over 70 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Women 19-30 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Women 31-50 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Women 51-70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Women over 70 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Pregnancy 14-18 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Pregnancy 19-30 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Pregnancy 31-50 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Lactation 14-18 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Lactation 19-30 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_b12|Lactation 31-50 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Infants 0-6 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Infants 7-12 months|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Children 1-3 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Children 4-8 y|Any|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Boys 9-13 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Boys 14-18 y|Male|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Girls 9-13 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Girls 14-18 y|Female|General,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Men 19-30 y|Male|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Men 31-50 y|Male|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Men 51-70 y|Male|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Men over 70 y|Male|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Women 19-30 y|Female|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Women 31-50 y|Female|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Women 51-70 y|Female|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Women over 70 y|Female|General,UL,"Not set (1,000 prudent limit)",,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Pregnancy 14-18 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Pregnancy 19-30 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Pregnancy 31-50 y|Female|Pregnancy,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Lactation 14-18 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Lactation 19-30 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,vitamin_c|Lactation 31-50 y|Female|Lactation,UL,Not set,,not a number: kept as printed
+nutrient_reference_values,iodine|Infants 0-6 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,iodine|Infants 7-12 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,phosphorus|Infants 0-6 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrient_reference_values,phosphorus|Infants 7-12 months|Any|General,UL,Not possible to establish,,not a number: kept as printed
+nutrition_targets,discretionary|Adults|Any,Upper,0 to 2½ or 0 to 3 'additional serves' (taller or more active only),,not a number: kept as printed

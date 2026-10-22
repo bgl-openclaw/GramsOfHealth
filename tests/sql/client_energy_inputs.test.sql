@@ -6,7 +6,7 @@ do $$
 declare
   c uuid; u uuid; r record; n int; log text := '';
 begin
-  select id into c from clients order by created_at limit 1;
+  insert into clients (full_name) values ('ZZ energy test') returning id into c;   -- throwaway client: real clients have real weights
   select id into u from profiles order by created_at limit 1;
 
   -- Fixture 1 client: male, 180 cm, born 1996-10-15 (30 on 2026-10-15), moderately active

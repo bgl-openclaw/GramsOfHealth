@@ -1,0 +1,4 @@
+action,duplicate_food_id,canonical_food_id,note
+dietitian_decision_required,egg_mayo,light_mayonnaise,"verified, 0 uses after the ingest repair; 428 kcal vs 150 kcal for light mayonnaise, so not a true duplicate. Dietitian decides: keep as a separate food, or delete."
+dietitian_decision_required,zest_lemon_juice,freshly_squeezed_lemon_juice,"verified, 0 uses; same food as freshly squeezed lemon juice. Dietitian confirms delete."
+dietitian_decision_required,juice_orange,orange_juice,"verified, 0 uses; duplicate of orange juice. Dietitian confirms delete."

@@ -1,0 +1,90 @@
+Lab Reference: 26-90000001-LIP-0  Laboratory: Laverty Pathology
+Name of Test: LIPID STUDIES (LIP-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 14:46
+LIPID STUDIES
+Request Number  11400001  90000001
+Date Collected  4 Jun 25  16 Oct 26
+Time Collected  07:50  07:25
+Specimen Type: Serum
+Haemolysis  Nil  Nil
+Fasting status  Random  Random
+Chol (3.9-5.2) mmol/L  5.9  6.7
+Trig (0.5-1.7) mmol/L  1.1  1.0
+HDL (1.0-2.0) mmol/L  2.1  2.2
+LDL (1.5-3.4) mmol/L  3.3  4.0
+Non-HDL (< 3.4) mmol/L  3.8  4.5
+Chol/HDL(< 4.5)  2.8  3.0
+| LDL-C | <2.0 |
+LDL-C exceeds target for higher risk patients and may be excessive in some individuals.
+Requested Tests : TFT*, CRP*, MBA*, LIP, FE*, FBE*, DVI*, A1C*
+Lab Reference: 26-90000001-DVI-0  Laboratory: Laverty Pathology
+Name of Test: VITAMIN D (DVI-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 14:53
+Serum 25(OH) Vitamin D  54 nmol/L
+Suggested decision limits for Vitamin D status:
+Sufficiency  51 -200 nmol/L
+Mild deficiency  25 - 50 nmol/L
+Marked deficiency  < 25 nmol/L
+Toxicity  >250 nmol/L
+Lab Reference: 26-90000001-A1C-0  Laboratory: Laverty Pathology
+Name of Test: GLYCATED HAEMOGLOBIN (A1C-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 14:58
+HbA1c- NGSP  5.1 %  (4.0-6.0)
+HbA1c- IFCC  32 mmol/mol  (20-42)
+The WHO recommends that an HbA1c cut-off of >=6.5% (48 mmol/mol) is used to diagnose type 2 diabetes.
+Lab Reference: 26-90000001-CRP-0  Laboratory: Laverty Pathology
+Name of Test: C-REACTIVE PROTEIN (CRP-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 15:19
+Request Number  70000001  20000002  10000003  90000001
+Date Collected  13 Mar 26  22 Jul 26  16 Oct 26  16 Oct 26
+CRP (< 4.0) mg/L  < 3.0  < 3.0  < 3.0  < 3.0
+Name of Test: THYROID FUNCTION TEST (TFT-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 15:22
+Request Number  25000001  11400001  90000001
+Date Collected  2 Jan 24  4 Jun 25  16 Oct 26
+TSH (0.5-4.0) mIU/L  0.94  1.6  2.0
+Name of Test: IRON STUDIES (FE-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 15:27
+Request Number  25000001  90000001
+Date Collected  2 Jan 24  16 Oct 26
+Iron (10-30) umol/L  28  23
+T'ferrin(32-48) umol/L  30  28
+T. Sat. (13-45) %  48  42
+Ferritin(30-400) ug/L  60  92
+Name of Test: SERUM CHEMISTRY (MBA-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 16:06
+Request Number  70000001  20000002  10000003  90000001
+Date Collected  13 Mar 26  22 Jul 26  16 Oct 26  16 Oct 26
+Haemolysis  Nil  Nil  2+  Nil
+Na (135-145) mmol/L  141  144  142  142
+K (3.5-5.2) mmol/L  3.5  3.7  4.6  4.2
+Cl (95-110) mmol/L  105  107  107  106
+HCO3 (22-32) mmol/L  23  27  21  26
+An Gap (7-17) mmol/L  16  14  19  14
+Urea (3.0-8.5) mmol/L  5.3  4.9  5.6  5.7
+Creat (45-90) umol/L  60  62  66  66
+eGFR mL/min/1.73sqM  > 90  > 90  88  88
+Bili (< 19) umol/L  8  9  13  13
+AST (< 31) U/L  17  21  37  23
+ALT (< 36) U/L  12  15  22  18
+GGT (< 36) U/L  15  15  20  17
+Alk Phos(45-135) U/L  34  32  26  30
+Protein (60-80) g/L  62  62  67  65
+Albumin (38-50) g/L  43  42  47  46
+Glob (20-32) g/L  19  20  20  19
+Ca (2.10-2.60) mmol/L  2.33  2.25  2.30  2.30
+Corr Ca (2.10-2.60) mmol/L  2.33  2.27  2.22  2.24
+PO4 (0.75-1.50) mmol/L  0.94  1.14  1.24  1.18
+Mg (0.70-1.10) mmol/L  0.74  0.78  0.84  0.80
+eGFR values between 60 and 89 mL/min/1.73m2 should be interpreted with caution.
+Name of Test: HAEMATOLOGY (FBE-0)
+Requested: 12/08/2026  Collected: 16/10/2026  Reported: 16/10/2026 15:10
+Request Number  70000001  20000002  10000003  90000001
+Date Collected  13 Mar 26  22 Jul 26  16 Oct 26  16 Oct 26
+Hb (115-165) g/L  149  142  151  154
+Hct (0.34-0.47)  0.47  0.45  0.47  0.47
+RCC (3.9-5.8) x10^12 /L  5.3  5.1  5.3  5.4
+MCV (79-99) fL  89  88  87  87
+MCHC (320-360) g/L  316  318  325  326
+WBC (4.0-11.0) x10^9 /L  7.3  6.7  6.4  6.0
+Plat (150-400) x10^9 /L  199  198  207  200

@@ -1,0 +1,19 @@
+Staff profiles: four small fixes from the code review. No database changes, and no changes to engine.ts, adjust.ts or energy.ts.
+
+1. New credential types land near the top, not the bottom.
+   - In CredentialTypesSettings, blank(q.data.length + 1) gives a new type position 10, but the existing types are at 10, 20 … 90.
+   - Use the same fix as the client questions: (highest position, or 0) + 10.
+2. HEIF files are accepted by the app but refused by storage.
+   - STAFF_FILE_TYPES includes 'image/heif', but the staff-documents bucket only takes PDF, JPEG, PNG, WebP and HEIC.
+   - Remove 'image/heif' so the app's message appears instead of a storage error.
+3. Admins need to set an intern's placement.
+   - Today only the intern can set their university, supervisor and placement dates. If they don't, the placement warning never appears and their supervisor never sees them under My interns.
+   - In the Team compliance person dialog, when the person is an intern and the viewer is an admin, show the same Placement fields (university, supervisor, start, end) and save them to that intern's profile row. Admins can already update any profile.
+   - Show database refusals as they are, e.g. "The supervisor must be a dietitian or an admin."
+4. "Required for" a role that isn't asked does nothing. In Settings → Credentials:
+   - Ticking a role under "Required for" also ticks it under "Roles asked".
+   - Unticking a role under "Roles asked" also unticks it under "Required for".
+
+Keep everything else as it is.
+
+REPORT BACK: files changed (one line each); confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched.

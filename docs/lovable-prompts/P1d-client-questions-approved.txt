@@ -1,0 +1,42 @@
+Approved, with the changes below. The backend is live (migration 0044). Do NOT create migrations. Build the screens against these names.
+
+DATABASE (live)
+- intake_sections: key (text, lowercase letters/digits/underscores, starting with a letter), title, position, active, builtins (text[]).
+  - builtins says which fixed client details a section shows: 'details' (name, phone, date of birth, sex, height, weight, activity), 'goal', 'requirements' (food needs), 'supplements'. It's read-only for the app.
+  - Seeded: about "About you" [details], goals "Your goals" [goal], food "Food" [requirements], health "Health" [supplements], lifestyle "Lifestyle", consent "Almost done".
+  - Staff can read it. Dietitians and admins can insert and update. Nobody can delete: removing a section = active false.
+- intake_questions: section now references intake_sections.key. New column locked (true only for consent_privacy). Dietitians and admins can insert and update; no deletes (switch active off). A question's key can never change.
+- client_intake.question_keys (text[]): the client's form. NULL = every active question, including ones added later.
+
+RPCs
+- set_client_intake_questions(p_client_id uuid, p_question_keys text[]) → { ok, message, question_keys, missing }. Dietitians and admins only.
+  - Send NULL when everything is ticked, so new questions reach the client automatically.
+  - An empty array means "no optional questions".
+  - Locked questions are added automatically.
+- reorder_intake(p_sections jsonb, p_questions jsonb) → { ok, message, sections: [{ key, position }], questions: [{ key, section, position }] }.
+  - p_sections = section keys in order.
+  - p_questions = [{ key, section? }] in order (section moves a question).
+  - Call it once on drop. Inactive questions sink to the bottom of their section automatically.
+- my_intake():
+  - sections is now [{ key, title, builtins }], only the sections on this client's form, in order.
+  - questions holds only this client's active questions, in order.
+  - Place the fixed details by `builtins`, not by section key.
+- client_intake_for_staff():
+  - Adds question_keys, plus sections: [{ key, title, position, active, builtins }].
+  - Each question gains required, locked and selected.
+  - clinical is always false and hidden_clinical_count is always 0, so remove both from the UI.
+  - changes is now returned to interns too.
+- submit_my_intake and `missing` count only the required questions on the client's own form.
+- Database refusals come back as plain sentences (e.g. "The About you section holds details the app needs, so it can't be switched off."). Show them as they are.
+
+CHANGES TO YOUR PLAN
+1. Sections that hold fixed details (builtins not empty), and the "Almost done" section with the privacy consent:
+   - Settings: they can be renamed and reordered but not removed. Show "Always included" in place of Remove.
+   - Onboarding picker: they can't be unticked, but their own optional questions can.
+2. The privacy consent question is always included. Show it as "Always included" in Settings and the picker, with no Active switch and no tick box.
+3. Client-facing copy: the welcome step and the Health step say "Only your dietitian sees your answers". Interns now see answers too, so change both to "Only your Grams of Health care team sees your answers."
+4. New questions: make the key from the label (lowercase, underscores, starting with a letter, unique). Show it nowhere; it can't change later.
+5. Picker: "all ticked" sends NULL, never the full list.
+6. Staff Intake view: sections that are switched off still appear when the client answered questions in them (use the active flag to mark them "No longer asked").
+
+Everything else in your plan is approved as written: dietitians and admins manage the form (interns can't), drop-down section panels, drag to reorder with a small drag library, the onboarding tick list with Customise, the same picker under Intake in the client file, no Health-only box or Health tag, and no changes to engine.ts, adjust.ts or energy.ts.

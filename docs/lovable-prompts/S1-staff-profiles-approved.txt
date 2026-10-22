@@ -1,0 +1,91 @@
+Approved as phase 1, with the changes below. The backend is live (migration 0045). Do NOT create migrations. Build the screens against these names.
+
+THE OWNER'S DECISIONS
+- Two phases. Phase 1 (now): profile details, credentials with expiry status, Team compliance, menu count, own-profile banner. Phase 2 (later, not now): CPD log, email reminders, and nothing about interns losing access.
+- Nothing is required for now. Every item is optional, so a credential nobody has added shows "Not added" (grey), never "Missing". An admin can later mark a credential type as required for a role, and then it shows "Missing" (see Settings below).
+- Interns keep their access when their placement ends. It is only flagged (see Team compliance).
+- Email reminders (phase 2) will go to the person and the practice. Don't build them now.
+
+YOUR SECURITY CONCERN (roles)
+Checked. It wasn't exploitable: before this change only admins could write to profiles at all. Now that staff can edit their own row, the database refuses role changes outright. Roles stay on profiles. Every permission check already reads them there, so a user_roles table would mean rewriting every policy for no gain. Specifically:
+- Nobody can change their own role, including admins. Hide or disable the role control on your own row in Users.
+- Only admins can change roles (unchanged).
+- Admin accounts and your own account can't be deleted.
+- Signed-out visitors have no write access to profiles.
+Database refusals come back as plain sentences (e.g. "You can't change your own role."). Show them as they are.
+
+DATABASE (live)
+1. profiles: new columns preferred_name (max 60), pronouns (max 30), bio (max 800), photo_path, university (max 120), supervisor_id (uuid → profiles), placement_start, placement_end (date; end ≥ start).
+   - Already there: full_name, phone, job_title, organisation, email, role.
+   - Staff can update their own row. email is read-only on My profile (it's the sign-in, and only an admin can change it). role isn't editable on My profile.
+   - bio is visible to staff only for now. Showing it to clients comes later through a function; don't build that.
+   - supervisor_id must be a dietitian or admin (the database checks this). The intern or an admin sets it, with the dropdown listing profiles whose role is admin or dietitian.
+   - Show University, Supervisor and the placement dates only when the role is intern.
+2. credential_types: the list of credentials. Staff can read it; admins insert and update; nobody deletes (switch active off).
+   Columns: key, label, help, renew_months, has_number, has_issuer, has_state, roles text[], required_for text[], position, active.
+   Seeded, in this order:
+   - apd: APD (dietitians only)
+   - ahpra: AHPRA registration
+   - indemnity: Professional indemnity (admins and dietitians)
+   - public_liability: Public liability (admins and dietitians)
+   - first_aid: First aid HLTAID011
+   - cpr: CPR HLTAID009
+   - wwcc: Working with Children Check
+   - police_check: Police check
+   - food_safety: Food safety certificate
+   Use the type's fields to decide what the form shows:
+   - has_number → Number
+   - has_issuer → Issuer / insurer
+   - has_state → State (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)
+   - every type → Issued, Expires, Certificate upload, Note (max 500)
+   - help → the hint under the heading
+   A person only sees the types whose roles include their role.
+3. staff_credentials: one row per person and type (unique profile_id + type).
+   Columns: id, profile_id, type, number, issuer, state, issued_on, expires_on, file_path, checked_by, checked_at, note, created_at, updated_at.
+   - A person reads and writes only their own; admins read and write everyone's.
+   - Save with an upsert on (profile_id, type).
+   - Never send checked_by, checked_at, created_at or updated_at.
+   - When the person changes the number, issuer, state, dates or file, the "checked" mark clears automatically.
+   - Deleting a row is allowed (a "Remove" button).
+4. Storage: private bucket staff-documents (10 MB; PDF, JPEG, PNG, WebP, HEIC).
+   - Paths: {profile_id}/{type}-{timestamp}.{ext} for certificates, {profile_id}/photo-{timestamp}.{ext} for the photo.
+   - A person can use only their own folder; admins can use any folder.
+   - Show files and photos with short-lived signed URLs, as for clinical files. When a file is replaced, delete the old object after saving the new path.
+
+RPCs
+- team_compliance() → { ok, people: [...], needs_attention, mine_needs_attention }
+  - Each person: { profile_id, name, role, is_me, placement_start, placement_end, placement ('ended' | 'ends_soon' | null; interns only, ends_soon = within 7 days), needs_attention, urgent_count, due_60_count, items: [...] }
+  - Each item: { type, label, required, status, due, due_estimated, checked, has_file, id, number, issuer, state, issued_on, expires_on, file_path, checked_at, checked_by_name }
+  - Who sees whom: admins see every staff member with full details. A dietitian sees themselves, plus the interns whose supervisor they are (status only: id, number, issuer, state, dates, file_path and checker are null). An intern sees only themselves. Your own row comes first.
+  - needs_attention counts the other people who need attention: something expired, due within 30 days, or missing, or a placement that has ended or ends soon. mine_needs_attention is the same for you.
+- mark_credential_checked(p_id uuid, p_checked boolean) → { ok, message }. Admins only.
+
+STATUS: take it from the database. Don't recompute it in the app.
+Labels:
+- current → "Current" (green)
+- due_60 → "Due in 60 days" (amber)
+- due_30 → "Due in 30 days" (orange)
+- expired → "Expired" (red)
+- missing → "Missing" (red; only when required)
+- not_added → "Not added" (grey, not a warning)
+- no_date → "No expiry date" (grey)
+Other details:
+- due is the expiry date. If there's no expiry but there is an issue date, due is the issue date plus the type's renew period, and due_estimated is true; show "estimated".
+- Thresholds use Sydney dates. Something expiring today is still "Due in 30 days" and becomes Expired tomorrow.
+- These thresholds are covered by database tests, so the app needs no threshold tests of its own. Test the label mapping instead.
+
+CHANGES TO YOUR PLAN
+1. No user_roles table and no has_role() (see above).
+2. No staff_cpd table and no CPD tab in phase 1.
+3. The APD number isn't a profile column. It's the "apd" credential (number + renewal date), so it gets the same expiry status. The Registration tab shows the apd and ahpra credentials for that person's role, plus the intern fields.
+4. Credentials tab = every other credential type for the person's role. One card per type, with its status chip, and "Checked by {name} on {date}" when checked.
+5. Menu count: show it to admins only, as the number of people who need attention (needs_attention), like the New sign-ups dot. No menu count for dietitians or interns.
+6. Team compliance (Users page, admins): one row per person showing name, role and a chip per item. An "Ended" or "Ends soon" placement chip shows on interns. Admins open a person to see details and the certificate, and to tick "Checked" (mark_credential_checked). Sort people who need attention first.
+7. Dietitians: a "My interns" card on My profile, from the same team_compliance() result. It shows status chips only, with no documents and no menu count.
+8. Own-profile banner: when mine_needs_attention is true, show one banner on My profile listing what's expired, due within 30 days or missing.
+9. Settings → Credentials (admins only): edit label, help, renew months (1–120), which roles are asked, "Required for" roles, order and active. New types get a key made from the label (lowercase, underscores, starting with a letter, unique). Show the key nowhere, and never change it. Every type is optional today; leave required_for empty unless an admin ticks it.
+10. Name shown everywhere: preferred_name if set, else full_name. team_compliance already returns it as name.
+
+Everything else in your plan is approved as written: the My profile page with tabs (Identity, Registration, Credentials; no CPD), photo upload, each person editing their own profile and uploading their own certificates, and private files with signed links. No changes to engine.ts, adjust.ts or energy.ts.
+
+REPORT BACK: files changed (one line each); confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched; what you could check yourself and which checks need a signed-in admin, dietitian or intern.

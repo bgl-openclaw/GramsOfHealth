@@ -1,0 +1,60 @@
+Plans P1b part A: fixes from the code review. One small database change is already live (migration 0049). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Show database messages word for word.
+
+DATABASE (0049, live)
+A. Moving a meal now moves its alternatives and top-ups automatically.
+   - Changing an item's day or meal_slot carries every item with option_of = it, and every top-up with boosts_item_id = it, to the same day and slot.
+   - Keep onMoveItem as one update of the meal. Reload the plan's items afterwards, because the database moved the others.
+   - Today a dragged meal leaves its hidden alternatives behind, and publishing is then refused with nothing on screen to fix.
+B. use_plan_alternative(p_item_id uuid) → { ok, message, item_id, previous_item_id }.
+   - Does all of "Use this instead" in one step:
+     - the alternative takes the meal's place and position;
+     - the old meal and the other alternatives become its alternatives;
+     - top-ups move to it.
+   - Replace the four separate updates in the Swap list with this one call.
+   - If ok is false, show message as it is (e.g. leftovers can't be swapped).
+   - Reload afterwards.
+   - Today a failure halfway can leave two meals counted in the slot, or alternatives hidden for good.
+C. my_plan_version now returns slot_states ([{ day, meal_slot, state, reason }]).
+   - The client screens already read plan.slot_states. Check that free-choice and empty slots now show there with their reason.
+   - The reason is visible to the client, so in the editor label the reason box "The client sees this".
+
+APP FIXES
+1. Item changes keep their saved section. In plan-items.ts (resolvePlanItem), use the row's own base_section and only look it up when it's null:
+   base_section: d.base_section ?? resolved.lines.find(l => l.id === d.line_ref)?.section ?? null
+   Keep base_section in the PlanItemDelta type. Today an added ingredient always lands in the unnamed section, and a line whose id has gone can't be matched if it had a section.
+2. Never publish a partial snapshot.
+   - buildPlanSnapshot skips items it can't resolve (`if (it.recipe_id && !full) continue;` and `if (resolved.unavailable) continue;`). It must instead throw an error naming the item, its day and its slot, e.g. "Thai beef salad (Tuesday lunch) can't be worked out. Fix or remove it before publishing."
+   - In onPublish, re-run the unavailable check on the freshly loaded items and recipes, not the page's older state.
+   - Today the database refuses with "The plan changed while publishing", which sends people looking in the wrong place.
+3. Problem alternatives must be visible.
+   - In the Swap list, show an alternative's status when it can't be worked out ("Needs fixing"), with its remove button.
+   - The publish blocker message names the items, marking alternatives as "(alternative)".
+   - The shopping PDF button and the draft print show that message instead of doing nothing or failing.
+4. Load item changes through the plan, not a list of ids:
+   select("*, meal_plan_items!inner(meal_plan_id)").eq("meal_plan_items.meal_plan_id", planId), then drop the embedded field.
+   A list of ids in the URL breaks on large plans (the planner will make 28-day plans with alternatives).
+5. An alternative uses the same serves as the meal it replaces.
+   - When adding one, set its servings_override to the serves the main meal shows, not the main's raw servings_override (often null).
+   - After a swap, the meal should then match the kcal and protein the Swap list showed.
+6. The client's own free-choice slots (from their meal structure) work as before: Add, Add food and dropping still work. Only a saved slot state (free choice or empty for that day, from meal_plan_slot_states) hides them.
+7. Inputs match the database rules, so people get a clear message instead of a raw error:
+   - "% of the day": min 1, max 100 (the database requires more than 0).
+   - Slot reason: maxLength 300.
+8. Publish dialog:
+   - Clear the "Client sees it from" date after a successful publish.
+   - The date input's minimum is today (Sydney date).
+9. Undo after deleting a recipe brings back everything that was removed with its plan items: their top-ups, alternatives and item changes, not just the items.
+10. The collapsed-sidebar dot (Changes and My profile) goes back to the same orange as the other menu counts. bg-accent is pale green and vanishes on the highlighted row.
+
+TESTS
+- An 'add' item change keeps its base_section.
+- buildPlanSnapshot throws, naming the item, when an item can't be worked out.
+- Adding an alternative copies the main meal's shown serves.
+- A client-structure free-choice slot still allows Add; a saved free-choice slot state doesn't.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
+- which checks need someone signed in

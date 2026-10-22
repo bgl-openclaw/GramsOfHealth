@@ -1,0 +1,30 @@
+Food,Role,Status,Used in recipes,Suggested group (fill in if it should swap),food_id
+"Custard, vanilla, reduced fat",adjustable_carb,new from AUSNUT (after it is applied),0,,custard_vanilla_reduced_fat
+"Dates, pitted",adjustable_carb,in the library,6,,dates_dried
+Elderflower Cordial,adjustable_carb,in the library,1,,elderflower_cordial
+"Ice cream, vanilla",adjustable_carb,new from AUSNUT (after it is applied),0,,ice_cream_vanilla
+Mcmuffin,adjustable_carb,in the library (not verified),0,,mcmuffin
+Mediterranean Orzo,adjustable_carb,in the library (not verified),0,,mediterranean_orzo
+Nesquik,adjustable_carb,in the library (not verified),1,,nesquik
+Pancake,adjustable_carb,in the library (not verified),2,,pancake
+Pikelet,adjustable_carb,in the library (not verified),1,,pikelet
+Pizza,adjustable_carb,in the library (not verified),1,,pizza
+Red Bean Paste,adjustable_carb,in the library (not verified),0,,red_bean_paste
+Strawberry Nesquik,adjustable_carb,in the library (not verified),1,,strawberry_nesquik
+Sushi Seaweed Sheet,adjustable_carb,in the library (not verified),1,,sushi_seaweed_sheet
+Waffle,adjustable_carb,in the library (not verified),1,,waffle
+White And Pink Marshmallow,adjustable_carb,in the library (not verified),1,,white_and_pink_marshmallow
+Almond meal,adjustable_fat,in the library,4,,almond_meal
+Avocado,adjustable_fat,in the library,27,,avocado
+"Coconut, desiccated",adjustable_fat,in the library,0,,coconut_flake
+"Coconut, fresh flesh",adjustable_fat,new from AUSNUT (after it is applied),0,,coconut_fresh_flesh
+Olive Oil Burger,adjustable_fat,in the library (not verified),1,,olive_oil_burger
+Sesame oil,adjustable_fat,in the library,45,,sesame_oil
+Beef meatballs,adjustable_protein,in the library,1,,beef_meatball
+Egg yolk,adjustable_protein,in the library,2,,egg_yolk
+Falafel,adjustable_protein,new from AUSNUT (after it is applied),0,,falafel
+Fish roe,adjustable_protein,new from AUSNUT (after it is applied),0,,fish_roe
+Packet Prawn Dumpling,adjustable_protein,in the library (not verified),1,,packet_prawn_dumpling
+Pre-Cooked Bbq Chicken,adjustable_protein,in the library (not verified),1,,pre_cooked_bbq_chicken
+Smoked salmon,adjustable_protein,in the library (not verified),1,,smoked_salmon
+"Tofu, silken",adjustable_protein,in the library,5,,tofu_silken

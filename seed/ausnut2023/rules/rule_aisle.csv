@@ -1,0 +1,126 @@
+group_code,group_name,aisle,override,name_rule
+111,Tea,Drinks,,name contains 'frozen' -> Frozen
+112,Coffee and coffee substitutes,Drinks,,name contains 'frozen' -> Frozen
+113,100% Fruit and vegetable juices,,,name contains 'frozen' -> Frozen
+114,Fruit and vegetable drinks,,,name contains 'frozen' -> Frozen
+115,Cordials,,,name contains 'frozen' -> Frozen
+116,"Soft drinks, and flavoured mineral waters",,,name contains 'frozen' -> Frozen
+117,"Electrolyte, energy and fortified drinks",,,name contains 'frozen' -> Frozen
+118,"Waters, municipal and bottled",Drinks,,name contains 'frozen' -> Frozen
+119,Other beverage flavourings and prepared beverages,Pantry,,name contains 'frozen' -> Frozen
+121,"Flours, rice and other cereal grains and starches",Pantry,,name contains 'frozen' -> Frozen
+122,"Regular breads, and bread rolls (plain, unfilled, and untopped varieties)",Bakery,,name contains 'frozen' -> Frozen
+123,"English-style muffins, flat breads, and savoury and sweet breads",Bakery,,name contains 'frozen' -> Frozen
+124,Pasta and pasta products (without sauce),Pantry,,name contains 'frozen' -> Frozen
+125,"Breakfast cereals, ready to eat",Pantry,,name contains 'frozen' -> Frozen
+126,"Breakfast cereals, hot porridge style",Pantry,,name contains 'frozen' -> Frozen
+131,Sweet biscuits,,,name contains 'frozen' -> Frozen
+132,Savoury biscuits,Pantry,,name contains 'frozen' -> Frozen
+133,"Cakes, muffins, scones, cake-type desserts",,,name contains 'frozen' -> Frozen
+134,Pastries,,,name contains 'frozen' -> Frozen
+135,Mixed dishes where cereal is the major ingredient,,,name contains 'frozen' -> Frozen
+136,Batter-based products,Bakery,,name contains 'frozen' -> Frozen
+141,Butters,Dairy & eggs,,name contains 'frozen' -> Frozen
+142,Dairy blends,Dairy & eggs,,name contains 'frozen' -> Frozen
+143,Margarine and table spreads,,,name contains 'frozen' -> Frozen
+144,Plant oils,Pantry,,name contains 'frozen' -> Frozen
+145,Other fats,Pantry,,name contains 'frozen' -> Frozen
+146,Unspecified fats,,,name contains 'frozen' -> Frozen
+151,Fin fish (excluding commercially sterile),Meat & seafood,,name contains 'frozen' -> Frozen
+152,Crustacea and molluscs (excluding commercially sterile),Meat & seafood,,name contains 'frozen' -> Frozen
+153,Other sea and freshwater foods,Meat & seafood,,name contains 'frozen' -> Frozen
+154,Packed (commercially sterile or canned) fish and seafood,Pantry,,name contains 'frozen' -> Frozen
+155,Fish and seafood products (homemade and takeaway),Pantry,,name contains 'frozen' -> Frozen
+156,Mixed dishes with fish or seafood as the major component,,,name contains 'frozen' -> Frozen
+157,Wild caught fish and seafood,Meat & seafood,,name contains 'frozen' -> Frozen
+160,Wild harvested fruits,,,name contains 'frozen' -> Frozen
+161,Pome fruit,Produce,,name contains 'frozen' -> Frozen
+162,Berry fruit,Produce,,name contains 'frozen' -> Frozen
+163,Citrus fruit,Produce,,name contains 'frozen' -> Frozen
+164,Stone fruit,Produce,16402=Pantry,name contains 'frozen' -> Frozen
+165,Tropical and subtropical fruit,Produce,16503=Pantry,name contains 'frozen' -> Frozen
+166,Other fruit,Produce,,name contains 'frozen' -> Frozen
+167,Mixtures of two or more groups of fruit,,,name contains 'frozen' -> Frozen
+168,"Dried fruit, preserved fruit",Pantry,,name contains 'frozen' -> Frozen
+169,Mixed dishes where fruit is the major component,,,name contains 'frozen' -> Frozen
+171,Eggs,Dairy & eggs,,name contains 'frozen' -> Frozen
+172,Dishes where egg is the major ingredient,,,name contains 'frozen' -> Frozen
+180,"Wild harvested meat, and meat dishes",,,name contains 'frozen' -> Frozen
+181,"Beef, sheep and pork, unprocessed",Meat & seafood,,name contains 'frozen' -> Frozen
+182,Mammalian game meats,Meat & seafood,,name contains 'frozen' -> Frozen
+183,Poultry and feathered game,Meat & seafood,,name contains 'frozen' -> Frozen
+184,Organ meats and offal products and dishes,,,name contains 'frozen' -> Frozen
+185,"Sausages, frankfurts and saveloys",,,name contains 'frozen' -> Frozen
+186,Processed meat,Meat & seafood,,name contains 'frozen' -> Frozen
+187,"Mixed dishes where beef, sheep, pork or mammalian game is the major component",,,name contains 'frozen' -> Frozen
+188,"Mixed dishes where sausage, bacon, ham or other processed meat is the major component",,,name contains 'frozen' -> Frozen
+189,Mixed dishes where poultry or feathered game is the major component,,,name contains 'frozen' -> Frozen
+191,"Dairy milk (cow, sheep and goat)",Dairy & eggs,,name contains 'frozen' -> Frozen
+192,Yoghurt,Dairy & eggs,,name contains 'frozen' -> Frozen
+193,Cream,Dairy & eggs,,name contains 'frozen' -> Frozen
+194,Cheese,Dairy & eggs,,name contains 'frozen' -> Frozen
+195,Frozen milk products,Frozen,,name contains 'frozen' -> Frozen
+196,Custards,Dairy & eggs,,name contains 'frozen' -> Frozen
+197,Other dishes where milk or a milk product is the major component,,,name contains 'frozen' -> Frozen
+198,Flavoured milks  and milkshakes,,,name contains 'frozen' -> Frozen
+201,"Dairy milk substitutes, unflavoured",Dairy & eggs,,name contains 'frozen' -> Frozen
+202,"Dairy milk substitutes, flavoured",,,name contains 'frozen' -> Frozen
+203,Cheese substitute,,,name contains 'frozen' -> Frozen
+204,"Dairy milk substitute, ice confection",,,name contains 'frozen' -> Frozen
+205,"Dairy milk substitute, yoghurt",Dairy & eggs,,name contains 'frozen' -> Frozen
+206,Meat substitutes,Dairy & eggs,,name contains 'frozen' -> Frozen
+211,"Soup, homemade from basic ingredients",,,name contains 'frozen' -> Frozen
+212,Dry soup mix,,,name contains 'frozen' -> Frozen
+213,"Soup, prepared from dry soup mix",,,name contains 'frozen' -> Frozen
+214,Canned condensed soup (unprepared),,,name contains 'frozen' -> Frozen
+215,"Soup, commercially sterile or canned, prepared from condensed or sold ready to heat",,,name contains 'frozen' -> Frozen
+216,"Soup, purchased ready to eat from restaurant or takeaway",,,name contains 'frozen' -> Frozen
+221,Seeds and seed products,Pantry,,name contains 'frozen' -> Frozen
+222,Nuts and nut products,Pantry,,name contains 'frozen' -> Frozen
+223,Wild harvested seeds and nuts,,,name contains 'frozen' -> Frozen
+231,Gravies and savoury sauces (includes pasta sauces),Pantry,,name contains 'frozen' -> Frozen
+232,"Pickles, chutneys and relishes",Pantry,,name contains 'frozen' -> Frozen
+233,Salad dressings,Pantry,,name contains 'frozen' -> Frozen
+234,Stuffings,,,name contains 'frozen' -> Frozen
+235,Dips,Dairy & eggs,,name contains 'frozen' -> Frozen
+240,"Wild harvested vegetables, and vegetable dishes",,,name contains 'frozen' -> Frozen
+241,"Potatoes, chips and other potato products and dishes",Produce,,name contains 'frozen' -> Frozen
+242,"Cabbage, cauliflower, broccoli and similar brassica vegetables",Produce,,name contains 'frozen' -> Frozen
+243,Carrot and similar root vegetables,Produce,,name contains 'frozen' -> Frozen
+244,Leaf and stalk vegetables,Produce,,name contains 'frozen' -> Frozen
+245,Peas and beans,Produce,,name contains 'frozen' -> Frozen
+246,Tomato and tomato products,Produce,24602=Pantry,name contains 'frozen' -> Frozen
+247,Other fruiting vegetables,Produce,,name contains 'frozen' -> Frozen
+248,Other vegetables and vegetable combinations,Produce,24803=Frozen,name contains 'frozen' -> Frozen
+249,Dishes where vegetable is the major component,,,name contains 'frozen' -> Frozen
+251,Mature legumes and pulses,Pantry,25102=Pantry,name contains 'frozen' -> Frozen
+252,Mature legume and pulse products and dishes,Pantry,,name contains 'frozen' -> Frozen
+261,Potato snacks,,,name contains 'frozen' -> Frozen
+262,Corn snacks,Pantry,,name contains 'frozen' -> Frozen
+263,Extruded or reformed snacks,,,name contains 'frozen' -> Frozen
+264,Other snacks,,,name contains 'frozen' -> Frozen
+271,"Sugar, honey and syrups",Pantry,,name contains 'frozen' -> Frozen
+272,"Jam and lemon spreads, chocolate spreads, sauces",Pantry,,name contains 'frozen' -> Frozen
+273,Dishes and products other than confectionery where sugar is the major component,,,name contains 'frozen' -> Frozen
+281,Chocolate and chocolate-based confectionery,Pantry,,name contains 'frozen' -> Frozen
+282,"Fruit, nut and seed-based confectionery",,,name contains 'frozen' -> Frozen
+283,"Fruit, nut and cereal bars and balls",,,name contains 'frozen' -> Frozen
+284,Other confectionery,,,name contains 'frozen' -> Frozen
+291,Beers,,,name contains 'frozen' -> Frozen
+292,Wines,,,name contains 'frozen' -> Frozen
+293,Spirits,,,name contains 'frozen' -> Frozen
+294,Cider and perry,,,name contains 'frozen' -> Frozen
+295,Other alcoholic beverages,,,name contains 'frozen' -> Frozen
+296,De-alcoholised beverages,,,name contains 'frozen' -> Frozen
+301,Formulated dietary foods,Pantry,,name contains 'frozen' -> Frozen
+311,"Yeast, and yeast vegetable or meat extracts",Pantry,,name contains 'frozen' -> Frozen
+312,Intense sweetening agents,,,name contains 'frozen' -> Frozen
+313,"Herbs, spices, seasonings and stock cubes",Pantry,,name contains 'frozen' -> Frozen
+314,Essences,,,name contains 'frozen' -> Frozen
+315,Chemical raising agents and cooking ingredients,Pantry,,name contains 'frozen' -> Frozen
+321,Infant formulae and human breast milk,,,name contains 'frozen' -> Frozen
+322,Infant cereal products,,,name contains 'frozen' -> Frozen
+323,Infant foods,,,name contains 'frozen' -> Frozen
+331,Reptiles,,,name contains 'frozen' -> Frozen
+332,Insects,,,name contains 'frozen' -> Frozen
+344,Other nutritive supplements,,,name contains 'frozen' -> Frozen

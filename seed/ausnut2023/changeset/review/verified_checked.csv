@@ -1,0 +1,142 @@
+food_id,name,source,ausnut_key,ausnut_name,ours_kcal,ausnut_kcal
+200g_250g_pasta,Pasta,reviewed relink: dry white pasta (was boiled pulse pasta),F006458,"Pasta, white, plain, dry, uncooked",348,348.5
+adzuki_bean,Red Beans,"reviewed relink: 'Red Beans' = red kidney, canned, drained; matches its numbers",F000448,"Bean, red kidney, canned, drained",105,105.4
+almond,Almonds,reviewed relink: almonds (was almond MILK),F006081,"Nut, almond, raw/natural, unsalted",570,570.3
+apple,Apple,existing key,F000107,"Apple, red delicious, unpeeled, raw",57,59.3
+artichoke,Artichoke,existing key,F000144,"Artichoke, globe, raw",35,34.7
+baby_cos,Cos lettuce ,High match,F005191,"Lettuce, cos, raw",19,17.2
+baking_powder,Baking powder,existing key,F000247,"Baking powder, dry powder",88,86.8
+balsamic_vinegar,Balsamic vinegar,reviewed relink: balsamic vinegar (was other vinegar),F009499,"Vinegar, balsamic",79,78.9
+banana,Banana,existing key,F000262,"Banana, cavendish, peeled, raw",94,95.4
+barramundi_fillet,Barramundi,existing key,F000386,"Barramundi, raw",125,125.0
+bean_sprout,Bean sprouts,existing key,F008806,"Sprout, bean, raw",22,22.5
+beef_mince,Beef mince,"reviewed relink: regular beef mince >10 % fat, matches its numbers (was <5 % fat)",F000655,"Beef, mince, >10% fat, raw",183,183.3
+beef_mince_lean,"Beef mince, extra lean",existing key,F000666,"Beef, mince, <5% fat, raw",129,129.3
+beetroot,Beetroot,"reviewed relink: beetroot, raw (was canned)",F001015,"Beetroot, purple, peeled, raw",48,55.4
+blueberries,Blueberries,High match,F001290,"Blueberry, raw",46,48.5
+bok_choy,Bok choy,existing key,F001301,"Bok choy or pak choy, raw",19,18.9
+bread,"Bread, white",reviewed relink: white bread (was organic bread),F001463,"Bread, white, commercial",239,251.0
+bread_wholemeal,"Bread, wholemeal",High match,F001553,"Bread, wholemeal, commercial",232,237.3
+breadcrumbs,Breadcrumbs,existing key,F001683,"Breadcrumbs, white",364,381.9
+broccoli,Broccoli,existing key,F001905,"Broccoli, fresh or frozen, raw",31,32.0
+broccolini,Broccolini,High match,F001909,"Broccolini, raw",29,29.2
+brown_sugar,Brown sugar,existing key,F008969,"Sugar, brown",371,370.9
+butter,"Butter, salted",B2 relink,F001973,"Butter, plain, salted",723,733.5
+button_mushroom,Mushrooms,existing key,F005946,"Mushroom, common, raw",21,27.2
+cabbage,Cabbage,reviewed relink: white cabbage (was mustard cabbage),F002015,"Cabbage, white, raw",22,24.1
+can_coconut_cream,Coconut cream,existing key,F002982,"Coconut, cream",217,217.0
+can_corn_kernel,"Corn kernels, drained",existing key,F003220,"Corn, canned, kernels, drained",93,93.5
+can_kidney_bean,"Kidney beans, drained",B2 relink,F000448,"Bean, red kidney, canned, drained",105,105.4
+canned_pineapple_piece,"Pineapple, canned, drained",High match,F006708,"Pineapple, canned in pineapple juice, drained",49,45.4
+canola_oil,Canola oil,existing key,F006159,"Oil, canola",884,884.3
+capers,Capers,existing key,F002220,"Capers, pickled, canned, drained",30,30.1
+capsicum,Capsicum,"reviewed relink: red capsicum, matches its numbers (was green)",F002247,"Capsicum, red, raw",28,27.5
+carrot,Carrot,High match,F002276,"Carrot, raw",35,34.7
+caster_sugar,Caster sugar,B2 relink,F008976,"Sugar, white, granulated or lump",382,382.4
+cauliflower,Cauliflower,High match,F002378,"Cauliflower, raw",24,24.4
+celery,Celery,existing key,F002390,"Celery, raw",15,17.7
+cheddar,Cheddar cheese,existing key,F002414,"Cheese, cheddar, natural, plain",384,403.0
+chicken_breast,"Chicken, breast",existing key,F002594,"Chicken, breast, lean, raw",105,98.5
+chicken_stock,Chicken stock,B2 relink,F008936,"Stock, liquid, all flavours, prepared",4,4.3
+chives,Chives,existing key,F002907,"Chives, fresh, raw",29,28.7
+chocolate,"Chocolate, milk",B2 relink,F002929,"Chocolate, milk",521,520.8
+cinnamon,Cinnamon,existing key,F002963,"Cinnamon, dried, ground",240,240.0
+cocoa_powder,Cocoa powder,existing key,F002980,Cocoa powder,312,319.1
+coconut_oil,Coconut oil,existing key,F006163,"Oil, coconut",837,881.7
+coriander_fresh,Coriander,existing key,F003192,"Coriander, fresh, leaves & stems, raw",40,31.5
+corn_chips,Corn chips,High match,F003198,"Corn chips, plain, salted",478,490.7
+cottage_cheese_lf,"Cottage cheese, low fat",B2 relink,F002438,"Cheese, cottage, reduced fat",95,93.0
+cranberry_dried,"Cranberries, dried",reviewed relink: dried cranberries (was raw cranberry),F003248,"Cranberry, dried, sugar sweetened",318,317.9
+cucumber,Cucumber,High match,F003323,"Cucumber, raw",12,11.7
+currants,"Currants, dried",reviewed relink: dried currants (was fresh currant),F003331,"Currant, dried",313,291.1
+curry_powder,Curry powder,existing key,F003337,Curry powder,294,294.2
+diced_tomato_canned,"Diced tomatoes, canned",B2 relink,F009222,"Tomato, whole, canned in tomato juice, undrained",21,18.9
+dill,"Dill, fresh",High match,F003509,"Dill, fresh, raw",41,40.6
+each_paprika,Paprika,High match,F006316,"Paprika, dried, ground",313,313.3
+egg,"Egg, whole",existing key,F003729,"Egg, chicken, whole, raw",127,127.4
+egg_yolk,Egg yolk,existing key,F003737,"Egg, chicken, yolk, raw",313,313.3
+eggplant,Eggplant,existing key,F003761,"Eggplant, raw",22,20.3
+feta,Feta cheese,existing key,F002452,"Cheese, fetta (feta)",272,256.5
+fig,Fig,reviewed relink: fresh fig (was dried fig),F003834,"Fig, fresh, raw",47,46.6
+filo_pastry,Filo pastry,existing key,F006497,"Pastry, filo (fillo), commercial, raw",305,306.6
+fresh_frozen_blueberry,Fresh Blueberry,existing key,F001289,"Blueberry, frozen",46,49.7
+freshly_grated_parmesan_cheese,"Parmesan Cheese, grated",existing key,F002478,"Cheese, parmesan, dried, finely grated",468,465.8
+freshly_squeezed_lemon_juice,"Lemon Juice, freshly squeezed",existing key,F004726,"Juice, lemon",27,26.5
+frozen_blueberry,Frozen Blueberry,High match,F001289,"Blueberry, frozen",48,49.7
+g_can_chickpea,"Chickpeas, drained",B2 relink,F002880,"Chickpea, canned, drained",113,113.3
+garlic,"Garlic, fresh",existing key,F004193,"Garlic, peeled, raw",125,124.8
+gf_plain_flour,Gluten-Free Plain Flour,existing key,F003990,"Flour, gluten free mix",359,353.7
+ginger_fresh,"Ginger, fresh",High match,F004213,"Ginger, peeled, raw",32,31.5
+goat_cheese,Goat Cheese,High match,F002463,"Cheese, goat, soft",285,285.4
+granny_smith_apple,"Apple, Granny Smith",existing key,F000095,"Apple, granny smith, unpeeled, raw",48,49.7
+grape_seed_oil,Grapeseed Oil,B2 relink,F006167,"Oil, grapeseed",884,884.3
+greek_yoghurt,"Greek yoghurt, natural",reviewed relink: Greek-style yoghurt (was regular natural),F009655,"Yoghurt, natural, greek style (~10% fat)",126,131.5
+green_bean,Green beans,existing key,F000431,"Bean, green, raw",25,25.3
+green_capsicum,Green capsicum,existing key,F002239,"Capsicum, green, raw",20,16.5
+heavy_whipping_cream,Thickened Cream,High match,F003270,"Cream, thickened",337,339.9
+icing_sugar,Icing sugar,existing key,F008980,"Sugar, white, icing",382,382.4
+individual_serve_instant_noodle,Instant Noodle,High match,F006053,"Noodle, wheat, instant, flavoured, boiled, drained",137,143.6
+jam,Jam,existing key,F004600,"Jam, berry",251,262.9
+juice_orange,Orange Juice,existing key,F004739,"Juice, orange, commercial",28,32.0
+lamb_mince,Lamb mince,existing key,F005049,"Lamb, mince, raw",144,143.9
+lamb_steak,Lamb Steak,existing key,F005095,"Lamb, steak, boneless, lean, raw",131,130.5
+lean_stir_fry_beef_strip,Lean Stir-Fry Beef Strip,existing key,F000931,"Beef, stir-fry strips, lean, raw",128,128.1
+lebanese_cucumber,Lebanese cucumber,High match,F003321,"Cucumber, Lebanese, unpeeled, raw",12,11.0
+leg_ham,Leg ham,existing key,F004299,"Ham, leg, lean",112,111.6
+lemon,Lemon,"reviewed relink: lemon, peeled, raw (the High match was PRESERVED lemon)",F005174,"Lemon, peeled, raw",27,26.5
+light_brown_sugar,Light Brown Sugar,existing key,F008969,"Sugar, brown",371,370.9
+lime,Lime,High match,F005199,"Lime, peeled, raw",29,28.0
+lime_juice,Lime juice,existing key,F004729,"Juice, lime",29,28.0
+mango,Mango,existing key,F005299,"Mango, peeled, raw",57,53.5
+milk,"Milk, reduced fat",existing key,F005614,"Milk, cow, fluid, reduced fat (~1%)",47,43.3
+mint,"Mint, fresh",High match,F005700,"Mint, fresh, raw",54,53.8
+mozzarella,Mozzarella,existing key,F002472,"Cheese, mozzarella",290,289.7
+mushroom,"Mushroom, common",existing key,F005946,"Mushroom, common, raw",21,27.2
+mustard,Mustard,existing key,F005973,"Mustard, cream style",83,83.2
+olive_oil,Extra virgin olive oil,existing key,F006177,"Oil, olive",883,883.1
+onion_brown,Brown onion,existing key,F006225,"Onion, mature, brown skinned, peeled, raw",33,32.5
+orange,Orange,existing key,F006277,"Orange, peeled, raw",42,41.6
+orange_juice,Orange juice,existing key,F004739,"Juice, orange, commercial",28,32.0
+oyster_sauce,Oyster sauce,existing key,F008026,"Sauce, oyster, commercial",113,112.6
+pasta,"Pasta, cooked",existing key,F006456,"Pasta, white, plain, boiled, no added salt",143,136.7
+pea_frozen,"Peas, frozen",B2 relink,F006536,"Pea, green, raw",70,74.3
+peach,Peach,existing key,F006571,"Peach, white, unpeeled, raw",40,34.7
+peanut_butter,Peanut butter,existing key,F006577,"Peanut butter, added sugar & salt",596,596.3
+peanut_oil,Peanut Oil,existing key,F006183,"Oil, peanut",884,884.3
+pear,Pear,"reviewed relink: pear, raw (was canned)",F006609,"Pear, raw, not further defined",66,60.5
+peas,"Peas, green",B2 relink,F006536,"Pea, green, raw",70,74.3
+pickled_onion,Pickled Onion,High match,F006245,"Onion, pickled, drained, commercial",62,62.1
+pine_nut,Pine nuts,existing key,F006112,"Nut, pine, raw/natural, unsalted",699,699.1
+pita_bread,Pita bread,High match,F001404,"Bread, flat (pita or Lebanese), wholemeal, commercial",257,256.7
+plain_flour,Plain flour,existing key,F004007,"Flour, wheat, white, plain",353,353.5
+potato,Potato,High match,F007399,"Potato, unpeeled, raw",65,58.1
+prawn,Prawns,existing key,F007433,"Prawn, king or medium, flesh, raw (green)",89,91.1
+quinoa,"Quinoa, cooked",High match,F007596,"Quinoa, cooked",105,103.3
+radish,Radish,existing key,F007606,"Radish, raw",15,14.8
+raspberry,Raspberries,existing key,F007619,"Raspberry, raw",49,48.0
+red_apple_cored,Red Apple,existing key,F000107,"Apple, red delicious, unpeeled, raw",59,59.3
+red_cabbage,Red cabbage,existing key,F002006,"Cabbage, red, raw",29,30.6
+red_capsicum,Red capsicum,existing key,F002247,"Capsicum, red, raw",28,27.5
+red_wine,Red wine,existing key,F009571,"Wine, red",77,79.3
+red_wine_vinegar,Red wine vinegar,existing key,F009498,Vinegar (except balsamic vinegar),13,15.5
+ricotta,Ricotta,existing key,F002488,"Cheese, ricotta",159,152.0
+rocket,Rocket,existing key,F007712,"Rocket, fresh, raw",22,21.7
+rolled_oats,Rolled oats,existing key,F006143,"Oats, rolled, uncooked",356,373.8
+roma_tomato,Roma tomato,High match,F009211,"Tomato, roma, raw",18,17.7
+sesame_oil,Sesame oil,High match,F006187,"Oil, sesame",884,884.3
+sesame_seeds,Sesame seeds,existing key,F008214,"Seed, sesame, unsalted",626,626.2
+skim_milk,"Milk, skim",High match,F005637,"Milk, cow, fluid, skim (~0.1% fat)",35,34.9
+smoked_paprika,Smoked paprika,existing key,F006316,"Paprika, dried, ground",315,313.3
+spinach,"Spinach, baby",High match,F008749,"Spinach, baby, fresh, raw",16,16.3
+spring_onion,Spring onion,existing key,F006250,"Onion, spring, raw",30,30.4
+tofu_silken,"Tofu, silken",B2 relink,F009183,"Tofu (soy bean curd), silken or soft, as purchased",54,53.8
+vegetable_oil,Vegetable oil,existing key,F006191,"Oil, vegetable",884,884.3
+walnut,Walnuts,existing key,F006116,"Nut, walnut, raw/natural, unsalted",694,694.1
+watermelon,Watermelon,existing key,F005520,"Melon, watermelon, raw",32,31.1
+white_bread,White Bread,B2 relink,F001463,"Bread, white, commercial",246,251.0
+white_wine,White wine,High match,F009588,"Wine, white",71,70.7
+wholemeal_pasta,"Wholemeal pasta, cooked","reviewed relink: wholemeal pasta, boiled (was uncooked)",F006464,"Pasta, wholemeal, plain, boiled, no added salt",138,140.1
+wombok,Wombok (Chinese cabbage),High match,F001996,"Cabbage, Chinese (wombok), raw",11,10.5
+worcestershire,Worcestershire sauce,existing key,F008094,"Sauce, Worcestershire, commercial",74,74.3
+zest_lemon_juice,Lemon juice,existing key,F004726,"Juice, lemon",27,26.5
+zucchini,Zucchini,"reviewed relink: green zucchini, raw (was golden, cooked)",F009775,"Zucchini, green skin, raw",16,16.5

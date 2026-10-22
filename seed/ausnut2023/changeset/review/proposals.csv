@@ -1,0 +1,30 @@
+food_id,name,suggested,why,uses,now_kcal
+low_carb_potato,Low Carb Potato,"link F007356 potato, peeled, raw",low-carb potato varieties have ~25 % fewer carbs than AUSNUT potato,1,150
+milk_chocolate_chip_almond_flake,Milk Chocolate Chip Almond Flake,split the 2 lines into milk chocolate chips + flaked almonds,two ingredients merged in the import,2,530
+moroccan_seasoning,Moroccan seasoning,link F008746 spices (no salt) or label,commercial blends usually contain salt,2,320
+packet_ravioli,Packet Ravioli,link F006428 (vegetable-filled) or F006425 (meat-filled),filling unknown,1,150
+pad_thai_noodle,Pad Thai Noodle,label: dry rice stick noodles,200 g is a dry packet weight; AUSNUT has only boiled,1,140
+pad_thai_rice_noodle,Pad Thai Rice Noodle,label: fresh wide rice noodles,400 g in pad see ew (fresh wide noodles?); AUSNUT has only boiled rice stick.,1,119
+pear_cou_cou,Pear Cou Cou,"link F003239 couscous, uncooked","0.5 cup, almost certainly dry",1,120
+pearl_cou_cou,Pearl Cou Cou,"link F003239 couscous, uncooked","250 g, almost certainly dry",1,120
+peri_peri_sauce,Peri Peri Sauce,"link F007997 chilli sauce, commercial",~90 % sure,1,120
+pickle,Pickle,"link F004206 gherkin, pickled",dill pickle vs sweet gherkin unclear,2,18
+pork_scotch_fillet,Pork Scotch Fillet,label or AUSNUT pork forequarter (lean),no lean scotch-fillet row; current numbers are lean pork fillet,1,103
+pre_cooked_bbq_chicken,Pre-Cooked Bbq Chicken,"link F002569 barbecued chicken, without skin (or F002568 with skin)",skin on or off?,1,165
+protein_pita_bread,Protein Pita Bread,label,branded high-protein pita; key is plain white pita. Label numbers.,0,263
+pulse_pasta,Pulse Pasta,check the recipe weight is cooked,High match is boiled pulse pasta; check whether the recipe weight is dry.,1,140
+red_curry_paste,Red curry paste,label from the brand used,"AUSNUT 'paste, curry style' (206 kcal) vs current green-curry-paste row (149); brands vary — label.",4,149
+sardine_in,Sardine In,link a canned sardine row,'Sardine In' is canned sardines (in oil/springwater); key is raw sardine — state mismatch.,1,106
+short_cut_bacon,Short Cut Bacon,"link F000231 bacon, shortcut, cooked",AUSNUT has only cooked; recipe weight is probably raw,1,210
+slider_bun,Slider Bun,"link F001353 bread roll, white",brioche sliders are richer,1,300
+soba_noodles,Soba noodles,"link F006043 soba, uncooked (359 kcal) if 250 g is the dry weight","keyed to BOILED soba, but the one recipe uses 250 g for 4 serves (62 g each) — almost certainly the dry packet weight.",1,109
+spiral_pasta,Spiral Pasta,"link F006458 pasta, white, dry",450 g in a pasta salad is almost certainly the dry weight,1,140
+thyme_oregano_mix,Thyme/Oregano Mix,split into 1 tbsp thyme + 1 tbsp oregano (fresh or dried?),two herbs in one line; 2 tbsp: fresh or dried?,1,150
+tikka_curry_paste,Tikka Curry Paste,label from the brand used,as red curry paste — label numbers needed.,1,110
+tub_cherry_bocconcini,Tub Cherry Bocconcini,merge into bocconcini and change the line to ~200 g,'1 each' means one tub,1,350
+vanilla_greek_yogurt,Vanilla Greek Yogurt,"link F009922 flavoured, regular fat, high protein — or label",no flavoured Greek row,1,75
+vanilla_high_protein_yoghurt,Vanilla High Protein Yoghurt,"link F009957 flavoured, low fat, high protein",~90 % sure,1,98
+vegetable_stock_pot,Vegetable Stock Pot,"link F008933 stock, dry powder or cube as proxy, and set each = 28 g","a stock pot is a concentrate (28 g each), not prepared liquid stock; its 'each' = 100 g is also wrong.",5,4
+vermicelli_noodles,Vermicelli noodles,label: dry rice vermicelli (~360 kcal/100 g),recipes use 200–250 g packets (dry); AUSNUT has only boiled rice noodles (≈3× too low). Label numbers needed.,11,109
+vermicelli_rice_noodle,Vermicelli Rice Noodle,label: dry or fresh rice noodles,400 g in a ramen: dry or fresh? AUSNUT has only boiled rice noodles.,1,119
+wholegrain_wok_ready_noodle,Wholegrain Wok Ready Noodle,"link F006048 noodle, wheat, Asian style, cooked",wok-ready noodles are pre-cooked; wholegrain variant,1,140

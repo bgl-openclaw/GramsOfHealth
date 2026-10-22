@@ -104,6 +104,24 @@ export type Database = {
         }
         Relationships: []
       }
+      app_settings: {
+        Row: {
+          description: string | null
+          key: string
+          value: string
+        }
+        Insert: {
+          description?: string | null
+          key: string
+          value: string
+        }
+        Update: {
+          description?: string | null
+          key?: string
+          value?: string
+        }
+        Relationships: []
+      }
       change_log: {
         Row: {
           action: string
@@ -160,6 +178,193 @@ export type Database = {
             columns: ["reviewed_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_allergies: {
+        Row: {
+          as_printed: string | null
+          client_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          kind: string
+          noted_on: string | null
+          reaction: string | null
+          record_id: string | null
+          substance: string | null
+          updated_at: string
+        }
+        Insert: {
+          as_printed?: string | null
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          kind: string
+          noted_on?: string | null
+          reaction?: string | null
+          record_id?: string | null
+          substance?: string | null
+          updated_at?: string
+        }
+        Update: {
+          as_printed?: string | null
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          kind?: string
+          noted_on?: string | null
+          reaction?: string | null
+          record_id?: string | null
+          substance?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_allergies_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_allergies_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_allergies_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_allergies_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_areas: {
+        Row: {
+          blurb: string
+          icon: string | null
+          key: string
+          position: number
+          status: string
+          title: string
+        }
+        Insert: {
+          blurb: string
+          icon?: string | null
+          key: string
+          position?: number
+          status?: string
+          title: string
+        }
+        Update: {
+          blurb?: string
+          icon?: string | null
+          key?: string
+          position?: number
+          status?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      client_care_team: {
+        Row: {
+          address: string | null
+          client_id: string
+          created_at: string
+          created_by: string | null
+          email: string | null
+          fax: string | null
+          id: string
+          is_primary: boolean
+          name: string
+          notes: string | null
+          phone: string | null
+          practice: string | null
+          provider_number: string | null
+          record_id: string | null
+          role: string
+          specialty: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          fax?: string | null
+          id?: string
+          is_primary?: boolean
+          name: string
+          notes?: string | null
+          phone?: string | null
+          practice?: string | null
+          provider_number?: string | null
+          record_id?: string | null
+          role: string
+          specialty?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          fax?: string | null
+          id?: string
+          is_primary?: boolean
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          practice?: string | null
+          provider_number?: string | null
+          record_id?: string | null
+          role?: string
+          specialty?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_care_team_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_care_team_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_care_team_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_care_team_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
             referencedColumns: ["id"]
           },
         ]
@@ -254,35 +459,68 @@ export type Database = {
       }
       client_clinical_records: {
         Row: {
+          ai_summary: Json | null
           client_id: string
+          client_note: string | null
           created_at: string
+          doc_meta: Json | null
+          document_text: string | null
           file_path: string | null
           id: string
           kind: string
           measurements: Json | null
+          read_at: string | null
+          read_by: string | null
+          read_summary: Json | null
           recorded_on: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          reviewed_by_name: string | null
+          source: string
           summary: string | null
           uploaded_by: string | null
         }
         Insert: {
+          ai_summary?: Json | null
           client_id: string
+          client_note?: string | null
           created_at?: string
+          doc_meta?: Json | null
+          document_text?: string | null
           file_path?: string | null
           id?: string
           kind: string
           measurements?: Json | null
+          read_at?: string | null
+          read_by?: string | null
+          read_summary?: Json | null
           recorded_on: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          reviewed_by_name?: string | null
+          source?: string
           summary?: string | null
           uploaded_by?: string | null
         }
         Update: {
+          ai_summary?: Json | null
           client_id?: string
+          client_note?: string | null
           created_at?: string
+          doc_meta?: Json | null
+          document_text?: string | null
           file_path?: string | null
           id?: string
           kind?: string
           measurements?: Json | null
+          read_at?: string | null
+          read_by?: string | null
+          read_summary?: Json | null
           recorded_on?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          reviewed_by_name?: string | null
+          source?: string
           summary?: string | null
           uploaded_by?: string | null
         }
@@ -302,10 +540,206 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "client_clinical_records_read_by_fkey"
+            columns: ["read_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_clinical_records_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "client_clinical_records_uploaded_by_fkey"
             columns: ["uploaded_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_conditions: {
+        Row: {
+          as_printed: string | null
+          client_id: string
+          condition: string
+          created_at: string
+          created_by: string | null
+          id: string
+          noted_on: string | null
+          notes: string | null
+          record_id: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          as_printed?: string | null
+          client_id: string
+          condition: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          noted_on?: string | null
+          notes?: string | null
+          record_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          as_printed?: string | null
+          client_id?: string
+          condition?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          noted_on?: string | null
+          notes?: string | null
+          record_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_conditions_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_conditions_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_conditions_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_conditions_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_document_facts: {
+        Row: {
+          ai_model: string | null
+          applied_at: string | null
+          certainty: string
+          check_reasons: string[]
+          client_id: string
+          created_at: string
+          created_by: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          existing_value: string | null
+          field: string
+          id: string
+          method: string
+          page: number | null
+          quote: string
+          record_id: string
+          section: string
+          status: string
+          target_id: string | null
+          target_table: string | null
+          value: Json
+        }
+        Insert: {
+          ai_model?: string | null
+          applied_at?: string | null
+          certainty: string
+          check_reasons?: string[]
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          existing_value?: string | null
+          field: string
+          id?: string
+          method: string
+          page?: number | null
+          quote?: string
+          record_id: string
+          section: string
+          status?: string
+          target_id?: string | null
+          target_table?: string | null
+          value: Json
+        }
+        Update: {
+          ai_model?: string | null
+          applied_at?: string | null
+          certainty?: string
+          check_reasons?: string[]
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          existing_value?: string | null
+          field?: string
+          id?: string
+          method?: string
+          page?: number | null
+          quote?: string
+          record_id?: string
+          section?: string
+          status?: string
+          target_id?: string | null
+          target_table?: string | null
+          value?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_document_facts_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_document_facts_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
             referencedColumns: ["id"]
           },
         ]
@@ -441,9 +875,130 @@ export type Database = {
           },
         ]
       }
+      client_intake: {
+        Row: {
+          answers: Json
+          client_id: string
+          question_keys: string[] | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          submitted_at: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          answers?: Json
+          client_id: string
+          question_keys?: string[] | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          submitted_at?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          answers?: Json
+          client_id?: string
+          question_keys?: string[] | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          submitted_at?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_intake_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_intake_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_intake_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_intake_updated_by_fkey"
+            columns: ["updated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_intake_log: {
+        Row: {
+          action: string
+          changed_at: string
+          changed_by: string | null
+          client_id: string
+          field: string
+          id: number
+          new_value: string | null
+          old_value: string | null
+        }
+        Insert: {
+          action: string
+          changed_at?: string
+          changed_by?: string | null
+          client_id: string
+          field: string
+          id?: never
+          new_value?: string | null
+          old_value?: string | null
+        }
+        Update: {
+          action?: string
+          changed_at?: string
+          changed_by?: string | null
+          client_id?: string
+          field?: string
+          id?: never
+          new_value?: string | null
+          old_value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_intake_log_changed_by_fkey"
+            columns: ["changed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_intake_log_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_intake_log_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_meal_slots: {
         Row: {
           client_id: string
+          energy_share: number | null
           free_choice: boolean
           id: string
           name: string
@@ -453,6 +1008,7 @@ export type Database = {
         }
         Insert: {
           client_id: string
+          energy_share?: number | null
           free_choice?: boolean
           id?: string
           name: string
@@ -462,6 +1018,7 @@ export type Database = {
         }
         Update: {
           client_id?: string
+          energy_share?: number | null
           free_choice?: boolean
           id?: string
           name?: string
@@ -482,6 +1039,151 @@ export type Database = {
             columns: ["client_id"]
             isOneToOne: false
             referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_medicare: {
+        Row: {
+          client_id: string
+          irn: number | null
+          number: string
+          record_id: string | null
+          updated_at: string
+          updated_by: string | null
+          valid_to: string | null
+        }
+        Insert: {
+          client_id: string
+          irn?: number | null
+          number: string
+          record_id?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          valid_to?: string | null
+        }
+        Update: {
+          client_id?: string
+          irn?: number | null
+          number?: string
+          record_id?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          valid_to?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_medicare_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_medicare_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: true
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medicare_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medicare_updated_by_fkey"
+            columns: ["updated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_medications: {
+        Row: {
+          active: boolean
+          as_printed: string | null
+          client_id: string
+          created_at: string
+          created_by: string | null
+          dose: string | null
+          form: string | null
+          frequency: string | null
+          id: string
+          name: string
+          notes: string | null
+          record_id: string | null
+          started_on: string | null
+          stopped_on: string | null
+          strength: string | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          as_printed?: string | null
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          dose?: string | null
+          form?: string | null
+          frequency?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          record_id?: string | null
+          started_on?: string | null
+          stopped_on?: string | null
+          strength?: string | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          as_printed?: string | null
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          dose?: string | null
+          form?: string | null
+          frequency?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          record_id?: string | null
+          started_on?: string | null
+          stopped_on?: string | null
+          strength?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_medications_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_medications_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medications_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_medications_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
             referencedColumns: ["id"]
           },
         ]
@@ -566,6 +1268,96 @@ export type Database = {
           },
         ]
       }
+      client_referrals: {
+        Row: {
+          client_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          notes: string | null
+          pathway: string
+          plan_name: string | null
+          reason: string | null
+          record_id: string | null
+          referral_date: string | null
+          referrer_id: string | null
+          sessions_approved: number | null
+          status: string
+          updated_at: string
+          valid_until: string | null
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          notes?: string | null
+          pathway: string
+          plan_name?: string | null
+          reason?: string | null
+          record_id?: string | null
+          referral_date?: string | null
+          referrer_id?: string | null
+          sessions_approved?: number | null
+          status?: string
+          updated_at?: string
+          valid_until?: string | null
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          notes?: string | null
+          pathway?: string
+          plan_name?: string | null
+          reason?: string | null
+          record_id?: string | null
+          referral_date?: string | null
+          referrer_id?: string | null
+          sessions_approved?: number | null
+          status?: string
+          updated_at?: string
+          valid_until?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_referrals_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_referrals_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_referrals_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_referrals_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_referrals_referrer_id_fkey"
+            columns: ["referrer_id"]
+            isOneToOne: false
+            referencedRelation: "client_care_team"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_requirements: {
         Row: {
           added_by: string | null
@@ -615,6 +1407,142 @@ export type Database = {
             columns: ["tag_id"]
             isOneToOne: false
             referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_result_values: {
+        Row: {
+          certainty: string
+          check_reasons: string[]
+          client_id: string
+          created_at: string
+          created_by: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string
+          lab_flag: string | null
+          lab_high: number | null
+          lab_low: number | null
+          lab_range_text: string | null
+          line_text: string | null
+          marker_code: string | null
+          measured_on: string | null
+          method: string
+          name_as_printed: string
+          original: Json | null
+          page: number | null
+          reader_version: string | null
+          record_id: string
+          status: string
+          unit_as_printed: string | null
+          updated_at: string
+          value: number | null
+          value_std: number | null
+          value_text: string
+        }
+        Insert: {
+          certainty: string
+          check_reasons?: string[]
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method: string
+          name_as_printed: string
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id: string
+          status: string
+          unit_as_printed?: string | null
+          updated_at?: string
+          value?: number | null
+          value_std?: number | null
+          value_text: string
+        }
+        Update: {
+          certainty?: string
+          check_reasons?: string[]
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method?: string
+          name_as_printed?: string
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id?: string
+          status?: string
+          unit_as_printed?: string | null
+          updated_at?: string
+          value?: number | null
+          value_std?: number | null
+          value_text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "client_result_values_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
             referencedColumns: ["id"]
           },
         ]
@@ -719,6 +1647,7 @@ export type Database = {
       }
       client_supplements: {
         Row: {
+          added_by: string | null
           client_id: string
           created_at: string
           dose: string | null
@@ -731,6 +1660,7 @@ export type Database = {
           timing: string | null
         }
         Insert: {
+          added_by?: string | null
           client_id: string
           created_at?: string
           dose?: string | null
@@ -743,6 +1673,7 @@ export type Database = {
           timing?: string | null
         }
         Update: {
+          added_by?: string | null
           client_id?: string
           created_at?: string
           dose?: string | null
@@ -755,6 +1686,13 @@ export type Database = {
           timing?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "client_supplements_added_by_fkey"
+            columns: ["added_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "client_supplements_client_id_fkey"
             columns: ["client_id"]
@@ -909,7 +1847,9 @@ export type Database = {
       clients: {
         Row: {
           activity_level: string | null
+          address_line: string | null
           assigned_dietitian: string | null
+          client_shows_numbers: boolean
           created_at: string
           date_of_birth: string | null
           email: string | null
@@ -918,14 +1858,22 @@ export type Database = {
           height_cm: number | null
           id: string
           notes: string | null
+          numbers_allowed: boolean
           phone: string | null
+          postcode: string | null
           protein_g_per_kg: number | null
           sex: string
+          source: string
+          state: string | null
           status: string
+          suburb: string | null
+          user_id: string | null
         }
         Insert: {
           activity_level?: string | null
+          address_line?: string | null
           assigned_dietitian?: string | null
+          client_shows_numbers?: boolean
           created_at?: string
           date_of_birth?: string | null
           email?: string | null
@@ -934,14 +1882,22 @@ export type Database = {
           height_cm?: number | null
           id?: string
           notes?: string | null
+          numbers_allowed?: boolean
           phone?: string | null
+          postcode?: string | null
           protein_g_per_kg?: number | null
           sex?: string
+          source?: string
+          state?: string | null
           status?: string
+          suburb?: string | null
+          user_id?: string | null
         }
         Update: {
           activity_level?: string | null
+          address_line?: string | null
           assigned_dietitian?: string | null
+          client_shows_numbers?: boolean
           created_at?: string
           date_of_birth?: string | null
           email?: string | null
@@ -950,10 +1906,16 @@ export type Database = {
           height_cm?: number | null
           id?: string
           notes?: string | null
+          numbers_allowed?: boolean
           phone?: string | null
+          postcode?: string | null
           protein_g_per_kg?: number | null
           sex?: string
+          source?: string
+          state?: string | null
           status?: string
+          suburb?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -970,7 +1932,151 @@ export type Database = {
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "clients_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
         ]
+      }
+      clinical_markers: {
+        Row: {
+          category: string
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          food_action: string | null
+          id: string
+          name: string
+          position: number | null
+          practice_note: string | null
+          practice_range: string | null
+          previous_ref: Json | null
+          ref: Json
+          refer_when: string | null
+          retest_window: string | null
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          track: boolean | null
+          unit: string | null
+          updated_at: string
+          variation_pct: string | null
+        }
+        Insert: {
+          category?: string
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          food_action?: string | null
+          id?: string
+          name: string
+          position?: number | null
+          practice_note?: string | null
+          practice_range?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          refer_when?: string | null
+          retest_window?: string | null
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          track?: boolean | null
+          unit?: string | null
+          updated_at?: string
+          variation_pct?: string | null
+        }
+        Update: {
+          category?: string
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          food_action?: string | null
+          id?: string
+          name?: string
+          position?: number | null
+          practice_note?: string | null
+          practice_range?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          refer_when?: string | null
+          retest_window?: string | null
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          track?: boolean | null
+          unit?: string | null
+          updated_at?: string
+          variation_pct?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_markers_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      credential_types: {
+        Row: {
+          active: boolean
+          has_issuer: boolean
+          has_number: boolean
+          has_state: boolean
+          help: string | null
+          key: string
+          label: string
+          position: number
+          renew_months: number | null
+          required_for: string[]
+          roles: string[]
+        }
+        Insert: {
+          active?: boolean
+          has_issuer?: boolean
+          has_number?: boolean
+          has_state?: boolean
+          help?: string | null
+          key: string
+          label: string
+          position?: number
+          renew_months?: number | null
+          required_for?: string[]
+          roles?: string[]
+        }
+        Update: {
+          active?: boolean
+          has_issuer?: boolean
+          has_number?: boolean
+          has_state?: boolean
+          help?: string | null
+          key?: string
+          label?: string
+          position?: number
+          renew_months?: number | null
+          required_for?: string[]
+          roles?: string[]
+        }
+        Relationships: []
       }
       food_tags: {
         Row: {
@@ -1059,6 +2165,7 @@ export type Database = {
           potassium_100g: number | null
           protein_100g: number | null
           protein_family: string | null
+          purchase_unit: string | null
           role: string | null
           satfat_100g: number | null
           sodium_100g: number | null
@@ -1087,6 +2194,7 @@ export type Database = {
           potassium_100g?: number | null
           protein_100g?: number | null
           protein_family?: string | null
+          purchase_unit?: string | null
           role?: string | null
           satfat_100g?: number | null
           sodium_100g?: number | null
@@ -1115,6 +2223,7 @@ export type Database = {
           potassium_100g?: number | null
           protein_100g?: number | null
           protein_family?: string | null
+          purchase_unit?: string | null
           role?: string | null
           satfat_100g?: number | null
           sodium_100g?: number | null
@@ -1227,9 +2336,84 @@ export type Database = {
           },
         ]
       }
+      intake_questions: {
+        Row: {
+          active: boolean
+          clinical: boolean
+          help: string | null
+          key: string
+          kind: string
+          label: string
+          locked: boolean
+          options: Json | null
+          position: number
+          required: boolean
+          section: string
+        }
+        Insert: {
+          active?: boolean
+          clinical?: boolean
+          help?: string | null
+          key: string
+          kind: string
+          label: string
+          locked?: boolean
+          options?: Json | null
+          position?: number
+          required?: boolean
+          section: string
+        }
+        Update: {
+          active?: boolean
+          clinical?: boolean
+          help?: string | null
+          key?: string
+          kind?: string
+          label?: string
+          locked?: boolean
+          options?: Json | null
+          position?: number
+          required?: boolean
+          section?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "intake_questions_section_fkey"
+            columns: ["section"]
+            isOneToOne: false
+            referencedRelation: "intake_sections"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
+      intake_sections: {
+        Row: {
+          active: boolean
+          builtins: string[]
+          key: string
+          position: number
+          title: string
+        }
+        Insert: {
+          active?: boolean
+          builtins?: string[]
+          key: string
+          position?: number
+          title: string
+        }
+        Update: {
+          active?: boolean
+          builtins?: string[]
+          key?: string
+          position?: number
+          title?: string
+        }
+        Relationships: []
+      }
       invitations: {
         Row: {
           accepted_at: string | null
+          client_id: string | null
           created_at: string
           email: string
           expires_at: string | null
@@ -1240,6 +2424,7 @@ export type Database = {
         }
         Insert: {
           accepted_at?: string | null
+          client_id?: string | null
           created_at?: string
           email: string
           expires_at?: string | null
@@ -1250,6 +2435,7 @@ export type Database = {
         }
         Update: {
           accepted_at?: string | null
+          client_id?: string | null
           created_at?: string
           email?: string
           expires_at?: string | null
@@ -1258,45 +2444,331 @@ export type Database = {
           role?: string
           token?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "invitations_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "invitations_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      marker_ranges: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          change_reason: string | null
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          dietitian_note: string | null
+          high: number | null
+          high_text: string | null
+          id: string
+          is_comparator: boolean
+          is_gap: boolean
+          low: number | null
+          low_text: string | null
+          marker_code: string
+          population: string
+          position: number | null
+          practice_high: number | null
+          practice_low: number | null
+          pregnancy: boolean
+          previous_ref: Json | null
+          range_type: string
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          sex: string
+          unit: string | null
+          updated_at: string
+        }
+        Insert: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          change_reason?: string | null
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          dietitian_note?: string | null
+          high?: number | null
+          high_text?: string | null
+          id?: string
+          is_comparator?: boolean
+          is_gap?: boolean
+          low?: number | null
+          low_text?: string | null
+          marker_code: string
+          population: string
+          position?: number | null
+          practice_high?: number | null
+          practice_low?: number | null
+          pregnancy?: boolean
+          previous_ref?: Json | null
+          range_type: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          sex: string
+          unit?: string | null
+          updated_at?: string
+        }
+        Update: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          change_reason?: string | null
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          dietitian_note?: string | null
+          high?: number | null
+          high_text?: string | null
+          id?: string
+          is_comparator?: boolean
+          is_gap?: boolean
+          low?: number | null
+          low_text?: string | null
+          marker_code?: string
+          population?: string
+          position?: number | null
+          practice_high?: number | null
+          practice_low?: number | null
+          pregnancy?: boolean
+          previous_ref?: Json | null
+          range_type?: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          sex?: string
+          unit?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marker_ranges_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marker_ranges_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      meal_plan_days: {
+        Row: {
+          day: number
+          day_type: string
+          meal_plan_id: string
+        }
+        Insert: {
+          day: number
+          day_type: string
+          meal_plan_id: string
+        }
+        Update: {
+          day?: number
+          day_type?: string
+          meal_plan_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_days_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meal_plan_item_deltas: {
+        Row: {
+          base_food_id: string | null
+          base_quantity: number | null
+          base_section: string | null
+          base_unit: string | null
+          created_at: string
+          id: string
+          item_id: string
+          kind: string
+          line_ref: string | null
+          new_food_id: string | null
+          new_quantity: number | null
+          new_unit: string | null
+          position: number
+          source: string
+        }
+        Insert: {
+          base_food_id?: string | null
+          base_quantity?: number | null
+          base_section?: string | null
+          base_unit?: string | null
+          created_at?: string
+          id?: string
+          item_id: string
+          kind: string
+          line_ref?: string | null
+          new_food_id?: string | null
+          new_quantity?: number | null
+          new_unit?: string | null
+          position?: number
+          source?: string
+        }
+        Update: {
+          base_food_id?: string | null
+          base_quantity?: number | null
+          base_section?: string | null
+          base_unit?: string | null
+          created_at?: string
+          id?: string
+          item_id?: string
+          kind?: string
+          line_ref?: string | null
+          new_food_id?: string | null
+          new_quantity?: number | null
+          new_unit?: string | null
+          position?: number
+          source?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_item_deltas_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plan_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_item_deltas_new_food_id_fkey"
+            columns: ["new_food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "meal_plan_item_deltas_new_food_id_fkey"
+            columns: ["new_food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
+        ]
       }
       meal_plan_items: {
         Row: {
+          batch_group: string | null
+          batch_role: string | null
+          boosts_item_id: string | null
           day: number | null
+          food_id: string | null
           id: string
           meal_plan_id: string
           meal_slot: string | null
+          option_of: string | null
           position: number
           profile_id: string | null
-          recipe_id: string
+          quantity: number | null
+          recipe_id: string | null
           servings_override: number | null
+          unit: string | null
         }
         Insert: {
+          batch_group?: string | null
+          batch_role?: string | null
+          boosts_item_id?: string | null
           day?: number | null
+          food_id?: string | null
           id?: string
           meal_plan_id: string
           meal_slot?: string | null
+          option_of?: string | null
           position: number
           profile_id?: string | null
-          recipe_id: string
+          quantity?: number | null
+          recipe_id?: string | null
           servings_override?: number | null
+          unit?: string | null
         }
         Update: {
+          batch_group?: string | null
+          batch_role?: string | null
+          boosts_item_id?: string | null
           day?: number | null
+          food_id?: string | null
           id?: string
           meal_plan_id?: string
           meal_slot?: string | null
+          option_of?: string | null
           position?: number
           profile_id?: string | null
-          recipe_id?: string
+          quantity?: number | null
+          recipe_id?: string | null
           servings_override?: number | null
+          unit?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "meal_plan_items_boosts_item_id_fkey"
+            columns: ["boosts_item_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plan_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_leverage"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "foods"
+            referencedColumns: ["food_id"]
+          },
           {
             foreignKeyName: "meal_plan_items_meal_plan_id_fkey"
             columns: ["meal_plan_id"]
             isOneToOne: false
             referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_items_option_of_fkey"
+            columns: ["option_of"]
+            isOneToOne: false
+            referencedRelation: "meal_plan_items"
             referencedColumns: ["id"]
           },
           {
@@ -1329,29 +2801,154 @@ export type Database = {
           },
         ]
       }
+      meal_plan_slot_states: {
+        Row: {
+          day: number
+          locked: boolean
+          meal_plan_id: string
+          meal_slot: string
+          reason: string | null
+          state: string | null
+        }
+        Insert: {
+          day: number
+          locked?: boolean
+          meal_plan_id: string
+          meal_slot: string
+          reason?: string | null
+          state?: string | null
+        }
+        Update: {
+          day?: number
+          locked?: boolean
+          meal_plan_id?: string
+          meal_slot?: string
+          reason?: string | null
+          state?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_slot_states_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meal_plan_versions: {
+        Row: {
+          confirmed_at: string | null
+          confirmed_by_name: string | null
+          generation_id: string | null
+          id: string
+          meal_plan_id: string
+          needs_review_recipes: string[]
+          published_at: string
+          published_by: string | null
+          published_by_name: string
+          release_on: string | null
+          review_notes: string | null
+          snapshot: Json
+          version_no: number
+        }
+        Insert: {
+          confirmed_at?: string | null
+          confirmed_by_name?: string | null
+          generation_id?: string | null
+          id?: string
+          meal_plan_id: string
+          needs_review_recipes?: string[]
+          published_at?: string
+          published_by?: string | null
+          published_by_name: string
+          release_on?: string | null
+          review_notes?: string | null
+          snapshot: Json
+          version_no: number
+        }
+        Update: {
+          confirmed_at?: string | null
+          confirmed_by_name?: string | null
+          generation_id?: string | null
+          id?: string
+          meal_plan_id?: string
+          needs_review_recipes?: string[]
+          published_at?: string
+          published_by?: string | null
+          published_by_name?: string
+          release_on?: string | null
+          review_notes?: string | null
+          snapshot?: Json
+          version_no?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_plan_versions_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plan_versions_published_by_fkey"
+            columns: ["published_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       meal_plans: {
         Row: {
           client_id: string | null
+          confirmed_at: string | null
+          confirmed_by: string | null
+          confirmed_by_name: string | null
           created_at: string
           days: number | null
+          generation_id: string | null
           id: string
           notes: string | null
+          report: Json | null
+          report_at: string | null
+          review_notes: string | null
+          start_date: string | null
+          status: string
           title: string
         }
         Insert: {
           client_id?: string | null
+          confirmed_at?: string | null
+          confirmed_by?: string | null
+          confirmed_by_name?: string | null
           created_at?: string
           days?: number | null
+          generation_id?: string | null
           id?: string
           notes?: string | null
+          report?: Json | null
+          report_at?: string | null
+          review_notes?: string | null
+          start_date?: string | null
+          status?: string
           title: string
         }
         Update: {
           client_id?: string | null
+          confirmed_at?: string | null
+          confirmed_by?: string | null
+          confirmed_by_name?: string | null
           created_at?: string
           days?: number | null
+          generation_id?: string | null
           id?: string
           notes?: string | null
+          report?: Json | null
+          report_at?: string | null
+          review_notes?: string | null
+          start_date?: string | null
+          status?: string
           title?: string
         }
         Relationships: [
@@ -1367,6 +2964,20 @@ export type Database = {
             columns: ["client_id"]
             isOneToOne: false
             referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plans_confirmed_by_fkey"
+            columns: ["confirmed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meal_plans_generation_id_fkey"
+            columns: ["generation_id"]
+            isOneToOne: false
+            referencedRelation: "plan_generations"
             referencedColumns: ["id"]
           },
         ]
@@ -1414,8 +3025,430 @@ export type Database = {
           },
         ]
       }
+      nutrient_reference_values: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          ai: number | null
+          change_reason: string | null
+          check_against: string | null
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          ear: number | null
+          food_column: string | null
+          id: string
+          life_stage: string
+          nutrient: string
+          nutrient_code: string
+          position: number | null
+          practice_ceiling: number | null
+          practice_target: number | null
+          previous_ref: Json | null
+          rdi: number | null
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          sdt: number | null
+          sex: string
+          status: string
+          ul: number | null
+          ul_applies_to: string | null
+          unit: string | null
+          updated_at: string
+          use_in_checks: boolean | null
+        }
+        Insert: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          food_column?: string | null
+          id?: string
+          life_stage: string
+          nutrient: string
+          nutrient_code: string
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          sdt?: number | null
+          sex: string
+          status: string
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string
+          use_in_checks?: boolean | null
+        }
+        Update: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          food_column?: string | null
+          id?: string
+          life_stage?: string
+          nutrient?: string
+          nutrient_code?: string
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          sdt?: number | null
+          sex?: string
+          status?: string
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string
+          use_in_checks?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrient_reference_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nutrition_targets: {
+        Row: {
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          id: string
+          life_stage: string | null
+          lower: number | null
+          position: number | null
+          practice_lower: number | null
+          practice_upper: number | null
+          previous_ref: Json | null
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          sex: string
+          unit: string | null
+          updated_at: string
+          upper: number | null
+          use_in_checks: boolean | null
+          what: string
+        }
+        Insert: {
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          sex: string
+          unit?: string | null
+          updated_at?: string
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what: string
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          sex?: string
+          unit?: string | null
+          updated_at?: string
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrition_targets_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plan_edits: {
+        Row: {
+          actor: string | null
+          actor_name: string | null
+          created_at: string
+          diff: Json
+          id: number
+          meal_plan_id: string
+          operation: string
+        }
+        Insert: {
+          actor?: string | null
+          actor_name?: string | null
+          created_at?: string
+          diff?: Json
+          id?: never
+          meal_plan_id: string
+          operation: string
+        }
+        Update: {
+          actor?: string | null
+          actor_name?: string | null
+          created_at?: string
+          diff?: Json
+          id?: never
+          meal_plan_id?: string
+          operation?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_edits_actor_fkey"
+            columns: ["actor"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "plan_edits_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plan_generations: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          id: string
+          meal_plan_id: string
+          planner_version: string
+          pool_hash: string
+          report: Json
+          seed: number
+          settings: Json
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          meal_plan_id: string
+          planner_version: string
+          pool_hash: string
+          report: Json
+          seed: number
+          settings: Json
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          meal_plan_id?: string
+          planner_version?: string
+          pool_hash?: string
+          report?: Json
+          seed?: number
+          settings?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_generations_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "plan_generations_meal_plan_id_fkey"
+            columns: ["meal_plan_id"]
+            isOneToOne: false
+            referencedRelation: "meal_plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "plan_generations_pool_hash_fkey"
+            columns: ["pool_hash"]
+            isOneToOne: false
+            referencedRelation: "plan_pool_snapshots"
+            referencedColumns: ["hash"]
+          },
+        ]
+      }
+      plan_pool_snapshots: {
+        Row: {
+          content: Json
+          created_at: string
+          hash: string
+          recipe_count: number
+        }
+        Insert: {
+          content: Json
+          created_at?: string
+          hash: string
+          recipe_count: number
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          hash?: string
+          recipe_count?: number
+        }
+        Relationships: []
+      }
+      plan_rules: {
+        Row: {
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string
+          position: number | null
+          practice_defaults: string | null
+          practice_note: string | null
+          previous_ref: Json | null
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          rule: string
+          updated_at: string
+          use_rule: boolean | null
+          when_to_offer: string | null
+        }
+        Insert: {
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          rule: string
+          updated_at?: string
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          rule?: string
+          updated_at?: string
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_rules_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
+          bio: string | null
           created_at: string
           email: string | null
           full_name: string | null
@@ -1423,9 +3456,17 @@ export type Database = {
           job_title: string | null
           organisation: string | null
           phone: string | null
+          photo_path: string | null
+          placement_end: string | null
+          placement_start: string | null
+          preferred_name: string | null
+          pronouns: string | null
           role: string
+          supervisor_id: string | null
+          university: string | null
         }
         Insert: {
+          bio?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
@@ -1433,9 +3474,17 @@ export type Database = {
           job_title?: string | null
           organisation?: string | null
           phone?: string | null
+          photo_path?: string | null
+          placement_end?: string | null
+          placement_start?: string | null
+          preferred_name?: string | null
+          pronouns?: string | null
           role?: string
+          supervisor_id?: string | null
+          university?: string | null
         }
         Update: {
+          bio?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
@@ -1443,9 +3492,24 @@ export type Database = {
           job_title?: string | null
           organisation?: string | null
           phone?: string | null
+          photo_path?: string | null
+          placement_end?: string | null
+          placement_start?: string | null
+          preferred_name?: string | null
+          pronouns?: string | null
           role?: string
+          supervisor_id?: string | null
+          university?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "profiles_supervisor_id_fkey"
+            columns: ["supervisor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       protein_families: {
         Row: {
@@ -1800,6 +3864,199 @@ export type Database = {
           },
         ]
       }
+      reference_change_log: {
+        Row: {
+          at: string
+          by_id: string | null
+          by_name: string | null
+          field: string
+          id: number
+          kind: string
+          new_value: string | null
+          old_value: string | null
+          reason: string | null
+          row_key: string
+          table_name: string
+        }
+        Insert: {
+          at?: string
+          by_id?: string | null
+          by_name?: string | null
+          field: string
+          id?: never
+          kind?: string
+          new_value?: string | null
+          old_value?: string | null
+          reason?: string | null
+          row_key: string
+          table_name: string
+        }
+        Update: {
+          at?: string
+          by_id?: string | null
+          by_name?: string | null
+          field?: string
+          id?: never
+          kind?: string
+          new_value?: string | null
+          old_value?: string | null
+          reason?: string | null
+          row_key?: string
+          table_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reference_change_log_by_id_fkey"
+            columns: ["by_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reference_decisions: {
+        Row: {
+          change_reason: string | null
+          code: string
+          comments: string | null
+          content_hash: string
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          id: string
+          position: number | null
+          previous_ref: Json | null
+          question: string
+          ref: Json
+          retired_at: string | null
+          review_state: string
+          row_key: string
+          settings: string | null
+          updated_at: string
+          workbook: string
+        }
+        Insert: {
+          change_reason?: string | null
+          code: string
+          comments?: string | null
+          content_hash: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          position?: number | null
+          previous_ref?: Json | null
+          question: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key: string
+          settings?: string | null
+          updated_at?: string
+          workbook: string
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string
+          comments?: string | null
+          content_hash?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          id?: string
+          position?: number | null
+          previous_ref?: Json | null
+          question?: string
+          ref?: Json
+          retired_at?: string | null
+          review_state?: string
+          row_key?: string
+          settings?: string | null
+          updated_at?: string
+          workbook?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reference_decisions_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reference_imports: {
+        Row: {
+          file_name: string | null
+          id: number
+          imported_at: string
+          summary: Json
+          workbook: string
+        }
+        Insert: {
+          file_name?: string | null
+          id?: never
+          imported_at?: string
+          summary?: Json
+          workbook: string
+        }
+        Update: {
+          file_name?: string | null
+          id?: never
+          imported_at?: string
+          summary?: Json
+          workbook?: string
+        }
+        Relationships: []
+      }
+      reference_sources: {
+        Row: {
+          content_hash: string
+          created_at: string
+          full_reference: string | null
+          id: string
+          link: string | null
+          position: number | null
+          retired_at: string | null
+          row_key: string
+          short_name: string
+          updated_at: string
+          workbook: string
+        }
+        Insert: {
+          content_hash: string
+          created_at?: string
+          full_reference?: string | null
+          id?: string
+          link?: string | null
+          position?: number | null
+          retired_at?: string | null
+          row_key: string
+          short_name: string
+          updated_at?: string
+          workbook: string
+        }
+        Update: {
+          content_hash?: string
+          created_at?: string
+          full_reference?: string | null
+          id?: string
+          link?: string | null
+          position?: number | null
+          retired_at?: string | null
+          row_key?: string
+          short_name?: string
+          updated_at?: string
+          workbook?: string
+        }
+        Relationships: []
+      }
       saved_views: {
         Row: {
           created_at: string
@@ -1826,6 +4083,79 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      staff_credentials: {
+        Row: {
+          checked_at: string | null
+          checked_by: string | null
+          created_at: string
+          expires_on: string | null
+          file_path: string | null
+          id: string
+          issued_on: string | null
+          issuer: string | null
+          note: string | null
+          number: string | null
+          profile_id: string
+          state: string | null
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          checked_at?: string | null
+          checked_by?: string | null
+          created_at?: string
+          expires_on?: string | null
+          file_path?: string | null
+          id?: string
+          issued_on?: string | null
+          issuer?: string | null
+          note?: string | null
+          number?: string | null
+          profile_id: string
+          state?: string | null
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          checked_at?: string | null
+          checked_by?: string | null
+          created_at?: string
+          expires_on?: string | null
+          file_path?: string | null
+          id?: string
+          issued_on?: string | null
+          issuer?: string | null
+          note?: string | null
+          number?: string | null
+          profile_id?: string
+          state?: string | null
+          type?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "staff_credentials_checked_by_fkey"
+            columns: ["checked_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "staff_credentials_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "staff_credentials_type_fkey"
+            columns: ["type"]
+            isOneToOne: false
+            referencedRelation: "credential_types"
+            referencedColumns: ["key"]
+          },
+        ]
       }
       swap_suggestions: {
         Row: {
@@ -1957,6 +4287,7 @@ export type Database = {
       unit_conversions: {
         Row: {
           basis: string | null
+          estimated: boolean
           food_id: string
           grams: number
           id: number
@@ -1964,6 +4295,7 @@ export type Database = {
         }
         Insert: {
           basis?: string | null
+          estimated?: boolean
           food_id: string
           grams: number
           id?: never
@@ -1971,6 +4303,7 @@ export type Database = {
         }
         Update: {
           basis?: string | null
+          estimated?: boolean
           food_id?: string
           grams?: number
           id?: never
@@ -1995,6 +4328,370 @@ export type Database = {
       }
     }
     Views: {
+      active_marker_ranges: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          change_reason: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          dietitian_note: string | null
+          effective_high: number | null
+          effective_low: number | null
+          high: number | null
+          high_text: string | null
+          id: string | null
+          is_comparator: boolean | null
+          is_gap: boolean | null
+          low: number | null
+          low_text: string | null
+          marker_code: string | null
+          population: string | null
+          position: number | null
+          practice_high: number | null
+          practice_low: number | null
+          pregnancy: boolean | null
+          previous_ref: Json | null
+          range_type: string | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          sex: string | null
+          unit: string | null
+          updated_at: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marker_ranges_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marker_ranges_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      active_nutrient_reference_values: {
+        Row: {
+          age_from_days: number | null
+          age_to_days: number | null
+          ai: number | null
+          change_reason: string | null
+          check_against: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          ear: number | null
+          effective_ceiling: number | null
+          effective_target: number | null
+          food_column: string | null
+          id: string | null
+          life_stage: string | null
+          nutrient: string | null
+          nutrient_code: string | null
+          position: number | null
+          practice_ceiling: number | null
+          practice_target: number | null
+          previous_ref: Json | null
+          rdi: number | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          sdt: number | null
+          sex: string | null
+          status: string | null
+          ul: number | null
+          ul_applies_to: string | null
+          unit: string | null
+          updated_at: string | null
+          use_in_checks: boolean | null
+        }
+        Insert: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          effective_ceiling?: never
+          effective_target?: never
+          food_column?: string | null
+          id?: string | null
+          life_stage?: string | null
+          nutrient?: string | null
+          nutrient_code?: string | null
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sdt?: number | null
+          sex?: string | null
+          status?: string | null
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          use_in_checks?: boolean | null
+        }
+        Update: {
+          age_from_days?: number | null
+          age_to_days?: number | null
+          ai?: number | null
+          change_reason?: string | null
+          check_against?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          ear?: number | null
+          effective_ceiling?: never
+          effective_target?: never
+          food_column?: string | null
+          id?: string | null
+          life_stage?: string | null
+          nutrient?: string | null
+          nutrient_code?: string | null
+          position?: number | null
+          practice_ceiling?: number | null
+          practice_target?: number | null
+          previous_ref?: Json | null
+          rdi?: number | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sdt?: number | null
+          sex?: string | null
+          status?: string | null
+          ul?: number | null
+          ul_applies_to?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          use_in_checks?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrient_reference_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      active_nutrition_targets: {
+        Row: {
+          change_reason: string | null
+          code: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          decision: string | null
+          effective_lower: number | null
+          effective_upper: number | null
+          id: string | null
+          life_stage: string | null
+          lower: number | null
+          position: number | null
+          practice_lower: number | null
+          practice_upper: number | null
+          previous_ref: Json | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          sex: string | null
+          unit: string | null
+          updated_at: string | null
+          upper: number | null
+          use_in_checks: boolean | null
+          what: string | null
+        }
+        Insert: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          effective_lower?: never
+          effective_upper?: never
+          id?: string | null
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sex?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what?: string | null
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          decision?: string | null
+          effective_lower?: never
+          effective_upper?: never
+          id?: string | null
+          life_stage?: string | null
+          lower?: number | null
+          position?: number | null
+          practice_lower?: number | null
+          practice_upper?: number | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          sex?: string | null
+          unit?: string | null
+          updated_at?: string | null
+          upper?: number | null
+          use_in_checks?: boolean | null
+          what?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrition_targets_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      active_plan_rules: {
+        Row: {
+          change_reason: string | null
+          code: string | null
+          comments: string | null
+          content_hash: string | null
+          created_at: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string | null
+          position: number | null
+          practice_defaults: string | null
+          practice_note: string | null
+          previous_ref: Json | null
+          ref: Json | null
+          retired_at: string | null
+          review_state: string | null
+          row_key: string | null
+          rule: string | null
+          updated_at: string | null
+          use_rule: boolean | null
+          when_to_offer: string | null
+        }
+        Insert: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          rule?: string | null
+          updated_at?: string | null
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Update: {
+          change_reason?: string | null
+          code?: string | null
+          comments?: string | null
+          content_hash?: string | null
+          created_at?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          position?: number | null
+          practice_defaults?: string | null
+          practice_note?: string | null
+          previous_ref?: Json | null
+          ref?: Json | null
+          retired_at?: string | null
+          review_state?: string | null
+          row_key?: string | null
+          rule?: string | null
+          updated_at?: string | null
+          use_rule?: boolean | null
+          when_to_offer?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_rules_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       changes_to_review: {
         Row: {
           action: string | null
@@ -2099,12 +4796,16 @@ export type Database = {
           client_id: string | null
           default_kcal: number | null
           full_name: string | null
+          has_app_account: boolean | null
+          intake_status: string | null
+          intake_submitted_at: string | null
           latest_checkin_on: string | null
           latest_weight_kg: number | null
           latest_weight_on: string | null
           plan_count: number | null
           primary_goal: string | null
           primary_goal_label: string | null
+          source: string | null
           status: string | null
         }
         Relationships: [
@@ -2154,6 +4855,145 @@ export type Database = {
           },
         ]
       }
+      client_result_values_usable: {
+        Row: {
+          certainty: string | null
+          check_reasons: string[] | null
+          client_id: string | null
+          created_at: string | null
+          created_by: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          id: string | null
+          lab_flag: string | null
+          lab_high: number | null
+          lab_low: number | null
+          lab_range_text: string | null
+          line_text: string | null
+          marker_code: string | null
+          measured_on: string | null
+          method: string | null
+          name_as_printed: string | null
+          original: Json | null
+          page: number | null
+          reader_version: string | null
+          record_id: string | null
+          status: string | null
+          unit_as_printed: string | null
+          updated_at: string | null
+          value: number | null
+          value_for_marker: number | null
+          value_std: number | null
+          value_text: string | null
+        }
+        Insert: {
+          certainty?: string | null
+          check_reasons?: string[] | null
+          client_id?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method?: string | null
+          name_as_printed?: string | null
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id?: string | null
+          status?: string | null
+          unit_as_printed?: string | null
+          updated_at?: string | null
+          value?: number | null
+          value_for_marker?: never
+          value_std?: number | null
+          value_text?: string | null
+        }
+        Update: {
+          certainty?: string | null
+          check_reasons?: string[] | null
+          client_id?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          id?: string | null
+          lab_flag?: string | null
+          lab_high?: number | null
+          lab_low?: number | null
+          lab_range_text?: string | null
+          line_text?: string | null
+          marker_code?: string | null
+          measured_on?: string | null
+          method?: string | null
+          name_as_printed?: string | null
+          original?: Json | null
+          page?: number | null
+          reader_version?: string | null
+          record_id?: string | null
+          status?: string | null
+          unit_as_printed?: string | null
+          updated_at?: string | null
+          value?: number | null
+          value_for_marker?: never
+          value_std?: number | null
+          value_text?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "client_overview"
+            referencedColumns: ["client_id"]
+          },
+          {
+            foreignKeyName: "client_result_values_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_result_values_marker_code_fkey"
+            columns: ["marker_code"]
+            isOneToOne: false
+            referencedRelation: "clinical_markers"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "client_result_values_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "client_clinical_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       conversion_gaps: {
         Row: {
           affected_recipes: number | null
@@ -2195,6 +5035,7 @@ export type Database = {
           quantity: number | null
           recipe_id: string | null
           unit: string | null
+          via_estimate: boolean | null
         }
         Relationships: [
           {
@@ -2241,6 +5082,7 @@ export type Database = {
           priced: boolean | null
           recipe_id: string | null
           unit: string | null
+          via_estimate: boolean | null
         }
         Relationships: [
           {
@@ -2345,6 +5187,8 @@ export type Database = {
         Row: {
           ai_verified: boolean | null
           data_issue: string | null
+          estimated_ingredients: string[] | null
+          estimated_line_count: number | null
           has_image: boolean | null
           has_title: boolean | null
           line_count: number | null
@@ -2363,12 +5207,62 @@ export type Database = {
         }
         Relationships: []
       }
+      reference_review_progress: {
+        Row: {
+          changed: number | null
+          decided: number | null
+          tab: string | null
+          total: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      _intake_normalise: {
+        Args: { p_key: string; p_value: Json }
+        Returns: Json
+      }
+      _log_client_change: {
+        Args: {
+          p_action: string
+          p_client_id: string
+          p_field: string
+          p_new: string
+          p_old: string
+        }
+        Returns: undefined
+      }
+      _merge_client_records: {
+        Args: { p_from: string; p_into: string }
+        Returns: Json
+      }
+      add_my_result: {
+        Args: {
+          p_file_path: string
+          p_kind: string
+          p_note?: string
+          p_recorded_on: string
+        }
+        Returns: Json
+      }
+      app_setting: { Args: { p_key: string }; Returns: string }
+      apply_document_facts: { Args: { p_record_id: string }; Returns: Json }
       can_access_client: { Args: { p_client_id: string }; Returns: boolean }
       can_access_plan: { Args: { p_plan_id: string }; Returns: boolean }
       can_view_checkins: { Args: { p_client_id: string }; Returns: boolean }
       change_log_fmt: { Args: { v: Json }; Returns: string }
+      claim_client_invite: { Args: { p_token: string }; Returns: Json }
+      client_app_signups: {
+        Args: never
+        Returns: {
+          created_at: string
+          email: string
+          full_name: string
+          phone: string
+          user_id: string
+        }[]
+      }
+      client_app_status: { Args: { p_client_id: string }; Returns: Json }
       client_energy_inputs: {
         Args: { p_as_of?: string; p_client_id: string }
         Returns: {
@@ -2386,6 +5280,7 @@ export type Database = {
           weight_kg: number
         }[]
       }
+      client_intake_for_staff: { Args: { p_client_id: string }; Returns: Json }
       client_recipe_screen: {
         Args: { p_client_id: string }
         Returns: {
@@ -2397,9 +5292,31 @@ export type Database = {
           status: string
         }[]
       }
+      client_signup_queue: { Args: never; Returns: Json }
+      client_tag_kind: { Args: { p_tag_id: string }; Returns: string }
+      clinical_file_in_use: { Args: { p_path: string }; Returns: boolean }
+      confirm_plan: {
+        Args: { p_confirm?: boolean; p_notes?: string; p_plan_id: string }
+        Returns: Json
+      }
+      credential_status: { Args: { p_due: string }; Returns: string }
       current_staff_role: { Args: never; Returns: string }
+      decide_document_fact: {
+        Args: { p_decision: string; p_fact_id: string; p_value?: Json }
+        Returns: Json
+      }
       delete_user: { Args: { target_id: string }; Returns: undefined }
+      doc_text_norm: { Args: { p: string }; Returns: string }
+      document_fact_file: {
+        Args: {
+          f: Database["public"]["Tables"]["client_document_facts"]["Row"]
+          p_overwrite: boolean
+          p_value: Json
+        }
+        Returns: Json
+      }
       food_field_label: { Args: { k: string }; Returns: string }
+      get_client_invitation: { Args: { p_token: string }; Returns: Json }
       get_invitation: {
         Args: { p_token: string }
         Returns: {
@@ -2408,16 +5325,123 @@ export type Database = {
           valid: boolean
         }[]
       }
+      intake_client_questions: {
+        Args: { p_client_id: string }
+        Returns: {
+          help: string
+          key: string
+          kind: string
+          label: string
+          locked: boolean
+          options: Json
+          q_pos: number
+          required: boolean
+          s_pos: number
+          section: string
+        }[]
+      }
+      intake_missing: { Args: { p_client_id: string }; Returns: Json }
+      invite_client_to_app: {
+        Args: { p_client_id: string; p_email?: string }
+        Returns: Json
+      }
       is_admin: { Args: never; Returns: boolean }
       is_clinician: { Args: never; Returns: boolean }
       is_staff: { Args: never; Returns: boolean }
+      link_client_account: {
+        Args: { p_client_id: string; p_user_id: string }
+        Returns: Json
+      }
       mark_changes_reviewed: { Args: { p_ids?: number[] }; Returns: number }
+      mark_credential_checked: {
+        Args: { p_checked: boolean; p_id: string }
+        Returns: Json
+      }
+      medicare_number_valid: { Args: { p: string }; Returns: boolean }
+      merge_client_into: {
+        Args: { p_from: string; p_into: string }
+        Returns: Json
+      }
+      my_areas: { Args: never; Returns: Json }
+      my_client_id: { Args: never; Returns: string }
+      my_details: { Args: never; Returns: Json }
+      my_intake: { Args: never; Returns: Json }
+      my_plan_version: {
+        Args: { p_plan_id: string; p_version_no?: number }
+        Returns: Json
+      }
+      my_plans: {
+        Args: never
+        Returns: {
+          days: number
+          end_date: string
+          is_current: boolean
+          plan_id: string
+          published_at: string
+          start_date: string
+          title: string
+          version_no: number
+        }[]
+      }
+      my_results: { Args: never; Returns: Json }
+      plan_days: {
+        Args: { p_plan_id: string }
+        Returns: {
+          carb_g: number
+          date: string
+          day: number
+          day_type: string
+          day_type_source: string
+          fat_g: number
+          fibre_g: number
+          kcal: number
+          protein_g: number
+          targets_day_type: string
+          weekday: string
+        }[]
+      }
+      plan_publish_check: { Args: { p_plan_id: string }; Returns: Json }
+      plan_slots: {
+        Args: { p_plan_id: string }
+        Returns: {
+          free_choice: boolean
+          name: string
+          position: number
+          slot_kind: string
+          source: string
+        }[]
+      }
+      publish_meal_plan: {
+        Args: { p_plan_id: string; p_release_on?: string; p_snapshot: Json }
+        Returns: Json
+      }
       reason_list: {
         Args: { items: string[]; max_items?: number }
         Returns: string
       }
+      reference_log_change: {
+        Args: {
+          p_by_name: string
+          p_field: string
+          p_new: string
+          p_old: string
+          p_reason: string
+          p_row_key: string
+          p_table: string
+        }
+        Returns: undefined
+      }
+      remove_my_result: { Args: { p_id: string }; Returns: Json }
+      reorder_intake: {
+        Args: { p_questions: Json; p_sections: Json }
+        Returns: Json
+      }
       revoke_recipe_signoff: {
         Args: { p_note?: string; p_recipe_id: string }
+        Returns: Json
+      }
+      save_client_intake_answers: {
+        Args: { p_answers: Json; p_client_id: string }
         Returns: Json
       }
       save_client_structure: {
@@ -2429,7 +5453,22 @@ export type Database = {
         }
         Returns: undefined
       }
+      save_my_intake: { Args: { p_changes: Json }; Returns: Json }
+      set_client_intake_questions: {
+        Args: { p_client_id: string; p_question_keys: string[] }
+        Returns: Json
+      }
+      set_client_intake_status: {
+        Args: { p_client_id: string; p_status: string }
+        Returns: Json
+      }
+      set_my_show_numbers: { Args: { p_show: boolean }; Returns: Json }
       sign_off_recipe: { Args: { p_recipe_id: string }; Returns: Json }
+      start_new_plan_version: { Args: { p_plan_id: string }; Returns: Json }
+      submit_my_intake: { Args: never; Returns: Json }
+      team_compliance: { Args: never; Returns: Json }
+      unlink_client_account: { Args: { p_client_id: string }; Returns: Json }
+      use_plan_alternative: { Args: { p_item_id: string }; Returns: Json }
     }
     Enums: {
       food_source: "afcd" | "custom"

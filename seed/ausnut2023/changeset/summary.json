@@ -1,0 +1,65 @@
+{
+  "g3a": {
+    "set_food": 103,
+    "ai_verify": 141,
+    "queue": 169
+  },
+  "g3b": {
+    "add_tag": 16,
+    "remove_tag": 2,
+    "set_food": 101,
+    "queue": 51
+  },
+  "g3c": {
+    "add_conversion": 98,
+    "confirm_conversion": 4,
+    "set_default_size": 9,
+    "fix_conversion": 34,
+    "update_line": 3
+  },
+  "g3d": {
+    "set_food": 122
+  },
+  "g4a": {
+    "insert_food": 250,
+    "add_tag": 1170,
+    "ai_verify": 250,
+    "add_conversion": 282,
+    "set_default_size": 53,
+    "set_purchase_unit": 6
+  },
+  "g4b": {
+    "split_line": 27,
+    "delete_line": 1,
+    "delete_food": 50,
+    "repoint": 37,
+    "copy_conversion": 1
+  },
+  "g4c": {
+    "delete_line": 4,
+    "insert_line": 2,
+    "update_line": 1,
+    "set_recipe_issue": 27
+  },
+  "_counts": {
+    "verified_checked": 141,
+    "verified_flagged": 169,
+    "unverified_ai_verified": 101,
+    "created": 250,
+    "merged": 37,
+    "deleted_unused": 12,
+    "still_uncalculable_lines": 6,
+    "density_held": 4,
+    "recipes": {
+      "before": {
+        "needs_review": 348,
+        "ai_verified": 26
+      },
+      "after": {
+        "needs review": 173,
+        "ready (AI verified)": 201
+      },
+      "self_check_mismatches": 0
+    }
+  }
+}

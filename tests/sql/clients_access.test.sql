@@ -8,7 +8,7 @@ declare
   u uuid; c uuid; n int; ok boolean; log text := '';
 begin
   select id into u from profiles order by created_at limit 1;
-  select id into c from clients order by created_at limit 1;
+  insert into clients (full_name) values ('ZZ access test') returning id into c;   -- throwaway client: real clients carry real requirements
   if u is null or c is null then raise exception 'FAIL: need one profile and one client'; end if;
   perform set_config('request.jwt.claims', json_build_object('sub', u, 'role', 'authenticated')::text, true);
   perform set_config('request.jwt.claim.sub', u::text, true);
@@ -55,7 +55,8 @@ begin
   select count(*) into n from clients;          if n <> 0 then raise exception 'FAIL P1 pending sees % clients', n; end if;
   select count(*) into n from meal_plans;       if n <> 0 then raise exception 'FAIL P2 pending sees % plans', n; end if;
   select count(*) into n from activity_levels;  if n <> 0 then raise exception 'FAIL P3 pending sees lookups'; end if;
-  log := log || ' | P1-3 pending: 0 clients, 0 plans, 0 lookups';
+  select count(*) into n from meal_plan_versions; if n <> 0 then raise exception 'FAIL P4 pending sees % plan versions', n; end if;
+  log := log || ' | P1-4 pending: 0 clients, 0 plans, 0 lookups, 0 plan versions';
   execute 'reset role';
 
   -- ── DIETITIAN ──

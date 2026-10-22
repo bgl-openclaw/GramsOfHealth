@@ -1,0 +1,84 @@
+Clients send their own bloodwork and DEXA scans. The database is live (migration 0050). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. RPCs return { ok, message, … }; show message word for word when ok is false.
+
+OWNER'S DECISION
+- Admins and dietitians already add DEXA, bloods and other records with a file in the client's Clinical section. Keep that.
+- Clients can now send their own from the client app.
+- A client sees only what they sent, never staff records, summaries or values.
+- Interns still have no access to clinical records.
+
+DATABASE (live)
+client_clinical_records has new columns:
+- source: 'staff' | 'client'
+- client_note: the client's note, max 500
+- reviewed_at, reviewed_by, reviewed_by_name: when a dietitian or admin marked a client's upload as seen
+
+The database fills these itself:
+- Staff records are always 'staff' and seen when added. Never send source, client_note or the reviewed_* fields on insert.
+- To mark a client's upload as seen, update reviewed_at to now(). The database stamps who and when, and it can't be un-seen.
+- The client's note and the client's file can't be changed (refused with a message). Staff can still edit kind, date, summary and values on it, and delete it.
+
+Storage (bucket clinical-records):
+- Client files live at {client_id}/client-{uuid}-{safe file name}.
+- A client can upload and open only their own client- files. They can delete one only when it isn't attached to a record.
+- Staff files stay at {client_id}/{uuid}-{name}, as today. Clients can't see them.
+- Allowed types: PDF, JPEG, PNG, HEIC, HEIF, up to 20 MB (same as today).
+
+RPCs for the client app:
+- my_client_id() → uuid of the signed-in client (null if the account isn't linked).
+- my_results() → [{ id, kind ('bloods' | 'dexa' | 'other'), recorded_on, note, file_path, sent_at, seen, seen_at, seen_by_name }], newest test date first. Only what this client sent.
+- add_my_result(p_kind, p_recorded_on, p_file_path, p_note) → { ok, message, id }.
+  - Refuses: a future date, an unknown kind, a file that isn't theirs or wasn't uploaded, the same file twice, a note over 500, or 20 results already waiting.
+- remove_my_result(p_id) → { ok, message, file_path }. Only before it's been seen.
+
+WHAT TO BUILD
+1. Client app: a "My results" page (/me/results).
+   - Reach it from:
+     - a card on the client Home: "Send bloodwork or a DEXA scan"
+     - a link on About me
+     Not from the bottom bar.
+   - The form:
+     - What is it? (Bloodwork / DEXA scan / Other)
+     - Date of the test (no later than today)
+     - Note (optional, 500 characters)
+     - File (PDF, JPEG, PNG or HEIC, up to 20 MB, with the same check as checkClinicalFile)
+     - Send
+   - Sending:
+     a. upload the file to {my_client_id()}/client-{uuid}-{safe name};
+     b. call add_my_result;
+     c. if it refuses, delete the uploaded file and show the message;
+     d. on success show "Sent to your dietitian." and reload the list.
+   - The list shows, for each result:
+     - the kind, the test date and the note
+     - "Waiting for your dietitian", or "Seen by {seen_by_name} on {date}"
+     - View (a 5-minute signed URL)
+     - Remove, only while it's waiting: remove_my_result, then delete its file
+   - Under the heading: "Your dietitian will look at these. They don't change your plan by themselves."
+   - If my_client_id() is null, show "Your account isn't linked to the practice yet." and no form.
+   - Works on a phone: a file picker that accepts the camera roll, and big touch targets.
+2. Staff, client file → Clinical section.
+   - Client uploads appear in the same list, with:
+     - a "From client" chip
+     - the client's note, shown as "Client's note: …"
+     - a "New" chip while reviewed_at is null
+   - "Mark as seen" button on new ones: update reviewed_at = now(), then reload. Seen ones show "Seen by {reviewed_by_name} on {date}".
+   - Editing a client upload: hide the file controls (the client's file stays). Kind, date, summary and values can be edited. Saving a new one also marks it seen.
+   - Change the section hint to: "Visible to dietitians and admins. Clients see only the results they send, never your summaries or values."
+   - Extend the ClinicalRecord type with source, client_note, reviewed_at and reviewed_by_name.
+3. Staff counts (admins and dietitians):
+   - The Clients menu count adds the number of client uploads waiting: count of client_clinical_records where source = 'client' and reviewed_at is null. RLS already limits this to admins and dietitians.
+   - On the Clients list, a "New results" chip on clients with waiting uploads.
+   - Refresh the count after "Mark as seen", as the sign-ups count does.
+4. Deleting a client: removeAllClinicalFiles already removes everything under {client_id}/, including client- files. Keep it.
+
+TESTS
+- The client upload path is {client_id}/client-{uuid}-{safe name}.
+- A refused add_my_result deletes the uploaded file.
+- The staff list shows "From client" and "New" for an unseen client upload, and "Seen by …" after.
+- Remove is offered only while a result is waiting.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
+- which checks need someone signed in (a client, a dietitian, an intern)

@@ -1,0 +1,38 @@
+recipe,change,why
+CHICKEN MI GORENG,green_bean: 2 each → 200 g,prep note says ~200 g
+PIKELETS,self_raising_flour: 1.25 each → 1.25 cup,'1¼ each self-raising flour' is 1¼ cups (the batter for 4)
+CHOPPED CHICKEN WRAP,iceberg_lettuce: 2 each → 2 large leaf,"2 wraps: 2 leaves, not 2 whole lettuces (which would now count as 1.14 kg)"
+WAFFLES,remove 68 each waffle,yield line ('6–8 waffles') parsed as 68 waffles = 6.8 kg
+FLUFFY JAPANESE SOUFFLE PANCAKES,remove 6 each pancake,yield line: the recipe makes the pancakes
+PROTEIN PANCAKES,remove 6 each pancake,yield line: the recipe makes the pancakes
+PIKELETS,remove 12 each pikelet,yield line: the recipe makes the pikelets
+HIGH PROTEIN NO BAKE CHEESECAKE,add 3 tsp gelatine_powder,method step 2 uses gelatin; the import note says '3 teaspoon gelatin powder'
+SAVOURY EGG MUFFINS,add 1 spray olive_oil_spray,method step 1 sprays the tin; the spray line was merged into tasty cheese
+SAVOURY EGG MUFFINS,tasty_cheese note: remove 'for greasing muffin tin',belonged to the oil-spray line
+BANANA OAT MUFFINS,data issue set/updated,method needs ingredients the import lost / import error
+CAPRICCIOSA PIZZA,data issue set/updated,method needs ingredients the import lost / import error
+CHICKEN SANDO BITES,data issue cleared,old note was informational only (every component present)
+CHOPPED CHICKEN WRAP,data issue cleared,old note was informational only (every component present)
+DECONSTRUCTED CHEESECAKE,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+FLUFFY JAPANESE SOUFFLE PANCAKES,data issue set/updated,method needs ingredients the import lost / import error
+FODMAP FRIENDLY PESTO ORZO SALAD,data issue cleared,old note was informational only (every component present)
+HIGH PROTEIN NO BAKE CHEESECAKE,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+PISTAHIO ICE-CREAM SANDOS,data issue cleared,old note was informational only (every component present)
+POACHED PEACHES WITH HONEY LABNEH & CRUMBLE,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+POACHED PEARS WITH HONEY LABNAH & CRUMBLE,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+POACHED PEARS WITH HONEY LABNEH & CRUMBLE,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+PORK WONTON CUPS,data issue cleared,old note was informational only (every component present)
+PROTEIN PANCAKES,data issue set/updated,method needs ingredients the import lost / import error
+SALMON FISH CAKES,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+SALTED CARAMEL BLISS BALLS,data issue cleared,old note was informational only (every component present)
+SAVOURY EGG MUFFINS,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+SLOW COOKER BEEF RAGU WITH PAPPARDELLE,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+SMASHED CUCUMBER SALAD,data issue cleared,old note was informational only (every component present)
+SPINACH AND RICOTTA RAVIOLI,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+SPRING ONION PANCAKE W DIPPING SAUCE,data issue cleared,old note was informational only (every component present)
+SWEET AND SOUR PORK,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+TERIYAKI CHICKEN & RICE,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+TERIYAKI SAUCE TERIYAKI CHICKEN SUSHI,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+THERMOMIX LENTIL AND PUMPKIN SOUP,data issue set/updated,method needs ingredients the import lost / import error
+VIETNAMESE BÁNH MÌ STYLE SLIDERS,data issue set/updated,"old note kept, precise check added (notes were copied across recipes by the import)"
+WAFFLES,data issue set/updated,method needs ingredients the import lost / import error

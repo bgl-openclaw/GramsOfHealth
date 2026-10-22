@@ -1,0 +1,123 @@
+Plans P1b, part A: the app handles the new plan items, and publishing sends them. The database is done and live (migration 0047). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. RPCs return { ok, message, … }; show `message` word for word when ok is false.
+
+Owner's rule for this work: a plan looks set. Each slot shows one choice. Alternatives sit behind a Swap button and are only used if needed.
+
+DATABASE (live)
+
+meal_plan_items has new columns:
+- food_id, quantity, unit
+  - An item is EITHER a recipe (recipe_id, as today) OR a food (food_id + quantity + unit, recipe_id null).
+  - Food items have no servings_override and no profile_id.
+- boosts_item_id: a top-up. A food added to a recipe item on the same day ("extra 100 g chicken in this salad").
+- batch_group, batch_role ('cook' | 'eat'): leftovers. Part B builds the screens; for now show them correctly if present.
+- option_of: an alternative for another item in the same day and slot.
+  - Never counted in day totals, the weekly average or shopping.
+  - Hidden behind Swap.
+  - An alternative can't itself have alternatives, can't be a leftover and can't be a top-up (the database refuses).
+
+meal_plan_item_deltas (id, item_id, line_ref, kind 'quantity'|'swap'|'remove'|'add', base_food_id, base_quantity, base_unit, new_food_id, new_quantity, new_unit, position, source):
+- Ingredient changes for ONE plan item.
+- Same shape as recipe_profile_deltas, applied AFTER the item's profile.
+- Quantities are whole-recipe quantities, like profiles.
+- Part B writes these; in part A, apply them wherever nutrition or shopping is computed.
+
+meal_plan_slot_states (meal_plan_id, day, meal_slot, state 'free_choice'|'empty'|null, reason, locked):
+- Per day and slot. Rows exist only for slots that aren't normal.
+
+meal_plans has new columns:
+- report, report_at: the generator's report. Nothing writes it yet.
+- review_notes, confirmed_at, confirmed_by_name: set only by confirm_plan, in part B.
+
+client_meal_slots.energy_share: percent of the day for that slot. Null means the default (breakfast 25, lunch 30, dinner 30, snacks 15 shared between snack slots).
+
+RPCs:
+- publish_meal_plan(p_plan_id, p_snapshot, p_release_on date default null). The client sees the version from p_release_on (Sydney date); null = straight away. The message says "The client sees it from …" when a future date was given.
+- plan_publish_check gains these blockers (show them as they are):
+  - leftovers that don't match
+  - a top-up on another day
+  - an alternative not in its meal's slot
+  - food in a slot marked free choice or empty
+  - "Review the planner report and confirm the plan before publishing." (only when report is set)
+
+WHAT TO BUILD
+
+1. Never assume an item is a recipe. MealPlanItem gains:
+   food_id, quantity, unit, boosts_item_id, batch_group, batch_role, option_of (all nullable); recipe_id becomes string | null.
+   Fix every place that drops or blocks non-recipe items:
+   - anyUnavailable
+   - dayTotals
+   - SlotRow
+   - onPublish (no getRecipe for food items)
+   - buildPlanSnapshot
+   - the live shopping list
+   - exportPdf
+   - the picker's swap path
+   - deleteRecipeCascade, snapshotRecipe, restoreRecipeSnapshot (skip items whose recipe_id is null)
+2. Alternatives (option_of) are excluded from:
+   - day totals
+   - the weekly average
+   - shopping (live and snapshot)
+   - the export's recipe count
+   They are still saved in the snapshot (with option_of), so the client app can offer Swap later.
+3. Food items in the editor: an "Add food" button in each slot, next to "Add".
+   - Food search (verified foods first), a quantity and a unit (the food's measures, or g).
+   - Inserts { food_id, quantity, unit, day, meal_slot } with recipe_id null.
+   - Row shows "100 g Greek yoghurt", with its nutrition from the engine (computeRecipe with that one line and servings 1).
+   - Same remove and drag as recipe items.
+4. Top-ups: on a recipe item, "Add to this meal" opens the same food search and inserts a food item with boosts_item_id = that item, same day and slot.
+   - Show it indented under the meal it boosts: "+ 100 g Chicken breast".
+   - It counts in the day's totals.
+   - If its meal is removed, the database removes the top-up too.
+5. Alternatives behind Swap.
+   - On a recipe item, "Add alternative" opens the recipe picker and inserts { recipe_id, profile_id, day, meal_slot, option_of: main item id } in the same day and slot.
+   - Items with option_of are NOT shown in the slot. The main item shows a small "Swap (N)" button that opens a list of its alternatives, each with its own kcal and protein for the same serves, a "Use this instead" button and a remove button.
+   - "Use this instead", in this order:
+     a. update the chosen alternative: option_of = null;
+     b. update the old main: option_of = chosen id;
+     c. update the other alternatives: option_of = chosen id;
+     d. move any top-ups from the old main to the chosen one (boosts_item_id).
+   - Don't offer alternatives on an item that is part of a leftover (batch_group set).
+6. Slot states. Each slot row gets a small menu:
+   - "Free choice this day", with an optional reason.
+   - "Leave empty", with a required reason.
+   - "Lock" / "Unlock" (a padlock icon; it keeps the slot when the generator re-plans later).
+   Writes meal_plan_slot_states (upsert on meal_plan_id, day, meal_slot; delete the row when it's back to normal and unlocked).
+   - Free-choice and empty slots show their reason and no Add buttons.
+   - The client's own free-choice slots (from plan_slots) look the same as today.
+7. Item ingredient changes (from part B or later) apply in nutrition, the snapshot and shopping. After resolveVersion (profile), apply the item's deltas with the same function profiles use (applyProfile), then computeRecipe. Load them with the items:
+   select * from meal_plan_item_deltas where item_id in (the plan's item ids).
+8. Snapshot schema 2 (buildPlanSnapshot). Each item adds:
+   - kind ('recipe' | 'food')
+   - food_id, quantity, unit
+   - boosts_item_id, batch_group, batch_role, option_of
+   - deltas: [{ kind, line_ref, new_food_id, new_quantity, new_unit }]
+   Food items also carry food_name, grams, totals and one line.
+   Top level adds slot_states: [{ day, meal_slot, state, reason }] for rows where state isn't null.
+   The database compares these fields with the saved plan, so send them exactly as saved (null where not set).
+9. Publish dialog: an optional "Client sees it from" date (blank = straight away), passed as p_release_on. Show the server's message. The plan list and the plan header show "Released from 30 Oct" when a published version has a future release_on (meal_plan_versions.release_on).
+10. Client app views (_client.me.plan.*, _client.me.shopping, print, export):
+    - Show food items ("100 g Greek yoghurt").
+    - Show top-ups under their meal.
+    - Hide alternatives entirely for now.
+    - Read everything from the snapshot as today.
+11. Client meal slots (ClientEditor StructureSection): an optional "% of the day" number per slot, saved as energy_share in p_slots.
+    - Blank = default; show the default as placeholder text (25, 30, 30, 15 split between snack slots).
+    - If the shares entered add up to more or less than 100, show a soft note, not an error.
+12. Small fixes:
+    - countPlansUsingRecipe selects "plan_id": the column is meal_plan_id.
+    - Wire onChangeVersion so an item's variation can be changed after it's added.
+    - Show the variation's name on the item row (not just the base title).
+
+Keep everything else as it is.
+
+TESTS: extend plan-snapshot.test.ts:
+- a food item
+- a top-up
+- an alternative (excluded from day totals and shopping, present in items with option_of)
+- an item with a quantity delta (nutrition reflects it)
+- slot_states in the snapshot
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
+- which checks need someone signed in

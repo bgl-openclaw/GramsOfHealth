@@ -1,0 +1,45 @@
+Plans P1b, part B: adjusting one meal, cooking extra, confirming a plan, and its history. Part A and its fixes are built and checked. The database is live (migrations 0047 and 0049). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Show database refusals word for word.
+
+1. Adjust one meal (item ingredient changes).
+   - On a recipe item in the plan editor, "Adjust this meal" opens the existing AdjustPanel for that item's recipe, starting from its variation's lines (resolveVersion).
+   - Saving does NOT create a recipe profile. It writes meal_plan_item_deltas for that item:
+     - Diff the variation's lines against the adjusted lines with diffToDeltas.
+     - Insert each change with item_id and source 'adjust', and with base_section set to the changed line's section (the section an added line goes into).
+     - Replace any earlier ones: delete where item_id = this item, then insert.
+   - Only lines with a real ingredient line id (line_ref) can be changed or removed. Lines a variation added stay as they are.
+   - Quantities are whole-recipe, as in profiles.
+   - The item row shows "Adjusted for this plan" with a Reset button (deletes its deltas).
+   - The recipe and its variations are never changed.
+2. Cook extra (leftovers).
+   - On a recipe item, "Cook extra for…" picks a later day and slot (and serves, default 1).
+   - Don't offer it on a meal that has alternatives, or on a food item. The database won't swap a leftovers meal, so its alternatives would be stuck.
+   - It makes the original item batch_role 'cook' and inserts a new item with:
+     - the same recipe and variation
+     - the chosen day and slot
+     - the serves picked
+     - batch_role 'eat'
+     - the same new batch_group (a fresh uuid shared by both)
+   - The cook item shows "Cook N serves: X tonight, Y for Wednesday lunch".
+   - The leftover shows "Leftovers from Monday dinner".
+   - Removing the cook item: ask first. Then remove its leftovers too, or turn them into normal meals (clear batch_group and batch_role) if the dietitian prefers.
+   - A leftover can't move before its cook day; the database's publish check also refuses it.
+   - Shopping already counts every serve, so nothing changes there.
+3. Review and confirm. Show this panel only when meal_plans.report is set (the generator, coming later, sets it).
+   - It shows the report.
+   - A notes box (max 2,000 characters) and Confirm, which calls confirm_plan(p_plan_id, p_notes).
+   - When confirmed, show "Confirmed by {confirmed_by_name} on {date}" with the notes, and an Undo button: confirm_plan(p_plan_id, null, false).
+   - Any change to the plan's food, days or dates clears the confirmation in the database. Reload after edits so the panel shows that.
+   - Any staff member who can open the plan can confirm (owner decision). Publish shows the database's blocker if the plan isn't confirmed.
+   - Published versions keep the notes and confirmer (meal_plan_versions.review_notes, confirmed_by_name). Show them in the version history.
+4. History.
+   - After each successful change in the plan editor, insert one plan_edits row (meal_plan_id, operation, diff), fire-and-forget. The database stamps who and when.
+   - operation is lowercase letters and underscores, one of: add_item, add_food, add_top_up, remove_item, move_item, change_serves, change_variation, add_alternative, use_alternative, set_slot_state, adjust_item, reset_adjustment, cook_extra, publish, start_new_version, confirm.
+   - diff is a small JSON object of what changed (ids and before/after values).
+   - A "History" drawer on the plan lists them, newest first: who, when, and a plain sentence ("Changed serves of Thai beef salad on Tuesday lunch from 1 to 1.25").
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
+- which checks need someone signed in

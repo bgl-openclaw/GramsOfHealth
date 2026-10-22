@@ -1,0 +1,15 @@
+protein_family,rule
+chicken,group 183; chicken deli meats
+turkey,name has turkey
+beef,"beef or veal in groups 181, 186"
+lamb,lamb or mutton
+pork,"pork, bacon, ham, prosciutto, salami, pastrami, speck, chorizo"
+kangaroo,kangaroo
+fish,"groups 151, 153, 154"
+seafood,"groups 152, 157 and crustacea or mollusc names"
+egg,group 171
+dairy,"milk, yoghurt, cheese, quark (groups 191, 192, 194, 196)"
+tofu_tempeh,"tofu, tempeh"
+legumes,"groups 251, 252 and bean, lentil, chickpea, split pea, hummus, falafel, edamame"
+other,"other game, duck, protein powders, meat alternatives"
+(blank),everything else: not a protein source

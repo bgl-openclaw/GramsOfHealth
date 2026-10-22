@@ -1,0 +1,122 @@
+{"batch": "g3d", "seq": 1, "op": "set_food", "food_id": "beef_stock", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Meat & seafood"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 2, "op": "set_food", "food_id": "chicken_stock", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Meat & seafood"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 3, "op": "set_food", "food_id": "chicken_stock_cube", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Meat & seafood"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 4, "op": "set_food", "food_id": "salt_reduced_chicken_stock", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Meat & seafood"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 5, "op": "set_food", "food_id": "oyster_mushroom", "args": {"set": {"aisle": "Produce"}, "expect": {"aisle": "Meat & seafood"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 6, "op": "set_food", "food_id": "wholemeal_english_muffin", "args": {"set": {"aisle": "Bakery"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 7, "op": "set_food", "food_id": "goat_cheese", "args": {"set": {"aisle": "Dairy & eggs"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 8, "op": "set_food", "food_id": "haloumi", "args": {"set": {"aisle": "Dairy & eggs"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 9, "op": "set_food", "food_id": "plant_based_feta", "args": {"set": {"aisle": "Dairy & eggs"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 10, "op": "set_food", "food_id": "green_bean", "args": {"set": {"aisle": "Produce"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 11, "op": "set_food", "food_id": "mixed_berries", "args": {"set": {"aisle": "Frozen"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 12, "op": "set_food", "food_id": "radicchio", "args": {"set": {"aisle": "Produce"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 13, "op": "set_food", "food_id": "rosemary", "args": {"set": {"aisle": "Produce"}, "expect": {"aisle": "Pantry"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 14, "op": "set_food", "food_id": "tub_cherry_bocconcini", "args": {"set": {"aisle": "Dairy & eggs"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 15, "op": "set_food", "food_id": "each_onion_and_garlic_powder", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 16, "op": "set_food", "food_id": "each_onion_garlic_powder", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 17, "op": "set_food", "food_id": "feta_oil_spray", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 18, "op": "set_food", "food_id": "fish_sauce", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 19, "op": "set_food", "food_id": "garlic_infused_oil", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 20, "op": "set_food", "food_id": "garlic_powder", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 21, "op": "set_food", "food_id": "garlic_sauce", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 22, "op": "set_food", "food_id": "grape_seed_oil", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 23, "op": "set_food", "food_id": "italian_dried_herb_blend", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 24, "op": "set_food", "food_id": "pear_cou_cou", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 25, "op": "set_food", "food_id": "pepita", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 26, "op": "set_food", "food_id": "sweet_chilli_sauce", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 27, "op": "set_food", "food_id": "tomato_based_pizza_sauce", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 28, "op": "set_food", "food_id": "tomato_passata", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 29, "op": "set_food", "food_id": "tomato_paste", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 30, "op": "set_food", "food_id": "tomato_sauce", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 31, "op": "set_food", "food_id": "tin_butter_bean", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Dairy & eggs"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 32, "op": "set_food", "food_id": "packet_baking_milk_chocolate_melt", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Dairy & eggs"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 33, "op": "set_food", "food_id": "milk_chocolate", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Dairy & eggs"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 34, "op": "set_food", "food_id": "mixed_italian_herb", "args": {"set": {"aisle": "Pantry"}, "expect": {"aisle": "Produce"}}, "note": "aisle correction"}
+{"batch": "g3d", "seq": 35, "op": "set_food", "food_id": "adzuki_bean", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 36, "op": "set_food", "food_id": "bacon", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 37, "op": "set_food", "food_id": "barramundi_fillet", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 38, "op": "set_food", "food_id": "beef_chuck_trimmed", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 39, "op": "set_food", "food_id": "beef_meatball", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 40, "op": "set_food", "food_id": "beef_mince", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 41, "op": "set_food", "food_id": "beef_mince_lean", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 42, "op": "set_food", "food_id": "beef_rump", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 43, "op": "set_food", "food_id": "beef_steak", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 44, "op": "set_food", "food_id": "beef_strips", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 45, "op": "set_food", "food_id": "black_beans", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 46, "op": "set_food", "food_id": "bocconcini", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 47, "op": "set_food", "food_id": "can_kidney_bean", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 48, "op": "set_food", "food_id": "cheddar", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 49, "op": "set_food", "food_id": "chicken_breast", "args": {"set": {"protein_family": "chicken"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 50, "op": "set_food", "food_id": "chicken_breast_tenderloin", "args": {"set": {"protein_family": "chicken"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 51, "op": "set_food", "food_id": "chicken_mince", "args": {"set": {"protein_family": "chicken"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 52, "op": "set_food", "food_id": "chicken_thigh", "args": {"set": {"protein_family": "chicken"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 53, "op": "set_food", "food_id": "chorizo", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 54, "op": "set_food", "food_id": "chuck_beef", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 55, "op": "set_food", "food_id": "collagen_powder", "args": {"set": {"protein_family": "other"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 56, "op": "set_food", "food_id": "cottage_cheese_lf", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 57, "op": "set_food", "food_id": "cream_cheese", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 58, "op": "set_food", "food_id": "danish_feta", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 59, "op": "set_food", "food_id": "edamame", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 60, "op": "set_food", "food_id": "egg", "args": {"set": {"protein_family": "egg"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 61, "op": "set_food", "food_id": "egg_white", "args": {"set": {"protein_family": "egg"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 62, "op": "set_food", "food_id": "egg_yolk", "args": {"set": {"protein_family": "egg"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 63, "op": "set_food", "food_id": "extra_lean_beef_mince", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 64, "op": "set_food", "food_id": "feta", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 65, "op": "set_food", "food_id": "firm_feta", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 66, "op": "set_food", "food_id": "four_bean_mix", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 67, "op": "set_food", "food_id": "freshly_grated_parmesan_cheese", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 68, "op": "set_food", "food_id": "g_can_chickpea", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 69, "op": "set_food", "food_id": "goat_cheese", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 70, "op": "set_food", "food_id": "greek_yoghurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 71, "op": "set_food", "food_id": "haloumi", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 72, "op": "set_food", "food_id": "high_protein_yoghurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 73, "op": "set_food", "food_id": "honey_olive_oil_labneh", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 74, "op": "set_food", "food_id": "lactose_free_greek_yoghurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 75, "op": "set_food", "food_id": "lamb_backstrap", "args": {"set": {"protein_family": "lamb"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 76, "op": "set_food", "food_id": "lamb_leg_steak", "args": {"set": {"protein_family": "lamb"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 77, "op": "set_food", "food_id": "lamb_mince", "args": {"set": {"protein_family": "lamb"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 78, "op": "set_food", "food_id": "lamb_steak", "args": {"set": {"protein_family": "lamb"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 79, "op": "set_food", "food_id": "lean_stir_fry_beef_strip", "args": {"set": {"protein_family": "beef"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 80, "op": "set_food", "food_id": "leg_ham", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 81, "op": "set_food", "food_id": "lentil_brown", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 82, "op": "set_food", "food_id": "lentil_green", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 83, "op": "set_food", "food_id": "lentils_kidney_bean", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 84, "op": "set_food", "food_id": "light_cottage_cheese", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 85, "op": "set_food", "food_id": "light_cream_cheese", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 86, "op": "set_food", "food_id": "mascarpone_cheese", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 87, "op": "set_food", "food_id": "mozzarella", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 88, "op": "set_food", "food_id": "mozzarella_ball", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 89, "op": "set_food", "food_id": "natural_yoghurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 90, "op": "set_food", "food_id": "parmesan", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 91, "op": "set_food", "food_id": "plain_greek_yogurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 92, "op": "set_food", "food_id": "plain_tuna", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 93, "op": "set_food", "food_id": "pork", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 94, "op": "set_food", "food_id": "pork_loin_steak", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 95, "op": "set_food", "food_id": "pork_mince", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 96, "op": "set_food", "food_id": "pork_scotch_fillet", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 97, "op": "set_food", "food_id": "prawn", "args": {"set": {"protein_family": "seafood"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 98, "op": "set_food", "food_id": "pre_cooked_bbq_chicken", "args": {"set": {"protein_family": "chicken"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 99, "op": "set_food", "food_id": "prosciutto", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 100, "op": "set_food", "food_id": "protein_powder", "args": {"set": {"protein_family": "other"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 101, "op": "set_food", "food_id": "ricotta", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 102, "op": "set_food", "food_id": "salmon", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 103, "op": "set_food", "food_id": "sardine_in", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 104, "op": "set_food", "food_id": "sashimi_grade_salmon", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 105, "op": "set_food", "food_id": "sashimi_grade_tuna", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 106, "op": "set_food", "food_id": "short_cut_bacon", "args": {"set": {"protein_family": "pork"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 107, "op": "set_food", "food_id": "smoked_salmon", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 108, "op": "set_food", "food_id": "tasty_cheese", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 109, "op": "set_food", "food_id": "tin_butter_bean", "args": {"set": {"protein_family": "legumes"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 110, "op": "set_food", "food_id": "tofu_firm", "args": {"set": {"protein_family": "tofu_tempeh"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 111, "op": "set_food", "food_id": "tofu_silken", "args": {"set": {"protein_family": "tofu_tempeh"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 112, "op": "set_food", "food_id": "tub_cherry_bocconcini", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 113, "op": "set_food", "food_id": "tub_chobani_greek_yoghurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 114, "op": "set_food", "food_id": "tub_lemon_chobani_greek_yoghurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 115, "op": "set_food", "food_id": "tuna_springwater", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 116, "op": "set_food", "food_id": "turkey_mince", "args": {"set": {"protein_family": "turkey"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 117, "op": "set_food", "food_id": "unsweetened_greek_yogurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 118, "op": "set_food", "food_id": "vanilla_greek_yogurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 119, "op": "set_food", "food_id": "vanilla_high_protein_yoghurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 120, "op": "set_food", "food_id": "vanilla_yopro_yogurt", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 121, "op": "set_food", "food_id": "white_fish_fillet", "args": {"set": {"protein_family": "fish"}, "expect": {"protein_family": null}}, "note": "protein family"}
+{"batch": "g3d", "seq": 122, "op": "set_food", "food_id": "yoghurt_farmer_union_greek", "args": {"set": {"protein_family": "dairy"}, "expect": {"protein_family": null}}, "note": "protein family"}

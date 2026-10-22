@@ -1,0 +1,57 @@
+Team compliance moves to My profile, and admins and dietitians both see everyone. The database is live (migration 0048). Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. Show database refusals word for word.
+
+This replaces my earlier reply about moving Team compliance to My profile for admins only. If you already started that, carry on from it.
+
+OWNER'S DECISION
+- Admins and dietitians see every staff member's credentials in full: numbers, dates, status and certificates.
+- Admins can also add, edit, upload and remove credentials for anyone, tick "Checked", and edit an intern's placement.
+- Dietitians are read-only for everyone except themselves.
+- Interns see only themselves (unchanged).
+
+WHAT CHANGED IN THE DATABASE (0048)
+- team_compliance() now returns everyone, in full, to admins AND dietitians. Interns still get only themselves.
+- Each person gains two fields:
+  - supervisor_id (uuid or null)
+  - is_my_intern (boolean): true when they're an intern and you're their supervisor.
+  Add both to CompliancePerson in src/lib/staff-profile.ts.
+- Dietitians can now read anyone's staff_credentials rows and open anyone's certificate in staff-documents (signed URLs work).
+- Writing is unchanged. A person writes their own; admins write anyone's. Only admins can tick Checked (mark_credential_checked refuses others).
+- uploadStaffFile(profileId, …) and saveCredential(profileId, …) already work for an admin with someone else's profileId; the database allows it.
+
+WHAT TO BUILD
+1. My profile: show Team compliance (TeamComplianceCard) below the tabs when the role is admin or dietitian.
+   - Keep what it had: people needing attention first, and a window per person.
+   - Rows where is_my_intern is true get a small "Your intern" chip.
+   - For dietitians, add a two-option toggle above the list: "Everyone" / "My interns" (filter on is_my_intern). Default to "Everyone".
+   - Remove the separate MyInterns section. Its filter (role === 'intern') would now list every intern.
+2. The person window, for admins:
+   - Everything it has now: details, View certificate, Checked tickbox, placement fields for interns.
+   - Plus an "Edit" button on each credential row and "Add" on rows with status not_added or missing.
+     - It opens the existing CredentialCard with profileId = that person's profile_id.
+     - Types come from credential types that are active and whose roles include that person's role.
+     - note comes from myCredentials(that person's id); admins can read it.
+     - Saving uploads into that person's folder, saves their row, and refreshes Team compliance.
+     - Remove works the same way.
+   - Label the window "Editing {name}'s credentials" while a card is open, so it's clear whose record is changing.
+3. The person window, for dietitians (read-only):
+   - Show each credential's status, number, issuer, state, issued and due dates, and View certificate.
+   - Don't show the Checked tickbox, Edit, Add or Remove.
+   - Show "Checked by {name} on {date}" as text when it's checked.
+   - For interns, show the placement as text (university, supervisor's name, start and end), not the form. Read it with getStaffProfile; staff can read all profiles.
+4. The menu count:
+   - Move the count from Users to My profile, in both the sidebar and the mobile menu.
+   - Also show the collapsed-sidebar dot on My profile, as Changes does.
+   - Remove the /users badge.
+   - The number is what this person can act on:
+     - admin: needs_attention, plus 1 if mine_needs_attention
+     - dietitian: people with is_my_intern and needs_attention, plus 1 if mine_needs_attention
+     - intern: 1 if mine_needs_attention
+     Load it for all three roles. Today it only loads for admins.
+5. Tests (staff-profile.test.ts): the count rule for each role, and that a dietitian's person window has no Checked / Edit / Add / Remove controls.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
+- which checks need someone signed in (an admin, a dietitian with an intern, an intern)

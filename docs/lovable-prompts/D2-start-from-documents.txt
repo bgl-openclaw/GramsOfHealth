@@ -1,0 +1,45 @@
+Document intake, part 2: "Start from documents" and "Highlight and add". Do this after part 1 is built and checked. No database changes. Do NOT create migrations. Do NOT edit the protected files (engine.ts, adjust.ts, energy.ts, results-reader.ts, document-reader.ts).
+
+1. START FROM DOCUMENTS (Clients → New client, admins and dietitians).
+- A "Start from documents" option beside the normal form: drop in all of a new client's files at once.
+- In the browser:
+  - extract each file's text;
+  - classify it;
+  - run readLetter on the GP letter (or else the specialist letter, discharge summary or other letter) and take the client details from its facts: full_name, date_of_birth, sex, phone, email, address.
+- Show "Person found in the documents" with those details, each with its quote.
+- Check for an existing client first:
+  - match on the same date of birth and a similar name, or the same Medicare number;
+  - if one exists, offer "Add these documents to {name}" instead of creating a duplicate.
+- "Create client": prefilled form. Name required; if the name is only an initial, ask for the full name. Then:
+  - create the client;
+  - upload every file to that client and save it as a document (part 1, step 3);
+  - read it, run the results reader where it applies, and run the AI pass for letters and transcripts;
+  - open the client file at the Documents section, with each document's review panel showing what was filed and what's waiting.
+- Progress is shown per file. If one file fails, the others carry on and the failure is listed.
+
+2. HIGHLIGHT AND ADD (any document with text, especially transcripts).
+- In the review panel's document view, selecting text shows a small menu: "Add as: Goal · Food to avoid · Food they dislike · Food they like · Supplement · Medication · Condition · Allergy · Note".
+- The menu opens the small form for that type, prefilled from the selection.
+- Saving:
+  - inserts a client_document_facts row (method 'manual', certainty 'sure', quote = the exact selected text, section, field and value from the form);
+  - then calls decide_document_fact(id, 'apply'). For goals, food rules, supplements and notes, first save through the existing form, then mark it done with decide_document_fact.
+- The database refuses a quote that isn't in the document. Show its message (this happens if the selection crossed a page break; ask the user to select a shorter piece).
+- Added items appear in the panel as "Added by you".
+
+3. TRANSCRIPTS
+- "Paste a transcript" (from part 1) also accepts .txt, .vtt and .srt files.
+- Show the transcript with speaker names in bold and timestamps dimmed.
+- The AI pass runs on it as for letters.
+- Search box over all of a client's document texts: find "dairy" across every letter and transcript, with links to each.
+
+TESTS
+- An existing client with the same DOB and a similar name is offered instead of a new one.
+- A highlight's quote is exactly the selected text.
+- A failed file doesn't stop the others.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and the protected files are untouched
+- which checks need someone signed in

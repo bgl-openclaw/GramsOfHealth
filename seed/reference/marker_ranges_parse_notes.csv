@@ -1,0 +1,78 @@
+table,row_key,column,as printed,read as,note
+marker_ranges,"egfr|Adult, stage G5|Any|18 y||No|Stage boundary|KHA 2024",High,<15 or on dialysis,15.0,not a plain number: kept as printed; read as a limit
+marker_ranges,"uacr|Adult, A1 normal|Any|18 y||No|Stage boundary|KHA 2024",High,<3.0,3.0,not a plain number: kept as printed; read as a limit
+marker_ranges,"uacr|Adult, A3 macroalbuminuria|Any|18 y||No|Stage boundary|KHA 2024",Low,>30,30.0,not a plain number: kept as printed; read as a limit
+marker_ranges,uacr|Adult (lab printed upper limit)|Male|16 y||No|Reference interval (lab printed)|Alfred; Monash; PathWest,High,<2.5,2.5,not a plain number: kept as printed; read as a limit
+marker_ranges,uacr|Adult (lab printed upper limit)|Female|19 y||No|Reference interval (lab printed)|Alfred; Monash; PathWest,High,<3.5,3.5,not a plain number: kept as printed; read as a limit
+marker_ranges,uacr|Child 11 y and under|Male|0 d|11 y|No|Reference interval (lab printed)|PathWest,High,<5.0,5.0,not a plain number: kept as printed; read as a limit
+marker_ranges,uacr|Child 12 to 13 y|Male|12 y|13 y|No|Reference interval (lab printed)|PathWest,High,<4.0,4.0,not a plain number: kept as printed; read as a limit
+marker_ranges,uacr|Child 14 to 15 y|Male|14 y|15 y|No|Reference interval (lab printed)|PathWest,High,<3.0,3.0,not a plain number: kept as printed; read as a limit
+marker_ranges,uacr|Child 11 y and under|Female|0 d|11 y|No|Reference interval (lab printed)|PathWest,High,<5.0,5.0,not a plain number: kept as printed; read as a limit
+marker_ranges,uacr|Child 12 to 18 y|Female|12 y|18 y|No|Reference interval (lab printed)|PathWest,High,<4.0,4.0,not a plain number: kept as printed; read as a limit
+marker_ranges,alp|15 y to <17 y|Male|15 y|<17 y|No|Reference interval (national harmonised)|AHRIA/AHRIP 2014,High,380 (journal) / 375 (AACB report),,not a plain number: kept as printed
+marker_ranges,urate|Hyperuricaemia|Female|18 y||No|Decision limit|Aust Prescriber (gout),High,>0.36,,not a plain number: kept as printed
+marker_ranges,urate|Hyperuricaemia|Male|18 y||No|Decision limit|Aust Prescriber (gout),High,>0.42,,not a plain number: kept as printed
+marker_ranges,urate|Gout treatment target|Any|18 y||No|Treatment target|Aust Prescriber (gout),High,<0.36 (<0.30 with tophi),0.36,not a plain number: kept as printed; read as a limit
+marker_ranges,total_cholesterol|Adult (fasting or non-fasting)|Any|18 y||No|Decision limit|AACB lipids 2018,High,>5.5 flagged,,not a plain number: kept as printed
+marker_ranges,total_cholesterol|High-risk adult on treatment|Any|18 y||No|Treatment target|AACB lipids 2018,High,<4.0,4.0,not a plain number: kept as printed; read as a limit
+marker_ranges,ldl_c|Adult|Any|18 y||No|Decision limit|AACB lipids 2018,High,>3.0 flagged,,not a plain number: kept as printed
+marker_ranges,ldl_c|High risk / very high risk adult|Any|18 y||No|Treatment target|AACB lipids 2018,High,<2.5 / <1.8,2.5,not a plain number: kept as printed; read as a limit
+marker_ranges,ldl_c|Child|Any||<18 y|No|Decision limit|RCH hypercholesterolaemia 2026,High,>=3.5 elevated,,not a plain number: kept as printed
+marker_ranges,"ldl_c|Child, suspect familial hypercholesterolaemia|Any||<18 y|No|Diagnostic threshold|RCH hypercholesterolaemia 2026",High,>4,,not a plain number: kept as printed
+marker_ranges,ldl_c|Child on statin|Any|8 y|10 y|No|Treatment target|RCH hypercholesterolaemia 2026,High,<4.0,4.0,not a plain number: kept as printed; read as a limit
+marker_ranges,ldl_c|Child on statin|Any|10 y|<18 y|No|Treatment target|RCH hypercholesterolaemia 2026,High,<3.5,3.5,not a plain number: kept as printed; read as a limit
+marker_ranges,hdl_c|Adult|Male|18 y||No|Decision limit|AACB lipids 2018,Low,<1.0 flagged,,not a plain number: kept as printed
+marker_ranges,hdl_c|Adult|Female|18 y||No|Decision limit|AACB lipids 2018,Low,<1.2 flagged,,not a plain number: kept as printed
+marker_ranges,non_hdl_c|Adult|Any|18 y||No|Decision limit|AACB lipids 2018,High,>4.0 flagged,,not a plain number: kept as printed
+marker_ranges,non_hdl_c|High risk / very high risk adult|Any|18 y||No|Treatment target|AACB lipids 2018,High,<3.3 / <2.5,3.3,not a plain number: kept as printed; read as a limit
+marker_ranges,triglycerides|Adult (fasting)|Any|18 y||No|Decision limit|AACB lipids 2018,High,>2.0 flagged,,not a plain number: kept as printed
+marker_ranges,triglycerides|Adult (non-fasting)|Any|18 y||No|Decision limit|AACB lipids 2018,High,>2.0 flagged (default),,not a plain number: kept as printed
+marker_ranges,"fasting_glucose|Adult, not pregnant: normal|Any|18 y||No|Diagnostic threshold|Alfred (WHO 2006)",High,<6.1,6.1,not a plain number: kept as printed; read as a limit
+marker_ranges,"fasting_glucose|Adult, not pregnant: diabetes|Any|18 y||No|Diagnostic threshold|Alfred (WHO 2006)",Low,>=7.0,7.0,not a plain number: kept as printed; read as a limit
+marker_ranges,fasting_glucose|Pregnant: diabetes in pregnancy|Female|||Yes|Diagnostic threshold|ADIPS 2025,Low,>=7.0,7.0,not a plain number: kept as printed; read as a limit
+marker_ranges,"ogtt_2h|Adult, not pregnant: impaired glucose tolerance|Any|18 y||No|Diagnostic threshold|Alfred (WHO 2006)",High,<11.1,11.1,not a plain number: kept as printed; read as a limit
+marker_ranges,"ogtt_2h|Adult, not pregnant: diabetes|Any|18 y||No|Diagnostic threshold|Alfred (WHO 2006)",Low,>=11.1,11.1,not a plain number: kept as printed; read as a limit
+marker_ranges,ogtt_1h_pregnancy|Pregnant: gestational diabetes|Female|||Yes|Diagnostic threshold|ADIPS 2025,Low,>=10.6,10.6,not a plain number: kept as printed; read as a limit
+marker_ranges,ogtt_2h|Pregnant: diabetes in pregnancy|Female|||Yes|Diagnostic threshold|ADIPS 2025,Low,>=11.1,11.1,not a plain number: kept as printed; read as a limit
+marker_ranges,"hba1c|Adult, not pregnant: diabetes|Any|18 y||No|Diagnostic threshold|MJA 2015 (HbA1c)",Low,>=48 (6.5%),48.0,not a plain number: kept as printed; read as a limit
+marker_ranges,"hba1c|Adult, not pregnant: increased risk|Any|18 y||No|Decision limit|MJA 2015 (HbA1c)",High,47 (6.0-6.4%),,not a plain number: kept as printed
+marker_ranges,hba1c|Adult with diabetes: general target|Any|18 y||No|Treatment target|RACGP T2D handbook,High,<=53 (7.0%),53.0,not a plain number: kept as printed; read as a limit
+marker_ranges,hba1c|Pregnant: diabetes in pregnancy|Female|||Yes|Diagnostic threshold|ADIPS 2025,Low,>=6.5%,6.5,not a plain number: kept as printed; read as a limit
+marker_ranges,hba1c|Early pregnancy: arrange early OGTT|Female|||Yes|Decision limit|ADIPS 2025,Low,6.0%,,not a plain number: kept as printed
+marker_ranges,hba1c|Early pregnancy: arrange early OGTT|Female|||Yes|Decision limit|ADIPS 2025,High,6.4%,,not a plain number: kept as printed
+marker_ranges,tsh|Pregnancy <6 weeks|Female|||Yes|Note|Alfred,High,Use non-pregnant range,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Adult 15 to 65 y: anaemia|Male|15 y|65 y|No|Deficiency or action threshold|WHO 2024,Low,<130,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Adult 15 to 65 y: anaemia|Female|15 y|65 y|No|Deficiency or action threshold|WHO 2024,Low,<120,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Child 2 months: anaemia below|Any|2 mo|2 mo|No|Deficiency or action threshold|RCH anaemia 2023,Low,<90,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Child 2 to 6 months: anaemia below|Any|2 mo|6 mo|No|Deficiency or action threshold|RCH anaemia 2023,Low,<95,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Child 6 to 24 months: anaemia below|Any|6 mo|24 mo|No|Deficiency or action threshold|RCH anaemia 2023,Low,<105,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Child 2 to 11 y: anaemia below|Any|2 y|11 y|No|Deficiency or action threshold|RCH anaemia 2023,Low,<115,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Over 12 y: anaemia below|Female|12 y||No|Deficiency or action threshold|RCH anaemia 2023,Low,<120,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Over 12 y: anaemia below|Male|12 y||No|Deficiency or action threshold|RCH anaemia 2023,Low,<130,,not a plain number: kept as printed
+marker_ranges,"haemoglobin|Pregnancy, any stage: anaemia|Female|||Yes|Deficiency or action threshold|AJGP 2019 (pregnancy anaemia)",Low,<110,,not a plain number: kept as printed
+marker_ranges,"haemoglobin|Pregnancy, 2nd trimester: anaemia|Female|||Yes|Deficiency or action threshold|AJGP 2019 (pregnancy anaemia)",Low,<105,,not a plain number: kept as printed
+marker_ranges,haemoglobin|Postpartum: anaemia|Female|||No|Deficiency or action threshold|AJGP 2019 (pregnancy anaemia),Low,<100,,not a plain number: kept as printed
+marker_ranges,ferritin|Adult: iron deficiency|Any|18 y||No|Deficiency or action threshold|MJA 2024 (iron),Low,<30,,not a plain number: kept as printed
+marker_ranges,ferritin|Adult: iron deficiency (WHO)|Any|||No|Deficiency or action threshold|MJA 2024 (iron),Low,<15,,not a plain number: kept as printed
+marker_ranges,ferritin|Adult with inflammation: possible iron deficiency|Any|18 y||No|Deficiency or action threshold|MJA 2024 (iron),Low,<70 to 100,,not a plain number: kept as printed
+marker_ranges,ferritin|Pregnancy: iron deficiency|Female|||Yes|Deficiency or action threshold|AJGP 2019 (pregnancy anaemia),Low,<30,,not a plain number: kept as printed
+marker_ranges,ferritin|Children: low iron stores|Any||<18 y|No|Deficiency or action threshold|RCH iron deficiency 2023,Low,<20,,not a plain number: kept as printed
+marker_ranges,transferrin_sat|Adult|Any|18 y||No|Reference interval (lab printed)|Alfred,High,<50,50.0,not a plain number: kept as printed; read as a limit
+marker_ranges,transferrin_sat|Adult: low iron availability|Any|18 y||No|Deficiency or action threshold|MJA 2024 (iron),Low,<20,,not a plain number: kept as printed
+marker_ranges,b12_total|Borderline: reflex homocysteine|Any|||No|Deficiency or action threshold|ACL 2026,High,<350 (web) / <360 (flyer),350.0,not a plain number: kept as printed; read as a limit
+marker_ranges,b12_active|Normal|Any|||No|Deficiency or action threshold|Alfred; Monash; PathWest,Low,>35,35.0,not a plain number: kept as printed; read as a limit
+marker_ranges,b12_active|Deficient|Any|||No|Deficiency or action threshold|Alfred; Monash; PathWest,High,<25,25.0,not a plain number: kept as printed; read as a limit
+marker_ranges,folate_serum|Adult|Any|18 y||No|Reference interval (lab printed)|Alfred,Low,>7.0,7.0,not a plain number: kept as printed; read as a limit
+marker_ranges,folate_serum|Adult|Any|18 y||No|Reference interval (lab printed)|RMH,Low,>7,7.0,not a plain number: kept as printed; read as a limit
+marker_ranges,folate_serum|All ages|Any|||No|Reference interval (lab printed)|Monash,Low,>10,10.0,not a plain number: kept as printed; read as a limit
+marker_ranges,folate_serum|0 to <13 y|Any|0 d|<13 y|No|Reference interval (lab printed)|PathWest,Low,>15,15.0,not a plain number: kept as printed; read as a limit
+marker_ranges,folate_serum|13 to <17 y|Any|13 y|<17 y|No|Reference interval (lab printed)|PathWest,Low,>10,10.0,not a plain number: kept as printed; read as a limit
+marker_ranges,folate_serum|17 y and over|Any|17 y||No|Reference interval (lab printed)|PathWest,Low,>7,7.0,not a plain number: kept as printed; read as a limit
+marker_ranges,vitamin_d|Adult: adequate|Any|18 y||No|Deficiency or action threshold|MJA 2012 (vitamin D),Low,>=50 (end of winter),50.0,not a plain number: kept as printed; read as a limit
+marker_ranges,vitamin_d|Adult: severe deficiency|Any|18 y||No|Deficiency or action threshold|MJA 2012 (vitamin D),High,<12.5,12.5,not a plain number: kept as printed; read as a limit
+marker_ranges,vitamin_d|Adult: high|Any|18 y||No|Deficiency or action threshold|MJA 2012 (vitamin D),High,No formal upper target,,not a plain number: kept as printed
+marker_ranges,crp|Adult|Any|18 y||No|Reference interval (lab printed)|Alfred; PathWest; RMH; Monash,High,<5,5.0,not a plain number: kept as printed; read as a limit
+marker_ranges,crp|Pregnancy|Female|||Yes|Reference interval (lab printed)|PathWest,High,<14.0,14.0,not a plain number: kept as printed; read as a limit
+marker_ranges,ttg_iga|All ages (negative below)|Any|||No|Reference interval (lab printed)|Alfred,High,<10 (EliA U/mL),10.0,not a plain number: kept as printed; read as a limit
+marker_ranges,ttg_iga|All ages (negative below)|Any|||No|Reference interval (lab printed)|RMH,High,<20 (units),20.0,not a plain number: kept as printed; read as a limit
+marker_ranges,ttg_iga|All ages (negative below)|Any|||No|Reference interval (lab printed)|Monash,High,<7 (U/mL),7.0,not a plain number: kept as printed; read as a limit

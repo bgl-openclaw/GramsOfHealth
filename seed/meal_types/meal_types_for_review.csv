@@ -1,0 +1,375 @@
+Recipe,Variant of,Breakfast,Lunch,Dinner,Snack,Not a meal,Discretionary,Confidence,Why,Old tag,Compared with old tag,Main ingredients,Recipe status,Dietitian note,recipe_id
+AIR FRIED BEEF POKE BOWL,AIR FRIED SALMON POKE BOWL,,x,x,,,,high,variant of AIR FRIED SALMON POKE BOWL: a bowl,,,"Cucumber; Beef rump steak, untrimmed; Microwave Brown Rice & Quinoa Pouch",needs review,,9774ff59-c357-4976-81e3-7f949e35432f
+AIR FRIED BEEF SUSHI BOWL,AIR FRIED SALMON SUSHI BOWL,,x,x,,,,high,variant of AIR FRIED SALMON SUSHI BOWL: a bowl,,,"Cucumber; Beef rump steak, untrimmed; Microwave rice pouch",needs review,,8231ab59-0847-44bc-984a-fbe85c44829d
+AIR FRIED CHICKEN POKE BOWL,AIR FRIED SALMON POKE BOWL,,x,x,,,,high,variant of AIR FRIED SALMON POKE BOWL: a bowl,,,"Cucumber; Chicken, breast; Microwave Brown Rice & Quinoa Pouch",needs review,,06004a4f-d52a-4ec9-812a-02f6e6b7271c
+AIR FRIED CHICKEN SUSHI BOWL,AIR FRIED SALMON SUSHI BOWL,,x,x,,,,high,variant of AIR FRIED SALMON SUSHI BOWL: a bowl,,,"Cucumber; Chicken, breast; Microwave rice pouch",needs review,,a5831aa9-8b2d-44ad-9b03-913d83b8abdf
+AIR FRIED SALMON POKE BOWL,,,x,x,,,,high,a bowl,,,"Salmon, Atlantic; Cucumber; Microwave Brown Rice & Quinoa Pouch",needs review,,fbcece63-7805-4d1e-b6f1-61c19ab0a946
+AIR FRIED SALMON SUSHI BOWL,,,x,x,,,,high,a bowl,,,"Salmon, Atlantic; Cucumber; Microwave rice pouch",needs review,,ea18aa88-a172-47d3-8f1c-5b55db6aeca9
+AIR FRIED TOFU POKE BOWL,AIR FRIED SALMON POKE BOWL,,x,x,,,,high,variant of AIR FRIED SALMON POKE BOWL: a bowl,,,"Cucumber; Tofu, firm; Microwave Brown Rice & Quinoa Pouch",needs review,,8fce4bf3-a55e-4a83-8b0a-bf8beaab6e6e
+AIR FRIED TOFU SUSHI BOWL,AIR FRIED SALMON SUSHI BOWL,,x,x,,,,high,variant of AIR FRIED SALMON SUSHI BOWL: a bowl,,,"Cucumber; Tofu, firm; Microwave rice pouch",needs review,,a035748f-66a1-482b-8507-56afbe0cb2c6
+AIR FRYER TOMATO SOUP,,,x,x,,,,high,a soup or ramen,,,"Tomato, common; Ml Reduced Salt Vegetable Stock; Basil, fresh",needs review,,f9c05c44-e64e-4078-98d6-3169274cf42d
+ALMOND BAKED OATS,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,"Milk, reduced fat; Quick oats; Banana",needs review,,21f8b5bb-e13f-4974-bffe-0b79022213ab
+ANZAC BAKED OATS,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,"Milk, reduced fat; Banana; Quick oats",needs review,,e5c64efc-c607-4a84-aecb-22ceef21be06
+APPLE RICE PAPER SCROLLS,,,,,x,,,high,a savoury snack,,,"Rice Paper; Apple; Egg, whole",needs review,,6a9a0fb3-c2b1-48b8-9090-11f61ac2f6f9
+ARRABBIATA SAUCE,,,,,,x,,high,a sauce or condiment,,,"Tin Diced Tomato; Extra virgin olive oil; Garlic, fresh",needs review,,796d15b8-8a16-4e2c-9a28-2c1a4fc06409
+ASIAN BEEF AND BROCCOLINI STIR FRY,,,,x,,,,high,a cooked main,,,"Microwave rice pouch; Beef rump steak, untrimmed; Water",needs review,,ff3846d7-fa0b-45dc-b5ed-0c91afa22243
+ASIAN CHICKEN AND BROCCOLINI STIR FRY,ASIAN BEEF AND BROCCOLINI STIR FRY,,,x,,,,high,variant of ASIAN BEEF AND BROCCOLINI STIR FRY: a cooked main,,,"Microwave rice pouch; Chicken, breast; Water",needs review,,8fb782f2-48bf-41d5-a55b-6901f5adf6fd
+ASIAN CHICKEN NOODLES,,,x,x,,,,high,noodles or a rice dish,,,"Mushroom, common; Egg, whole; Instant Noodle",needs review,,f0e4eeae-4119-4cc4-8d25-ed3121376b43
+ASIAN FISH PARCELS,,,,x,,,,high,a cooked main,,,White Fish Fillet; Light soy sauce; Water,needs review,,d443ca77-40a1-433f-86fe-f82dd89273f7
+ASIAN PORK AND BROCCOLINI STIR FRY,ASIAN BEEF AND BROCCOLINI STIR FRY,,,x,,,,high,variant of ASIAN BEEF AND BROCCOLINI STIR FRY: a cooked main,,,Microwave rice pouch; Pork Loin Steak; Water,needs review,,704a7a58-f985-4da4-a7ce-d5e45a7adfd1
+ASIAN SALMON PARCELS,ASIAN FISH PARCELS,,,x,,,,high,variant of ASIAN FISH PARCELS: a cooked main,,,"Salmon, Atlantic; Light soy sauce; Water",needs review,,9fca8881-c662-4f02-899c-389b61da78fc
+ASIAN TOFU AND BROCCOLINI STIR FRY,ASIAN BEEF AND BROCCOLINI STIR FRY,,,x,,,,high,variant of ASIAN BEEF AND BROCCOLINI STIR FRY: a cooked main,,,"Microwave rice pouch; Tofu, firm; Water",needs review,,9af456ec-0645-40a9-966a-5e5f28ae8b73
+ASIAN TOFU PARCELS,ASIAN FISH PARCELS,,,x,,,,high,variant of ASIAN FISH PARCELS: a cooked main,,,"Tofu, firm; Light soy sauce; Water",needs review,,f8fbea63-151b-47d6-982e-7c2431f457df
+BAKED BEEF RISOTTO,BAKED LAMB RISOTTO,,,x,,,,high,variant of BAKED LAMB RISOTTO: a cooked main,,,"Beef mince, extra lean; Mushroom, common; Zucchini",needs review,,4e4b2c6a-9bef-4a0a-b235-96471248d316
+BAKED CHICKEN RISOTTO,BAKED LAMB RISOTTO,,,x,,,,high,variant of BAKED LAMB RISOTTO: a cooked main,,,"Chicken mince; Mushroom, common; Zucchini",needs review,,d969d88f-524e-46c0-be1e-0c1ce81f0624
+BAKED CHICKEN TACOS,BAKED SALMON TACOS,,x,x,,,,high,"variant of BAKED SALMON TACOS: tacos, burgers, wraps-style or pizza",,,"Tortilla; Chicken, breast; Avocado",needs review,,9c17f383-9c3f-4f65-ba55-ebdf8699ec28
+BAKED FISH TACOS,BAKED SALMON TACOS,,x,x,,,,high,"variant of BAKED SALMON TACOS: tacos, burgers, wraps-style or pizza",,,Tortilla; White Fish Fillet; Avocado,needs review,,8143d723-cda9-4d16-94fd-2f8ef6a6a95d
+BAKED LAMB RISOTTO,,,,x,,,,high,a cooked main,dinner,same as old tag,"Lamb mince; Mushroom, common; Zucchini",needs review,,32b3322d-1d89-41ec-83df-f853bd3199bf
+BAKED PORK RISOTTO,BAKED LAMB RISOTTO,,,x,,,,high,variant of BAKED LAMB RISOTTO: a cooked main,,,"Pork mince; Mushroom, common; Zucchini",needs review,,b51f2676-d3b7-4060-9a8e-fa37bdfbb7ee
+BAKED PRAWN TACOS,BAKED SALMON TACOS,,x,x,,,,high,"variant of BAKED SALMON TACOS: tacos, burgers, wraps-style or pizza",,,Tortilla; Prawns; Avocado,needs review,,f058dfcd-418b-4de2-bbb8-e85b71eef8ce
+BAKED SALMON TACOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Tortilla; Salmon, Atlantic; Avocado",needs review,,38d323e2-e765-45f4-804d-dc03fa9fd444
+BAKED SHAKSHUKA,,x,x,,,,,medium,shakshuka (brunch),,,"Red capsicum; Cottage cheese, low fat; Egg, whole",needs review,,21d56310-4bf4-4371-9057-07a0aa57668d
+BAKED TOFU TACOS,BAKED SALMON TACOS,,x,x,,,,high,"variant of BAKED SALMON TACOS: tacos, burgers, wraps-style or pizza",,,"Tortilla; Tofu, firm; Avocado",needs review,,435982e6-316c-413b-ab2f-9c9d67ca77a5
+BAKED TURKEY RISOTTO,BAKED LAMB RISOTTO,,,x,,,,high,variant of BAKED LAMB RISOTTO: a cooked main,,,"Turkey mince; Mushroom, common; Zucchini",needs review,,3dc78a3b-5e3f-4921-a7f3-5e466185fa44
+BAKED VEGETABLE FRITTATA,,x,x,,,,,medium,a frittata,breakfast,adds lunch,"Egg, whole; Zucchini; Butternut pumpkin",needs review,,76b11006-36f4-462b-928a-4062b3e8eb33
+BALANCED CHICKEN SMASH BURGERS,BALANCED SMASH BURGERS,,x,x,,,,high,"variant of BALANCED SMASH BURGERS: tacos, burgers, wraps-style or pizza",,,Chicken mince; Burger bun; Mayonnaise,needs review,,9cca84b8-5ecf-422e-9a72-fa8fa92c45b0
+BALANCED LAMB SMASH BURGERS,BALANCED SMASH BURGERS,,x,x,,,,high,"variant of BALANCED SMASH BURGERS: tacos, burgers, wraps-style or pizza",,,Lamb mince; Burger bun; Mayonnaise,needs review,,0f9f7843-fefb-4e4e-b8a7-0f382e137b8b
+BALANCED PORK SMASH BURGERS,BALANCED SMASH BURGERS,,x,x,,,,high,"variant of BALANCED SMASH BURGERS: tacos, burgers, wraps-style or pizza",,,Pork mince; Burger bun; Mayonnaise,needs review,,8b2cbc02-796e-4037-b81b-1d898aac5819
+BALANCED SMASH BURGERS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Burger bun; Mayonnaise",needs review,,977e2417-23fb-44d1-8cd5-180dae4a22b8
+BALANCED TURKEY SMASH BURGERS,BALANCED SMASH BURGERS,,x,x,,,,high,"variant of BALANCED SMASH BURGERS: tacos, burgers, wraps-style or pizza",,,Turkey mince; Burger bun; Mayonnaise,needs review,,eef5edcf-d51d-489a-82c1-955ef3e4ff99
+BANANA BREAD CHOC CHIP COOKIES,,,,,x,,x,high,a sweet snack or dessert,,,Vegetable oil; Overripe Banana; Light Brown Sugar,needs review,,577f0602-b5a3-4435-afb7-7e6981ab06c7
+BANANA BREAD GRANOLA,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,"Banana; Maple Syrup, No Sugar; Walnuts",needs review,,05f3aa93-b67c-42ec-9417-ed93078e0abe
+BANANA BREAD MUG CAKE,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Overly Ripe Banana; Egg, whole; Wholemeal flour",needs review,,fb6f674d-f594-4c28-98cd-ae6cf771fbcb
+BANANA GRANOLA COOKIES,,x,,,x,,x,high,a sweet snack or dessert,breakfast,old tag also had breakfast (kept); adds snack,Sized Ripe Banana; Honey; Extra virgin olive oil,needs review,,90f7f3ad-322d-4b8c-a122-af4028737682
+BANANA NICE CREAM,,,,,x,,,high,a frozen treat,,,"Honey; Milk, reduced fat; Milk, reduced fat",needs review,,1922d16b-eaf1-44b4-8cda-acafc1086211
+BANANA OAT MUFFINS,,x,,,x,,,high,muffins,,,Old Fashioned Rolled Oat; Self-raising flour; Banana,needs review,,176d567e-64ce-483b-91a2-ab6ab1a4fa22
+BANG BANG BEEF SALAD,BANG BANG CHICKEN SALAD,,x,x,,,,high,variant of BANG BANG CHICKEN SALAD: a salad with a main protein,,,Lean Stir-Fry Beef Strip; Carrot; Lebanese cucumber,needs review,,427fced8-ae90-4dbc-b25c-d87921c5dc61
+BANG BANG CHICKEN SALAD,,,x,x,,,,high,a salad with a main protein,,,"Chicken, breast; Carrot; Lebanese cucumber",needs review,,6a3ae8ab-ece2-457c-94b8-9d9cdcbc0709
+BANG BANG PRAWN SALAD,BANG BANG CHICKEN SALAD,,x,x,,,,high,variant of BANG BANG CHICKEN SALAD: a salad with a main protein,,,Prawns; Carrot; Lebanese cucumber,needs review,,dc99c9af-4450-4ae6-9aec-7e177988ae61
+BANG BANG TOFU SALAD,BANG BANG CHICKEN SALAD,,x,x,,,,high,variant of BANG BANG CHICKEN SALAD: a salad with a main protein,,,"Tofu, firm; Carrot; Lebanese cucumber",needs review,,30d15400-8f8f-494b-8609-cc922783fccb
+BEEF AND VEGETABLE ENCHILADAS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince; Black beans, drained; Tomato passata",needs review,,70a0c72e-88f5-4a2d-8258-32e06f34c2db
+BEEF BURGERS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Burger bun; Carrot",needs review,,ac87ec83-cc62-4d96-b539-709bbc098dcf
+BEEF BURRITO BOWL,,,x,x,,,,high,a bowl,,,"Beef mince, extra lean; Microwaveable Basmati Rice Pouch; Cherry tomatoes",needs review,,6ce7eec8-e8a1-40bd-957f-d0bce209f00d
+BEEF QUESADILLAS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Brown onion; Carrot",ready,,7fc06246-f241-4716-9833-6716228ceb42
+BEEF QUESADILLAS (variant),BEEF QUESADILLAS,,x,x,,,,high,"variant of BEEF QUESADILLAS: tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Brown onion; Carrot",ready,,d2483e76-cf7c-427f-82d8-01a724b37cde
+BERRY & VANILLA MARSCARPONE CUPS,,,,,x,,x,high,a sweet snack or dessert,,,Honey; Vanilla extract,ready,,6b7713b9-df13-4328-90b0-23ea73f937d3
+BLACK BEAN AND VEGETABLE ENCHILADAS,BEEF AND VEGETABLE ENCHILADAS,,x,x,,,,high,"variant of BEEF AND VEGETABLE ENCHILADAS: tacos, burgers, wraps-style or pizza",,,"Black beans, drained; Tomato passata; Mini wholemeal wrap",needs review,,aa96930a-90c3-44de-8886-e59762d1ee26
+BLOOD ORANGE GRAIN SALAD,,,x,,,,,medium,a salad without a main protein (could be a side),,,Honey; Walnuts; Rocket,needs review,,08cb98a9-b7eb-4693-9041-736bc2f5fe84
+BLUEBERRIES BAGELS,,x,x,,,,,medium,bagels,,,"Greek yoghurt, natural; Self-raising flour; Egg, whole",needs review,,879efabe-f0a9-47e8-96c0-8eb74ef5967a
+BREAKFAST COOKIES,,x,,,,,x,high,"""breakfast"" in the title",breakfast,same as old tag,"Tahini; Quinoa, cooked; Rolled oats",needs review,,38821343-5cf0-44c2-a040-74cbb3326787
+BREAKFAST PANCAKES,,x,,,,,,high,"""breakfast"" in the title",breakfast,same as old tag,"Banana; Quick oats; Egg, whole",ready,,2f062059-73b1-4d43-9d7f-e975790d6635
+BURGER SALAD BOWLS,,,x,x,,,,high,a bowl,lunch,adds dinner,"Beef mince, extra lean; Zucchini; Greek yoghurt, natural",needs review,,5413bd02-23a2-46b0-aa74-0cc39a661290
+BUTTER CHICKEN,,,,x,,,,high,a cooked main,,,"Chicken, breast; Tomato passata; Light Cream",needs review,,2f2f753c-37b8-418e-988a-d9dd7b627a0e
+BUTTER PRAWNS,BUTTER CHICKEN,,,x,,,,high,variant of BUTTER CHICKEN: a cooked main,,,Prawns; Tomato passata; Light Cream,needs review,,e86cc5ca-7a1e-4324-bcab-e97394dfd8ae
+BUTTER TOFU,BUTTER CHICKEN,,,x,,,,high,variant of BUTTER CHICKEN: a cooked main,,,"Tofu, firm; Tomato passata; Light Cream",needs review,,d30d68d5-00c4-4c5a-a612-a98474e49235
+CAPRESE SALAD WITH PANGRATTATO,,,x,,,,,medium,a salad without a main protein (could be a side),,,Roma tomato; Mozzarella Ball; Balsamic glaze,needs review,,08e6d186-1c5f-481f-99fa-143906eee4a1
+CAPRESE SKEWERS,,,,,x,,,high,a savoury snack,,,Cherry tomatoes; Tub Cherry Bocconcini,needs review,,9aa0bf3d-3280-4d91-9ba4-1a32d37ffd2d
+CAPRICCIOSA PIZZA,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,Pizza; Mushrooms; Artichoke,needs review,,60773240-c2d1-4cc5-84c5-dbed17872eca
+CARAMELISED BRUSSEL SPROUTS WITH BACON,,,,,,x,,medium,a side dish,,,"Brussel sprouts; Maple Syrup, No Sugar; Extra virgin olive oil",needs review,,7236e968-483c-432d-bcff-df441a3716d1
+CEVICHE TOSTADAS,,,x,,x,,,medium,tostadas or tartare,,,Sashimi-Grade Salmon; Avocado; Lebanese cucumber,needs review,,9c9ab4ec-83c9-46db-9c35-d3c55c00a293
+CHEESEBURGER SAUSAGE ROLLS,,,x,,x,,,medium,sausage rolls,,,"Low Gi Wrap; Beef mince, extra lean; Zucchini",needs review,,e961f5bf-8c57-4ed0-b374-2edef7ab63d2
+CHEESEBURGER TACOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Gluten-Free Mini Wrap; Beef mince, extra lean; Zucchini",needs review,,88fee07c-9fa6-48bf-b0ac-39f1f4c34df6
+CHERRY & GOATS CHEESE TOASTS,,x,,,x,,,medium,something on toast,,,,needs review,,34291fda-e14b-4cae-8f5e-e86f8f11aa93
+CHIA SEED PUDDING,,x,,,x,,,high,chia pudding or parfait,,,Sugar-free maple syrup; Fresh Blueberry; Chia seeds,needs review,,5cc65083-b65e-4b96-97cd-5c36a092afb5
+CHICKEN & BROCCOLI PESTO PASTA,,,,x,,,,high,a cooked main,dinner,same as old tag,"Chicken, breast; Greek yoghurt, natural; Pesto",needs review,,c4746af0-5c1a-409d-ab35-b2b9c6fce779
+CHICKEN & CHORIZO PAELLA,,,,x,,,,high,a cooked main,,,"Chicken, breast; Basmati rice, cooked; Carrot",needs review,,f3af0473-04d2-4ea1-8be1-bae044b5a9b3
+CHICKEN & CHORIZO PAELLA (FODMAP),,,,x,,,,high,a cooked main,,,"Chicken, breast; Basmati rice, cooked; Prawns",needs review,,4cba0eee-afb5-4780-b211-0d89211b3ebf
+CHICKEN & MUSHROOM RISOTTO,,,,x,,,,high,a cooked main,dinner,same as old tag,"Chicken, breast; Mushrooms; Aborio rice",ready,,5637b0ff-a512-4425-9264-fcd027230a64
+CHICKEN & QUINOA FRITTERS,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Chicken mince; Firm Feta; Egg, whole",ready,,c64ac6a4-760b-48ec-981e-591f291ec70c
+CHICKEN & QUINOA SALAD,,,x,x,,,,high,a salad with a main protein,,,"Chicken, breast; Tahini; Feta cheese",needs review,,472bf089-654e-4ee6-ae72-52727e6b735b
+CHICKEN & TOFU PAD SEE EW,,,x,x,,,,high,noodles or a rice dish,,,"Zucchini; Chicken, breast; Pad Thai Rice Noodle",needs review,,da374997-474c-4d7b-a02b-f598978fe30f
+CHICKEN AND VEGETABLE ENCHILADAS,BEEF AND VEGETABLE ENCHILADAS,,x,x,,,,high,"variant of BEEF AND VEGETABLE ENCHILADAS: tacos, burgers, wraps-style or pizza",,,"Chicken mince; Black beans, drained; Tomato passata",needs review,,d4084c90-ee74-4e96-b8aa-0c35df9e925b
+CHICKEN AND VEGETABLE QUESADILLAS,BEEF QUESADILLAS,,x,x,,,,high,"variant of BEEF QUESADILLAS: tacos, burgers, wraps-style or pizza",,,Chicken mince; Brown onion; Carrot,ready,,ce83555f-be26-4084-9ddd-2bfaa7a79db9
+CHICKEN BANH MI BURGERS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Chicken mince; Garlic, fresh; Wholemeal bread roll",needs review,,b8172a5b-b347-45d4-826e-9924ae91f6ae
+CHICKEN BREAST BITES,,,,,x,,,high,a savoury snack,snack,same as old tag,"Potato; Chicken, breast; Egg, whole",needs review,,e5282b86-c4be-4476-b751-a933cbf969cc
+CHICKEN BURGER SALAD BOWLS,BURGER SALAD BOWLS,,x,x,,,,high,variant of BURGER SALAD BOWLS: a bowl,,,"Chicken mince; Zucchini; Greek yoghurt, natural",needs review,,e81f15e5-0022-4256-9f75-2a1b3183e994
+CHICKEN BURGERS,BEEF BURGERS,,x,x,,,,high,"variant of BEEF BURGERS: tacos, burgers, wraps-style or pizza",,,Chicken mince; Burger bun; Carrot,needs review,,2c5c5975-9399-4a29-b8b7-8047754c8dcd
+CHICKEN BURRITO BOWL,BEEF BURRITO BOWL,,x,x,,,,high,variant of BEEF BURRITO BOWL: a bowl,,,Chicken mince; Microwaveable Basmati Rice Pouch; Cherry tomatoes,needs review,,0873fab6-a8cf-4dcf-83a5-8b0d208932c8
+CHICKEN CACCIATORE WITH BASMATI RICE,,,x,x,,,,high,noodles or a rice dish,,,"Chicken, breast; Zucchini; Mushroom, common",needs review,,793c5a88-9cba-456b-b7e1-e7215b43bfc2
+CHICKEN CAESAR SALAD,,,x,x,,,,high,a salad with a main protein,,,"Chicken, breast; Apple; Egg, whole",needs review,,33074ed7-cca3-41f5-a290-ceb98ee84c89
+CHICKEN GYROS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Chicken, breast; Cucumber; Extra virgin olive oil",needs review,,d23b5a42-26dc-4cc0-9144-b738a402bb42
+CHICKEN MI GORENG,,,x,x,,,,high,noodles or a rice dish,,,"Chicken, breast; Wholegrain Wok Ready Noodle; Carrot",needs review,,3f3205c6-e58c-449f-84ac-47c8470ea5d9
+CHICKEN MUSHROOM SOUP,,,x,x,,,,high,a soup or ramen,,,"Vegetable stock; Chicken, breast; Mushroom, common",needs review,,fa0191da-20ce-427d-b44d-5cb592a0dee3
+CHICKEN PAD THAI,,,x,x,,,,high,noodles or a rice dish,,,Zucchini; Carrot; Pad Thai Noodle,needs review,,f688a999-85a3-4c49-b127-d56347c28466
+CHICKEN PARMI BAKE,,,,x,,,,high,a cooked main,,,"Tomato, common; Chicken, breast; Low Carb Potato",needs review,,4b415b88-e92e-4b34-9d05-168c2aabaa59
+"CHICKEN PARMIGIANA, SLAW AND CHIPS",,,,x,,,,high,a cooked main,,,"Chicken, breast; Tomato passata; Potato",needs review,,65c1d1c0-4fd0-4e1b-abd5-d1ad85322b21
+CHICKEN PASTA BAKE,,,,x,,,,high,a cooked main,dinner,same as old tag,"Chicken mince; Carrot; Pasta, cooked",needs review,,c9c69c58-e8d3-4209-8f1b-3a14c4ac71c0
+CHICKEN PEANUT NOODLES,,,x,x,,,,high,noodles or a rice dish,,,"Chicken, thigh; Carrot; Vermicelli noodles",needs review,,277cf666-afe0-4a55-890e-a94573ae41e9
+CHICKEN POT PIES,,,,x,,,,high,a cooked main,,,"Chicken, breast; Puff pastry; Leek",needs review,,4438a2a5-ba68-4d9f-8283-8ede60e5027c
+CHICKEN QUESADILLAS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,Green capsicum; Red capsicum; Pre-Cooked Bbq Chicken,needs review,,94c3f984-c4b3-4779-b94c-bd94e0a0b254
+CHICKEN SANDO BITES,,,,,x,,,high,a savoury snack,snack,same as old tag,"Chicken, breast; Lebanese cucumber; Cottage cheese, low fat",needs review,,a1768cd4-94de-42e3-a2e8-c70d6be2947d
+CHICKEN SCHNITZEL AND VEG,,,,x,,,,high,a cooked main,,,"Chicken, breast; Tenderloin Cut Raw Chicken; Carrot",needs review,,5a0972f2-757d-4d2c-9d7d-baa5e6b46e92
+"CHICKEN SCHNITZEL, SLAW AND CHIPS = PUB FEED!",,,,x,,,,high,a cooked main,,,"Chicken, breast; Potato; Apple",needs review,,7f72c18f-5db5-4774-8200-2b49b040c4db
+CHICKPEA & OAT SLICE,,,,,x,,,high,a sweet snack or dessert,snack,same as old tag,Banana; Honey; Peanut butter,ready,,498f2292-17c2-42de-963a-72f3b02cbf05
+CHILLI & LIME BARRAMUNDI WITH ASIAN SLAW,,,,x,,,,high,a cooked main,,,Vermicelli noodles; Apple; Lime juice,needs review,,0e04953b-3362-4ab2-8412-c9ed2479eb45
+CHILLI SCRAMBLED EGGS,,x,,,,,,high,an egg breakfast,breakfast,same as old tag,"Egg, whole; Spring onion; Red Chilli",needs review,,7fd398ab-bbae-4775-91c5-aa2e477b93e4
+CHIPOTLE CHICKEN & PICO DE GALLO TACOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Chicken, thigh; Tomato, common; Brown onion",needs review,,2a120b07-266e-4193-86cc-82e850407ecd
+CHOC COCONUT BLISS BALL,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Sugar-free maple syrup; Cocoa powder; Dates, pitted",needs review,,23df9e1f-69d5-4494-805c-5f9273c4f66b
+CHOC COVERED APPLE SLICE SANDWICH,,,x,,x,,x,high,"a wrap, sandwich or sushi","lunch, snack",old tag also had snack (kept),Apple; Peanut butter; Chia seeds,needs review,,f14b8423-df20-44c8-8a15-a20afa5a925e
+CHOC COVERED PEANUT BUTTER DATES,,,,,x,,x,high,a sweet snack or dessert,,,"Peanut butter; Dates, pitted; Dates, pitted",needs review,,c1c8eef2-543a-4630-9721-ec3901d0d65e
+CHOC DIPPED RICE CAKES,,,,,x,,x,high,a sweet snack or dessert,,,Plain Rice Cake,needs review,,584de095-3cf6-48e0-a610-622c1f6278e5
+CHOC PEANUT BUTTER CUPS,,,,,x,,x,high,a sweet snack or dessert,,,,needs review,,949f22ba-4042-4684-8c3d-f90553194350
+CHOC-PEANUT PROTEIN BALLS,,,,,x,,,high,a sweet snack or dessert,snack,same as old tag,Protein powder; Walnuts; Rolled oats,needs review,,d2167415-d8c1-47c6-a324-e7083555687c
+CHOPPED CHICKEN WRAP,,,x,,,,,high,"a wrap, sandwich or sushi",lunch,same as old tag,"Mini wholemeal wrap; Cottage cheese, low fat; Cucumber",needs review,,7d7ff88d-70b1-4663-b596-8bf8e184d325
+CHRISTMAS PUDDING BALLS,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Maple Syrup, No Sugar; Cranberries, dried; White Chocolate",needs review,,538bc5f1-da3d-4600-bcff-66f7e4dbc2ef
+CITRUS GRAIN SALAD,,,x,,,,,medium,a salad without a main protein (could be a side),,,Orange; Honey; Walnuts,needs review,,2c50df41-3511-4e29-a14d-6d72f44aa1de
+COCONUT POACHED CHICKEN VIETNAMESE SALAD,,,x,x,,,,high,a salad with a main protein,,,"Chicken, breast; Cucumber; Carrot",needs review,,cc5022fa-2563-4449-a261-8d8e6e413d8b
+COCONUT POACHED CHICKEN VIETNAMESE SALAD (FODMAP),,,x,x,,,,high,a salad with a main protein,,,"Chicken, breast; Cucumber; Carrot",needs review,,60d979c9-0ca0-413c-ad9b-9abdd74738c4
+COCONUT TOFU VIETNAMESE SALAD,,,x,x,,,,high,a salad with a main protein,,,"Tofu, firm; Cucumber; Carrot",needs review,,d7456769-efec-40bd-9a96-5ba378458333
+COLLAGEN CHILLI SCRAMBLED EGGS,,x,,,,,,high,an egg breakfast,breakfast,same as old tag,"Egg, whole; Spring onion; Red Chilli",needs review,,f389f342-9aff-47a6-aae1-178fe846ab3f
+COLLAGEN DUMPLING LASAGNE,,,,x,,,,high,a cooked main,dinner,same as old tag,Pork; Chicken stock; Spring onion,needs review,,cdab4bc8-0223-4601-93db-11d4b500e8f5
+COOKIE DOUGH BLISS BALLS,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Peanut butter; Maple Syrup, No Sugar; Vanilla extract",ready,,212a8aca-301a-4ee8-8a78-512d17a7bbaa
+COTTAGE PIE,,,,x,,,,high,a cooked main,dinner,same as old tag,"Zucchini; Beef mince, extra lean; White Potato",needs review,,3fc926c0-0de6-44e3-87a7-97a146b89978
+COWBOY CAVIAR,,,,,x,,,medium,a dip,,,"Four bean mix, canned; Avocado; Roma tomato",needs review,,940c67f4-44a5-4a50-a5ef-c7806e97a1c6
+CREAMY BEEF UDON NOODLE BOWL,,,x,x,,,,high,a bowl,,,"Tofu, silken; Beef mince; Wok-Ready Udon Noodle",needs review,,2e76ec26-2936-4bb6-8f6f-9c42ae4fa8d8
+CREAMY TUNA QUESADILLA,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",lunch,adds dinner,"Tuna, springwater, drained; Red capsicum; Cottage cheese, low fat",needs review,,b096e876-47ee-4082-b1d8-81da28778de6
+CRISPY SALMON SUSHI BITES,,,,,x,,,high,a savoury snack,snack,same as old tag,Jalapeno,ready,,34b4c7b7-d578-4991-8116-92ce1fa55367
+CRISPY TUNA SUSHI BALLS,,,,,x,,,high,a savoury snack,snack,same as old tag,"Tuna, springwater, drained; Light Mayonnaise; Rice wine vinegar",needs review,,7c63b7ef-25f2-4f66-b267-439e76f2e0cf
+CRUMBED CHICKEN TACOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Tortilla; Chicken, breast; Cherry tomatoes",needs review,,bbccc6b0-421d-42c6-aa75-238dd2749bb0
+CRUMBED CHICKEN WITH ASIAN SLAW,,,,x,,,,high,a cooked main,,,"Chicken, breast; Vermicelli noodles; Apple",needs review,,5b2413f0-73a9-47a1-aef7-241f0392a131
+CRUMBED PORK WITH ASIAN SLAW,,,,x,,,,high,a cooked main,,,Pork Loin Steak; Vermicelli noodles; Apple,needs review,,d0d1343c-3e90-411f-bf6c-170084dd48cb
+CRUNCHY HOT HONEY CHICKEN,,,,x,,,,high,a cooked main,,,Chicken Breast Tenderloin; Cherry tomatoes; Zucchini,needs review,,9376001c-44b9-449a-aca3-5994ac86bd71
+DARK CHOCOLATE DIPPED DEHYDRATED ORANGES,,,,,x,,x,high,a sweet snack or dessert,,,Orange,ready,,078a05b5-24c1-437a-8c05-5d18c3b99340
+DECONSTRUCTED CHEESECAKE,,,,,x,,x,high,a sweet snack or dessert,,,Cream cheese; Thickened cream; Caster sugar,needs review,,7695807c-be9c-420d-a3db-71f0c6f7b77a
+DESSERT NACHOS,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,Plain Greek Yogurt; Milk Chocolate Chip Almond Flake; Thickened Cream,needs review,,da99829f-d50d-451a-b108-05ccb299c5e6
+DESSERT PIZZA,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,Vanilla Greek Yogurt; Milk Chocolate Chip Almond Flake,needs review,,62db2ae8-0822-44a6-ae33-7308611ce492
+"DF, GF, NUT-FREE PESTO",,,,,,x,,high,a sauce or condiment,,,"Spinach, baby; Extra virgin olive oil; Sunflower seeds",needs review,,3c19ec58-1403-45d1-adc4-066536b5f014
+"DF, GF, NUT-FREE PESTO PASTA",,,,x,,,,high,a cooked main,dinner,same as old tag,"Zucchini; Gluten-Free Pasta, cooked; Sun-dried tomatoes",needs review,,5cc7ecfa-6e4d-4b15-b334-351edbcf7a5c
+DUMPLING LASAGNE,,,,x,,,,high,a cooked main,dinner,same as old tag,Pork; Chicken stock; Spring onion,needs review,,196241ef-3b44-4683-880e-faf57722baf8
+EARL GREY CAKE,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Greek yoghurt, natural; Milk, reduced fat; Honey",needs review,,d6779778-fb63-4eee-ab0a-59f38064b913
+EASTER ROCKY ROAD,,,,,x,,x,high,a sweet snack or dessert,,,Packet Baking Milk Chocolate Melt; White And Pink Marshmallow; Strawberries,needs review,,a479398b-2245-42d2-a3a2-5146d4705cff
+EASY CHICKEN FAJITAS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Chicken, breast; Avocado; Red onion",needs review,,3b41f5cd-432a-4d2a-893b-7aecb00a8fdf
+EGGPLANT CAPONATA TOASTS,,x,,,x,,,medium,something on toast,,,"Eggplant; Tomato, common; Red capsicum",needs review,,80327966-206c-4486-add1-bab77611a1c1
+EGGS ON TOAST,,x,,,,,,high,an egg breakfast,,,"Cottage cheese, low fat; Egg, whole; Extra virgin olive oil",needs review,,2efcb00c-a934-4899-930e-b677d22dbeae
+ELECTROLYTE MOCKTAIL,,,,,,x,,high,a drink,,,Orange; Lime juice; Protein Electrolyte,needs review,,6a72fbec-641a-4174-9d2f-14b0e03983e8
+"FIG, PROSCIUTTO AND STRACCIATELLA PINTXOS",,,,,x,,,high,a savoury snack,,,Fig; Extra virgin olive oil; Rocket,needs review,,27f6b503-4237-48df-a85d-980ed01bfe84
+FISH & CHIPS,,,,x,,,,high,a cooked main,,,"Potato; Chicken, breast; Egg, whole",needs review,,0184f782-cae3-485f-8c14-d35a6b5b8ad9
+FLORENTINE SLICE,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Mixed Dried Fruit; Glace Cherry; Maple Syrup, No Sugar",needs review,,984bf799-a604-4acf-888a-fe0429595cd1
+FLUFFY JAPANESE SOUFFLE PANCAKES,,x,,,,,,high,"pancakes, waffles or French toast",,,"Pancake; Egg, whole; Water",needs review,,37d1c4c6-05cb-40d9-86ff-de149b3e1627
+FODMAP FRIENDLY BAKED OATS,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,"Milk, reduced fat; Unripe Banana; Quick oats",needs review,,d21a36d3-9362-4d5f-a194-cd7d329495fe
+FODMAP FRIENDLY CHOC MUG CAKE,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Milk, reduced fat; Gluten-Free Plain Flour; Extra virgin olive oil",needs review,,4f5b7228-2af2-4efd-b05e-fc82652ba1d6
+FODMAP FRIENDLY FRITTATA MUFFINS,,x,,,x,,,high,egg muffins,breakfast,adds snack,"Egg, whole; Capsicum; Zucchini",needs review,,94068413-72fe-4cfb-a356-d5d791b275a4
+FODMAP FRIENDLY FRITTATA MUG,,x,x,,,,,medium,a frittata,breakfast,adds lunch,"Egg, whole; Cottage cheese, low fat; Cheddar cheese",ready,,52d39733-3254-4521-84b5-7590a36fa3ed
+FODMAP FRIENDLY LCM BARS,,,,,x,,x,high,a sweet snack or dessert,,,"Maple Syrup, No Sugar; Gluten-Free Rice Bubble; Peanut butter",needs review,,95c50e5a-1b8f-454f-b5ad-a8e6da316d9e
+FODMAP FRIENDLY PEANUT BUTTER COOKIES,,,,,x,,x,high,a sweet snack or dessert,,,"Rolled oats; Milk, reduced fat; Peanut butter",ready,,510aa115-0238-4997-af8a-4ac96e21d5f4
+FODMAP FRIENDLY PESTO,,,,,,x,,high,a sauce or condiment,,,Garlic infused olive oil; Water; Pine nuts,needs review,,2a098984-48b8-429a-af9b-50de63f2d653
+FODMAP FRIENDLY PESTO ORZO SALAD,,,x,,,,,medium,a salad without a main protein (could be a side),,,"Zucchini; Tuna, springwater, drained; Pesto",needs review,,3e01dc63-b0c0-48f5-8a37-5d6e89f20360
+FODMAP FRIENDLY RICE PAPER DUMPLINGS,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Oyster mushroom; Tofu, firm; Carrot",needs review,,1d81e6f9-2eee-481c-9e9e-0dc32867887d
+FODMAP VEGETARIAN PASTA,,,,x,,,,high,a cooked main,dinner,same as old tag,"Tomato passata; Green capsicum; Gluten-Free Pasta, cooked",needs review,,53f217b0-cd7e-4232-a5b5-dda845e51a50
+FROZEN YOGHURT CUPS,,,,,x,,,high,a frozen treat,,,Nesquik,needs review,,eda7f133-6c0a-4269-8597-380ccfd7c375
+GARLIC & HERB CHICKEN WITH TURMERIC RICE,,,x,x,,,,high,noodles or a rice dish,,,"Chicken, thigh; Microwave rice pouch; Carrot",needs review,,4c8ac025-a1eb-4c73-84fc-dbf08f1089bb
+GARLIC PRAWN PIZZA,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,Mini wholemeal wrap; Cherry tomatoes; Prawns,needs review,,4e8c7884-9c2a-4472-a3d1-72f41efe0d0a
+GARLIC SESAME TOFU STIR FRY,,,,x,,,,high,a cooked main,,,"Microwave rice pouch; Tofu, firm; Carrot",needs review,,159d07b6-698f-424a-b999-0844a1a81de8
+GLUTEN FREE BEEF MEAT PIE,,,,x,,,,high,a cooked main,dinner,same as old tag,Lean Stir-Fry Beef Strip; Gluten-Free Puff Pastry; Brown onion,needs review,,acb164b0-7b76-4c65-b61f-f5d3bec56d51
+GREEK CHICKEN DUMP BAG,,,,x,,,,high,a cooked main,,,"Chicken, breast; Garlic infused olive oil; Extra virgin olive oil",needs review,,1f9179ac-76eb-424d-993f-256c9284175a
+GREEK CHICKEN RISOTTO,,,,x,,,,high,a cooked main,dinner,same as old tag,"Chicken, breast; Zucchini; Brown onion",needs review,,7fe811e7-e9e4-4e34-8f1c-48a5d15c6d71
+GREEK CHICKEN SALAD BOWL,,,x,x,,,,high,a salad with a main protein,,,Cucumber; Red onion; Feta cheese,needs review,,6e37997c-1be9-4518-8ee5-364e677dd8da
+GREEK INSPIRED MEATBALLS,,,,x,,,,high,meatballs,,,Beef mince; Zucchini; Lebanese cucumber,needs review,,eb3b7100-55d3-44ca-a9e2-d3993373942a
+GREEN GODDESS ANCIENT GRAIN SALAD,,,x,,,,,medium,a salad without a main protein (could be a side),,,"Water; Brown lentils, drained; Natural yoghurt",needs review,,e3071bd6-4fbe-4efb-8a16-93e17ea0c78d
+GRILLED APPLE AND CINNAMON SKEWERS,,,,,x,,,high,a savoury snack,,,"Apple, Granny Smith; Red Apple; Caster sugar",needs review,,2b79dc2e-0ffe-478f-8b2c-43cd083f6cbb
+GRILLED LAMB STEAK WITH ROAST VEG COUS COUS,,,,x,,,,high,a cooked main,dinner,same as old tag,Eggplant; Vegetable Stock; Pearl Cou Cou,needs review,,ab766ee4-80e5-4475-8510-77f7af1535b0
+GRILLED STEAK & CHIMICHURRI TACOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef rump steak, trimmed; Tomato, common; Lime juice",needs review,,29496a45-1a2a-4642-9261-e552037925c6
+GUACAMOLE,,,,,x,,,medium,a dip,,,Avocado; Roma tomato; Lime,needs review,,5e41658f-f018-4b07-99e0-e17a14c9bceb
+HALOUMI & CORN TACOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Haloumi; Greek yoghurt, natural; Lime juice",needs review,,2b645075-6c0e-44f3-984f-2b44e6cd24e7
+HEALTHY BEEF STROGANOFF,,,,x,,,,high,a cooked main,,,"Beef strips; Wholemeal pasta, cooked; Mushrooms",needs review,,c61664f0-c48a-449e-b4bc-85929bcc2cab
+HEALTHY BEEF STROGANOFF (FODMAP),,,,x,,,,high,a cooked main,,,"Beef strips; Gluten-Free Pasta, cooked; Oyster mushroom",needs review,,d42d7a7b-892c-4b4c-be28-0e5bfe828933
+HEALTHY BURGER BOWLS WITH SPECIAL SAUCE,,,x,x,,,,high,a bowl,lunch,adds dinner,"Beef mince, extra lean; Tomato, common; Greek yoghurt, natural",needs review,,525cae1e-ccab-4b5e-8e95-1dd4c060eae3
+HEALTHY VEGO STROGANOFF,,,,x,,,,high,a cooked main,,,"Tofu, firm; Wholemeal pasta, cooked; Mushrooms",needs review,,e5e7b59c-ec01-4a07-b154-49a92377b328
+HEALTHY VEGO STROGANOFF (FODMAP),,,,x,,,,high,a cooked main,,,"Tofu, firm; Gluten-Free Pasta, cooked; Oyster mushroom",needs review,,0ae51215-77e3-4ecf-b2fd-c593536c2601
+HERB CRUSTED SALMON,,,,x,,,,high,a cooked main,,,"Salmon, Atlantic; Lemon; Parmesan cheese",needs review,,4bb67398-e035-45da-8410-787dd55768bf
+HIGH PROTEIN BAGELS,,x,x,,,,,medium,bagels,,,"Greek yoghurt, natural; Self-raising flour; Egg, whole",needs review,,69709049-68bf-4396-812f-afd634749c7c
+HIGH PROTEIN NO BAKE CHEESECAKE,,,,,x,,x,high,a sweet snack or dessert,,,"Vanilla Yopro Yogurt; Water; Butter, salted",needs review,,e1818cad-104e-4c1a-8f37-670dd3013ea5
+HIGH PROTEIN OVERNIGHT WEETBIX,,x,,,,,,high,"oats, porridge or granola",,,Weet-Bix; Protein powder; Vanilla High Protein Yoghurt,needs review,,b891fc52-a961-4a7f-98a2-d5c04142b3b6
+HIGH PROTEIN PORRIDGE,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,Protein powder; Rolled oats; Banana,needs review,,44b6b437-c727-4b7c-9023-e579931b6c08
+HIGH PROTEIN RAVIOLI LASAGNE,,,,x,,,,high,a cooked main,dinner,same as old tag,"Packet Ravioli; Beef mince; Cottage cheese, low fat",needs review,,3951d117-f20a-4ba3-9c3f-46f2acb85cfb
+HIGH PROTEIN TUNA DIP,,,,,x,,,medium,a dip,,,"Tin Tuna In Spring Water; Cottage cheese, low fat; Red onion",needs review,,bb30b1f6-9a60-4a61-92e4-aba039ab696f
+HOMEMADE BEEF & CHEESE PIES,,,,x,,,,high,a cooked main,,,"Shortcrust pastry; Beef mince, extra lean; Carrot",needs review,,7091b606-20b2-449c-a535-ec8ed871a5a9
+HOMEMADE BEEF BURGERS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Pickle; Sandwich Thin",needs review,,d789b398-cd3c-4d79-8bd1-0c01434a7b67
+HOMEMADE BEEF PIES,,,,x,,,,high,a cooked main,,,"Shortcrust pastry; Beef mince, extra lean; Mushroom, common",needs review,,6978a280-2aec-4bc2-9e8e-4f2f9a84dca5
+HOMEMADE CHICKEN POT PIES,,,,x,,,,high,a cooked main,,,"Shortcrust pastry; Egg, whole; Zucchini",needs review,,362161c9-a3e1-49b3-a9cd-94e74bfecafa
+HOMEMADE CHILLI OIL,,,,,,x,,high,a sauce or condiment,,,Star Anise; Brown onion; Rice wine vinegar,needs review,,db5d627e-8004-4f24-bceb-4a592252dc0c
+HOMEMADE GREEK CHICKEN PIES,,,,x,,,,high,a cooked main,,,"Shortcrust pastry; Egg, whole; Chicken mince",needs review,,a9039216-971a-49b3-9816-79bda79c2583
+HOMEMADE LCM BARS,,,,,x,,x,high,a sweet snack or dessert,,,"Maple Syrup, No Sugar; Rice Bubble; Peanut butter",needs review,,5d679a84-df83-4f2a-847d-fa75fa91bec0
+HOMEMADE MEATBALLS,,,,x,,,,high,meatballs,,,"Tomato, common; Beef mince, extra lean; Zucchini",needs review,,a48f8abe-82ae-468e-abda-ff0c9dee9db9
+HOMEMADE PIZZAS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,Tomato-Based Pizza Sauce; Red capsicum; Black olives,needs review,,aa7b8061-ef91-4bdb-b9bf-07465d2878d0
+HOMEMADE SAUSAGE ROLLS,,,x,,x,,,medium,sausage rolls,,,"Low Gi / High Protein Wrap; Beef mince, extra lean; Zucchini",needs review,,2c6ce393-5b3d-46be-8c4f-d8bd35e670bc
+HONEY & PEAR PROTEIN PORRIDGE,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,Protein powder; Pear; Rolled oats,needs review,,bea7c25a-42b1-424a-8b26-fcbf2d8c39ee
+HONEY & PEPITA PROTEIN PORRIDGE,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,Pear; Protein powder; Rolled oats,needs review,,ef380080-7490-4239-a7b5-77ba883d3650
+HONEY GARLIC CHICKEN,,,,x,,,,high,a cooked main,,,"Chicken, breast; Basmati rice, cooked; Carrot",needs review,,fb16abb3-0999-43c0-8cd7-e04cb4f51b4c
+HONEY GLAZED SALMON,,,,x,,,,high,a cooked main,,,"Salmon, Atlantic; Honey; Soy sauce",needs review,,8ecd31ec-8127-4128-9051-7c7485e7ffaa
+HONEY HALOUMI TACOS W/ PICKLED CABBAGE,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Haloumi; Greek yoghurt, natural; Lime juice",needs review,,a8a94e48-0d36-4fa2-9634-c31c5e94fb0b
+HUGO SPRITZ,,,,,,x,x,high,a drink,,,Cucumber; Tonic Water; White wine,needs review,,e2800e8c-8a9e-4b60-ae45-38d8c625b620
+INDIVIDUAL TIRAMISU CUPS,,,,,x,,x,high,a sweet snack or dessert,,,Ladyfinger Biscuit; Mascarpone Cheese; Thickened cream,needs review,,565344e1-c8d1-4209-9adc-e20e341fccc1
+ITALIAN PASTA SALAD,,,x,x,,,,medium,a salad without a main protein (could be a side),dinner,old tag also had dinner (kept); adds lunch,Spiral Pasta; Cherry tomatoes; Leg ham,needs review,,8da9bc06-8e2b-4f47-99bb-1ac33ffb8722
+ITALIAN PASTA SALAD (FODMAP),,,x,x,,,,medium,a salad without a main protein (could be a side),dinner,old tag also had dinner (kept); adds lunch,"Gluten-Free Pasta, cooked; Cherry tomatoes; Leg ham",needs review,,672a51e6-5b94-4c22-8286-8fae741a8057
+JAPANESE MISO RAMEN,,,x,x,,,,high,a soup or ramen,,,"Mushroom, common; Pork mince; Egg, whole",needs review,,5c4c5704-f597-478d-9a31-4e8dbb976b95
+KOFTA PITA POCKETS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Wholemeal Pita Pocket; Lebanese cucumber",needs review,,cb9e2bae-26d7-45fe-ae86-cf68e1a89863
+KOREAN BEEF & KIMCHI RICE BOWL,,,x,x,,,,high,a bowl,,,"Beef mince, extra lean; Microwave rice pouch; Kimchi",needs review,,7b8f5885-6af8-42d6-bc41-a32e5f1118de
+KOREAN BEEF BOWLS,,,x,x,,,,high,a bowl,,,"Beef mince, extra lean; Microwave rice pouch; Lebanese cucumber",needs review,,8a42c8da-457e-483e-a59a-c2028e4eddb0
+LAMB BURGER SALAD BOWLS,BURGER SALAD BOWLS,,x,x,,,,high,variant of BURGER SALAD BOWLS: a bowl,,,"Lamb mince; Zucchini; Greek yoghurt, natural",needs review,,8b6c4b72-dfc8-4a4b-9480-850e3e5443bd
+LAMB BURGERS,BEEF BURGERS,,x,x,,,,high,"variant of BEEF BURGERS: tacos, burgers, wraps-style or pizza",,,Lamb mince; Burger bun; Carrot,needs review,,88ada876-23bf-49ee-9618-0d6cb3f7a346
+"LAMB GYROS - GF, LF",,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Lamb mince; Oregano, dried; Lebanese cucumber",needs review,,043a8ece-a7ba-4361-81bd-e98da6c5508c
+LAMB KOFTA PITA BREADS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,Lamb mince; Gluten-Free Pita Bread; Lebanese cucumber,needs review,,b7345bc8-48a5-408a-8db4-b40d773fbb18
+LAMB KOFTA WRAPS,,,x,,,,,high,"a wrap, sandwich or sushi",,,Lamb mince; Tzatziki; Mini wholemeal wrap,needs review,,71153c61-0e30-41bf-b891-0c2875b3458e
+LAZY DUMPLINGS,,,x,x,,,,medium,"dumplings, fritters or patties",,,Pork; Chicken stock; Spring onion,needs review,,f111e7f9-1d6a-439f-a969-76842b820c01
+LEAF SALAD + HONEY MUSTARD DRESSING,,,,,,x,,medium,a side dish,,,"Garlic, fresh; Extra virgin olive oil; Honey",needs review,,b85b1310-f8f3-4b03-bb7d-af158dc94933
+LEEK & MUSHROOM OMELETTE,,x,,,,,,high,an egg breakfast,breakfast,same as old tag,"Swiss brown mushroom; Egg, whole; Leek",needs review,,4ef687f8-e26a-4c5e-83c8-b3d36f0d5800
+LEMON CHEESECAKE MILLE FEUILLE,,,,,x,,x,high,a sweet snack or dessert,,,"Egg, whole; Filo pastry; Sugar, white",needs review,,625c00bc-63e8-4dfa-8cc7-51ef93877de8
+LEMON GARLIC SALMON TRAY BAKE,,,,x,,,,high,a cooked main,dinner,same as old tag,"Salmon, Atlantic; Cherry tomatoes; Zucchini",needs review,,f43dbaa5-97f9-4f3f-afb7-7b61d1ce6da7
+LEMON MILLE FUIELLE,,,,,x,,x,high,a sweet snack or dessert,,,,needs review,,cf4bf211-6109-4b75-a719-74b7621e3ecd
+LENTIL AND BEAN BURRITO BOWL,BEEF BURRITO BOWL,,x,x,,,,high,variant of BEEF BURRITO BOWL: a bowl,,,Microwaveable Basmati Rice Pouch; Lentils/Kidney Bean; Cherry tomatoes,needs review,,8242adb2-cdf2-4cc5-893c-3fb76ac9c034
+LENTIL TUNA SALAD,,,x,x,,,,high,a salad with a main protein,,,"Brown lentils, drained; Tuna, springwater, drained; Cherry tomatoes",needs review,,fb962235-3ee4-4406-866b-befdcc35ac10
+LOADED NACHOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Black beans, drained; Tomato, common",needs review,,23baf169-50ee-448a-84fc-853fb9c252e5
+LOADED SPAGHETTI BOLOGNESE,,,,x,,,,high,a cooked main,dinner,same as old tag,"Beef mince, extra lean; Tomato passata; Wholemeal pasta, cooked",needs review,,01e65fbb-ccca-4b8e-9035-0890129b02fb
+LOW FODMAP LEMON BARS,,,,,x,,x,high,a sweet snack or dessert,,,"Maple Syrup, No Sugar; Egg, whole; Maple Syrup, No Sugar",ready,,f5142a0d-adab-468f-a13c-cb62da920bd9
+MAC N’ CHEESE,,,,x,,,,high,a cooked main,,,"Tofu, silken; Pulse Pasta; Milk, reduced fat",needs review,,78f141c6-37e4-4188-b52a-ebed89acf38d
+MALAYSIAN SATAY CURRY,,,,x,,,,high,a cooked main,,,"Chicken, thigh; Microwave rice pouch; Cucumber",needs review,,9439d111-226d-4a33-81c3-aeece7669051
+MANGO CRISPY RICE SALAD,,,x,,,,,medium,a salad without a main protein (could be a side),,,Mango; Spring Onion Green; Cucumber,needs review,,c782a1e2-876a-4285-8da4-45daefbc3868
+MANGO RICE PUDDING,,,,,x,,,high,a sweet snack or dessert,,,"Mango; Mango; Maple Syrup, No Sugar",ready,,b2081f26-8f41-4008-b4c5-50779e29be2c
+MANGO SALSA TOSTADAS WITH AVOCADO CREAM,,,x,,x,,,medium,tostadas or tartare,,,Mango; Avocado; Lebanese cucumber,needs review,,eb436b84-a739-46c9-a295-d0f6d7903971
+MANGO SMOOTHIE ICEBLOCKS,,,,,x,,,high,a frozen treat,,,Honey,ready,,7512dd25-5e78-4752-bad2-4dd9cb762af6
+MANGO YO-CHI,,,,,x,,,high,a frozen treat,,,Honey; Vanilla extract,ready,,4b512b42-ae08-42a1-8061-4b046242b5b6
+MARRY ME CHICKEN PASTA,,,,x,,,,high,a cooked main,dinner,same as old tag,"Chicken, thigh; Greek yoghurt, natural; Sun-dried tomatoes",needs review,,69d43b2e-79c1-43e1-be7c-a208fc8be140
+MARRY ME PRAWN PASTA,,,,x,,,,high,a cooked main,dinner,same as old tag,"Greek yoghurt, natural; Sun-dried tomatoes; Spinach, baby",needs review,,51fdac31-4f53-44c1-9671-fda12c8acdef
+MASSAMAN CURRY PASTE,,,,,,x,,high,a sauce or condiment,,,Lemongrass; Water; Cardamon,needs review,,154dc191-2dfd-4d1a-ad61-cd4d9b2391dc
+MEAT PIE DUMPLINGS WITH MASH & BEANS,,,x,x,,,,medium,"dumplings, fritters or patties",dinner,adds lunch,"Potato; Beef mince; Mushroom, common",ready,,73de4bd1-f60d-41c8-9e90-928635cccf4b
+MEATBALL SHAKSHUKA,,,,x,,,,high,meatballs,,,Beef meatballs; Red capsicum; Zucchini,needs review,,fe5bdcc7-8cdc-46ee-b2ac-9b504e4f601d
+"MEATBALL, MASH & VEG",,,,x,,,,high,meatballs,,,Potato; Beef mince; Red capsicum,needs review,,3f363888-5169-4035-80ed-c21b3b6fdf42
+MEDITERRANEAN ORZO,,,x,x,,,,medium,"dumplings, fritters or patties",,,Zucchini; Red onion; Tomato paste,needs review,,989cb568-d4d0-4908-8eb4-c76ba9b9a4b6
+MEXICAN PICADILLO CON PAPAS,,,,x,,,,high,a cooked main,,,"Potato; Beef mince, extra lean; Kidney beans, drained",needs review,,ec4057f4-4b2d-4386-9e3b-b4ba7601e7ff
+MEXICAN RICE BOWL,,,x,x,,,,high,a bowl,,,"Microwavable Rice; Beef mince, extra lean; Zucchini",needs review,,5416b2ec-aa63-4842-809f-b671f1390d9c
+MEXICAN STUFFED CAPSICUMS,,,,x,,,,high,a cooked main,,,"Capsicum; Beef mince, extra lean; Crushed tomatoes, canned",needs review,,72010d5b-98f4-473e-9173-8f8b308b4fb9
+MEXICAN STUFFED CAPSICUMS (FODMAP),,,,x,,,,high,a cooked main,,,"Capsicum; Beef mince, extra lean; Crushed tomatoes, canned",needs review,,e1c52c8a-1074-4db8-a573-30d0466d950e
+MINI OKONOMIYAKI FRITTERS,,,,,x,,,medium,"snack-sized (""mini"")",,,"Egg, whole; Spring onion; Mayonnaise",ready,,f398c726-be38-4b16-927e-c30d16b93211
+MINI PAVLOVAS,,,,,x,,x,high,a sweet snack or dessert,,,,needs review,,52aa172d-2ab5-43bd-a7a5-ba1638b7c921
+MISO MUSHROOM SOUP,,,x,x,,,,high,a soup or ramen,,,"Vegetable stock; Mushroom, common; White wine",needs review,,3fc55ae1-699c-4b03-8b2f-3cc378e0aa2f
+MONGOLIAN LAMB,,,,x,,,,high,a cooked main,,,Lamb Leg Steak; Microwave rice pouch; Green capsicum,needs review,,07cea6e2-9c5d-4e28-9d52-a67f6132684d
+MOROCCAN CHICKEN & PUMPKIN TAGINE,,,,x,,,,high,a cooked main,,,"Chicken, breast; Tomato, common; Brown onion",needs review,,e5e8a387-e223-4d00-8b2c-5f962a83ad24
+MOROCCAN LAMB COUS COUS SALAD,,,x,x,,,,high,a salad with a main protein,,,Lamb Backstrap; Pear Cou Cou; Lemon,needs review,,01af43f6-6c2d-473f-b1e5-0fc06635b225
+NANDOS INSPIRED CHICKEN BURGERS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Chicken, thigh; Tomato, common; Lebanese cucumber",needs review,,812af18c-5fa4-4e96-b5cb-c3c64ffdc236
+"OAT, CHICKPEA & CHOC SLICE",,,,,x,,,high,a sweet snack or dessert,snack,same as old tag,Rolled oats; Honey; Peanut butter,needs review,,39448ca9-6320-4505-a4f4-fb090820ee5c
+OKONOMIYAKI,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Egg, whole; Worcestershire sauce; Tomato sauce (ketchup)",needs review,,310801c6-ff90-4e1c-adb0-c78cf477096a
+OLIVE TAPENADE AND TOMATO PINTXOS,,,,,x,,,high,a savoury snack,,,"Tomato, common; Extra virgin olive oil; Extra virgin olive oil",needs review,,7c654662-8e84-46d8-88f0-ac35a108750a
+ONE PAN FRIED RICE,,,x,x,,,,high,noodles or a rice dish,,,"Beef mince, extra lean; Microwave rice pouch; Carrot",needs review,,12a75bea-35ae-4d66-81cf-0c8996fa89d8
+ONE PAN GREEK PILAF,,,,x,,,,high,a cooked main,,,"Eggplant; Beef mince; Crushed tomatoes, canned",needs review,,32afcdba-d4e8-432c-9fd8-1f8c5628f060
+ONE PAN TUSCAN SALMON,,,,x,,,,high,a cooked main,,,"Sun-dried tomatoes; Salmon, Atlantic; Cherry tomatoes",needs review,,8c543a91-90a8-4f74-81a0-d65081ac61fb
+ONE POT MEXICAN RICE,,,x,x,,,,high,noodles or a rice dish,,,"Beef mince, extra lean; Basmati rice, cooked; Tomato, common",needs review,,aaa8143a-25cd-4966-aaed-e0bacd312de8
+ORANGE & CRANBERRY COOKIE BARS,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Wholemeal flour; Maple Syrup, No Sugar; Extra virgin olive oil",needs review,,12591e4e-d379-4872-80bf-7bee5fc7195d
+PEACH & RASPBERRY PAN CRUMBLE,,,,,x,,x,high,a sweet snack or dessert,,,"Rolled oats; Maple Syrup, No Sugar; Rolled Quinoa Flake",needs review,,475d3775-fc15-4fd0-91a1-d864518ea47e
+PEANUT BUTTER GRANOLA COOKIES,,x,,,x,,x,high,a sweet snack or dessert,breakfast,old tag also had breakfast (kept); adds snack,"Banana; Rolled oats; Milk, reduced fat",ready,,900ba84c-73f4-4e83-83a2-b17b23c19341
+PEANUT BUTTER RAMEN,,,x,x,,,,high,a soup or ramen,,,"Ramen Wok-Ready Noodle (Obento); Egg, whole; Carrot",needs review,,1b069b9b-57d3-48ce-8ccb-f13f4b650fe0
+PEANUT BUTTER RAMEN (GF) (GF),,,x,x,,,,high,a soup or ramen,,,"Vermicelli Rice Noodle; Egg, whole; Carrot",needs review,,034a5bc0-b755-4bbd-8d10-2d156899a4b9
+PESTO AIR-FRYER BREAKFAST BAGELS,,x,,,,,,high,"""breakfast"" in the title",breakfast,same as old tag,"Wholemeal Self-Raising Flour; Egg, whole; Low-Carb Bagel",needs review,,b47a2224-4e08-48de-bf7a-e27e5c33c5d4
+PESTO PASTA SALAD,,,x,x,,,,medium,a salad without a main protein (could be a side),dinner,old tag also had dinner (kept); adds lunch,"Chicken, breast; Zucchini; Risoni",needs review,,ccbe9fbe-308d-47c4-a818-2c6653d4f658
+PESTO SAUCE,,,,,,x,,high,a sauce or condiment,,,"Spinach, baby; Extra virgin olive oil; Walnuts",needs review,,0cbe1d08-85fd-42ef-9464-7582b1178014
+PICKLED VEG!,,,,,,x,,high,a sauce or condiment,,,"Radish; Sugar, white; Salt",needs review,,8f8845e3-0030-4386-8e34-1cd1aa70abac
+PIKELETS,,x,,,x,,,medium,pikelets,,,"Pikelet; Milk, reduced fat; Self-raising flour",needs review,,8e7231eb-34a0-4d03-9dd4-ca4bc073261f
+PISTAHIO ICE-CREAM SANDOS,,,,,x,,x,high,a frozen treat,,,Yopro Vanilla Yoghurt; Biscoff biscuit,needs review,,843f53fe-d68d-4d49-9a42-889550851812
+POACHED PEACHES WITH HONEY LABNEH & CRUMBLE,,,,,x,,x,high,a sweet snack or dessert,,,"Water; Greek yoghurt, natural; Extra virgin olive oil",needs review,,fd0d7fca-0250-4edd-af34-b65649914f42
+POACHED PEARS WITH HONEY LABNAH & CRUMBLE,,,,,x,,x,high,a sweet snack or dessert,,,"Pear; Water; Greek yoghurt, natural",needs review,,95d0bad9-277f-417b-bec2-0810df598880
+POACHED PEARS WITH HONEY LABNEH & CRUMBLE,,,,,x,,x,high,a sweet snack or dessert,,,"Pear; Water; Greek yoghurt, natural",needs review,,1d155675-969c-4c17-96aa-61a03517b449
+PORK AND VEGETABLE ENCHILADAS,BEEF AND VEGETABLE ENCHILADAS,,x,x,,,,high,"variant of BEEF AND VEGETABLE ENCHILADAS: tacos, burgers, wraps-style or pizza",,,"Pork mince; Black beans, drained; Tomato passata",needs review,,e8291ce7-7a91-4f52-985a-296026c47f05
+PORK BANH MI BURGERS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Pork mince; Garlic, fresh; Wholemeal bread roll",needs review,,abe4bac9-5ade-45b2-aed5-f067971e81e7
+PORK BURGERS,BEEF BURGERS,,x,x,,,,high,"variant of BEEF BURGERS: tacos, burgers, wraps-style or pizza",,,Pork mince; Burger bun; Carrot,needs review,,d65360e6-700d-409a-8ed1-db67c03cf8e6
+PORK WONTON CUPS,,,,,x,,,high,a sweet snack or dessert,,,Pork mince; Soy sauce; Spring onion,needs review,,10381633-c30d-4b20-88df-0c62dc64b3fc
+POTATO & LEEK SOUP,,,x,x,,,,high,a soup or ramen,,,"Potato; Leek; Greek yoghurt, natural",needs review,,4620d4a9-930a-4338-b6e5-6ff8a079af97
+POTATO & TOMATO SOUP,,,x,x,,,,high,a soup or ramen,,,"Potato; Tomato, common; Leek",needs review,,7b44f52c-7b8b-42dd-b64a-7bc7e3a38aa5
+POTATO SALAD,,,,,,x,,medium,a side dish,,,Potato; Sour cream; Red onion,needs review,,98565d7a-6581-4868-a979-050183970a23
+PRAWN DUMPLING STIR FRY,,,,x,,,,high,a cooked main,,,Capsicum; Carrot; Vermicelli noodles,needs review,,595029a7-64c4-479b-9095-5a1712f89c9e
+PREP-AHEAD EGG MCMUFFINS,,x,,,,,,high,an egg breakfast,,,"Egg, whole; Wholemeal English Muffin; Spinach, baby",needs review,,d8e7e663-c950-4928-900f-c5a1ccbd622b
+PROTEIN PANCAKES,,x,,,,,,high,"pancakes, waffles or French toast",,,Pancake; Banana; Rolled oats,needs review,,f986c61d-4872-41e5-8032-36e731856780
+PROTEIN PITA BREAD,,,,,,x,,medium,a side dish,,,Self-raising flour; Protein powder; Extra virgin olive oil,needs review,,22d5ef68-1da0-4371-a064-1fe8b76faee4
+PROTEIN SMOOTHIE,,x,,,x,,,high,a smoothie,,,Protein powder; Rolled oats; Honey,needs review,,86b1935f-485c-410e-bcba-fed8c820b2de
+PROTEIN ZUCCHINI FRITTERS,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Zucchini; Egg, whole; Protein powder",needs review,,aca826d8-eaeb-48d8-a2c7-0909a347bc81
+PULSE PACKED EGGPLANT BOATS,,,,x,,,,high,a cooked main,,,"Eggplant; Beef rump steak, trimmed; Diced tomatoes, canned",needs review,,8a7e3083-c3ce-4ec4-bc06-98731c7bd8cf
+PULSE PACKED EGGPLANT BOATS (AIR-FRYER),,,,x,,,,high,a cooked main,,,"Eggplant; Diced tomatoes, canned; Beef rump steak, trimmed",needs review,,b7ef4774-2eb8-45b6-9ca0-462d7555048c
+PULSE PACKED EGGPLANT BOATS (OVEN),,,,x,,,,high,a cooked main,,,"Eggplant; Diced tomatoes, canned; Beef rump steak, trimmed",needs review,,dec192d7-b852-481e-80e0-8e087e7ba142
+PULSE PACKED EGGPLANT BOATS (VEGETARIAN),,,,x,,,,high,a cooked main,,,"Eggplant; Diced tomatoes, canned; Mushroom, common",needs review,,ff165d00-db42-4796-972c-1d8a437a76c1
+QEEMA (INDIAN CURRIED BEEF),,,,x,,,,high,a cooked main,,,"Garlic, fresh; Beef mince, extra lean; Cucumber",needs review,,7f1fd8f1-a762-4676-8bdd-522384d71522
+QUESADILLAS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Beef mince, extra lean; Brown onion; Carrot",needs review,,31c741d3-7f08-4ff0-b1ab-d8c564fa265a
+QUICK LEMON YOGHURT PARFAIT,,x,,,x,,,high,chia pudding or parfait,,,Tub Lemon Chobani Greek Yoghurt; Mixed berries; Granola,needs review,,218015b2-56cd-4d4a-874d-05d75cd5e49b
+QUICK YOGHURT PARFAIT,,x,,,x,,,high,chia pudding or parfait,,,Tub Chobani Greek Yoghurt; Mixed berries; Granola,needs review,,5248e632-a180-4f76-b693-ce5ff80c8087
+RAINBOW FRITTATA MUFFINS,,x,,,x,,,high,egg muffins,breakfast,adds snack,"Egg, whole; Olive Oil Spray; Milk, reduced fat",needs review,,ef236de5-f47a-4526-843e-297349330e80
+RASPBERRY & LEMON SPRITZ,,,,,,x,x,high,a drink,,,Raspberry Tonic Water; White wine; White wine,needs review,,42d9b116-e6a8-43ea-9f8b-f68fe21d8e2f
+RAVIOLI 3 WAYS,,,,x,,,,high,a cooked main,,,"Lasagne Sheet; Beef mince, extra lean; Egg, whole",needs review,,23b00972-d3d0-45bc-b470-5fbff51840c5
+RED BEAN MOCHI,,,,,x,,x,high,a sweet snack or dessert,,,"Red Beans; Sugar, white; Vanilla extract",needs review,,42e56da8-673f-498f-8552-a8b43e655b2e
+RED CURRY CHICKEN,,,,x,,,,high,a cooked main,,,"Chicken, breast; Microwave rice pouch; Zucchini",needs review,,fbfd2b86-511d-4e76-a28a-345f8c4c571a
+RICE PAPER DUMPLINGS,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Mushrooms; Tofu, firm; Carrot",needs review,,e60a2b75-d624-496d-819f-67f113dc3e31
+RICOTTA TOAST,,x,,,x,,,medium,something on toast,,,Ricotta,ready,,d63e07ed-fa83-4b6d-96dd-46ef5c8de22b
+RISSOLES & 3-VEG,,,,x,,,,high,a cooked main,,,Beef mince; Zucchini; Breadcrumbs,needs review,,90a6f6bf-350c-4556-bb10-67a18140a910
+RISSOLES & MASH = AUSTRALIAN DELIGHT!,,,,x,,,,high,a cooked main,,,Potato; Beef mince; Zucchini,needs review,,894a5ade-06e5-4c26-9919-8a56b6e74df1
+ROAST PUMPKIN & WALNUT SALAD WITH RUMP STEAK,,,x,x,,,,high,a salad with a main protein,dinner,adds lunch,Pumpkin; Zucchini; Rocket,ready,,a2effd09-6880-4015-8b10-3e7556a11c0d
+"ROASTED TOFU, CAULIFLOWER & CHICKPEA CURRY",,,,x,,,,high,a cooked main,,,"Tofu, firm; Cauliflower; Green lentils, cooked",needs review,,92f91b2a-dc63-4af5-976c-ab518eb17959
+SALMON FISH CAKES,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Cottage cheese, low fat; Egg, whole; Brown onion",needs review,,7a3b60a3-4171-478d-bd5f-3d1a72ed3606
+SALTED CARAMEL BLISS BALLS,,,,,x,,x,high,a sweet snack or dessert,snack,same as old tag,"Rolled oats; Maple Syrup, No Sugar; Vanilla extract",needs review,,01417085-a111-4ee6-bd04-03df134e3ffa
+SARDINE KALE PASTA,,,,x,,,,high,a cooked main,dinner,same as old tag,Sardine In; High-Protein Pasta; Red onion,needs review,,59b7ec70-c14a-43e0-8e76-98a9a21a7c6f
+SAVOURY EGG MUFFINS,,x,,,x,,,high,egg muffins,,,"Egg, whole; Milk, reduced fat; Leg ham",needs review,,93c2738d-f7ef-4b0a-a2f7-5086ddcdc8bb
+SAVOURY FRENCH TOAST ROLL UPS,,x,,,,,,high,"pancakes, waffles or French toast",,,"Tasty cheese; Carrot; Egg, whole",needs review,,d2282db4-57a6-4c2e-ab21-6ff72e141c6c
+SAVOURY SCROLLS,,,,,x,,,high,a savoury snack,,,Leg ham; Tomato paste; Cheddar cheese,needs review,,6bd493b1-a7ef-4252-bdde-9e26fa525546
+SEARED TUNA POKE BOWL,AIR FRIED SALMON POKE BOWL,,x,x,,,,high,variant of AIR FRIED SALMON POKE BOWL: a bowl,,,Cucumber; Sashimi Grade Tuna; Microwave Brown Rice & Quinoa Pouch,needs review,,adcf31a3-baad-4df0-9aef-365b5c0ab54e
+SEARED TUNA SUSHI BOWL,AIR FRIED SALMON SUSHI BOWL,,x,x,,,,high,variant of AIR FRIED SALMON SUSHI BOWL: a bowl,,,Cucumber; Sashimi Grade Tuna; Microwave rice pouch,needs review,,d6363560-9433-4196-88ad-f839b17de218
+SELF-SAUCING QUINOA PATTIES,,,x,x,,,,medium,"dumplings, fritters or patties",,,Bone broth; Zucchini; Brown onion,needs review,,4f27cad7-faf3-497c-8923-9c6f3d6a7139
+SHEET PAN PROTEIN PANCAKES,,x,,,,,,high,"pancakes, waffles or French toast",,,"Cottage cheese, low fat; Maple Syrup, No Sugar; Protein powder",needs review,,dfea8dd9-3f92-43bd-ad0d-df4988b0c409
+SLOW COOKER BEEF RAGU WITH PAPPARDELLE,,,,x,,,,high,a cooked main,,,"Beef chuck, untrimmed; Wholemeal pasta, cooked; Water",needs review,,ec403083-2c89-447c-86a9-eddf11d40a4a
+SLOW COOKER TIKKA MASALA,,,,x,,,,high,a cooked main,,,Tomato passata; Garam masala; Cucumber,needs review,,222bd52c-d5d6-43eb-be2b-c61abf8c2de5
+SMASHED CUCUMBER SALAD,,,,,,x,,medium,a side dish,,,Lebanese cucumber; Soy sauce; Rice wine vinegar,needs review,,2a4425a3-8837-4599-9968-d585dd9d431f
+SMOKED SALMON BAGEL,,x,x,,,,,medium,bagels,,,,needs review,,da1170f0-e09f-4239-9dd4-5798140c7648
+SMOKED SALMON OKONOMIYAKI,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Egg, whole; Smoked salmon; Worcestershire sauce",needs review,,1a0bb36d-0f09-47c7-9d96-1db027183b4c
+SMOOTHIE,,x,,,x,,,high,a smoothie,,,"Milk, reduced fat; Water; Protein powder",needs review,,7afd486c-3553-4f86-8a49-b0e3675cfb1a
+SPAGHETTI BOLOGNESE,,,,x,,,,high,a cooked main,dinner,same as old tag,"Beef mince, extra lean; Vetta Smart Fibre Pasta; Brown lentils, drained",needs review,,21eb5a58-ec24-48d3-af26-b6a33b9de3e4
+SPANNAKOPTIA,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Spinach, baby; Egg, whole; Greek yoghurt, natural",needs review,,01bd0cd8-ed44-43ff-8523-766db04b6221
+SPICED PUMPKIN & LENTIL SOUP,,,x,x,,,,high,a soup or ramen,,,"Carrot; Garlic infused olive oil; Ginger, freshly grated",needs review,,ced4fc15-30af-4789-8217-228e658432e5
+SPINACH & FETA TURKEY MEATBALLS WITH HERBED QUINOA,,,,x,,,,high,meatballs,,,Turkey mince; Cucumber; Cherry tomatoes,needs review,,0757d4e6-5e24-440c-ae7d-3804340ee526
+SPINACH AND RICOTTA CANNELONI,,,,x,,,,high,a cooked main,,,"Ricotta; Diced tomatoes, canned; Carrot",needs review,,22b12f28-d0db-4ddf-abc4-fe2c96d4efe9
+SPINACH AND RICOTTA RAVIOLI,,,,x,,,,high,a cooked main,,,"Tomato passata; Ricotta; Spinach, baby",needs review,,a1ebbb53-c5b1-42db-89ce-e02f161dfaa0
+SPRING ONION PANCAKE W DIPPING SAUCE,,x,,,,,,high,"pancakes, waffles or French toast",breakfast,same as old tag,Plain flour; Carrot; Soy sauce,needs review,,0d3c1dc3-22e0-456b-8d01-415380872a49
+"STEAK, MASH & VEGETABLES",,,,x,,,,high,a cooked main,,,"Potato; Beef rump steak, trimmed; Carrot",needs review,,88318029-19ff-4bf0-86cb-f4801dae66f8
+STICKY DATE PUDDING,,,,,x,,x,high,a sweet snack or dessert,,,"Wholemeal flour; Maple Syrup, No Sugar; Dates, pitted",needs review,,2f8de057-c20b-41ad-b6d1-ccd547a9374e
+STRAWBERRY ICE-CREAM,,,,,x,,x,high,a frozen treat,,,Unsweetened Greek Yogurt; Banana; Honey,needs review,,ddacd94e-fa2f-4bd2-8c68-d723eb787863
+STUFFED CAPSICUMS,,,,x,,,,high,a cooked main,,,"Capsicum; Beef mince, extra lean; Tomato, common",needs review,,e4dd8484-1e03-4c11-9963-bea9c02bcd34
+SUMMER CHICKEN TACOS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,"Tortilla; Chicken, breast; Mango",needs review,,7f0000df-2e34-4311-9622-606ddc330f3e
+SUPER GREENS & PRAWN VEGETABLE CURRY,,,,x,,,,high,a cooked main,,,Prawns; Kale; Green beans,needs review,,2d2f1233-6c43-4e4d-a494-e3654b199e58
+SWEET AND SOUR PORK,,,,x,,,,high,a cooked main,,,Pork Scotch Fillet; Carrot; Zucchini,needs review,,78fd9f7d-1488-4898-9af2-c8e49e00c85b
+SWEET POTATO PROTEIN PANCAKES,,x,,,,,,high,"pancakes, waffles or French toast",,,"Sweet potato, orange; Protein powder; Rolled oats",needs review,,196d1979-6935-4697-8e30-afa761e781dd
+TERIYAKI CHICKEN & RICE,,,x,x,,,,high,noodles or a rice dish,,,"Mushroom, common; Chicken, thigh; Brown onion",needs review,,9855cf73-8bb7-4c4f-96e3-5fcb28fdc04e
+TERIYAKI CHICKEN PARCELS,,,,x,,,,high,a cooked main,,,"Chicken, thigh; Microwave rice pouch; Carrot",needs review,,3f08cae0-1035-405a-8514-5a1ad821c3c8
+TERIYAKI CHICKEN STIR FRY,,,,x,,,,high,a cooked main,,,"Chicken, breast; Mushrooms; Carrot",needs review,,2d6e6705-16be-4b57-a1fc-9d7385b90461
+TERIYAKI CHICKEN SUSHI RICE BALLS,,,,,x,,,high,a savoury snack,snack,same as old tag,"Chicken, thigh; Soy sauce; Rice wine vinegar",needs review,,d19344e4-07c4-403c-8286-4f36dfce8717
+TERIYAKI CHICKEN SUSHI ROLLS,,,x,,,,,high,"a wrap, sandwich or sushi",,,"Nori Sheet; Cucumber; Chicken, thigh",needs review,,b5785086-8683-45a6-8b8f-6cac9cdbabc3
+TERIYAKI SALMON WITH SOBA & BOK CHOY,,,x,x,,,,high,noodles or a rice dish,,,"Salmon, Atlantic; Soba noodles; Brown onion",needs review,,80af120c-a905-4c61-a1f0-3a3aa4afa848
+TERIYAKI SAUCE TERIYAKI CHICKEN SUSHI,,,x,,,,,high,"a wrap, sandwich or sushi",,,"Chicken, breast; Sushi Seaweed Sheet; Carrot",needs review,,11ed6b60-04d8-47d1-b2b1-10a4ffa2fffc
+THAI BEEF NOODLE SALAD,,,x,x,,,,high,a salad with a main protein,,,"Beef rump steak, trimmed; Cucumber; Vermicelli noodles",needs review,,7ae388c6-6e7e-4d53-b0d2-882432380909
+THAI CHICKEN LARB,,,x,x,,,,high,noodles or a rice dish,,,Chicken mince; Lemongrass Stalk; Red onion,needs review,,36f3be64-e033-40ec-9b7f-61a54605a609
+THAI CHICKEN PEANUT NOODLES,,,x,x,,,,high,noodles or a rice dish,,,"Chicken mince; Spinach, baby; Vermicelli noodles",needs review,,4514fb73-e7f5-4194-8272-cf949d7efd9e
+THAI CHICKEN PEANUT NOODLES (FODMAP),,,x,x,,,,high,noodles or a rice dish,,,"Chicken mince; Spinach, baby; Carrot",needs review,,5d430be1-37aa-4597-8b75-187020d9c1dd
+THERMOMIX LENTIL AND PUMPKIN SOUP,,,x,x,,,,high,a soup or ramen,,,Water; Water; Pumpkin,needs review,,970f823c-0e94-4a98-ace6-d80aa87b30f2
+TIRAMISU BAKED OATS,,x,,,,,,high,"oats, porridge or granola",breakfast,same as old tag,"Milk, reduced fat; Rolled oats; Greek yoghurt, natural",needs review,,5e4f37a7-a59b-41c8-ade1-84e5f1b729c9
+TOFU CHOC MOUSSE,,,,,x,,x,high,a sweet snack or dessert,,,"Tofu, silken; Avocado",ready,,23be0817-32a0-4164-849e-2b2d5e56a532
+TOFU CHOCOLATE MOUSSE,,,,,x,,x,high,a sweet snack or dessert,,,"Tofu, silken; Avocado; Collagen powder",needs review,,f0944736-cd7c-4b3e-a1af-f6f534186da2
+TOFU PEANUT NOODLES,,,x,x,,,,high,noodles or a rice dish,,,"Spinach, baby; Tofu, firm; Vermicelli noodles",needs review,,612c75e5-8d6b-4bbd-be09-508189d2b898
+TOFU SCRAMBLE,,x,,,,,,high,an egg breakfast,,,"Tofu, firm; Red capsicum; Extra virgin olive oil",needs review,,8fde7a26-81ba-4b30-af85-8e14dafbcbd1
+TOFU STRAWBERRY MOUSSE,,,,,x,,x,high,a sweet snack or dessert,,,"Tofu, silken; Sugar-free maple syrup",needs review,,0b6ee588-b078-49ad-86cd-c1fd694c18fb
+TOMATO CHUTNEY,,,,,,x,,high,a sauce or condiment,,,Mixed-Colour Tomato; Red onion; Red wine vinegar,needs review,,49b46740-7b82-415d-874f-d8640f5552cc
+TUNA SUSHI BOWL,,,x,x,,,,high,a bowl,,,Cucumber; Microwave Brown Rice; Carrot,needs review,,78af9b55-7d75-4226-83c7-7a2f4220e942
+TUNA TARTARE,,,x,,x,,,medium,tostadas or tartare,,,Sashimi Grade Tuna; Lebanese cucumber; Lemon,needs review,,70dcc9e5-cd83-4a86-989f-58314accd8e3
+TURKEY AND VEGETABLE ENCHILADAS,BEEF AND VEGETABLE ENCHILADAS,,x,x,,,,high,"variant of BEEF AND VEGETABLE ENCHILADAS: tacos, burgers, wraps-style or pizza",,,"Turkey mince; Black beans, drained; Tomato passata",needs review,,612bbee6-9e4a-4c0f-b996-5a03ceca0456
+TURKEY BURGER SALAD BOWLS,BURGER SALAD BOWLS,,x,x,,,,high,variant of BURGER SALAD BOWLS: a bowl,,,"Turkey mince; Zucchini; Greek yoghurt, natural",needs review,,ee81f53d-81ab-4475-a91b-8c12ba39b643
+TURKEY BURGERS,BEEF BURGERS,,x,x,,,,high,"variant of BEEF BURGERS: tacos, burgers, wraps-style or pizza",,,Turkey mince; Burger bun; Carrot,needs review,,e5415932-f302-43da-ab9d-8b4523fe357f
+TURKEY BURRITO BOWL,BEEF BURRITO BOWL,,x,x,,,,high,variant of BEEF BURRITO BOWL: a bowl,,,Turkey mince; Microwaveable Basmati Rice Pouch; Cherry tomatoes,needs review,,8bc4c303-3c43-4baf-b05c-13a2a5e2ce76
+TURKEY QUESADILLAS,BEEF QUESADILLAS,,x,x,,,,high,"variant of BEEF QUESADILLAS: tacos, burgers, wraps-style or pizza",,,Turkey mince; Brown onion; Carrot,needs review,,d97d061a-4e87-47f2-9c8b-ba3b57a31f67
+TURKISH EGGS,,x,,,,,,high,an egg breakfast,,,"Egg, whole; Extra virgin olive oil; Dill, fresh",ready,,46e471c6-2515-47f3-babc-c1cc57913393
+TURKISH PASTA ‘MANTI’,,,,x,,,,high,a cooked main,dinner,same as old tag,"Beef mince, extra lean; Cherry tomatoes; Pasta, cooked",ready,,c914e018-fe86-464d-abfe-921989ad5f32
+TUSCAN CHICKEN PASTA,,,,x,,,,high,a cooked main,dinner,same as old tag,"Chicken, thigh; Pasta, cooked; Zucchini",needs review,,626a5d7e-3af5-4b06-bfcf-123f9bf530eb
+Untitled recipe,,,,,,,,low,no title,,,,needs review,,8b7b652f-7636-4394-b0f5-4e0f3a16484c
+VEGEMITE & CHEESE SCROLLS,,,,,x,,,high,a savoury snack,,,Cheddar cheese,ready,,0ed7478f-f7c7-4e60-82d7-bffa4281e634
+VEGETABLE DUMPLINGS,,,x,x,,,,medium,"dumplings, fritters or patties",,,"Tofu, firm; Mushrooms; Carrot",needs review,,546ef807-ee1f-4662-869f-7b8efbcb08ca
+VEGETABLE HASH CAKES,,x,,,x,,,medium,hash cakes,,,"Potato; Sweet potato, orange; Zucchini",needs review,,50bbe85e-2fec-4edb-9034-e8c4832109fa
+VEGETARIAN PASTA,,,,x,,,,high,a cooked main,dinner,same as old tag,Tomato passata; Green capsicum; Vetta Smart Protein Pasta,needs review,,13bf9665-15c0-4375-9b31-172bbef7f96d
+VIETNAMESE BÁNH MÌ STYLE SLIDERS,,,x,x,,,,high,"tacos, burgers, wraps-style or pizza",,,Slider Bun; Pork mince; Carrot,needs review,,2dc0983e-4a31-4d7e-a14d-67ab94402b91
+WAFFLES,,x,,,,,,high,"pancakes, waffles or French toast",,,"Waffle; Milk, reduced fat; Extra virgin olive oil",needs review,,2233a066-e132-40d3-9a17-0ab748b59d2e
+"WATERMELON, MINT AND FETA SALAD",,,,,,x,,medium,a side dish,,,Feta cheese; Watermelon; Lime,needs review,,2eb76979-a53b-4f70-a514-103088f3a3bc
+WHIPPED COTTAGE CHEESE TOAST WITH ROASTED CHERRY TOMATOES,,x,,,x,,,medium,something on toast,,,"Cottage cheese, low fat; Extra virgin olive oil; Garlic, fresh",needs review,,31686933-9b3a-4002-9ee1-4fe00d8440eb
+with Edamame Dip,,,,,x,,,medium,a dip,,,Red wine vinegar; Cherry tomatoes; Water,needs review,,8caf4105-cdfe-44e8-a376-1ce5a12655ee
+WREATH ROCKET & PROSCUITTO SALAD,,,,,,x,,medium,a side dish,,,Peach; Prosciutto; Rocket,needs review,,ca706f5f-9724-4d93-94e9-e1c7a763a302
+YOU-FOODZ INSPIRED PORTUGESE CHICKEN BOWL,,,x,x,,,,high,a bowl,,,"Chicken, breast; Potato; Green beans",needs review,,8da0bdf7-0dcf-4c29-ac94-57823c036cee
+ZUCCHINI & SUNDRIED TOMATO MUFFINS,,x,,,x,,,high,muffins,,,"Zucchini; Egg, whole; Extra virgin olive oil",needs review,,4b6646c1-9ba3-4f8d-98ab-3aa3e65fb4a0

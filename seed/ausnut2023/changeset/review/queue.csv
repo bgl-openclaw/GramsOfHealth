@@ -1,0 +1,27 @@
+food_id,name,kind,reason,uses,now_kcal
+balsamic_glaze,Balsamic glaze,label,no AUSNUT glaze row,1,131
+low_carb_bagel,Low-Carb Bagel,label,branded low-carb bagel,1,300
+low_gi_high_protein_wrap,Low Gi / High Protein Wrap,label,branded wrap,1,250
+low_gi_wrap,Low Gi Wrap,label,branded wrap,1,250
+maple_syrup_sf,Sugar-free maple syrup,label,branded product,7,30
+mustard_seed,Mustard Seed,label,branded product,1,884
+nesquik,Nesquik,label,branded product,1,150
+nutritional_yeast,Nutritional Yeast,label,no AUSNUT row; current numbers are wrong (fat 52 g),1,600
+orange_zest,Orange zest,label,no AUSNUT orange peel row (current values look like USDA orange peel),3,97
+plant_based_feta,Plant Based Feta,label,branded plant-based cheese,2,230
+protein_electrolyte,Protein Electrolyte,label,branded supplement,1,375
+protein_powder,Protein powder,label,branded product,13,375
+red_bean_paste,Red Bean Paste,label,branded product,0,299
+red_pesto,Red Pesto,label,no AUSNUT red pesto,1,150
+sandwich_thin,Sandwich Thin,label,branded sandwich thins,1,150
+strawberry_nesquik,Strawberry Nesquik,label,branded product,1,32
+tub_chobani_greek_yoghurt,Tub Chobani Greek Yoghurt,label,"Chobani (plain Greek, 0 % fat)",1,75
+tub_lemon_chobani_greek_yoghurt,Tub Lemon Chobani Greek Yoghurt,label,Chobani lemon,1,75
+vetta_smart_fibre_pasta,Vetta Smart Fibre Pasta,label,Vetta Smart Fibre,1,140
+vetta_smart_protein_pasta,Vetta Smart Protein Pasta,label,Vetta Smart Protein,1,140
+whey_protein,Whey protein powder,label,branded product,2,390
+wholemeal_wrap,Mini wholemeal wrap,label,mini wholemeal wrap (brief: label),8,290
+mixed_herbs_dried,"Mixed herbs, dried",density held,"AUSNUT density 0.53 disagrees with its own spoon/cup measures [('tbsp', 2.4, 10.6), ('tsp', 1, 2.7)]",6,
+pepper,"Pepper, black, ground",density held,"AUSNUT density 0.34 disagrees with its own spoon/cup measures [('tsp', 2.3, 1.7)]",28,
+powdered_sugar,Powdered Sugar,density held,"AUSNUT density 0.56 disagrees with its own spoon/cup measures [('tbsp', 17.6, 11.2)]",1,
+taco_seasoning,Taco seasoning,density held,"AUSNUT density 1.2 disagrees with its own spoon/cup measures [('tbsp', 11, 24.0)]",6,

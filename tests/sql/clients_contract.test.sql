@@ -1,14 +1,16 @@
 -- tests/sql/clients_contract.test.sql — live test of migration 0030.
 -- One DO block that always raises → everything rolls back.
 -- Impersonates the earliest staff profile (admin → clinician) via request.jwt.claims.
+-- Uses a throwaway client so real client data (requirements, rules) can't skew the counts.
 do $$
 declare
   c uuid; u uuid; n int; n2 int; s text; log text := ''; dist text;
 begin
-  select id into c from clients order by created_at limit 1;
+  insert into clients (full_name) values ('ZZ contract test') returning id into c;   -- throwaway client: real clients carry real requirements
   select id into u from profiles order by created_at limit 1;
   perform set_config('request.jwt.claims', json_build_object('sub', u, 'role', 'authenticated')::text, true);
   perform set_config('request.jwt.claim.sub', u::text, true);
+  insert into client_targets (client_id, day_type, kcal, source) values (c, 'default', 1800, 'dietitian');
 
   -- S1 no requirements → every recipe ok
   select count(*), count(*) filter (where status = 'ok') into n, n2 from client_recipe_screen(c);

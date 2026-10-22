@@ -1,0 +1,23 @@
+Dr Jane Citizen MBBS FRACP
+Endocrinologist
+Suite 2, 10 Example Road, Sampleville NSW 2100
+Phone: 02 9111 2222  Fax: 02 9111 2223
+14 October 2026
+Dr Alex Example
+Example Family Doctors
+Dear Dr Example,
+Re: Sam Sample, DOB: 02/03/1980
+I reviewed Sam today regarding type 2 diabetes.
+Diagnoses:
+Type 2 diabetes mellitus
+Fatty liver disease
+Medications:
+Metformin XR 1000mg Tablet 2 Tablets with dinner
+Allergies: Penicillin (rash)
+Weight: 96.4 kg  Height: 178 cm
+Plan:
+Refer to dietitian for carbohydrate review.
+Repeat HbA1c in 3 months.
+Kind regards,
+Dr Jane Citizen
+2345678B

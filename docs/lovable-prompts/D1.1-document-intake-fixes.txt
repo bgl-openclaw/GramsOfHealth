@@ -1,0 +1,40 @@
+Document intake part 1: fixes from the code review. Two database fixes are already live (migration 0054). Do NOT create migrations. Do NOT edit the protected files (engine.ts, adjust.ts, energy.ts, results-reader.ts, document-reader.ts).
+
+ALREADY FIXED IN THE DATABASE (0054)
+- The clinical-records bucket now accepts .docx, .txt, .vtt and .srt as well as PDFs and photos. Before, uploading them failed with "mime type not supported".
+- A found item that repeats one already found in the same document (same section, field and value, in any key order) is skipped quietly. "Read again" and a second AI pass no longer duplicate items or bring back settled conflicts. You don't need to dedupe, but don't count on getting every inserted row back.
+- The AI pass now answers "not set up" as a normal reply: { ok: false, code: 'not_set_up', message }. Other failures (no text, the AI service refusing) still come back as errors.
+
+APP FIXES
+1. One file's AI pass must never stop the batch (blocking).
+   - In ClientDocuments saveAll, wrap each AI pass in try/catch and carry on to the next file.
+   - If the reply is ok:false with code 'not_set_up', show the message once per session as a notice, not an error, and don't call the AI pass again in that session.
+   - Show any other AI error on that file's row ("AI pass didn't run: {message}") with a "Try the AI pass again" button. The rules reading and filing for that file still count.
+   - In documentAiPass, read the function's JSON body for both success and error responses (supabase.functions.invoke puts error bodies in error.context). Don't throw just because a message is present.
+2. Upload content types: set contentType explicitly when uploading:
+   - .docx: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+   - .txt: text/plain
+   - .vtt: text/vtt
+   - .srt: application/x-subrip
+   Browsers often give these files an empty type.
+3. Text length: if the extracted text is over 500,000 characters, say "This document is too long to read (over 500,000 characters). It has been saved as a file only." Then save the file without document_text.
+4. Quotes over 2,000 characters: cut them to their first 2,000 characters before inserting (still an exact piece of the document), so one long paragraph can't make the database reject the whole insert.
+5. Messages: successful results ("Filed.", "Left out of the file.", "12 filed, 3 to check …") show as notices, not in red. Only refusals are errors.
+6. AI summary on each document row: "AI pass: {kept} of {suggested} suggestions kept · {date}", from ai_summary's kept, suggested and at. If dropped_quote_not_in_document > 0, add "({n} dropped: not found in the document)".
+7. Care team: only one primary GP. Ticking "Primary GP" on one contact unticks it on the others for that client, in the same save.
+8. Review panel, when a record has no stored text:
+   - PDF: "This PDF hasn't been read yet" with a "Read it now" button that runs the extraction and saves document_text.
+   - Photo: "Photos can't be read yet."
+   - Word/text: "Read it now".
+
+TESTS
+- A 'not_set_up' reply doesn't stop a three-file batch, and the notice shows once.
+- An AI error on one file still saves the other files.
+- The content type for each extension.
+- A 2,500-character quote is cut to 2,000 and is still a substring of the text.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and the protected files are untouched

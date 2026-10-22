@@ -1,0 +1,60 @@
+Grams Editor — U1: recipe unit lists only show measures that work + estimated weights + "Buy as" (owner-approved)
+
+Background: the recipe unit dropdown offers tsp/tbsp/cup/g/kg/mL for EVERY food, even when they give 0 g (e.g. Carrot has no density, so cup/tbsp/mL are meaningless and confuse users). The owner wants each food to offer only measures that actually weigh something, kg removed, estimated weights flagged, and a shopping "Buy as" unit.
+
+The database is already done (migration 0036) — do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts. What the database now provides:
+- unit_conversions.estimated (boolean). true = an import placeholder that was never weighed (e.g. Watermelon "each" = 100 g). Typing new grams on that row clears it automatically; setting estimated = false = "Confirm". Changes are logged in the change log.
+- foods.purchase_unit (text | null) — "Buy as". Must be one of that food's conversion units (the database refuses anything else, follows a rename, and clears it if the measure is deleted).
+- recipe_verification has new columns estimated_line_count and estimated_ingredients, and its reasons can now include "1 ingredient uses an estimated weight: Watermelon (each)". Recipes with estimated weights are Needs review.
+- Conversion unit names are stored trimmed, lower-case, single-spaced; "g", "gram", "grams" and "kg" are refused as measure names (built in).
+- No recipe line uses kg any more (the 5 that did are now 1000 g).
+
+1. Data layer (src/data/index.ts)
+   - export type ConversionRow = UnitConversion & { estimated?: boolean | null };
+   - Extend FoodRow: Food & { default_size?: string | null; purchase_unit?: string | null }.
+   - listUnitConversions: page through fetchAllPaged like listFoods (the table has 600+ rows; the 1000-row cap would silently drop conversions later).
+   - Add confirmUnitConversion(foodId, unit): update unit_conversions set estimated = false where food_id and unit match.
+   - Add setFoodPurchaseUnit(foodId, unit | null): update foods.purchase_unit, return the saved value.
+
+2. New file src/lib/units.ts (UI helper — imports from engine.ts, never edits it)
+   - unitLabel(u): UNIT_LABEL[u] ?? u, plus "l" → "L" and /^x(\d+)g$/ → "×{n} g".
+   - lineUsesEstimate(food, unit, conversions): false for g/gram/grams/kg/x95g; false for tsp/tbsp/cup/ml when food.density_g_ml > 0; otherwise the matching conversion's estimated === true.
+   - recipeUnitOptions(food, conversions, currentUnit, defaultSize?) → { value, label, grams, group, estimated }[] with groups in this order:
+     a. "Sizes & pieces": every conversion of this food whose unit is NOT tsp/tbsp/cup/ml. "each" first, then by grams ascending. Label "{unitLabel} · {grams} g"; "each" when the food has a default size → "each ({default_size}) · {grams} g". Append " · estimate" when estimated.
+     b. "Spoons & cups": tsp, tbsp, cup, ml — ONLY when resolveUnitSource(food, u, conversions).grams > 0. Label "tbsp · 20 g" (+ " · estimate" when lineUsesEstimate).
+     c. "Weight": "g" only. kg is never offered.
+     d. If currentUnit isn't in the list: if it resolves (e.g. x95g) add it under "Weight" with its grams; otherwise add it under "No weight" labelled "{unitLabel} — no weight", so the existing line still displays it and nothing changes silently.
+     No food chosen yet → just "g" (plus the current unit).
+     Grams format: ≥ 10 → whole number, else 1 decimal (same as AvailableUnits).
+
+3. Recipe editor (src/routes/_app.recipes.$id.tsx)
+   - Replace sizeOptionsFor(...) with recipeUnitOptions(food, conversions, line.unit, food?.default_size) and render one <optgroup label> per non-empty group. Search all of src for other sizeOptionsFor uses and switch them too (leave the function itself in engine.ts).
+   - Keep the red "Can't be weighed" note. Add an amber note when lineUsesEstimate(...) is true: 'Estimated weight — "{unit}" for {food} ({grams} g) has never been weighed.' with the same "Open food" link to the conversions section.
+   - CreateSizePopover ("+" add a size):
+     • Remove the water guess: grams = unit === "mL" ? w * food.density_g_ml : w. Offer the mL option ONLY when food.density_g_ml > 0; otherwise show grams only.
+     • Size name: add a <datalist> of suggestions (small, medium, large, leaf, head, handful, bunch, stalk, sprig, clove, slice, sheet, piece, fillet, can, packet, punnet, pouch, tub, jar, scoop, cup (chopped), cup (grated), cup (diced), cup (shredded), cup (crumbled), tbsp (chopped), tsp (chopped)); free text still allowed.
+     • Before saving: trim, collapse spaces, lower-case. If the name is g / gram / grams / kg, don't save — show "Grams and kg are built in — no need to add them."
+     • Don't send `estimated` (new measures are weighed values; the database default is false).
+
+4. Food page (src/routes/_app.foods.$id.tsx)
+   - AvailableUnits: remove kg from the built-in list (g, tsp, tbsp, cup, ml only). Chips that resolve through an estimated conversion get an amber " · estimate".
+   - UnitConversionsEditor rows: when estimated, show an amber "estimate" pill and a "Confirm" button (title: "This weight was never measured. Confirm it's right, or type the correct grams."). Confirm → confirmUnitConversion → reload (the existing reload). Editing the grams already clears the estimate in the database; after the existing reload the pill disappears. The synced "each = {default}" row shows the pill when estimated but no Confirm button — show "confirm the {default} size" instead (the each row follows its size).
+   - The add-measure input: same datalist, normalisation and g/kg block as the popover. Placeholder: "Measure name (e.g. medium, head, handful, cup (grated))".
+   - Rename the "Shopping aisle" section to "Shopping" and add a "Buy as" select beside Aisle: "— Grams only —" plus the food's conversions except tsp/tbsp/cup/ml, labelled "{unit} · {grams} g". Saves immediately via setFoodPurchaseUnit (like Protein family) with toast "Buy as saved"; any signed-in staff can change it. Hint underneath: "The shopping list rounds up to whole {unit}s." After any conversion add/rename/delete, re-read the food so purchase_unit (and default_size) reflect what the database did.
+
+5. Shopping list (src/routes/_app.plans.$id.shopping.tsx)
+   - Replace householdHint (it guesses by picking the biggest measure that fits) with buyHint(food, conversions, grams): if food.purchase_unit is set and that conversion exists → n = max(1, ceil(grams / conv.grams − 1e-9)); "each" → "buy {n}" (+ " ({default_size})" when set), otherwise "buy {n} × {unitLabel} ({grams} g each)". No purchase_unit → no hint (grams only). No guessing.
+   - Show it in each row under the name (plain text, not italic) and in the PDF sub-line. Grams stay the headline number.
+
+6. Recipe verification panel: no change needed — the new reason text comes from the view. Just make sure any reason string displays (no hard-coded list of reason types).
+
+ACCEPTANCE
+a. Carrot line dropdown: Sizes & pieces = each (medium) · 129 g, small · 74 g, medium · 129 g, large · 169 g; Weight = g. No tsp/tbsp/cup/mL/kg.
+b. Extra virgin olive oil (has a density) shows tsp/tbsp/cup/mL with grams.
+c. A "1 each Iceberg lettuce" line shows "each — no weight" selected, the red note, and the dropdown offers its leaf/head sizes + g.
+d. "WATERMELON, MINT AND FETA SALAD": the watermelon line shows the amber estimate note; the food page shows "each · 100 g · estimate" with Confirm. (Don't actually confirm it — just check the button is there.)
+e. "+" add-size on Carrot: no mL option. " Cup (Grated) " is saved as "cup (grated)"; "kg" shows the built-in message and saves nothing. (Delete the test measure afterwards.)
+f. Shopping list of a plan containing carrots shows "buy N (medium)"; a food without Buy as shows grams only — no "~0.5 ×" hints anywhere.
+g. Search src for householdHint and for "kg" in recipeUnitOptions → none (name the search). Show that src/lib/engine.ts has no changes.
+
+REPORT BACK: files changed, the new units.ts in full, and confirmation engine.ts / adjust.ts / energy.ts are untouched and no migrations were added.

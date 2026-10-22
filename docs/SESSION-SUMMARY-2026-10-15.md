@@ -24,7 +24,7 @@ Written to hand to another Claude. Verify live before trusting any count — the
 
 | | |
 |---|---|
-| Recipes | 374 · **AI Verified 31** (was 19 at start) · Dietitian Verified 0 |
+| Recipes | 374 · **AI Verified 26** (was 19 at start; peaked at 31, then 5 dropped in U1 because they relied on estimated weights) · Dietitian Verified 0 |
 | Foods | 517 (includes a stray test food "aaa test" — delete it) · 311 verified · 15 with a default size · 1 with a protein family (the test food) |
 | Ingredient lines | 3,211 · **197 can't be weighed** (was 413) |
 | Recipes with a `data_issue` note | 21 |
@@ -73,6 +73,39 @@ Owner decisions: interns are allocated per client (separate tick for check-ins),
 
 ### 2.7 Impossible food values — migration 0035
 - Root cause of the old "negative-calorie cheesecake": **Light Cream Cheese density −9** (½ cup = −1,125 g). 8 verified foods had density ≤ 0; cleared and auto-unverified (they're the 8 items in the Changes inbox). New guards: density blank or > 0, per-100 g macros ≥ 0, conversion grams > 0.
+
+### 2.8 Recipe units (U1) — migration 0036 + Lovable prompt `docs/lovable-prompts/U1-recipe-units.txt`
+- Owner: "remove kg" · estimated weights → Needs review · add "Buy as".
+- **kg retired**: the 5 "1 kg" lines are now "1000 g" (no number changed); the app stops offering kg.
+- **Estimated weights**: 88 conversions were import placeholders (61 × "each = 100 g", e.g. ¼ watermelon = 25 g). `unit_conversions.estimated` flags them; a line weighed through one adds the reason "uses an estimated weight" (109 recipes; AI Verified 31 → 26). Typing new grams or pressing Confirm clears it (logged). Default-size "each" copies its size's flag.
+- **Unit names** stored trimmed/lower-case; g/gram/grams/kg refused as measure names; 10 untidy names renamed (none used in recipes).
+- **Buy as** (`foods.purchase_unit`): shopping list counts the food in that measure, rounded up. Backfilled on 37 obvious foods (whole produce with a default size, herb bunches, punnets, cans, pouches, packets) — logged in the Changes inbox.
+- Lovable U1 (pending): dropdown shows only measures that weigh something (carrot: sizes + g; olive oil: spoons/cups/mL), grams shown in each option, estimate notes + Confirm, add-size popup no longer treats mL as water, Buy as on the food page and shopping list.
+- Dietitian work list: `docs/units-review.csv` (re-run `npx tsx scripts/units-review.ts`). Tests: `tests/sql/recipe_units_u1.test.sql` (all pass); parity 3,211 lines, 0 mismatches.
+
+### 2.9 Measure suggestions (U1.1) — Lovable `bd823678`
+- Visible suggestion chips (no typing needed, hide measures the food already has) in the "+" add-size popup and the food page; clear "Enter a measure name / weight" messages instead of silent Save; Buy as hint wording fixed. Verified in code; engine untouched.
+
+### 2.10 Plans P1 for full clients (21 Oct) — migration 0037 + Lovable prompt `docs/lovable-prompts/P1-plans-dates-slots-publish.txt`
+- Owner: publishing allowed with Needs-review recipes (warning names them; recorded on the version); start date required to publish a client plan. P2 (fitness-challenge templates/bulk) later.
+- Quarter serves (`servings_override` numeric, 0.25 steps — half serves previously couldn't be saved).
+- `meal_plans.start_date`, `status` draft|published; `meal_plan_days` (day-type overrides); `plan_days()` (date, weekday, day type from override › client's Mon–Sun pattern › default, and that day's targets — falls back to Default targets and says so); `plan_slots()` (client's own slots, default four otherwise, plus orphan item slots).
+- `meal_plan_versions` append-only: app builds the snapshot, `publish_meal_plan` checks it matches the saved plan (items, serves, days, day types), records Needs-review recipes, locks the plan; `start_new_plan_version` reopens. Published booklets/shopping lists render from the snapshot only.
+- Tests: `tests/sql/plans_p1.test.sql` (11 checks, all pass live); `npm test` 42 green.
+
+### 2.11 Client app P0 — security lockdown (21 Oct) — migration 0038
+- Owner: one build window (this one) for the client app; the original backend window stood down.
+- The 13 library tables (recipes, lines, steps, foods, conversions, tags, food tags, overrides, profiles/deltas, swaps, exclusions, legacy recipe_tags) → staff-only read/write; AFCD → staff read-only. Profiles: own row or staff. Recipe sign-offs: staff read. Recipe photos: public read, staff-only writes. Role `client` added.
+- Test `tests/sql/p0_lockdown.test.sql`: every role × every table (staff unchanged; pending/client see and change nothing).
+- Owner still to do (Supabase dashboard): rotate DB password + service-role key; leaked-password protection. Old test login already gone.
+
+### 2.12 Client app P1a — accounts + client read surface (21 Oct) — migrations 0039, 0039b + Lovable prompt `docs/lovable-prompts/P1a-client-area.txt`
+- Owner: client area inside the same app; dietitians/admins invite, link and allow numbers; numbers on both sides (dietitian allows → client chooses); copy-and-send invite links; "Request a change" → assigned dietitian, fallback info@gramsofhealth.com; Lovable designs it warm and on brand. Subdomain can come later (decide before P1b).
+- `app_settings` (practice name/email, timezone, client_contact). `clients.user_id / numbers_allowed / client_shows_numbers` with a guard trigger. Client invites (role client + client_id) — accepting REQUIRES the invite token (email confirmation is off, so email matching alone would be unsafe); staff invites unchanged. Self-registration (`account_type: client`) → unlinked client account; dietitian links it.
+- Staff RPCs: invite_client_to_app, link_client_account, unlink_client_account, client_app_status, client_app_signups. Client RPCs (the only things a client can read): my_details, my_plans, my_plan_version (published snapshots; calories/macros/targets stripped in the database unless allowed AND chosen), set_my_show_numbers.
+- 0039b: the app's invite page sends `invitation_token` — both keys now accepted.
+- Test `tests/sql/client_accounts_p1a.test.sql` (8 checks, all pass live).
+- Next: P1b (magic link, Google, emailed invites via Resend, email confirmation on — needs owner setup + final domain), P1c (pre-filled intake sheet → dietitian review; HighLevel later).
 
 ---
 

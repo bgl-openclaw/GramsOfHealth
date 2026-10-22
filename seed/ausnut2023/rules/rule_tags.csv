@@ -1,0 +1,19 @@
+tag,rule
+Dairy,"groups 141, 142, 191-196 (butter, dairy blends, milk, yoghurt, cream, cheese, ice cream, custard); name has whey or casein"
+Egg,"group 171; name has egg (pasta included); mayonnaise, dijonaise, tartare, aioli, custard (flag: confirm on label)"
+Fish,"groups 151, 153, 154 (fin fish, roe, canned fin fish); fish sauce, Worcestershire, anchovy"
+Shellfish,"groups 152, 157 (crustacea, molluscs); prawn, shrimp, crab, lobster, oyster, mussel, scallop, squid, octopus, abalone; oyster sauce, shrimp paste"
+Meat,"groups 181, 182, 183, 186 (beef, lamb, pork, game, poultry, processed meat); gelatine; meat paste"
+Soy,"soy, soya, tofu, tempeh, miso, edamame, teriyaki, hoisin, black bean sauce; soy-based sauces also get Gluten (wheat)"
+Peanuts,name has peanut or satay
+Tree nuts,"group 222 except 22203 coconut; almond, cashew, macadamia, pistachio, pecan, hazelnut, brazil, walnut, pine nut"
+Sesame,"sesame, tahini, hummus"
+Honey,name has honey
+Gluten,"cereal groups 121-126, 132, 136 unless the grain is rice, corn, polenta, arrowroot, millet, quinoa, buckwheat, amaranth, konjac, chickpea or gluten free; vegemite, malt, crumpets, croutons, falafel, soba"
+REVIEW (no tag written),"oats (not gluten-free under FSANZ); commercial seasonings, stock cubes, barbecue and curry sauces; chocolate; protein powders; processed meats. These rows are listed in import_review_flags.csv for a dietitian."
+Vegan,"derived: none of Dairy, Egg, Fish, Shellfish, Meat, Honey and no open review flag"
+Vegetarian,"derived: none of Fish, Shellfish, Meat"
+Dairy-free,derived: no Dairy and no open dairy review flag
+Gluten-free,"derived: no Gluten, not oats, no open gluten review flag"
+Nut-free,derived: no Tree nuts and no Peanuts
+High-FODMAP,never written by rule; dietitians only

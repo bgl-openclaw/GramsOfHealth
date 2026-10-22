@@ -1,0 +1,20 @@
+Yes to your invite-link plan, with a wider scope: the same problem affects every link the app sends out, not just client invites. No database changes; skip the optional backend prompt. Do NOT create migrations. Do NOT edit src/lib/engine.ts, src/lib/adjust.ts or src/lib/energy.ts.
+
+1. One helper for the app's public address (e.g. src/lib/public-url.ts):
+   - PUBLIC_APP_URL = 'https://www.gramscookingschool.com.au'
+   - publicOrigin(): returns window.location.origin when the app runs on www.gramscookingschool.com.au, grams-recipe-editor.lovable.app or localhost / 127.0.0.1. Otherwise (the editor preview, *.lovableproject.com, id-preview--*) it returns PUBLIC_APP_URL.
+2. Use publicOrigin() everywhere a link leaves the app:
+   - client invites: inviteMessage and ShareInviteDialog (copy link, copy message, email, text)
+   - staff invites: inviteLink() in src/lib/users.ts (the invite dialog and the Copy link on each pending invite in Users)
+   - sign-up confirmation emails (emailRedirectTo):
+     - src/routes/register.tsx
+     - src/components/client/ClientSignup.tsx (/join)
+     - src/components/client/ClientInvitationScreen.tsx
+3. PDF export (src/lib/pdf-export.ts) turns image paths into window.location.origin + src for PDFShift. From the editor preview, PDFShift can't fetch them (the preview needs a Lovable sign-in), so images go missing. Embed those images as data URLs before sending instead, so the PDF works from any address.
+4. Tests: publicOrigin for the preview, the live domain, the lovable.app domain and localhost; and both invite links built from the preview use the live address.
+
+Keep everything else as it is.
+
+REPORT BACK:
+- files changed (one line each)
+- confirm no migrations were created and engine.ts / adjust.ts / energy.ts are untouched
